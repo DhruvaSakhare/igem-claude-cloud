@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import TOC from "../../components/TOC";
@@ -19,205 +20,27 @@ import "./software.css";
 /* ========================================================================== *
  *  Software — channel-design
  *
- *  This page is about the TOOL. The science it produced lives on the
- *  Engineering page ("UPOs generative design"), and the CAVER method itself is
- *  on Methods ("UPO channel discovery"); both are linked from here rather than
- *  retold, so there is one copy of each.
+ *  THIS PAGE IS DOCUMENTATION: what the tool is, what you need, how to install
+ *  it, and how to run it on your own enzyme, in the order you would actually
+ *  do those things. It is written for somebody about to use it.
  *
- *  What this page must answer is the Best Software ballot: standards and data
- *  formats, validation, reusability, integration, usability, and how well it is
- *  written for a future team to extend. The section order below follows that
- *  list rather than the order we built things in.
+ *  Deliberately NOT here, because they are not instructions:
+ *    - the validation work and the crystal benchmark  -> docs/validation.md
+ *    - the standards and data-format inventory        -> docs/data-formats.md
+ *    - the design rationale and its trade-offs        -> docs/architecture.md
+ *  All three are pointed at from the last section. The results the pipeline
+ *  produced for our own enzymes are on the Engineering page and the CAVER
+ *  method is on Methods; both are linked rather than retold.
  *
- *  EVERY NUMBER HERE IS ALSO IN THE REPOSITORY, in docs/validation.md, with the
- *  command that produced it. If one changes, change it in both places -- this
- *  page is what a judge reads first, and the repository is what they check it
- *  against.
- *
- *  LAYOUT follows the other four Model pages (model_methods, model_discovery,
- *  model_engineering): page-container > TOC + PageTitle + NumberedFigures,
- *  prose in a TextBox, every table a numbered PartsTable. The page-specific
- *  blocks (.sw-*) are styled as the site's cards -- 16px corners, the solid
- *  drop shadow from TextBox.css, orange for the one thing being pointed at.
+ *  EVERY COMMAND AND NUMBER HERE IS FROM THE REPOSITORY -- the steps follow
+ *  docs/walkthrough-gpu.md, the troubleshooting table is its "When something
+ *  breaks" section, and the terminal output is real output on the bundled
+ *  structure. If one changes, change it in both places.
  * ========================================================================== */
 
 const REPO = "https://gitlab.igem.org/2026/software/dtu-denmark/channel-design";
 
-/* --- table definitions ----------------------------------------------------
-   Kept out of the JSX so the sections below read as prose with a table in
-   them. Each is a PartsTable given a `numberId`, which is what puts "Table N."
-   on it and what `<TabNum of=…>` refers to. */
-
-/* No `rowHeader` on the description column: it sets `white-space: nowrap`
-   (PartsTable.css), which is right for an accession or a part id and wrong for
-   a sentence — it pushed the other two columns off the page. The same applies
-   to TEST_COLUMNS below. */
-const ARTIFACT_COLUMNS: TableColumn[] = [
-  { field: "artifact", header: "Artifact" },
-  { field: "size", header: "Size" },
-  { field: "against", header: "Compared with" },
-];
-
-const ARTIFACT_ROWS = [
-  {
-    artifact: (
-      <>
-        <strong>Bound substrate.</strong> Designs come out of RF3 <em>holo</em>;
-        the reference crystals are <em>apo</em>. The substrate sits in the
-        tunnel and narrows it.
-      </>
-    ),
-    size: <span className="sw-num">~0.45 Å</span>,
-    against: "0.077 Å real spread across three reference structures",
-  },
-  {
-    artifact: (
-      <>
-        <strong>The input filename.</strong> CAVER’s tunnel search is randomised
-        and seeds from the file name, so the same bytes under a different name
-        give a different answer.
-      </>
-    ),
-    size: <span className="sw-num">0.0885 Å</span>,
-    against: "0.0000 Å over six runs with one name",
-  },
-];
-
-const BENCH_COLUMNS: TableColumn[] = [
-  { field: "structure", header: "Structure", rowHeader: true },
-  { field: "radius", header: "Bottleneck radius" },
-];
-
-/* Ordered by radius, not by provenance, because the point of the table is
-   where the parent and the best design fall in that order. The two rows that
-   are ours are bold — the ranking is the message, so they are marked in the
-   cells rather than by colouring whole rows. */
-const BENCH_ROWS = [
-  {
-    structure: "5FUJ — reference UPO",
-    radius: <span className="sw-num">0.975 Å</span>,
-  },
-  {
-    structure: <strong>PabUPO-II — our parent enzyme</strong>,
-    radius: (
-      <strong className="sw-num">0.983 Å</strong>
-    ),
-  },
-  {
-    structure: "9HE9 — PabUPO-II crystal",
-    radius: <span className="sw-num">1.032 Å</span>,
-  },
-  {
-    structure: "5OXU — reference UPO",
-    radius: <span className="sw-num">1.050 Å</span>,
-  },
-  { structure: "MroUPO", radius: <span className="sw-num">1.058 Å</span> },
-  {
-    structure: <strong>Best design produced by the pipeline</strong>,
-    radius: (
-      <strong className="sw-num">1.094 Å (+11.3 %)</strong>
-    ),
-  },
-];
-
-const TEST_COLUMNS: TableColumn[] = [{ field: "what" }, { field: "why" }];
-
-const TEST_ROWS = [
-  {
-    what: <strong>Machine paths and binaries</strong>,
-    why: "Fails the build if a cluster path, a personal user id, a committed binary or licence-restricted software re-enters the repository.",
-  },
-  {
-    what: <strong>Every shipped configuration</strong>,
-    why: "All of them import, find their structure, and write only inside the run directory. This began as a real failure: eleven team configurations were unrunnable at once because one path was resolved a level too deep.",
-  },
-  {
-    what: <strong>Ligands are visible</strong>,
-    why: (
-      <>
-        A substrate written as <code>ATOM</code> instead of <code>HETATM</code>{" "}
-        is invisible to every ligand-aware step — CAVER finds zero tunnels. One
-        of our own configurations pointed at such a file.
-      </>
-    ),
-  },
-  {
-    what: <strong>The Boltz-2 → clustering contract</strong>,
-    why: "Runs the real join on fixture data, so a renamed column cannot silently empty the result.",
-  },
-  {
-    what: <strong>Resuming a batch</strong>,
-    why: "Written against a reproduced bug: resuming re-appended a row per finished structure, so a twice-resumed run counted every structure three times.",
-  },
-];
-
-const FORMAT_COLUMNS: TableColumn[] = [
-  { field: "format", header: "Format", rowHeader: true },
-  { field: "standard", header: "Standard" },
-  { field: "use", header: "Used for" },
-];
-
-const FORMAT_ROWS = [
-  {
-    format: "PDB, mmCIF/PDBx",
-    standard: "wwPDB",
-    use: "every structure in and out of every stage",
-  },
-  {
-    format: "FASTA",
-    standard: "de facto",
-    use: "sequence input; the header supplies the join key",
-  },
-  {
-    format: "A3M",
-    standard: "HH-suite / ColabFold",
-    use: "multiple sequence alignments",
-  },
-  { format: "SMILES", standard: "Daylight", use: "substrate definition" },
-  {
-    format: "Three-letter ligand codes",
-    standard: "RCSB Chemical Component Dictionary",
-    use: "cofactors — HEM, CU, ZN, NAD, FAD",
-  },
-  { format: "SDF, PDBQT", standard: "MDL, AutoDock", use: "docking input" },
-  { format: "CSV", standard: "RFC 4180", use: "every results table" },
-];
-
-const MODEL_COLUMNS: TableColumn[] = [
-  { field: "model", header: "Model", rowHeader: true },
-  { field: "role", header: "Role" },
-  { field: "source", header: "Source" },
-];
-
-const FOUNDRY = (
-  <a href="https://github.com/RosettaCommons/foundry">RosettaCommons/foundry</a>
-);
-
-const MODEL_ROWS = [
-  {
-    model: "Boltz-2",
-    role: "holo structure and binding affinity from sequence",
-    source: <a href="https://github.com/jwohlwend/boltz">jwohlwend/boltz</a>,
-  },
-  {
-    model: "RFdiffusion3",
-    role: "partial diffusion — remodels the tunnel residues",
-    source: FOUNDRY,
-  },
-  {
-    model: "LigandMPNN",
-    role: "ligand-aware inverse folding",
-    source: FOUNDRY,
-  },
-  {
-    model: "RF3",
-    role: "folds and scores each design with its cofactors",
-    source: FOUNDRY,
-  },
-];
-
-/** The five stages of the loop, as the strip under the opening section. The
- *  two CAVER steps are the contribution, so they are the marked ones. */
+/* --- the five steps of the loop ------------------------------------------- */
 const FLOW = [
   {
     step: "Measure",
@@ -248,14 +71,15 @@ const FLOW = [
   },
 ];
 
-/** What a run needs, by how much hardware you have. */
+/* --- what a run needs, by how much hardware you have ----------------------- */
 const TIERS = [
   {
     title: "A laptop",
     body: (
       <>
         The whole measurement half: pocket detection, tunnel geometry,
-        clustering, every analysis script, and the full test suite.
+        clustering, every analysis script, and the full test suite. No GPU, no
+        model weights, no network.
       </>
     ),
   },
@@ -272,15 +96,145 @@ const TIERS = [
     title: "An LSF cluster",
     body: (
       <>
-        The same stages submitted as job arrays for scale. On SLURM, run{" "}
-        <code>run_local.py</code> inside an allocation.
+        The same stages submitted as job arrays for scale, with{" "}
+        <code>00_submit_all.py</code>. On SLURM, run <code>run_local.py</code>{" "}
+        inside an allocation.
       </>
     ),
   },
 ];
 
-/** Each design decision with the thing it cost us. A decision stated without
- *  its downside is not something a reader can act on. */
+/* --- the config lines meant to be edited ---------------------------------- *
+   docs/walkthrough-gpu.md step 7. Everything else in the template has a
+   working default. */
+const CONFIG_COLUMNS: TableColumn[] = [
+  { field: "setting", header: "Set", rowHeader: true },
+  { field: "to", header: "To" },
+];
+
+const CONFIG_ROWS = [
+  {
+    setting: <code>INPUT_PDB</code>,
+    to: (
+      <>
+        <code>inputs/my_enzyme.pdb</code> — the structure you prepared in step 1
+      </>
+    ),
+  },
+  {
+    setting: <code>FLEXIBLE_RESIDUES</code>,
+    to: "the list step 3 printed. Everything not in it is held rigid in diffusion and native in sequence design — that is the whole idea: change the tunnel, keep the enzyme",
+  },
+  {
+    setting: <code>SUBSTRATE_SMILES</code>,
+    to: "your substrate, as a SMILES string",
+  },
+  {
+    setting: (
+      <>
+        <code>YOUR_NAME</code>, <code>EXPERIMENT</code>
+      </>
+    ),
+    to: "anything; they name the output directory",
+  },
+];
+
+/* --- troubleshooting ------------------------------------------------------- *
+   The "When something breaks" table from docs/walkthrough-gpu.md. The full
+   list, with a command to verify each one, is KNOWN_ISSUES.md in the repo. */
+const TROUBLE_COLUMNS: TableColumn[] = [
+  { field: "symptom", header: "Symptom" },
+  { field: "look", header: "Look at" },
+];
+
+const TROUBLE_ROWS = [
+  {
+    symptom: <strong>CAVER finds no tunnel</strong>,
+    look: (
+      <>
+        Is your substrate <code>HETATM</code> and not <code>ATOM</code>? A
+        substrate written as <code>ATOM</code> is invisible to every
+        ligand-aware step. In our own pair of files this was the difference
+        between <strong>0 tunnels and 40</strong> on the same coordinates.
+      </>
+    ),
+  },
+  {
+    symptom: <strong>Every design is identical</strong>,
+    look: (
+      <>
+        <code>MPNN_TEMPERATURE</code>. LigandMPNN&rsquo;s own default of 0.1 is
+        effectively argmax; <code>0.25</code> is the default here. Raise it to
+        explore the lining — above ~0.5 expect more fold failures.
+      </>
+    ),
+  },
+  {
+    symptom: (
+      <strong>
+        A job says <code>signal 9</code> but the output exists
+      </strong>
+    ),
+    look: "It probably succeeded. Check the files before re-running it.",
+  },
+  {
+    symptom: (
+      <strong>
+        <code>--check</code> cannot find <code>rfd3</code> or <code>mpnn</code>
+      </strong>
+    ),
+    look: (
+      <>
+        Activate the design environment, or name the paths in{" "}
+        <code>envs/site.env</code>.
+      </>
+    ),
+  },
+  {
+    symptom: <strong>Nothing passes the quality gate</strong>,
+    look: (
+      <>
+        Are you folding without an MSA? Lower <code>PLDDT_CUT</code> to ~0.70.
+      </>
+    ),
+  },
+];
+
+/* --- the models the pipeline calls ---------------------------------------- */
+const MODEL_COLUMNS: TableColumn[] = [
+  { field: "model", header: "Model", rowHeader: true },
+  { field: "role", header: "Role" },
+  { field: "source", header: "Source" },
+];
+
+const FOUNDRY = (
+  <a href="https://github.com/RosettaCommons/foundry">RosettaCommons/foundry</a>
+);
+
+const MODEL_ROWS = [
+  {
+    model: "Boltz-2",
+    role: "holo structure and binding affinity from sequence",
+    source: <a href="https://github.com/jwohlwend/boltz">jwohlwend/boltz</a>,
+  },
+  {
+    model: "RFdiffusion3",
+    role: "partial diffusion — remodels the tunnel residues",
+    source: FOUNDRY,
+  },
+  { model: "LigandMPNN", role: "ligand-aware inverse folding", source: FOUNDRY },
+  {
+    model: "RF3",
+    role: "folds and scores each design with its cofactors",
+    source: FOUNDRY,
+  },
+];
+
+/* --- design choices, each with what it cost -------------------------------- *
+   The Best Software page is asked for the key design decisions AND the
+   trade-offs they carried, so each one here is stated with its downside
+   attached: a tool described only by what it does well is not a description
+   anyone can act on. The long form is docs/architecture.md. */
 const TRADEOFFS = [
   {
     title: "Rank by measured geometry, not model confidence",
@@ -288,14 +242,14 @@ const TRADEOFFS = [
     cost: "a CAVER run per design, which is minutes of CPU each and the slowest part of scoring. We accept the wall-clock for a number that means what it says.",
   },
   {
+    title: "Put the cheap measurement in the middle, not at the end",
+    why: "a diffusion model handed a narrow tunnel will sometimes close it completely, and no amount of sequence design reopens a channel that is not there. Measuring before the two most expensive stages means that failure costs a minute of CPU instead of hours of GPU.",
+    cost: "a stage that most pipelines do not have, and one more tool to install. Running it after the pipeline — the obvious place — would have told us the same thing and charged us for the privilege.",
+  },
+  {
     title: "The gate fails open",
     why: "it runs unattended inside a queued job chain. A filter that can fail closed can silently discard an entire run, hours after you stopped watching.",
     cost: "a run with CAVER missing completes and looks normal while having skipped its own central idea. The gate says so loudly in the log, and the first thing to check on a disappointing run is whether it actually ran.",
-  },
-  {
-    title: "Measure apo, even though designs are folded holo",
-    why: "a bound substrate costs about 0.45 Å of apparent bottleneck radius, while the real spread across three reference crystals is 0.077 Å. Comparing a holo design against an apo crystal measures the ligand, not the design — the artifact is roughly six times the signal.",
-    cost: "the number we report is not the tunnel the substrate actually travels through. It is the one that can be compared across structures, which is the only thing a ranking needs.",
   },
   {
     title: "Three config layers instead of one file",
@@ -326,9 +280,59 @@ function RepoBar({ label }: { label: string }) {
     <div className="sw-repo">
       <span className="sw-repo-label">{label}</span>
       <code>
-        <a href={REPO}>gitlab.igem.org/2026/software/dtu-denmark/channel-design</a>
+        <a href={REPO}>
+          gitlab.igem.org/2026/software/dtu-denmark/channel-design
+        </a>
       </code>
       <span className="sw-repo-meta">Apache-2.0 · Python</span>
+    </div>
+  );
+}
+
+/** One numbered step of the run-through. The number is decoration — the
+ *  heading already says what the step is — so it is hidden from assistive
+ *  tech rather than read out before every title. */
+function Step({
+  n,
+  title,
+  children,
+}: {
+  n: number;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="sw-step">
+      <h3 className="sw-step-head">
+        <span className="sw-step-n" aria-hidden="true">
+          {n}
+        </span>
+        <span className="sw-step-title">{title}</span>
+      </h3>
+      <div className="sw-step-body">{children}</div>
+    </section>
+  );
+}
+
+/** A shell block: a plain string is a command, `{ c }` is a dimmed comment. */
+function Cmd({ lines }: { lines: (string | { c: string })[] }) {
+  return (
+    <div className="sw-cmd">
+      <code>
+        {lines.map((l, i) =>
+          typeof l === "string" ? (
+            <span key={i}>
+              {l}
+              {"\n"}
+            </span>
+          ) : (
+            <span key={i} className="sw-comment">
+              {l.c}
+              {"\n"}
+            </span>
+          ),
+        )}
+      </code>
     </div>
   );
 }
@@ -366,15 +370,9 @@ export function Software() {
                   through a narrow tunnel to the heme, and for a bulky substrate
                   the tunnel &mdash; not the chemistry &mdash; is what stops the
                   reaction. The constriction we started from is under
-                  1&nbsp;&Aring; in radius.
+                  1&nbsp;&Aring; in radius (Figure <FigNum of="profile" />
+                  ).
                 </p>
-              </TextBox>
-
-              <div data-fig="profile">
-                <ChannelProfileFigure />
-              </div>
-
-              <TextBox className="model-prose">
                 <p className="mm-prose">
                   <strong>
                     channel-design measures that tunnel and then uses the
@@ -388,12 +386,13 @@ export function Software() {
                 </p>
               </TextBox>
 
+              <div data-fig="profile">
+                <ChannelProfileFigure />
+              </div>
+
               <ul className="sw-flow">
                 {FLOW.map((f) => (
-                  <li
-                    key={f.step}
-                    className={f.key ? "sw-flow-key" : undefined}
-                  >
+                  <li key={f.step} className={f.key ? "sw-flow-key" : undefined}>
                     <span className="sw-flow-step">{f.step}</span>
                     <span className="sw-flow-tool">{f.tool}</span>
                     <span className="sw-flow-what">{f.what}</span>
@@ -406,189 +405,48 @@ export function Software() {
                   Two supporting tools come with it: a batch driver for{" "}
                   <strong>Boltz-2</strong> (holo structures and binding affinity
                   from sequence alone) and a command-line wrapper for{" "}
-                  <strong>AutoDock Vina</strong>. The results this produced for
-                  our own enzymes are on the{" "}
-                  <Link to="/model-engineering">Engineering</Link> page; the
+                  <strong>AutoDock Vina</strong>. Nothing in the method is
+                  specific to peroxygenases &mdash; cofactors are named by their
+                  standard PDB codes, so heme, copper, zinc, NAD and FAD all
+                  work the same way.
+                </p>
+                <p className="mm-prose">
+                  <strong>This page is the instructions.</strong> The results
+                  the pipeline produced for our own enzymes are on the{" "}
+                  <Link to="/model-engineering">Engineering</Link> page, and the
                   CAVER method itself is described on{" "}
                   <Link to="/model-methods">Methods</Link>.
                 </p>
               </TextBox>
-            </section>
 
-            {/* ---------------------------------------------------------------- */}
-            <section id="software-architecture" className="mt-5">
-              <SectionHeading title="How it is put together" />
-
+              <SubsectionHeading title="The eight stages" />
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  Eight stages run in order. Three of them are expensive &mdash;
-                  they want a GPU and a model checkpoint &mdash; and the rest
-                  are cheap enough for a laptop. The design of the tool is
-                  almost entirely about{" "}
-                  <em>
-                    where the cheap measurement sits relative to the expensive
-                    stages
-                  </em>
-                  .
+                  Three stages want a GPU and a model checkpoint; the rest are
+                  cheap enough for a laptop. The measurement gate sits at
+                  stage&nbsp;3, between them (Figure{" "}
+                  <FigNum of="architecture" />) &mdash; a backbone whose tunnel
+                  has already collapsed is discarded for a minute of CPU rather
+                  than hours of GPU. It <strong>fails open</strong>: if CAVER is
+                  not installed it says so in the log and passes every backbone
+                  through, rather than silently emptying your run.
                 </p>
               </TextBox>
 
               <div data-fig="architecture">
                 <ArchitectureFigure />
               </div>
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  It sits in the middle, at stage&nbsp;3. A diffusion model
-                  handed a narrow tunnel will sometimes close it completely, and
-                  no amount of sequence design reopens a channel that is not
-                  there. Measuring each candidate backbone before it reaches the
-                  two most expensive stages means a failure costs a minute of
-                  CPU instead of hours of GPU. Running the same measurement{" "}
-                  <em>after</em> the pipeline &mdash; the obvious place for it
-                  &mdash; would have told us the same thing and charged us for
-                  the privilege.
-                </p>
-                <p className="mm-prose">
-                  The gate <strong>fails open</strong>. If CAVER is not
-                  installed, or Java is missing, or no baseline has been
-                  measured, it says so and passes every backbone through, which
-                  is exactly how the pipeline behaved before the gate existed. A
-                  filter running unattended inside a queued job chain should
-                  never be able to quietly delete a run; the worst it does here
-                  is stop being an optimisation.
-                </p>
-                <p className="mm-prose">
-                  What a run needs is split three ways, shown along the top of
-                  Figure <FigNum of="architecture" />. The{" "}
-                  <strong>experiment</strong> &mdash; which enzyme, which
-                  residues may move, which substrate &mdash; is in version
-                  control and publishable. The <strong>machine</strong> &mdash;
-                  checkpoints, queues, scratch space &mdash; is one file with
-                  environment overrides. Your own paths are a third file that is
-                  never committed. That separation is why the configs in the
-                  repository can be read by anyone without exposing the
-                  filesystem they ran on, and why moving to a different cluster
-                  is one file rather than thirty.
-                </p>
-              </TextBox>
             </section>
 
             {/* ---------------------------------------------------------------- */}
-            <section id="software-validation" className="mt-5">
-              <SectionHeading title="What we found by testing it" />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  The result we would most like other teams to take away is not
-                  the enzyme. It is that{" "}
-                  <strong>
-                    two artifacts in the standard way of comparing protein
-                    tunnels were each larger than the effect we were trying to
-                    measure.
-                  </strong>{" "}
-                  We found both by measuring the same structure twice and
-                  getting different answers. Anyone comparing tunnels with CAVER
-                  is exposed to them (Table <TabNum of="artifacts" />
-                  ).
-                </p>
-              </TextBox>
-
-              <PartsTable
-                columns={ARTIFACT_COLUMNS}
-                data={ARTIFACT_ROWS}
-                numberId="artifacts"
-                caption="The two measurement artifacts, each next to the real difference it has to be seen against."
-              />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  The first is roughly <strong>six times</strong> the difference
-                  between real structures. Every comparison made before we found
-                  it was measuring how much of the tunnel the substrate filled,
-                  not how wide the protein&rsquo;s tunnel was. The clearest
-                  illustration is MroUPO: measured with its docked substrate it
-                  looks like 0.745&nbsp;&Aring;, and measured apo it is
-                  1.058&nbsp;&Aring; &mdash; the widest tunnel we measured. The
-                  same structure, read two ways, answers &ldquo;does this enzyme
-                  need widening?&rdquo; opposite ways.
-                </p>
-                <p className="mm-prose">
-                  Both are now enforced in code rather than left to whoever runs
-                  it: the substrate is stripped by default, every structure is
-                  staged under one constant filename, and the scripts refuse to
-                  compare a baseline measured one way against designs measured
-                  the other.
-                </p>
-              </TextBox>
-
-              <SubsectionHeading title="Benchmark against public crystals" />
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  Measured apo, one protocol throughout. The three references
-                  are public PDB entries, so the numbers in Table{" "}
-                  <TabNum of="bench" /> can be checked against data we did not
-                  generate.
-                </p>
-              </TextBox>
-
-              <PartsTable
-                columns={BENCH_COLUMNS}
-                data={BENCH_ROWS}
-                numberId="bench"
-                caption="Bottleneck radius of every structure we measured, narrowest first. Ours are in bold."
-              />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  That the parent falls inside the range spanned by three
-                  independent crystal structures is what tells us the
-                  measurement is calibrated at all. The best design is wider
-                  than all three, at pLDDT&nbsp;0.96.
-                </p>
-              </TextBox>
-
-              <div className="sw-caveat">
-                <strong>What this does not show.</strong> Every number on this
-                page is computational; no design has been expressed or assayed.
-                The twenty designs measured so far all come from one backbone
-                and are therefore correlated rather than representative, and the
-                full 174-design rescore is unfinished. The ceiling is also not
-                geometric: the constriction in our parent is formed by two{" "}
-                <em>catalytic</em> residues, so widening much further means
-                touching the active site.
-              </div>
-
-              <SubsectionHeading title="Software testing" />
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  The repository carries a test suite that runs in seconds on a
-                  laptop &mdash; no GPU, no cluster, no model weights, no
-                  network &mdash; because the parts a reviewer cannot run are
-                  not the parts worth testing. It covers the data contract
-                  between components, every shipped configuration, the
-                  cross-component path resolution, and two regression guards
-                  written against reproduced failures.
-                </p>
-              </TextBox>
-
-              <DetailsBox label="More details on what the tests protect">
-                <PartsTable
-                  columns={TEST_COLUMNS}
-                  data={TEST_ROWS}
-                  showHeaders={false}
-                />
-              </DetailsBox>
-            </section>
-
-            {/* ---------------------------------------------------------------- */}
-            <section id="software-using-it" className="mt-5">
-              <SectionHeading title="Using it" />
+            <section id="software-requirements" className="mt-5">
+              <SectionHeading title="What you need" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
                   You do not need our cluster, and for a large part of it you do
-                  not need a GPU.
+                  not need a GPU. There are three entry points, and only the
+                  last assumes a scheduler.
                 </p>
               </TextBox>
 
@@ -601,7 +459,26 @@ export function Software() {
                 ))}
               </div>
 
-              <SubsectionHeading title="Installing it" />
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  CAVER needs a JDK; your system one is almost certainly fine (8
+                  and 17 are both tested). Two platform caveats are worth
+                  knowing before you start:{" "}
+                  <strong>fpocket&rsquo;s source build fails on macOS</strong>{" "}
+                  &mdash; use <code>conda install -c bioconda fpocket</code>,
+                  and note it is only needed for the pocket stage, not for
+                  tunnel measurement &mdash; and{" "}
+                  <strong>macOS arm64 has no AutoDock Vina wheel</strong>, so
+                  the docking extra needs boost headers. Linux x86_64 needs
+                  neither.
+                </p>
+              </TextBox>
+            </section>
+
+            {/* ---------------------------------------------------------------- */}
+            <section id="software-install" className="mt-5">
+              <SectionHeading title="Installing it" />
+
               <TextBox className="model-prose">
                 <p className="mm-prose">
                   One script, and it does not need conda. It installs{" "}
@@ -610,20 +487,22 @@ export function Software() {
                   committed lockfile so the versions are exactly ours, downloads
                   CAVER&nbsp;3.0 from its authors and checks it against a
                   SHA-256, builds fpocket from source, and checks for a JDK
-                  without installing one.
+                  without installing one. Re-running it is safe.
                 </p>
               </TextBox>
 
-              <div className="sw-cmd">
-                <code>
-                  git clone {"<repo>"} &amp;&amp; cd channel-design
-                  <br />
-                  ./setup.sh{" "}
-                  <span className="sw-comment">
-                    # add --gpu for the design stages
-                  </span>
-                </code>
-              </div>
+              <Cmd
+                lines={[
+                  "git clone https://gitlab.igem.org/2026/software/dtu-denmark/channel-design.git",
+                  "cd channel-design",
+                  "",
+                  { c: "# the CPU half: tests + channel measurement" },
+                  "./setup.sh",
+                  "",
+                  { c: "# ...and the GPU design stages" },
+                  "./setup.sh --gpu",
+                ]}
+              />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
@@ -632,8 +511,8 @@ export function Software() {
                   gigabytes and are usually already on a shared filesystem.
                   Point at the copy you have instead of fetching another. Then
                   check what the install actually found &mdash; thirty seconds,
-                  and it is the difference between a clean start and discovering
-                  a missing checkpoint mid-run.
+                  and it is the difference between a clean start and
+                  discovering a missing checkpoint mid-run.
                 </p>
               </TextBox>
 
@@ -664,269 +543,290 @@ export function Software() {
                   },
                 ]}
               />
-              <p className="mm-prose sw-figcap">
+              <p className="sw-figcap">
                 A real <code>--check</code> on a laptop with no model weights.
                 Every line is either <code>ok</code> or says exactly what is
                 missing and how to supply it. The two failures here are
                 expected: this machine measures tunnels and does not run the
-                design stages, and <code>--check</code> is explicit about that
-                rather than failing at the first missing file.
+                design stages.
               </p>
 
-              <SubsectionHeading title="A run, start to finish" />
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  The shape of it is{" "}
+                  To confirm the install works, run the test suite. It takes
+                  about a second, needs no GPU, no cluster, no model weights and
+                  no network, and exercises the real join between components on
+                  fixture data:
+                </p>
+              </TextBox>
+
+              <Cmd lines={["uv run --extra tests pytest -q"]} />
+            </section>
+
+            {/* ---------------------------------------------------------------- */}
+            <section id="software-run" className="mt-5">
+              <SectionHeading title="Running it on your own enzyme" />
+
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  The shape of a run is{" "}
                   <em>
                     measure &rarr; pilot &rarr; commit &rarr; re-measure &rarr;
                     explain
                   </em>
-                  . The expensive step is guarded on both sides.
+                  , so the expensive step is guarded on both sides. These are
+                  the steps in the order you do them; the long form, with every
+                  flag, is <code>docs/walkthrough-gpu.md</code> in the
+                  repository.
                 </p>
               </TextBox>
 
-              <div className="sw-cmd">
-                <code>
-                  <span className="sw-comment">
-                    # 0. measure the parent: writes the tunnel-lining residues
-                    and your baseline
-                  </span>
-                  <br />
-                  python partial_diffusion/scripts/00_caver_channel.py
-                  <br />
-                  <br />
-                  <span className="sw-comment">
-                    # 1. pilot: one backbone, diffusion only, before spending
-                    anything
-                  </span>
-                  <br />
-                  python partial_diffusion/scripts/run_local.py --stages
-                  prep-caver_filter
-                  <br />
-                  python partial_diffusion/scripts/08_probe_channel.py ...
-                  <br />
-                  <br />
-                  <span className="sw-comment"># 2. the full run</span>
-                  <br />
-                  python partial_diffusion/scripts/run_local.py
-                  <br />
-                  <br />
-                  <span className="sw-comment">
-                    # 3. did it work? rank by measured widening, not confidence
-                  </span>
-                  <br />
-                  python partial_diffusion/scripts/07_caver_rescore.py
-                  <br />
-                  python partial_diffusion/scripts/09_compare_to_parent.py ...
-                </code>
+              <div className="sw-steps">
+                <Step n={1} title="Prepare your structure">
+                  <p>
+                    Your enzyme needs solvent stripped, the heme on its own
+                    chain, and the substrate on another chain roughly
+                    4&ndash;5&nbsp;&Aring; above the iron. And &mdash; this one
+                    bites people &mdash;{" "}
+                    <strong>
+                      every ligand must be written as <code>HETATM</code>, not{" "}
+                      <code>ATOM</code>
+                    </strong>
+                    . A substrate written as <code>ATOM</code> is invisible to
+                    every ligand-aware step, and CAVER will find no tunnel at
+                    all. <code>fix_pdb_chains.py</code> does the chain surgery.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "cp my_enzyme.pdb enzyme_design/inputs/",
+                      'grep -E "^(ATOM|HETATM)" enzyme_design/inputs/my_enzyme.pdb \\',
+                      "  | cut -c22 | sort -u",
+                      { c: "# expect three chain letters, e.g. A B C" },
+                    ]}
+                  />
+                </Step>
+
+                <Step n={2} title="Tell it where things are">
+                  <p>
+                    Machine-specific paths &mdash; checkpoints, queues, scratch
+                    directories &mdash; live in one file that is never
+                    committed, so adopting the tool does not mean editing the
+                    science. On a single machine most of it can stay empty: the
+                    checkpoints default to <code>enzyme_design/ckpt/</code>.
+                    Every path <code>site.py</code> prints should exist. This
+                    costs nothing and catches most setup mistakes.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "cp envs/dtu-hpc.env.example envs/site.env",
+                      { c: "# edit it, then:" },
+                      "source envs/site.env",
+                      "python enzyme_design/partial_diffusion/site.py",
+                    ]}
+                  />
+                </Step>
+
+                <Step n={3} title="Measure the parent enzyme">
+                  <p>
+                    <strong>
+                      This is the step that makes the tool worth using.
+                    </strong>{" "}
+                    It answers the hardest question in this kind of design work
+                    &mdash; which residues should I allow to change? &mdash;
+                    from measured geometry instead of intuition, and records the
+                    baseline every design will be compared against. If you try
+                    one command, try this one.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "python enzyme_design/partial_diffusion/scripts/00_caver_channel.py",
+                    ]}
+                  />
+                  <Terminal
+                    title="00_caver_channel.py — measuring the parent"
+                    command="python 00_caver_channel.py examples/PabUPO-II_withHEMEFE_and_NNBT.pdb"
+                    lines={[
+                      {
+                        text: "Running CAVER (this takes a minute)...",
+                        kind: "dim",
+                      },
+                      {
+                        text: "Substrate : UNL — stripped (measuring apo)",
+                        kind: "dim",
+                      },
+                      { text: "" },
+                      {
+                        text: "Best channel — tunnel 1 (cluster 1)",
+                        kind: "head",
+                      },
+                      {
+                        text: "  bottleneck radius : 0.983 A   <- the number to beat",
+                        kind: "key",
+                      },
+                      { text: "  length            : 14.96 A" },
+                      { text: "  throughput        : 0.717" },
+                      { text: "  curvature         : 1.30" },
+                      { text: "" },
+                      {
+                        text: "Channel-lining residues on chain A:",
+                        kind: "head",
+                      },
+                      {
+                        text: "  sidechain-lining (20) : [52, 85, 86, 88, 89, 92, ...]",
+                      },
+                      {
+                        text: "  backbone-only     (7) : [90, 94, 204, 209, ...]",
+                      },
+                      {
+                        text: "  -> FLEXIBLE_RESIDUES (27) : [52, 85, 86, 88, 89, 90, ...]",
+                        kind: "key",
+                      },
+                      { text: "" },
+                      { text: "Wrote:", kind: "head" },
+                      {
+                        text: "  ..._flex.json        the residues, ready to paste",
+                      },
+                      {
+                        text: "  ..._baseline.json    what designs are compared against",
+                      },
+                      {
+                        text: "  ..._channel.pdb      the tunnel, as placeholder atoms",
+                      },
+                    ]}
+                  />
+                  <p className="sw-figcap">
+                    Real output on the structure bundled with the repository.
+                    The three numbers at the top are the same ones in Figure{" "}
+                    <FigNum of="profile" />, and you can reproduce them in about
+                    a minute on a laptop.
+                  </p>
+                  <p>
+                    You will also want an alignment, once per enzyme:{" "}
+                    <code>00_make_msa.py</code>. It may query the public
+                    ColabFold server.
+                  </p>
+                </Step>
+
+                <Step n={4} title="Write your config">
+                  <p>
+                    Copy the template and edit the tagged lines. The settings in
+                    Table <TabNum of="config" /> are the ones meant to be
+                    changed; everything else has a working default.{" "}
+                    <code>config.py</code> is gitignored &mdash; it is your
+                    working copy, not part of the repository.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "cp partial_diffusion/config_template.py partial_diffusion/config.py",
+                    ]}
+                  />
+                  <PartsTable
+                    columns={CONFIG_COLUMNS}
+                    data={CONFIG_ROWS}
+                    numberId="config"
+                    caption="The four settings you have to supply. FLEXIBLE_RESIDUES is copied straight from what step 3 printed."
+                  />
+                </Step>
+
+                <Step n={5} title="Preflight, then pilot">
+                  <p>
+                    <code>--check</code> reports what is installed and
+                    resolvable; <code>--dry-run</code> prints every command
+                    without running one, so a whole run can be inspected before
+                    anything is spent. Then pilot:{" "}
+                    <strong>
+                      one backbone tells you whether the tunnel opens at all.
+                    </strong>{" "}
+                    If it does not open here it will not open across two hundred
+                    designs, and you retune cheaply instead of discovering it a
+                    day later.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "python partial_diffusion/scripts/run_local.py --check",
+                      "",
+                      {
+                        c: "# one backbone, diffusion only, before spending anything",
+                      },
+                      "python partial_diffusion/scripts/run_local.py \\",
+                      "  --stages prep-caver_filter",
+                      "python partial_diffusion/scripts/08_probe_channel.py ...",
+                    ]}
+                  />
+                </Step>
+
+                <Step n={6} title="The full run">
+                  <p>
+                    Same stages either way &mdash; <code>run_local.py</code> is
+                    the cluster path with <code>bsub</code> taken out, so
+                    nothing is cluster-specific except the batch scripts
+                    themselves. Stages can be named or numbered, and each stage
+                    script is independently runnable if you would rather drive
+                    them yourself.
+                  </p>
+                  <Cmd
+                    lines={[
+                      { c: "# one GPU" },
+                      "python partial_diffusion/scripts/run_local.py",
+                      "",
+                      { c: "# or, on an LSF cluster" },
+                      "python partial_diffusion/scripts/00_submit_all.py",
+                    ]}
+                  />
+                </Step>
+
+                <Step n={7} title="Did it work?">
+                  <p>
+                    Designs are ranked by{" "}
+                    <strong>measured change in bottleneck radius</strong>, never
+                    by how confident the model was. Three further scripts
+                    explain <em>why</em> a design worked: overlaying tunnel
+                    profiles, clustering designs by tunnel shape rather than by
+                    a single number, and naming the residues physically blocking
+                    the tunnel. That last one is how we learned our own ceiling
+                    was catalytic &mdash; a conclusion the tool handed us rather
+                    than one we assumed.
+                  </p>
+                  <Cmd
+                    lines={[
+                      "python partial_diffusion/scripts/07_caver_rescore.py",
+                      "python partial_diffusion/scripts/09_compare_to_parent.py ...",
+                      "",
+                      { c: "# why it worked" },
+                      "python partial_diffusion/scripts/10_plot_channels.py",
+                      "python partial_diffusion/scripts/11_cluster_channels.py",
+                      "python partial_diffusion/scripts/12_bottleneck_residues.py",
+                    ]}
+                  />
+                </Step>
               </div>
-
-              <Terminal
-                title="00_caver_channel.py — measuring the parent"
-                command="python 00_caver_channel.py examples/PabUPO-II_withHEMEFE_and_NNBT.pdb"
-                lines={[
-                  {
-                    text: "Running CAVER (this takes a minute)...",
-                    kind: "dim",
-                  },
-                  {
-                    text: "Substrate : UNL — stripped (measuring apo)",
-                    kind: "dim",
-                  },
-                  { text: "" },
-                  { text: "Best channel — tunnel 1 (cluster 1)", kind: "head" },
-                  {
-                    text: "  bottleneck radius : 0.983 A   <- the number to beat",
-                    kind: "key",
-                  },
-                  { text: "  length            : 14.96 A" },
-                  { text: "  throughput        : 0.717" },
-                  { text: "  curvature         : 1.30" },
-                  { text: "" },
-                  { text: "Channel-lining residues on chain A:", kind: "head" },
-                  {
-                    text: "  sidechain-lining (20) : [52, 85, 86, 88, 89, 92, ...]",
-                  },
-                  { text: "  backbone-only     (7) : [90, 94, 204, 209, ...]" },
-                  {
-                    text: "  -> FLEXIBLE_RESIDUES (27) : [52, 85, 86, 88, 89, 90, ...]",
-                    kind: "key",
-                  },
-                  { text: "" },
-                  { text: "Wrote:", kind: "head" },
-                  { text: "  ..._flex.json        the residues, ready to paste" },
-                  {
-                    text: "  ..._baseline.json    what designs are compared against",
-                  },
-                  {
-                    text: "  ..._channel.pdb      the tunnel, as placeholder atoms",
-                  },
-                ]}
-              />
-              <p className="mm-prose sw-figcap">
-                Real output on the structure bundled with the repository, and
-                the one command worth running if you try nothing else. The three
-                numbers at the top are the same ones in Figure{" "}
-                <FigNum of="profile" />; a reader can reproduce them in about a
-                minute on a laptop, which is why they are quoted here rather
-                than described.
-              </p>
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  <strong>
-                    Step 0 is the one that makes the tool worth using.
-                  </strong>{" "}
-                  It answers the hardest question in this kind of design work
-                  &mdash; which residues should I allow to change? &mdash; from
-                  measured geometry instead of intuition, and records the
-                  baseline the designs will be judged against.
-                </p>
-                <p className="mm-prose">
-                  <strong>
-                    Step 1 exists because the full run is expensive.
-                  </strong>{" "}
-                  One backbone tells you whether the tunnel opens at all. If it
-                  does not open here it will not open across two hundred
-                  designs, so you retune cheaply rather than discovering it a
-                  day later.
-                </p>
-                <p className="mm-prose">
-                  Three further scripts explain <em>why</em> a design worked:
-                  overlaying tunnel profiles, clustering designs by tunnel shape
-                  rather than by a single number, and naming the residues
-                  physically blocking the tunnel. That last one is how we
-                  learned our ceiling was catalytic &mdash; a conclusion the
-                  tool handed us rather than one we assumed.
-                </p>
-              </TextBox>
             </section>
 
             {/* ---------------------------------------------------------------- */}
-            <section id="software-reuse" className="mt-5">
-              <SectionHeading title="Reusing it for another enzyme" />
+            <section id="software-troubleshooting" className="mt-5">
+              <SectionHeading title="When something breaks" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  Nothing in the method is specific to peroxygenases. A Boltz-2
-                  job is a short YAML file with a placeholder for the sequence
-                  and cofactors named by their standard PDB codes, so heme,
-                  copper, zinc, NAD and FAD all work the same way. One of the
-                  three bundled templates sets up four copper ions for
-                  multicopper oxidases, which is our evidence that it
-                  generalised past heme enzymes before we claimed it would.
-                </p>
-                <p className="mm-prose">
-                  To point the pipeline at your own enzyme you supply a prepared
-                  structure, let step&nbsp;0 choose the flexible residues, and
-                  set your substrate as a SMILES string. Machine-specific paths
-                  &mdash; checkpoints, queues, scratch directories &mdash; live
-                  in one file with environment-variable overrides, so adopting
-                  it does not mean editing the science.
-                </p>
-                <p className="mm-prose">
-                  If you only want the measurement, take that: the CAVER wrapper
-                  with the two protocol fixes above is useful to anyone
-                  comparing enzyme tunnels, needs no GPU and no model weights,
-                  and does not require you to adopt the design pipeline at all.
-                </p>
-              </TextBox>
-            </section>
-
-            {/* ---------------------------------------------------------------- */}
-            <section id="software-standards" className="mt-5">
-              <SectionHeading title="Standards, formats and integration" />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  <strong>
-                    This project does not use SBOL, and we are not going to
-                    claim that it does.
-                  </strong>{" "}
-                  SBOL describes genetic parts and how they compose; it has no
-                  representation for the bottleneck radius of a substrate tunnel
-                  or for &ldquo;these twenty-two residues may move during
-                  diffusion&rdquo;. The DNA encoding our designs is real and
-                  standards-described, but it lives in our parts entries, not in
-                  this tool.
-                </p>
-                <p className="mm-prose">
-                  What is true, and what actually matters for reuse, is that{" "}
-                  <strong>
-                    every interface is a community-standard format and none of
-                    them is ours
-                  </strong>{" "}
-                  (Table <TabNum of="formats" />
-                  ). That is the reason the four components chain together at
-                  all, and the reason you can cut into the workflow at any point
-                  with your own tools.
+                  Table <TabNum of="trouble" /> is the short list. The full one
+                  &mdash; nine traps that each cost somebody a run, each with
+                  the command to verify it &mdash; is{" "}
+                  <code>KNOWN_ISSUES.md</code> in the repository. If you read
+                  one file before changing anything, read that one.
                 </p>
               </TextBox>
 
               <PartsTable
-                columns={FORMAT_COLUMNS}
-                data={FORMAT_ROWS}
-                numberId="formats"
-                caption="Every format the pipeline reads or writes at a component boundary. All of them are community standards; none were invented here."
+                columns={TROUBLE_COLUMNS}
+                data={TROUBLE_ROWS}
+                numberId="trouble"
+                caption="The five failures that come up most often, and what to check first."
               />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  Tables are addressed{" "}
-                  <strong>by column name, never by position</strong>, and a
-                  script that cannot find a column it needs exits with an error
-                  listing the columns it did find. The one place two components
-                  meet is a CSV: the Boltz-2 driver writes an accession, a
-                  confidence and a predicted affinity, and the tunnel clustering
-                  joins on the accession. Because that contract is a file and
-                  not a function call,{" "}
-                  <strong>
-                    any affinity predictor can be substituted for Boltz-2
-                  </strong>{" "}
-                  &mdash; emit those three columns and nothing else changes. A
-                  test runs that join on fixture data so it cannot drift.
-                </p>
-                <p className="mm-prose">
-                  Public identifiers are consumed rather than reinvented: RCSB
-                  accessions (5FUJ, 5OXU and 9HE9 are appended to every
-                  clustering run as calibration anchors), UniProt and NCBI
-                  accessions, CUPP clade assignments, and SignalP&nbsp;6.0 for
-                  trimming signal peptides.
-                </p>
-              </TextBox>
-            </section>
-
-            {/* ---------------------------------------------------------------- */}
-            <section id="software-tradeoffs" className="mt-5">
-              <SectionHeading title="Design choices, and what they cost" />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  Every one of these was a decision with a downside. They are
-                  worth stating with the downside attached, because a tool
-                  described only by what it does well is not a description
-                  anyone can act on.
-                </p>
-              </TextBox>
-
-              <div className="sw-tradeoffs">
-                {TRADEOFFS.map((t) => (
-                  <div className="sw-tradeoff" key={t.title}>
-                    <h4>{t.title}</h4>
-                    <p>
-                      <span className="sw-to-gain">Why:</span> {t.why}
-                    </p>
-                    <p>
-                      <span className="sw-to-cost">Cost:</span> {t.cost}
-                    </p>
-                  </div>
-                ))}
-              </div>
             </section>
 
             {/* ---------------------------------------------------------------- */}
             <section id="software-interfaces" className="mt-5">
-              <SectionHeading title="How you call it" />
+              <SectionHeading title="Calling it from your own tools" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
@@ -944,12 +844,9 @@ export function Software() {
                   <h4>The command line</h4>
                   <p>
                     Every script takes <code>--help</code>. The two drivers take{" "}
-                    <code>--check</code> (what is installed and resolvable) and{" "}
-                    <code>--dry-run</code> (print every command, run nothing),
-                    so a whole run can be inspected before anything is spent. A
-                    test in the suite asserts that every flag named in the
-                    documentation actually exists &mdash; which it did not
-                    always.
+                    <code>--check</code> and <code>--dry-run</code>. A test in
+                    the suite asserts that every flag named in the documentation
+                    actually exists &mdash; which it did not always.
                   </p>
                 </div>
 
@@ -969,41 +866,86 @@ export function Software() {
                   <p>
                     The Boltz-2 driver writes{" "}
                     <code>accession, ligand_iptm, affinity_pred_value</code>;
-                    the clustering script joins that against{" "}
-                    <code>cluster_assignments.csv</code> on the file stem and
-                    gates on <code>ligand_iptm &ge; 0.8</code>. That join is the
-                    one place two separate tools in this repository have to
-                    agree, so it is the one covered by a test that runs the real
-                    code on fixtures.
+                    the clustering joins on the accession. Because the contract
+                    is a file and not a function call,{" "}
+                    <strong>any affinity predictor can replace Boltz-2</strong>{" "}
+                    &mdash; emit those three columns and nothing else changes.
                   </p>
                 </div>
               </div>
 
+              <SubsectionHeading title="Cutting into the workflow" />
               <TextBox className="model-prose">
                 <p className="mm-prose">
+                  You can start or stop at any stage, because{" "}
                   <strong>
-                    Deploying it means cloning it and running one script.
-                  </strong>{" "}
-                  There is nothing to host, no database, no service to keep up.
-                  That is also why this page shows captured output rather than a
-                  live demo: the iGEM wiki is served as static files, so a
-                  button here could only call a server somewhere else &mdash;
-                  and a page that is archived permanently should not depend on a
-                  server that will not be.
+                    every boundary is a community-standard format and none of
+                    them is ours
+                  </strong>
+                  : structures go in and out as PDB and mmCIF, sequences as
+                  FASTA, alignments as A3M, your substrate as SMILES, cofactors
+                  by their standard three-letter codes, docking input as SDF and
+                  PDBQT, and every results table as CSV. There is no project
+                  file format to adopt and nothing to export.
+                </p>
+                <p className="mm-prose">
+                  So the common ways to integrate it are all subtractive rather
+                  than additive. Bring your own structures and skip Boltz-2
+                  entirely. Take the CAVER wrapper on its own &mdash; it needs
+                  no GPU and no model weights, and measuring a tunnel does not
+                  require adopting the design pipeline. Or replace a stage:
+                  tables are addressed by column name, never by position, so a
+                  different affinity predictor only has to emit the three
+                  columns above. Public identifiers are consumed rather than
+                  reinvented &mdash; RCSB accessions, UniProt and NCBI
+                  accessions, CUPP clades.
                 </p>
               </TextBox>
             </section>
 
             {/* ---------------------------------------------------------------- */}
-            <section id="software-ai" className="mt-5">
-              <SectionHeading title="AI models used" />
+            <section id="software-tradeoffs" className="mt-5">
+              <SectionHeading title="Design choices, and what they cost" />
+
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  Every one of these was a decision with a downside, and they
+                  are the decisions that shape what it is like to use the tool.
+                  Each is stated with its cost attached. The reasoning in full,
+                  including the two hand-offs between components, is{" "}
+                  <code>docs/architecture.md</code>.
+                </p>
+              </TextBox>
+
+              <div className="sw-tradeoffs">
+                {TRADEOFFS.map((t) => (
+                  <div className="sw-tradeoff" key={t.title}>
+                    <h4>{t.title}</h4>
+                    <p>
+                      <span className="sw-to-gain">Why:</span> {t.why}
+                    </p>
+                    <p>
+                      <span className="sw-to-cost">Cost:</span> {t.cost}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* ---------------------------------------------------------------- */}
+            <section id="software-depends" className="mt-5">
+              <SectionHeading title="What it depends on" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
                   <strong>We trained nothing and fine-tuned nothing.</strong>{" "}
                   Every model in Table <TabNum of="models" /> is a published,
                   pre-trained network used as released, and none of their
-                  weights are redistributed in our repository.
+                  weights are redistributed in our repository &mdash; they are
+                  fetched from their upstream projects. Tunnel measurement is
+                  CAVER&nbsp;3.0 (GPLv3, Masaryk University), fetched by the
+                  install script rather than vendored; pocket detection is
+                  fpocket.
                 </p>
               </TextBox>
 
@@ -1014,42 +956,18 @@ export function Software() {
                 caption="The four pre-trained networks the pipeline calls, and where each comes from."
               />
 
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  Their training data is not ours to characterise &mdash; all
-                  four were trained by their authors, largely on the Protein
-                  Data Bank, and the upstream projects are the authority on
-                  composition and cut-off dates. What we supply at inference
-                  time is our own prepared structures, alignments fetched from
-                  the public ColabFold/MMseqs2 server, and substrate SMILES.
-                </p>
-                <p className="mm-prose">
-                  <strong>How we evaluated them is the important part.</strong>{" "}
-                  We did not evaluate them as models; we asked whether their
-                  output was fit for one question &mdash; is the tunnel wider?
-                  &mdash; and answered it with CAVER, a deterministic geometric
-                  algorithm that does not share failure modes with the networks
-                  that produced the structures. Model-reported confidence is
-                  used only to decide which structures are worth measuring,
-                  never as evidence that a design is better. Notably,{" "}
-                  <strong>
-                    our measurement was wrong before the models were.
-                  </strong>
-                </p>
-              </TextBox>
+              <div className="sw-caveat">
+                <strong>Before you trust a number this produces.</strong> Every
+                result the pipeline gives you is computational. Nothing it has
+                designed for us has been expressed or assayed in a laboratory; a
+                design that folds confidently may not express or function; and
+                pLDDT&nbsp;0.96 says the network is certain rather than right
+                &mdash; which matters most at exactly the redesigned positions,
+                where there is least evolutionary signal behind it.
+              </div>
 
               <DetailsBox label="More details on the limitations we know about">
                 <ul className="mm-prose">
-                  <li>
-                    Nothing has been tested in a laboratory. A design that folds
-                    confidently may not express, fold or function.
-                  </li>
-                  <li>
-                    Confidence is not correctness. pLDDT&nbsp;0.96 says the
-                    network is certain, not that it is right &mdash; and that
-                    matters most at exactly the redesigned positions, which have
-                    the least evolutionary signal behind them.
-                  </li>
                   <li>
                     Affinity predictions are used for ranking. We make no claim
                     about their absolute calibration on UPOs, a family unlikely
@@ -1057,8 +975,8 @@ export function Software() {
                   </li>
                   <li>
                     Bottleneck radii measured on predicted structures carry the
-                    prediction&rsquo;s error, which is why every comparison is
-                    anchored to real crystals.
+                    prediction&rsquo;s error, which is why every comparison
+                    should be anchored to real crystal structures.
                   </li>
                   <li>
                     The pipeline inherits its models&rsquo; biases. A generative
@@ -1066,62 +984,78 @@ export function Software() {
                     proposes soluble, well-behaved proteins, whether or not that
                     suits an industrial enzyme.
                   </li>
+                  <li>
+                    Their training data is not ours to characterise &mdash; all
+                    four were trained by their authors, largely on the Protein
+                    Data Bank, and the upstream projects are the authority on
+                    composition and cut-off dates.
+                  </li>
                 </ul>
               </DetailsBox>
             </section>
 
             {/* ---------------------------------------------------------------- */}
-            <section id="software-related" className="mt-5">
-              <SectionHeading title="How this relates to existing tools" />
-
-              <TextBox className="model-prose">
-                <p className="mm-prose">
-                  Both halves of what we did are established fields on their
-                  own. Tunnel analysis has a mature ecosystem &mdash; CAVER,
-                  CaverDock and Caver&nbsp;Web detect tunnels and can simulate a
-                  ligand travelling through one. Generative enzyme design has
-                  another: RFdiffusion and LigandMPNN pipelines routinely filter
-                  candidates in the loop.
-                </p>
-                <p className="mm-prose">
-                  The filters in those design pipelines are about active-site
-                  motif geometry and whether the fold is self-consistent. We are
-                  not aware of one that uses{" "}
-                  <strong>
-                    tunnel bottleneck radius as the design objective
-                  </strong>{" "}
-                  &mdash; to select the residues to free, to reject backbones
-                  before they reach the expensive stages, and to rank the
-                  finished designs. Joining those two worlds is the
-                  contribution, and our tunnel analysis is a batch wrapper
-                  around CAVER rather than a new method for finding tunnels.
-                </p>
-              </TextBox>
-            </section>
-
-            {/* ---------------------------------------------------------------- */}
-            <section id="software-for-future-teams" className="mt-5">
-              <SectionHeading title="For whoever picks this up" />
+            <section id="software-more" className="mt-5">
+              <SectionHeading title="Where the rest of the documentation is" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
                   The stage scripts are numbered in the order they run and each
-                  one works on its own. Configuration is deliberately layered:
-                  what the experiment <em>is</em> in one file, what the{" "}
-                  <em>machine</em> is in another, and personal overrides in a
-                  third that is never committed &mdash; so publishing an
-                  experiment never publishes somebody&rsquo;s home directory,
-                  and moving to a new cluster is one file rather than thirty.
-                </p>
-                <p className="mm-prose">
-                  The repository also carries the things that usually go
-                  unwritten: a record of seven traps that each cost us a run,
-                  with the commands to verify them; a laboratory notebook of
-                  what was tried and abandoned and why; and an honest account of
-                  what is still unfinished. If you read one file before changing
-                  anything, read the known-issues list.
+                  one works on its own. Configuration is layered: what the
+                  experiment <em>is</em> in one file, what the <em>machine</em>{" "}
+                  is in another, and personal overrides in a third that is never
+                  committed &mdash; so publishing an experiment never publishes
+                  somebody&rsquo;s home directory, and moving to a new cluster
+                  is one file rather than thirty.
                 </p>
               </TextBox>
+
+              <div className="sw-docs">
+                <div className="sw-doc">
+                  <code>docs/walkthrough-gpu.md</code>
+                  <span>
+                    This page in long form: twelve steps from clone to ranked
+                    designs, plus a measurement-only path with no GPU.
+                  </span>
+                </div>
+                <div className="sw-doc">
+                  <code>docs/architecture.md</code>
+                  <span>
+                    How the four components chain, the two hand-offs between
+                    them, and why the measurement gate sits where it does.
+                  </span>
+                </div>
+                <div className="sw-doc">
+                  <code>docs/validation.md</code>
+                  <span>
+                    What is verified and what is not &mdash; including two
+                    measurement artifacts we found that were each larger than
+                    the effect we were trying to detect. Worth reading if you
+                    compare protein tunnels, even if you never run this code.
+                  </span>
+                </div>
+                <div className="sw-doc">
+                  <code>docs/data-formats.md</code>
+                  <span>
+                    Every format at every boundary, and the CSV contract between
+                    the components.
+                  </span>
+                </div>
+                <div className="sw-doc">
+                  <code>KNOWN_ISSUES.md</code>
+                  <span>
+                    Nine traps that each cost somebody a run, with the command
+                    to verify each one.
+                  </span>
+                </div>
+                <div className="sw-doc">
+                  <code>CHANNEL_WIDENING_LOG.md</code>
+                  <span>
+                    The laboratory notebook: what was tried, what failed, and
+                    why it is built this way.
+                  </span>
+                </div>
+              </div>
 
               <RepoBar label="Source, docs and tests" />
             </section>
