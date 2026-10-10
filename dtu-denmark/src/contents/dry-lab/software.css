@@ -1,0 +1,562 @@
+/* ========================================================================== *
+ *  Software page (.sw-*, .swf-*, .swa-*)
+ *
+ *  Only the pieces this page needs that are not already in the shared Model
+ *  bundles: the repository callout, the pipeline strip, the hardware tiers, the
+ *  trade-off cards, the three interfaces, the command blocks and the captured
+ *  terminals. Prose, headings, tables and figure numbering all come from the
+ *  shared components (TextBox, SectionHeading, PartsTable, FigureNumbers).
+ *
+ *  DESIGN: every block here is a card in the site's own language — 16px
+ *  corners and the solid drop shadow from TextBox.css, not a hairline border
+ *  and a 6px radius. One accent, --color-orange, and it is only ever on the
+ *  thing the surrounding prose is pointing at: the two CAVER steps in the
+ *  strip, the gate in the architecture diagram, the caveat, the measured
+ *  bottleneck in the profile plot. Everything else stays navy on white so the
+ *  orange keeps meaning something.
+ *
+ *  The shadow colour is the site's --color-brightblue-shadow, so these cards
+ *  sit at the same depth as the prose boxes between them; a card that is being
+ *  marked swaps it for the orange one the Model pages use (#ffc6a1).
+ * ========================================================================== */
+
+:root {
+  /* Local names for the two text tones used throughout this page, both taken
+     from the Model pages' prose (.mm-prose is #123a52). */
+  --sw-ink: #123a52;
+  --sw-ink-dim: #46687c;
+  --sw-card: rgba(255, 255, 255, 0.72);
+  --sw-shadow: var(--color-brightblue-shadow);
+  --sw-shadow-key: #ffc6a1;
+}
+
+/* --- repository callout ---------------------------------------------------- *
+   Opens and closes the page. The orange bar on the left is the one piece of
+   chrome that says "this is the artifact" — it is the same orange as the
+   section rules above it. */
+.sw-repo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin: 2rem auto;
+  padding: 1.15rem 1.4rem;
+  max-width: 52rem;
+  border-left: 5px solid var(--color-orange);
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 12px 0px var(--sw-shadow);
+}
+.sw-repo-label {
+  font-weight: 700;
+  color: var(--sw-ink);
+}
+.sw-repo code {
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+.sw-repo-meta {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--sw-ink-dim);
+}
+
+/* --- the pipeline strip ---------------------------------------------------- */
+.sw-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 2rem auto;
+  max-width: 60rem;
+  list-style: none;
+  padding: 0;
+}
+/* The five steps must sit on ONE row in the content column, or the loop stops
+   reading as a loop — at 838px, five 10rem cards plus their gaps came to 848px
+   and the last one wrapped onto a line of its own. 8rem leaves the row ~50px
+   of slack and still wraps to two rows on a phone, where it should. */
+.sw-flow li {
+  flex: 1 1 8rem;
+  min-width: 7.5rem;
+  padding: 1rem 0.9rem;
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 10px 0px var(--sw-shadow);
+  text-align: center;
+}
+.sw-flow-step {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sw-ink-dim);
+  margin-bottom: 0.25rem;
+}
+.sw-flow-tool {
+  display: block;
+  font-weight: 800;
+  color: var(--sw-ink);
+}
+.sw-flow-what {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sw-ink-dim);
+  margin-top: 0.3rem;
+}
+/* The measurement steps are the contribution, so they are the marked ones. */
+.sw-flow li.sw-flow-key {
+  box-shadow: 0 10px 0px var(--sw-shadow-key);
+}
+.sw-flow li.sw-flow-key .sw-flow-step {
+  color: var(--color-orange);
+}
+
+/* --- requirement tiers ---------------------------------------------------- */
+.sw-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin: 2rem auto;
+  max-width: 58rem;
+}
+.sw-tier {
+  padding: 1.25rem 1.3rem;
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 10px 0px var(--sw-shadow);
+}
+.sw-tier h4 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--sw-ink);
+  margin-bottom: 0.5rem;
+}
+.sw-tier p {
+  font-size: 0.9rem;
+  color: var(--sw-ink-dim);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* --- caveat block --------------------------------------------------------- *
+   The honest-limits box. Orange, because it is the one thing on the page a
+   reader must not skim past. */
+.sw-caveat {
+  margin: 2rem auto;
+  padding: 1.15rem 1.4rem;
+  max-width: 52rem;
+  border-left: 5px solid var(--color-orange);
+  border-radius: 16px;
+  background: rgba(255, 246, 240, 0.9);
+  box-shadow: 0 12px 0px var(--sw-shadow-key);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #5c3a22;
+}
+.sw-caveat strong {
+  color: #46290f;
+}
+
+/* --- command blocks ------------------------------------------------------- */
+.sw-cmd {
+  max-width: 52rem;
+  margin: 1.5rem auto 2rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: 16px;
+  background: var(--color-darkestblue);
+  box-shadow: 0 12px 0px var(--sw-shadow);
+  color: #e6f1f7;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+.sw-cmd code {
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+.sw-cmd .sw-comment {
+  color: #7fa8bf;
+}
+
+/* The cards lift on hover, the same gesture the Model pages' cards use. The
+   shadow is solid and offset, so the lift has to shorten it by the same amount
+   it moves — otherwise the card appears to grow rather than rise. */
+@media (prefers-reduced-motion: no-preference) {
+  .sw-flow li,
+  .sw-tier,
+  .sw-tradeoff,
+  .sw-api-item {
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  .sw-flow li:hover,
+  .sw-tier:hover,
+  .sw-tradeoff:hover,
+  .sw-api-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 13px 0px var(--sw-shadow);
+  }
+  .sw-flow li.sw-flow-key:hover {
+    box-shadow: 0 13px 0px var(--sw-shadow-key);
+  }
+}
+
+/* ========================================================================== *
+ *  Figures (.swf-*) and the architecture diagram (.swa-*)
+ *
+ *  Inline SVG — see SoftwareFigures.tsx for why. Colours come from the page
+ *  palette above rather than being baked into the SVG, so the diagram matches
+ *  the rest of the page and a palette change reaches it.
+ * ========================================================================== */
+.swf-fig {
+  margin: 2rem auto;
+  max-width: 44rem;
+}
+.swf-fig-wide {
+  max-width: 54rem;
+}
+.swf-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 12px 0px var(--sw-shadow);
+}
+/* Figure captions match the site's: centred under the figure, dimmed. */
+.swf-fig figcaption {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--sw-ink-dim);
+}
+
+/* --- the measured profile plot --------------------------------------------- */
+.swf-grid {
+  stroke: #e6f1f7;
+  stroke-width: 1;
+}
+.swf-axis {
+  stroke: #7fa8bf;
+  stroke-width: 1;
+}
+.swf-area {
+  fill: #e8f6fe;
+}
+.swf-line {
+  fill: none;
+  stroke: var(--sw-ink);
+  stroke-width: 2.25;
+  stroke-linejoin: round;
+}
+.swf-dot {
+  fill: var(--color-orange);
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+/* The design's bottleneck: a reference level, so dashed — it is a single
+   measured number from another run, not a curve we have here. */
+.swf-ref {
+  stroke: var(--color-orange);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+.swf-ref-label,
+.swf-callout {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #a8430a;
+}
+.swf-callout {
+  fill: var(--sw-ink);
+}
+.swf-ref-sub,
+.swf-callout-sub {
+  font-size: 10.5px;
+  font-weight: 400;
+  fill: var(--sw-ink-dim);
+}
+.swf-tick {
+  font-size: 11px;
+  fill: var(--sw-ink-dim);
+  text-anchor: middle;
+}
+.swf-tick-y {
+  text-anchor: end;
+}
+.swf-axis-label {
+  font-size: 11.5px;
+  fill: var(--sw-ink-dim);
+  text-anchor: middle;
+}
+
+/* --- the architecture diagram --------------------------------------------- */
+.swa-head {
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--sw-ink-dim);
+  letter-spacing: 0.06em;
+}
+.swa-in,
+.swa-driver {
+  fill: #f2fbff;
+  stroke: #bfe6f7;
+}
+.swa-driver {
+  fill: #fff;
+  stroke-dasharray: 4 3;
+}
+.swa-in-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: var(--sw-ink);
+}
+.swa-in-body {
+  font-size: 11px;
+  fill: var(--sw-ink-dim);
+}
+.swa-box {
+  stroke-width: 1;
+}
+.swa-cpu {
+  fill: #fff;
+  stroke: #bfe6f7;
+}
+.swa-gpu {
+  fill: #e1f4fe;
+  stroke: #57caff;
+}
+/* The gate is the design of the pipeline, so it is the one thing that gets a
+   colour of its own — the page accent. */
+.swa-gate {
+  fill: #fff2e9;
+  stroke: var(--color-orange);
+  stroke-width: 1.75;
+}
+.swa-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: var(--sw-ink);
+  text-anchor: middle;
+}
+.swa-sub {
+  font-size: 10.5px;
+  fill: var(--sw-ink-dim);
+  text-anchor: middle;
+}
+.swa-arrow {
+  fill: none;
+  stroke: #7fa8bf;
+  stroke-width: 1.5;
+}
+.swa-arrow-note {
+  fill: none;
+  stroke: var(--color-orange);
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+}
+.swa-tip {
+  fill: #7fa8bf;
+  stroke: none;
+}
+.swa-note {
+  fill: #fff2e9;
+  stroke: #ffc6a1;
+}
+.swa-note-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: #a8430a;
+}
+.swa-note-body {
+  font-size: 10.5px;
+  fill: #5c3a22;
+}
+.swa-foot {
+  font-size: 11px;
+  fill: var(--sw-ink-dim);
+}
+.swa-em {
+  font-weight: 700;
+  fill: var(--sw-ink);
+}
+
+/* --- captured terminal output ---------------------------------------------- */
+.swf-term {
+  margin: 2rem auto;
+  max-width: 48rem;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-darkestblue);
+  box-shadow: 0 12px 0px var(--sw-shadow);
+}
+.swf-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.9rem;
+  background: #003d5a;
+}
+.swf-term-dots {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+.swf-term-dots i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #46687c;
+}
+.swf-term-title {
+  font-size: 0.78rem;
+  color: #cfe0ea;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.swf-term-body {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  background: var(--color-darkestblue);
+}
+.swf-term-body code {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #dceaf2;
+  background: none;
+  white-space: pre;
+}
+.swf-term-prompt {
+  color: #7fa8bf;
+}
+.swf-term-cmd {
+  color: #fff;
+  font-weight: 700;
+}
+.swf-term-dim {
+  color: #7fa8bf;
+}
+/* The line the caption is about. Orange on the dark ground, to match the
+   accent the rest of the page uses for "look here". */
+.swf-term-key {
+  color: #ffa76a;
+  font-weight: 700;
+}
+.swf-term-head {
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 575px) {
+  .swf-term-body code {
+    font-size: 0.68rem;
+  }
+}
+
+/* --- design choices, each with its cost ------------------------------------ */
+.sw-tradeoffs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1.25rem;
+  margin: 2rem auto;
+  max-width: 60rem;
+}
+.sw-tradeoff {
+  padding: 1.25rem 1.3rem;
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 10px 0px var(--sw-shadow);
+}
+.sw-tradeoff h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--sw-ink);
+  line-height: 1.35;
+}
+.sw-tradeoff p {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #2c4a5c;
+}
+.sw-tradeoff p:last-child {
+  margin-bottom: 0;
+}
+/* The label carries the meaning here, so it reads without relying on colour. */
+.sw-to-gain,
+.sw-to-cost {
+  font-weight: 800;
+  margin-right: 0.3rem;
+}
+.sw-to-gain {
+  color: var(--sw-ink);
+}
+.sw-to-cost {
+  color: #a8430a;
+}
+
+/* --- the three stable interfaces ------------------------------------------- */
+.sw-api {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+  margin: 2rem auto;
+  max-width: 60rem;
+}
+.sw-api-item {
+  padding: 1.25rem 1.3rem;
+  border-left: 4px solid var(--color-brightblue);
+  border-radius: 16px;
+  background: var(--sw-card);
+  box-shadow: 0 10px 0px var(--sw-shadow);
+}
+.sw-api-item h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--sw-ink);
+}
+.sw-api-item p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #2c4a5c;
+}
+
+/* A caption for a captured terminal, which is a <figure> whose caption has to
+   sit outside it so the dark body keeps its own rounding. Pulled up under the
+   terminal, and never justified the way .mm-prose is — it is a caption. */
+#root .sw-figcap {
+  max-width: 48rem;
+  margin: -0.75rem auto 2.5rem;
+  font-size: 0.88rem;
+  text-align: center;
+  color: var(--sw-ink-dim);
+}
+
+/* A measured number in a table cell: never broken across lines (a "~0.45" and
+   its "Å" on separate lines reads as two things), and tabular so a column of
+   them lines up on the decimal point. */
+#root .sw-num {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- inline code in prose -------------------------------------------------- *
+   This page names flags, files and columns constantly, and Bootstrap's default
+   `code` colour is #d63384 pink — which on a blue page reads as an error state
+   rather than as a literal. Scoped to prose, table cells and list items, so the
+   dark blocks below keep their own colours: .sw-cmd's <code> is a direct child
+   of the block, and the terminal's is inside a <pre>, so neither is matched.
+   Not set globally because no other page uses inline code enough to need it. */
+#root .page-start :is(p, li, td) code {
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  background: rgba(87, 202, 255, 0.2);
+  color: #0b4a6b;
+  font-size: 0.9em;
+}

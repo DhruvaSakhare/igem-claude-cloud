@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 
 import "./ModelNav.css";
 
-export type ModelPageKey = "overview" | "methods" | "discovery" | "engineering";
+export type ModelPageKey =
+  | "overview"
+  | "methods"
+  | "discovery"
+  | "engineering"
+  | "software";
 
 /* The four Model pages, in reading order. Single source of truth: the TOC
  * renders these as its top level (see components/TOC.tsx) and ModelPager below
@@ -16,6 +21,10 @@ export const MODEL_PAGES: { to: string; label: string; key: ModelPageKey }[] = [
   { to: "/model-methods", label: "Methods", key: "methods" },
   { to: "/model-discovery", label: "Discovery", key: "discovery" },
   { to: "/model-engineering", label: "Engineering", key: "engineering" },
+  // The Software page sits in this section in pages.ts, so it belongs in the
+  // section's own navigation too -- otherwise a reader on Engineering has no
+  // way to reach it except the top navbar.
+  { to: "/software", label: "Software", key: "software" },
 ];
 
 /* ModelPager — bottom-of-page prev/next navigation shared by the four Model
