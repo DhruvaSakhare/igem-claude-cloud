@@ -404,24 +404,23 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  A substrate only reacts if it can physically reach the active
-                  site. In unspecific peroxygenases (UPOs) that journey runs
-                  through a narrow tunnel to the heme, and for a bulky substrate
-                  the tunnel &mdash; not the chemistry &mdash; is what stops the
-                  reaction. In the UPOs we looked at, that constriction is
-                  around 1&nbsp;&Aring; in radius &mdash; narrower than the
-                  substrate that has to pass it.
+                  <strong>
+                    channel-design widens the substrate access tunnel of an
+                    enzyme, using a measurement of that tunnel to drive the
+                    redesign.
+                  </strong>{" "}
+                  A substrate only reacts if it can reach the active site; in
+                  unspecific peroxygenases (UPOs) it gets there through a narrow
+                  tunnel to the heme, and for a bulky substrate that tunnel,
+                  rather than the chemistry, is the bottleneck.
                 </p>
                 <p className="mm-prose">
-                  <strong>
-                    channel-design measures that tunnel and then uses the
-                    measurement to redesign it.
-                  </strong>{" "}
-                  The tunnel geometry chooses which residues are allowed to
-                  move, rejects candidate backbones before they cost GPU time,
-                  and scores the finished designs. The loop closes on a physical
-                  measurement rather than on a model&rsquo;s own confidence in
-                  itself.
+                  Tunnel geometry is measured with CAVER and used three times in
+                  a run: to choose which residues are allowed to move, to reject
+                  candidate backbones before they reach the expensive stages,
+                  and to rank the finished designs. Designs are ordered by
+                  measured change in bottleneck radius, not by model
+                  confidence.
                 </p>
               </TextBox>
 
@@ -446,10 +445,10 @@ export function Software() {
                   work the same way.
                 </p>
                 <p className="mm-prose">
-                  <strong>This page is the instructions.</strong> The results
-                  the pipeline produced for our own enzymes are on the{" "}
-                  <Link to="/model-engineering">Engineering</Link> page, and the
-                  CAVER method itself is described on{" "}
+                  <strong>Scope of this page:</strong> installing and running
+                  the tool. The results it produced for our own enzymes are on
+                  the <Link to="/model-engineering">Engineering</Link> page, and
+                  the CAVER method is described on{" "}
                   <Link to="/model-methods">Methods</Link>.
                 </p>
               </TextBox>
@@ -457,14 +456,24 @@ export function Software() {
               <SubsectionHeading title="The eight stages" />
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  Three stages want a GPU and a model checkpoint; the rest are
-                  cheap enough for a laptop. The measurement gate sits at
-                  stage&nbsp;3, between them (Figure{" "}
-                  <FigNum of="architecture" />) &mdash; a backbone whose tunnel
-                  has already collapsed is discarded for a minute of CPU rather
-                  than hours of GPU. It <strong>fails open</strong>: if CAVER is
-                  not installed it says so in the log and passes every backbone
-                  through, rather than silently emptying your run.
+                  A run is eight stages, shown in Figure{" "}
+                  <FigNum of="architecture" />:{" "}
+                  <code>
+                    prep rfd3 process caver_filter mpnn rf3 score collect
+                  </code>
+                  . Three of them (<code>rfd3</code>, <code>mpnn</code>,{" "}
+                  <code>rf3</code>) need a GPU and a model checkpoint; the rest
+                  run on a laptop. Stages can be named or numbered, and each
+                  stage script is independently runnable.
+                </p>
+                <p className="mm-prose">
+                  The measurement gate is stage&nbsp;3, between the expensive
+                  ones: it measures every candidate backbone and drops those
+                  whose tunnel has collapsed, for a minute of CPU rather than
+                  hours of GPU. <strong>It fails open</strong> &mdash; with
+                  CAVER missing, or no baseline measured, it reports that in the
+                  log and passes every backbone through rather than emptying the
+                  run.
                 </p>
               </TextBox>
 
@@ -479,9 +488,8 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  You do not need our cluster, and for a large part of it you do
-                  not need a GPU. There are three entry points, and only the
-                  last assumes a scheduler.
+                  Three entry points; only the last assumes a scheduler. The
+                  measurement half of the tool needs no GPU at all.
                 </p>
               </TextBox>
 
@@ -496,16 +504,30 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  CAVER needs a JDK; your system one is almost certainly fine (8
-                  and 17 are both tested). Two platform caveats are worth
-                  knowing before you start:{" "}
-                  <strong>fpocket&rsquo;s source build fails on macOS</strong>{" "}
-                  &mdash; use <code>conda install -c bioconda fpocket</code>,
-                  and note it is only needed for the pocket stage, not for
-                  tunnel measurement &mdash; and{" "}
-                  <strong>macOS arm64 has no AutoDock Vina wheel</strong>, so
-                  the docking extra needs boost headers. Linux x86_64 needs
-                  neither.
+                  <strong>Also required:</strong>
+                </p>
+                <ul className="mm-prose">
+                  <li>
+                    <strong>A JDK</strong>, for CAVER. The system one is almost
+                    certainly fine &mdash; 8 and 17 are both tested.
+                  </li>
+                  <li>
+                    <strong>Python 3.12 or newer.</strong> The design stages
+                    need 3.12 exactly, because that is what{" "}
+                    <code>rc-foundry</code> requires.
+                  </li>
+                  <li>
+                    <strong>Model checkpoints</strong>, for the design stages
+                    only. Tens of gigabytes; not downloaded unless you ask.
+                  </li>
+                </ul>
+                <p className="mm-prose">
+                  <strong>Platform notes.</strong> On macOS,
+                  fpocket&rsquo;s source build fails (bundled qhull) &mdash; use{" "}
+                  <code>conda install -c bioconda fpocket</code>; it is needed
+                  for the pocket stage only, not for tunnel measurement. On
+                  macOS arm64 there is no AutoDock Vina wheel, so the docking
+                  extra needs boost headers. Linux x86_64 needs neither.
                 </p>
               </TextBox>
             </section>
@@ -516,13 +538,14 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  One script, and it does not need conda. It installs{" "}
-                  <a href="https://docs.astral.sh/uv/">uv</a> if you do not have
-                  it (asking first), installs every Python dependency from a
-                  committed lockfile so the versions are exactly ours, downloads
-                  CAVER&nbsp;3.0 from its authors and checks it against a
-                  SHA-256, builds fpocket from source, and checks for a JDK
-                  without installing one. Re-running it is safe.
+                  One script, no conda required. <code>setup.sh</code>{" "}
+                  installs <a href="https://docs.astral.sh/uv/">uv</a> if it is
+                  missing (asking first), syncs every Python dependency from the
+                  committed <code>uv.lock</code>, downloads CAVER&nbsp;3.0 from
+                  its authors and verifies it against a SHA-256, builds fpocket
+                  from source, and checks for a JDK without installing one.
+                  Re-running it is safe, and <code>$CAVER_HOME</code> /{" "}
+                  <code>$FPOCKET</code> are honoured if you already have either.
                 </p>
               </TextBox>
 
@@ -604,15 +627,10 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  The shape of a run is{" "}
-                  <em>
-                    measure &rarr; pilot &rarr; commit &rarr; re-measure &rarr;
-                    explain
-                  </em>
-                  , so the expensive step is guarded on both sides. These are
-                  the steps in the order you do them; the long form, with every
-                  flag, is <code>docs/walkthrough-gpu.md</code> in the
-                  repository.
+                  Seven steps, in order: <em>prepare, configure the machine,
+                  measure, configure the experiment, preflight and pilot, run,
+                  evaluate</em>. The long form, with every flag, is{" "}
+                  <code>docs/walkthrough-gpu.md</code>.
                 </p>
               </TextBox>
 
@@ -663,14 +681,13 @@ export function Software() {
 
                 <Step n={3} title="Measure the parent enzyme">
                   <p>
-                    <strong>
-                      This is the step that makes the tool worth using.
-                    </strong>{" "}
-                    It answers the hardest question in this kind of design work
-                    &mdash; which residues should I allow to change? &mdash;
-                    from measured geometry instead of intuition, and records the
-                    baseline every design will be compared against. If you try
-                    one command, try this one.
+                    Runs CAVER on the parent structure and writes two things
+                    every later step depends on: the{" "}
+                    <strong>list of tunnel-lining residues</strong>, which
+                    becomes <code>FLEXIBLE_RESIDUES</code>, and the{" "}
+                    <strong>baseline bottleneck radius</strong>, which every
+                    design is compared against. The substrate is stripped by
+                    default, so the measurement is apo and comparable.
                   </p>
                   <Cmd
                     lines={[
@@ -850,11 +867,11 @@ export function Software() {
                   </div>
 
                   <p>
-                    Choosing these residues by eye defeats the point of the
-                    tool, which is why step 3 comes first &mdash; but the manual
-                    routes exist because a homology argument (&ldquo;this
-                    position substitutes the one AaeUPO uses&rdquo;) is
-                    sometimes a better reason than geometry alone.
+                    Prefer the measured list: step 3 exists so these residues
+                    are chosen from geometry rather than by eye. The manual
+                    routes are there for the case where a homology argument
+                    &mdash; &ldquo;this position substitutes the one AaeUPO
+                    uses&rdquo; &mdash; is the better reason.
                   </p>
                 </Step>
 
@@ -862,14 +879,13 @@ export function Software() {
                   <p>
                     <code>--check</code> reports what is installed and
                     resolvable; <code>--dry-run</code> prints every command
-                    without running one, so a whole run can be inspected before
-                    anything is spent. Then pilot:{" "}
-                    <strong>
-                      one backbone tells you whether the tunnel opens at all.
-                    </strong>{" "}
-                    If it does not open here it will not open across two hundred
-                    designs, and you retune cheaply instead of discovering it a
-                    day later.
+                    without running one. The pilot then runs a single backbone
+                    through diffusion and the gate, and stops &mdash;{" "}
+                    <code>--stages prep-caver_filter</code> on{" "}
+                    <code>run_local.py</code>, or <code>--pilot</code> on{" "}
+                    <code>00_submit_all.py</code>. If the tunnel does not open
+                    on one backbone it will not open across two hundred, so
+                    retune here rather than after a full run.
                   </p>
                   <Cmd
                     lines={[
@@ -887,12 +903,13 @@ export function Software() {
 
                 <Step n={6} title="The full run">
                   <p>
-                    Same stages either way &mdash; <code>run_local.py</code> is
-                    the cluster path with <code>bsub</code> taken out, so
-                    nothing is cluster-specific except the batch scripts
-                    themselves. Stages can be named or numbered, and each stage
-                    script is independently runnable if you would rather drive
-                    them yourself.
+                    Both drivers run the same stages;{" "}
+                    <code>run_local.py</code> is the cluster path with{" "}
+                    <code>bsub</code> taken out. On LSF,{" "}
+                    <code>00_submit_all.py</code> needs a queue &mdash; there is
+                    no default, and it exits rather than guessing. Pass{" "}
+                    <code>--queue</code>, or set <code>PIPELINE_QUEUE</code> in{" "}
+                    <code>envs/site.env</code>.
                   </p>
                   <Cmd
                     lines={[
@@ -907,15 +924,14 @@ export function Software() {
 
                 <Step n={7} title="Did it work?">
                   <p>
-                    Designs are ranked by{" "}
-                    <strong>measured change in bottleneck radius</strong>, never
-                    by how confident the model was. Three further scripts
-                    explain <em>why</em> a design worked: overlaying tunnel
-                    profiles, clustering designs by tunnel shape rather than by
-                    a single number, and naming the residues physically blocking
-                    the tunnel. That last one is how we learned our own ceiling
-                    was catalytic &mdash; a conclusion the tool handed us rather
-                    than one we assumed.
+                    <code>07_caver_rescore.py</code> re-measures every folded
+                    design and <code>09_compare_to_parent.py</code> ranks them
+                    by <strong>measured change in bottleneck radius</strong>{" "}
+                    against the step-3 baseline. Three further scripts say why a
+                    design worked: <code>10</code> overlays tunnel profiles,{" "}
+                    <code>11</code> clusters designs by tunnel shape rather than
+                    by a single number, and <code>12</code> names the residues
+                    physically blocking the tunnel. All of them run on CPU.
                   </p>
                   <Cmd
                     lines={[
@@ -938,86 +954,64 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  The repository ships{" "}
-                  <strong>
-                    a Claude Code skill, <code>run-pipeline</code>
-                  </strong>
-                  , at <code>.claude/skills/run-pipeline/SKILL.md</code>. It is
-                  a plain Markdown file that an assistant reads before touching
-                  the pipeline, and it exists because the mistakes worth
-                  preventing here are not coding mistakes. This pipeline spends
-                  shared GPU hours and produces numbers that go on a public wiki
-                  and into a competition.
+                  The repository ships a Claude Code skill,{" "}
+                  <code>run-pipeline</code>, at{" "}
+                  <code>.claude/skills/run-pipeline/SKILL.md</code>. Open the
+                  repository in Claude Code and it loads itself &mdash; there is
+                  nothing to install and no key to configure.
                 </p>
                 <p className="mm-prose">
-                  Clone the repository and open it in Claude Code and the skill
-                  loads itself &mdash; there is nothing to install and no key to
-                  configure. If you do not use Claude Code, read it anyway: it
-                  is the shortest honest description of how to drive this
-                  pipeline that we have written.
+                  It is the operating procedure for this pipeline, written for
+                  an assistant rather than a reader. It covers:
                 </p>
-              </TextBox>
-
-              <div className="sw-skill">
-                <div className="sw-skill-item">
-                  <h4>Cheapest check first, always</h4>
-                  <p>
-                    Six steps in a fixed order, each with what it costs and what
-                    it proves: the test suite, then path resolution, then{" "}
-                    <code>--check</code>, then <code>--dry-run</code>, then a
-                    one-backbone pilot, and only then the full run. Each rules
-                    out a class of failure that would otherwise surface hours
-                    into a run.
-                  </p>
-                </div>
-                <div className="sw-skill-item">
-                  <h4>Stop and ask before spending</h4>
-                  <p>
-                    The skill tells the assistant to halt after the pilot and
-                    report, and to ask a human before submitting a full run,
-                    before re-running a stage that already has output, before
-                    deleting anything under the work root, and before any
-                    commit. It is not allowed to decide on its own that your GPU
-                    hours are worth spending.
-                  </p>
-                </div>
-                <div className="sw-skill-item">
-                  <h4>Failures that are not failures</h4>
-                  <p>
-                    Two things in this pipeline look like crashes and are not: a{" "}
-                    <code>signal 9</code> from a job whose output exists, and
-                    the CAVER gate failing open. Both are written down, so an
-                    assistant reports them accurately instead of &ldquo;fixing&rdquo;
-                    a run that was fine.
-                  </p>
-                </div>
-                <div className="sw-skill-item">
-                  <h4>Never report what you did not measure</h4>
-                  <p>
-                    The rule the skill opens and closes on. Do not summarise a
-                    run as successful because it exited&nbsp;0; check the files
-                    exist and the numbers are there, and say plainly if a stage
-                    was skipped. An assistant is also told not to invent a{" "}
-                    <code>FLEXIBLE_RESIDUES</code> list &mdash; choosing those
-                    residues by eye defeats the point of the tool &mdash; and
-                    never to guess a cluster path.
-                  </p>
-                </div>
-              </div>
-
-              <TextBox className="model-prose">
+                <ul className="mm-prose">
+                  <li>
+                    <strong>Setting up or checking an environment</strong>{" "}
+                    &mdash; run <code>--check</code> and read it before
+                    installing on top of a cluster that already has these
+                    tools, and the four things no Python package manager
+                    installs.
+                  </li>
+                  <li>
+                    <strong>The order to run things in, cheapest first</strong>{" "}
+                    &mdash; tests, path resolution, <code>--check</code>,{" "}
+                    <code>--dry-run</code>, a one-backbone pilot, then the full
+                    run, each with what it costs and what it proves.
+                  </li>
+                  <li>
+                    <strong>When to stop and ask a human</strong> &mdash; before
+                    a full run, before re-running a stage that already has
+                    output, before deleting anything under the work root, and
+                    before any commit.
+                  </li>
+                  <li>
+                    <strong>How to read what happened</strong> &mdash; which
+                    failures are not failures (a <code>signal 9</code> from a
+                    job whose output exists; the CAVER gate failing open), and
+                    where the logs are.
+                  </li>
+                  <li>
+                    <strong>Choosing a config</strong> &mdash; select a shipped
+                    one or copy the template, and never invent a{" "}
+                    <code>FLEXIBLE_RESIDUES</code> list; it comes from measuring
+                    the parent.
+                  </li>
+                  <li>
+                    <strong>Queues</strong> &mdash; where the name comes from,
+                    and why there is no default.
+                  </li>
+                </ul>
                 <p className="mm-prose">
-                  Those constraints are the point. An assistant that is fast and
-                  confident is exactly the wrong thing to put in front of a
-                  queue of shared GPU jobs and a wiki full of measured numbers,
-                  and the skill is mostly a list of the things it must not do on
-                  its own. The same policy for the whole repository is in{" "}
-                  <code>.claude/RESPONSIBLE_AI_USE.md</code>: we remain
-                  accountable for every claim, and nothing on this page was
-                  reported without being measured.
+                  It closes on the rule it opens with:{" "}
+                  <strong>never report a number you did not measure</strong>,
+                  and do not summarise a run as successful because it
+                  exited&nbsp;0. If you do not use Claude Code, read it anyway
+                  &mdash; it is this pipeline&rsquo;s operating procedure in one
+                  file.
                 </p>
               </TextBox>
             </section>
+
 
             {/* ---------------------------------------------------------------- */}
             <section id="software-troubleshooting" className="mt-5">
@@ -1047,12 +1041,10 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  There is no web service and no REST API, and that is a
-                  deliberate choice rather than an omission: every stage is a
+                  There is no web service and no REST API. Every stage is a
                   command-line script that reads files and writes files, which
-                  is what makes it composable with a scheduler, a Makefile, or
-                  somebody else&rsquo;s pipeline. Three interfaces are stable
-                  enough to build on.
+                  makes it composable with a scheduler, a Makefile or another
+                  pipeline. Three interfaces are stable enough to build on.
                 </p>
               </TextBox>
 
@@ -1060,10 +1052,11 @@ export function Software() {
                 <div className="sw-api-item">
                   <h4>The command line</h4>
                   <p>
-                    Every script takes <code>--help</code>. The two drivers take{" "}
-                    <code>--check</code> and <code>--dry-run</code>. A test in
-                    the suite asserts that every flag named in the documentation
-                    actually exists &mdash; which it did not always.
+                    Every script takes <code>--help</code>. The two drivers also
+                    take <code>--check</code> (what is installed and resolvable)
+                    and <code>--dry-run</code> (print every command, run
+                    nothing). <code>run_local.py</code> additionally takes{" "}
+                    <code>--stages</code>, by name or number.
                   </p>
                 </div>
 
@@ -1072,9 +1065,10 @@ export function Software() {
                   <p>
                     <code>lib/caver_utils.py</code> is the measurement layer:
                     stage a structure, run CAVER, parse tunnels, lining residues
-                    and profiles. If all you want is &ldquo;how wide is the
-                    tunnel in this PDB&rdquo;, that is the import, and it needs
-                    no GPU and no model weights.
+                    and profiles. Import it to measure a tunnel without adopting
+                    the pipeline &mdash; no GPU, no model weights.{" "}
+                    <code>lib/paths.py</code> resolves every cross-component
+                    path and prints them when run directly.
                   </p>
                 </div>
 
@@ -1083,10 +1077,10 @@ export function Software() {
                   <p>
                     The Boltz-2 driver writes{" "}
                     <code>accession, ligand_iptm, affinity_pred_value</code>;
-                    the clustering joins on the accession. Because the contract
-                    is a file and not a function call,{" "}
-                    <strong>any affinity predictor can replace Boltz-2</strong>{" "}
-                    &mdash; emit those three columns and nothing else changes.
+                    the clustering joins on the accession and gates on{" "}
+                    <code>ligand_iptm &ge; 0.8</code>. Emit those three columns
+                    from any affinity predictor and it drops in where Boltz-2
+                    was. Columns are addressed by name, never by position.
                   </p>
                 </div>
               </div>
@@ -1094,29 +1088,32 @@ export function Software() {
               <SubsectionHeading title="Cutting into the workflow" />
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  You can start or stop at any stage, because{" "}
-                  <strong>
-                    every boundary is a community-standard format and none of
-                    them is ours
-                  </strong>
-                  : structures go in and out as PDB and mmCIF, sequences as
-                  FASTA, alignments as A3M, your substrate as SMILES, cofactors
-                  by their standard three-letter codes, docking input as SDF and
-                  PDBQT, and every results table as CSV. There is no project
-                  file format to adopt and nothing to export.
-                </p>
-                <p className="mm-prose">
-                  So the common ways to integrate it are all subtractive rather
-                  than additive. Bring your own structures and skip Boltz-2
-                  entirely. Take the CAVER wrapper on its own &mdash; it needs
-                  no GPU and no model weights, and measuring a tunnel does not
-                  require adopting the design pipeline. Or replace a stage:
-                  tables are addressed by column name, never by position, so a
-                  different affinity predictor only has to emit the three
-                  columns above. Public identifiers are consumed rather than
-                  reinvented &mdash; RCSB accessions, UniProt and NCBI
+                  Every boundary is a community-standard format, so you can
+                  start or stop at any stage and there is no project file format
+                  to adopt: PDB and mmCIF for structures, FASTA for sequences,
+                  A3M for alignments, SMILES for the substrate, standard
+                  three-letter codes for cofactors, SDF and PDBQT for docking,
+                  CSV for every results table. Public identifiers are consumed
+                  rather than reinvented &mdash; RCSB, UniProt and NCBI
                   accessions, CUPP clades.
                 </p>
+                <p className="mm-prose">
+                  Three common ways in:
+                </p>
+                <ul className="mm-prose">
+                  <li>
+                    <strong>Measurement only.</strong> Take the CAVER wrapper
+                    and ignore the design stages. No GPU, no model weights.
+                  </li>
+                  <li>
+                    <strong>Bring your own structures.</strong> Skip Boltz-2 and
+                    start at the design pipeline with prepared PDBs.
+                  </li>
+                  <li>
+                    <strong>Replace a stage.</strong> Match the CSV contract
+                    above and the rest of the pipeline is unchanged.
+                  </li>
+                </ul>
               </TextBox>
             </section>
 
@@ -1126,32 +1123,30 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  Figure <FigNum of="storage" /> is where everything a run
-                  touches actually lives. Two things about it are worth knowing
-                  before your first run, because both are easier to arrange at
-                  the start than to unpick afterwards.
+                  Figure <FigNum of="storage" /> is the full layout. Two rules
+                  govern it.
                 </p>
                 <p className="mm-prose">
-                  <strong>What you supply is split three ways.</strong> The
-                  experiment &mdash; which enzyme, which residues may move,
-                  which substrate &mdash; is in version control and publishable.
-                  The machine &mdash; checkpoints, queues, scratch space
-                  &mdash; is one file that is never committed. Your own paths
-                  are a third. That is why the configs in the repository can be
-                  read by anyone without exposing the filesystem they ran on,
-                  and why moving to another cluster is one file rather than
-                  thirty.
+                  <strong>Input is split three ways.</strong> The experiment
+                  (which enzyme, which residues may move, which substrate) is in
+                  version control and publishable. The machine (checkpoints,
+                  queues, scratch space) is <code>envs/site.env</code>, never
+                  committed. Your working copy is{" "}
+                  <code>partial_diffusion/config.py</code>, gitignored. A config
+                  in the repository can therefore be read by anyone without
+                  exposing the filesystem it ran on, and moving to another
+                  cluster is one file.
                 </p>
                 <p className="mm-prose">
-                  <strong>
-                    Everything a run produces lands under one directory
-                  </strong>
-                  , named for you and for the experiment, so a second run never
-                  overwrites a first. Each stage writes its own subdirectory,
-                  and the config and the exact commands are frozen there before
-                  any GPU time is spent &mdash; which means a finished run can
-                  be read back, and repeated, without the repository that made
-                  it.
+                  <strong>Output goes to one directory per run</strong>,{" "}
+                  <code>
+                    $PIPELINE_WORK_ROOT/&lt;your name&gt;/&lt;experiment&gt;/
+                  </code>
+                  , so a second run never overwrites a first. Each stage writes
+                  its own subdirectory. The config and the exact commands are
+                  frozen there before any GPU time is spent, so a finished run
+                  can be read back and repeated without the repository that
+                  produced it.
                 </p>
               </TextBox>
 
@@ -1161,16 +1156,10 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  The pipeline itself flows left to right through the same
-                  directories: each stage reads what the stage before it wrote
-                  and writes its own, so you can stop after any of them, inspect
-                  the files, and resume. Stages are addressable by name as well
-                  as by number &mdash;{" "}
-                  <code>--stages prep-caver_filter</code> is the pilot, and
-                  names are stable where numbers shift if a stage is ever
-                  inserted. Figure <FigNum of="architecture" /> above is the
-                  same eight stages seen as cost: which of them want a GPU, and
-                  where the cheap measurement sits relative to them.
+                  Each stage reads what the stage before it wrote, so a run can
+                  be stopped after any stage, inspected on disk and resumed. Use
+                  stage <em>names</em> rather than numbers where you can:
+                  numbers shift if a stage is ever inserted.
                 </p>
               </TextBox>
             </section>
@@ -1181,14 +1170,14 @@ export function Software() {
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  <strong>We trained nothing and fine-tuned nothing.</strong>{" "}
-                  Every model in Table <TabNum of="models" /> is a published,
-                  pre-trained network used as released, and none of their
-                  weights are redistributed in our repository &mdash; they are
-                  fetched from their upstream projects. Tunnel measurement is
+                  Every model in Table <TabNum of="models" /> is a
+                  published, pre-trained network used as released.{" "}
+                  <strong>Nothing was trained or fine-tuned here</strong>, and
+                  no weights are redistributed &mdash; they are fetched from
+                  their upstream projects. Tunnel measurement is
                   CAVER&nbsp;3.0 (GPLv3, Masaryk University), fetched by the
                   install script rather than vendored; pocket detection is
-                  fpocket.
+                  fpocket (MIT).
                 </p>
               </TextBox>
 

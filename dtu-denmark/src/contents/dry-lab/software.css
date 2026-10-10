@@ -529,34 +529,6 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --- the Claude Code skill -------------------------------------------------- *
-   Same flat panels as everything else; two columns on a wide screen. */
-.sw-skill {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-  gap: 1rem;
-  margin: 2rem auto;
-  max-width: 58rem;
-}
-.sw-skill-item {
-  padding: 1.2rem 1.3rem;
-  border-radius: var(--sw-r);
-  background: var(--sw-fill);
-}
-.sw-skill-item h4 {
-  margin: 0 0 0.55rem;
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.35;
-  color: var(--sw-ink);
-}
-.sw-skill-item p {
-  margin: 0;
-  font-size: 0.89rem;
-  line-height: 1.6;
-  color: #2c4a5c;
-}
-
 /* ========================================================================== *
  *  Storage figure (.sws-*)
  *

@@ -164,7 +164,7 @@ export function ArchitectureFigure() {
         <path d="M493,194 L493,218" className="swa-arrow-note" />
         <rect x="300" y="218" width="330" height="60" rx="5" className="swa-note" />
         <text x="314" y="238" className="swa-note-title">
-          This is the point of the whole thing
+          Why the gate sits here
         </text>
         <text x="314" y="256" className="swa-note-body">
           A collapsed tunnel is cheap to spot and dies here, before it
@@ -232,11 +232,11 @@ export function ArchitectureFigure() {
         </defs>
       </svg>
       <figcaption>
-        The architecture. The expensive stages are 1, 4 and 5; the cheap
-        measurement at stage&nbsp;3 sits deliberately between them, so a
-        backbone that has already closed the tunnel is discarded before it
-        costs anything. The three input layers are why an experiment config can
-        be published while the filesystem it ran on stays private.
+        The eight stages of a run. Stages 1, 4 and 5 need a GPU; the
+        measurement at stage&nbsp;3 sits between them, so a backbone that has
+        already closed the tunnel is discarded before it costs GPU time. The
+        three input layers above are what keeps an experiment config
+        publishable while the filesystem it ran on stays private.
       </figcaption>
     </figure>
   );
