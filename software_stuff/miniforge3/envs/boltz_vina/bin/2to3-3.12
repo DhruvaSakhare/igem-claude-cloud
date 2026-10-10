@@ -1,0 +1,5 @@
+#!/work3/s215098/BioBuilders2026/software/miniforge3/envs/boltz_vina/bin/python3.12
+import sys
+from lib2to3.main import main
+
+sys.exit(main("lib2to3.fixes"))

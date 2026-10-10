@@ -1,0 +1,25 @@
+{
+  "name": "xz-gpl-tools",
+  "version": "5.8.3",
+  "build": "ha02ee65_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "xz-gpl-tools-5.8.3-ha02ee65_0.conda",
+  "md5": "8f5e2c6726c1339287a3c76a2c138ac7",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/xz-gpl-tools-5.8.3-ha02ee65_0.conda",
+  "sha256": "8f139666ea18dc8340a44a54056627dd4e89e242e8cd136ab2467d6dc2c192ba",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "liblzma 5.8.3 hb03c661_0"
+  ],
+  "constrains": [
+    "xz 5.8.3.*"
+  ],
+  "license": "0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+  "timestamp": 1775825548743,
+  "size": 34213
+}

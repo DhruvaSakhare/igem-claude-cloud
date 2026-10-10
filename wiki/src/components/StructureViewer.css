@@ -1,0 +1,508 @@
+/* Styles for StructureViewer.tsx (.sv-*).
+ *
+ * Paper/mono aesthetic: one white box (matching the workflow illustrations on
+ * the Model pages) holding the 3D frame on the left and the controls in a
+ * right-hand rail. The inner 3D area has no box of its own.
+ *
+ * Feature and overlay colours are NOT duplicated here — they are supplied
+ * inline from the component, which is their single source of truth.
+ *
+ * (This file used to carry the dark ".mev-*" canvas theme; the class prefix
+ * changed with it, and the prefix appears nowhere outside this pair of files,
+ * which moved together from src/contents/dry-lab/ to src/components/.)
+ */
+
+.sv {
+  --ink: #27476e;
+  --muted: #7a8699;
+  --rule: #dcd3c7;
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 20px;
+  align-items: start;
+  margin: 1.25rem 0 0.5rem;
+  /* One box around the viewer and the controls, styled like the workflow
+     illustrations elsewhere on the Model pages. */
+  background: #ffffff;
+  border: 1px solid var(--color-orange, #de7033);
+  border-radius: 10px;
+  padding: 18px;
+}
+@media (max-width: 760px) {
+  .sv {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* monospace utility type for eyebrows / tips / small labels */
+.sv-mono,
+.sv-kind,
+.sv-grouphead,
+.sv-tip {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.sv-mono,
+.sv-kind,
+.sv-grouphead {
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ frame -- */
+/* The stage stretches to the grid row's height, and the frame inside it takes
+   whatever is left over after the hint. This matters only when the RAIL is the
+   taller of the two columns, which happens once a viewer carries enough
+   structure tabs: the row is then as tall as the rail, and without this the
+   stage kept its 4/3 height and left a band of empty white under the hint (85px
+   with nine tabs). Now the 3D view grows into that band instead.
+
+   Viewers whose rail is SHORTER than the stage — the literature set, and any
+   list of about six or fewer — are untouched by construction: the row is then
+   as tall as the stage itself, there is no leftover space for `flex-grow` to
+   distribute, and the frame keeps its exact 4/3 height. `align-self` is used
+   rather than flipping the grid's `align-items` so the rail keeps its own
+   start-aligned natural height either way. */
+.sv-stage {
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+.sv-frame {
+  position: relative;
+  overflow: hidden;
+  /* Sets the frame's natural height; `flex-grow` may add to it (see above). */
+  aspect-ratio: 4 / 3;
+  flex: 1 1 auto;
+  max-height: 78vh;
+  background: transparent;
+}
+/* host for 3Dmol's WebGL canvas */
+.sv-canvas {
+  position: absolute;
+  inset: 0;
+}
+/* covers the frame until the structure is ready (or has failed) */
+.sv-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+  background: #ffffff;
+}
+.sv-veil p {
+  margin: 0;
+  max-width: 42ch;
+  font-size: 13px;
+  color: var(--muted);
+}
+/* "Updating…" hint while overlays rebuild (the viewer stays visible) */
+.sv-busy {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 4;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+/* hover label, follows the pointer */
+.sv-tip {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-bottom: 2px solid var(--tone, var(--ink));
+  padding: 3px 8px;
+  font-size: 11px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+/* pinned detail card (click/tap a residue or cofactor) */
+.sv-card {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 12px;
+  width: min(300px, calc(100% - 24px));
+  background: #fcfaf6;
+  border: 1px solid var(--rule);
+  border-top: 2px solid var(--tone, var(--ink));
+  border-radius: 2px;
+  padding: 12px 15px 15px;
+  box-shadow: 0 14px 32px -16px rgba(39, 71, 110, 0.45);
+}
+.sv-kind {
+  color: var(--muted);
+}
+.sv-cardtitle {
+  margin: 5px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--tone, var(--ink));
+}
+.sv-note {
+  margin: 9px 0 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.sv-x {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.sv-x:hover {
+  color: var(--ink);
+  background: #efeae1;
+}
+.sv-hint {
+  margin: 9px 2px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ------------------------------------------------------------------- rail -- */
+.sv-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding-top: 2px;
+}
+.sv-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sv-grouphead {
+  color: var(--muted);
+}
+
+/* structure switcher: a select button + an external database link per row */
+.sv-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.sv-tab-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.35rem;
+}
+.sv-tab {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  border: 1px solid var(--rule);
+  background: #fffdf8;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+.sv-tab:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.sv-tab.active {
+  color: #fff;
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.sv-tab-acc {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.sv-tab.active .sv-tab-acc {
+  color: rgba(255, 255, 255, 0.78);
+}
+/* The label and its inline accession chip, kept on one baseline row so the
+   button can stack a second row (the code) underneath. */
+.sv-tab-name {
+  /* `flex: 1` so the row fills the button and `space-between` still pushes the
+     accession chip to the right edge, exactly as it did when the label and the
+     chip were direct children of the button. */
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  min-width: 0;
+}
+/* In the stacked variant the button's main axis is vertical, where `flex: 1`
+   would make this row absorb spare height instead. */
+.sv-tab-stack .sv-tab-name {
+  flex: none;
+}
+/* A tab carrying a `code` instead of an accession: label on top, code beneath.
+   The codes that need this are ~24 characters, which will not fit beside the
+   label in the 240px rail, so they get their own line rather than shrinking the
+   label or overflowing the button. */
+.sv-tab-stack {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.3rem;
+}
+.sv-tab-code {
+  font-size: 0.68rem;
+  font-weight: 600;
+  /* Long, unbroken identifiers — let them wrap rather than paint outside the
+     button if the rail is ever narrower than it is today. */
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+/* ------------------------------------------------------------------ align --
+   Superposition buttons. Same shape as a structure tab, one row each, so the
+   rail reads as one column of controls rather than two kinds of widget. */
+.sv-aligns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.sv-align {
+  border: 1px solid var(--rule);
+  background: #fffdf8;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+.sv-align:hover {
+  color: var(--ink);
+}
+.sv-align.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #ffffff;
+}
+/* Which colour is which structure. */
+.sv-align-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.sv-align-key {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.sv-align-key .sv-sw {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+/* external-link chip to the database entry */
+.sv-cite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  flex-shrink: 0;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: #fffdf8;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.sv-cite:hover {
+  color: #b08900;
+  border-color: #e0a800;
+}
+.sv-cite:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* overlay toggles */
+.sv-overlays {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sv-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: #fffdf8;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.sv-toggle:hover {
+  border-color: var(--ink);
+}
+.sv-toggle.on {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: #fff;
+}
+.sv-toggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+.sv-toggle input:disabled {
+  cursor: default;
+}
+
+/* colour swatch — solid (colour set inline) or the channel gradient */
+.sv-sw {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+/* The channel swatch and scale bar are painted from CHANNEL_GRADIENT in
+   StructureViewer.tsx, which is generated from the same bColorHex() the spheres
+   are coloured with — so the ramp is defined once, in the component, and there
+   is no hand-written copy of it here to drift out of step.
+
+   ------------------------------------------------------------------ scale -- */
+.sv-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.sv-scale-bar {
+  height: 0.55rem;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+}
+/* One cell per whole ångström, so a tick sits under the colour it labels. */
+.sv-scale-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.sv-scale-unit {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+.sv-scale-note {
+  opacity: 0.85;
+}
+/* Visually hidden, still read aloud — the bar and ticks are aria-hidden because
+   a gradient and five loose digits do not describe themselves. */
+.sv-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* legend (static colour key for the highlighted residues) */
+.sv-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.sv-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+/* camera actions (reset / spin), as quiet text buttons */
+.sv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+.sv-action {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  padding: 0 0 1px;
+}
+.sv-action:hover:not(:disabled) {
+  border-bottom-color: var(--ink);
+}
+.sv-action:disabled {
+  color: var(--muted);
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv * {
+    transition: none !important;
+  }
+}

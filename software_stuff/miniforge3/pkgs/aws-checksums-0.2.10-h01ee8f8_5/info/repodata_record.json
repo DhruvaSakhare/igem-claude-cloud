@@ -1,0 +1,23 @@
+{
+  "name": "aws-checksums",
+  "version": "0.2.10",
+  "build": "h01ee8f8_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-checksums-0.2.10-h01ee8f8_5.conda",
+  "md5": "4d70caf5260e0787675c3bf61ae5b64c",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-checksums-0.2.10-h01ee8f8_5.conda",
+  "sha256": "f8d2cd9faccb273df739fc28431b484a90aca10027ef44f7fec1d4f0bd229a76",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785159213897,
+  "size": 101887
+}

@@ -1,0 +1,24 @@
+{
+  "name": "libsqlite",
+  "version": "3.53.4",
+  "build": "hf4e2dac_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libsqlite-3.53.4-hf4e2dac_0.conda",
+  "md5": "df088a279cd5e6fd2790b4c196434da1",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libsqlite-3.53.4-hf4e2dac_0.conda",
+  "sha256": "72023efc207fe681e26b65fc9d668062cf0b4f0eacf3431e6eb099b95c1f2efd",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "icu >=78.3,<79.0a0",
+    "libgcc >=14",
+    "libzlib >=1.3.2,<2.0a0"
+  ],
+  "constrains": [],
+  "license": "blessing",
+  "timestamp": 1785016112246,
+  "size": 964200
+}

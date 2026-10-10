@@ -1,0 +1,24 @@
+{
+  "name": "ld_impl_linux-64",
+  "version": "2.46.1",
+  "build": "default_hbd61a6d_102",
+  "build_number": 102,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "ld_impl_linux-64-2.46.1-default_hbd61a6d_102.conda",
+  "md5": "449500f2c089da11c40f5c21312e3e07",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-default_hbd61a6d_102.conda",
+  "sha256": "27d83f1188cd19bcb7754a078b3fa7f4cfb8527f8eb2fde54dd01fc529d1adec",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "constrains": [
+    "binutils_impl_linux-64 2.46.1"
+  ],
+  "license": "GPL-3.0-only",
+  "timestamp": 1784214507189,
+  "size": 745303
+}

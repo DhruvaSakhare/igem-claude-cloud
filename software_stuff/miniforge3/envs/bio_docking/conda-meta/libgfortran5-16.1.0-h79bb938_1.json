@@ -1,0 +1,66 @@
+{
+  "name": "libgfortran5",
+  "version": "16.1.0",
+  "build": "h79bb938_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libgfortran5-16.1.0-h79bb938_1.conda",
+  "md5": "dd51ed33e8c70995f8e33cc9dc537297",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-16.1.0-h79bb938_1.conda",
+  "sha256": "05078ab464d506dff971860cb1a553b35bc27c0b5ce8ec29b8bfaca5f2359652",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=16.1.0"
+  ],
+  "constrains": [
+    "libgfortran 16.1.0"
+  ],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785375448623,
+  "size": 2538696,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran5-16.1.0-h79bb938_1.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran5-16.1.0-h79bb938_1",
+  "files": [
+    "lib/libgfortran.so",
+    "lib/libgfortran.so.5",
+    "lib/libgfortran.so.5.0.0",
+    "share/licenses/libgfortran/RUNTIME.LIBRARY.EXCEPTION"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "lib/libgfortran.so",
+        "path_type": "softlink",
+        "sha256": "59383967f5892b20ae2831d9dcc1b84ac4e34a14329793005e90e5ef541f68be",
+        "size_in_bytes": 11586824
+      },
+      {
+        "_path": "lib/libgfortran.so.5",
+        "path_type": "softlink",
+        "sha256": "59383967f5892b20ae2831d9dcc1b84ac4e34a14329793005e90e5ef541f68be",
+        "size_in_bytes": 11586824
+      },
+      {
+        "_path": "lib/libgfortran.so.5.0.0",
+        "path_type": "hardlink",
+        "sha256": "59383967f5892b20ae2831d9dcc1b84ac4e34a14329793005e90e5ef541f68be",
+        "size_in_bytes": 11586824,
+        "sha256_in_prefix": "59383967f5892b20ae2831d9dcc1b84ac4e34a14329793005e90e5ef541f68be"
+      },
+      {
+        "_path": "share/licenses/libgfortran/RUNTIME.LIBRARY.EXCEPTION",
+        "path_type": "hardlink",
+        "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+        "size_in_bytes": 3324,
+        "sha256_in_prefix": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran5-16.1.0-h79bb938_1",
+    "type": 1
+  }
+}

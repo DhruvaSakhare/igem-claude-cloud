@@ -1,0 +1,13 @@
+name: md-analysis
+channels:
+  - conda-forge
+channel_priority: strict
+dependencies:
+  - python=3.11
+  - mdtraj
+  - mdanalysis
+  - numpy=1.26.*
+  - scipy
+  - pandas
+  - matplotlib
+  - jupyterlab

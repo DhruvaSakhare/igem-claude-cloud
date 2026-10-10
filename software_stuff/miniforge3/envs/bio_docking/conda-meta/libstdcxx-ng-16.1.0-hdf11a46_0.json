@@ -1,0 +1,31 @@
+{
+  "name": "libstdcxx-ng",
+  "version": "16.1.0",
+  "build": "hdf11a46_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libstdcxx-ng-16.1.0-hdf11a46_0.conda",
+  "md5": "a6b9e3eb4ef3f1a15f3fdb165f4162b2",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-16.1.0-hdf11a46_0.conda",
+  "sha256": "1ca98460fe8fb81aa612e039ebcaa9a0ab3ee0de3d9b0e00a55dc396de3c6858",
+  "depends": [
+    "libstdcxx 16.1.0 h934c35e_0"
+  ],
+  "constrains": [],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785269614099,
+  "size": 28268,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-ng-16.1.0-hdf11a46_0.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-ng-16.1.0-hdf11a46_0",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-ng-16.1.0-hdf11a46_0",
+    "type": 1
+  }
+}

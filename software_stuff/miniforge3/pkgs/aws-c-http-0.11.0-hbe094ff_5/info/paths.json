@@ -1,0 +1,115 @@
+{
+  "paths": [
+    {
+      "_path": "bin/elasticurl",
+      "path_type": "hardlink",
+      "sha256": "cb2d746c28c543a3aa416e4e0e5f8b63b8f3807778c1c0a30b8ffe3d530d3411",
+      "size_in_bytes": 42392
+    },
+    {
+      "_path": "bin/h2benchmark",
+      "path_type": "hardlink",
+      "sha256": "5fd722604e33b3f69f7f3bc17df026de571a0be3ee83a6f73fb2963771e89f22",
+      "size_in_bytes": 23240
+    },
+    {
+      "_path": "include/aws/http/connection.h",
+      "path_type": "hardlink",
+      "sha256": "7e0245be2a2ca986fe86353e6c7e37574c6aef768ef27dd6f8bd992e3b8f0b0c",
+      "size_in_bytes": 28610
+    },
+    {
+      "_path": "include/aws/http/connection_manager.h",
+      "path_type": "hardlink",
+      "sha256": "3d5e35012e7224c7f889e57754322e50a48c13826d97193b0027b0e25e768497",
+      "size_in_bytes": 9058
+    },
+    {
+      "_path": "include/aws/http/exports.h",
+      "path_type": "hardlink",
+      "sha256": "4a8601e7d846e9bd83edd6b558390bbb4975b86529c3b6ba7b3f3eb19265ff52",
+      "size_in_bytes": 853
+    },
+    {
+      "_path": "include/aws/http/http.h",
+      "path_type": "hardlink",
+      "sha256": "0fd97b629f3fda9da50011c3fd3baf5bf9ddbcd0dc4045478d68fd8fc22549d2",
+      "size_in_bytes": 6073
+    },
+    {
+      "_path": "include/aws/http/http2_stream_manager.h",
+      "path_type": "hardlink",
+      "sha256": "230b2ceba7c7b40785384f2f48db1effe2f45fde8897e6de2ffbee916c4b826a",
+      "size_in_bytes": 9108
+    },
+    {
+      "_path": "include/aws/http/proxy.h",
+      "path_type": "hardlink",
+      "sha256": "e579ddde337bbbd48cb8a3114d10b5ec4801698052b1a140ed489ea597685cbf",
+      "size_in_bytes": 20612
+    },
+    {
+      "_path": "include/aws/http/request_response.h",
+      "path_type": "hardlink",
+      "sha256": "d8c6ec3a459f4f6203c44f4d7a01d6dac43b1c953d8407aef7bccf16ab59254d",
+      "size_in_bytes": 51862
+    },
+    {
+      "_path": "include/aws/http/server.h",
+      "path_type": "hardlink",
+      "sha256": "fae58757d6dfef33376b9485a427099c8dee63e6f6ced2d816ec5260c84b5290",
+      "size_in_bytes": 6595
+    },
+    {
+      "_path": "include/aws/http/statistics.h",
+      "path_type": "hardlink",
+      "sha256": "f2fb2d095a89be3c602d4138d2e2e77da9f6b305d267e59a85e41f0622ff4fcc",
+      "size_in_bytes": 2138
+    },
+    {
+      "_path": "include/aws/http/status_code.h",
+      "path_type": "hardlink",
+      "sha256": "efb121a296d11372c850f61c6c21255d0bf54e525276faf96400caaa4f6bf518",
+      "size_in_bytes": 3869
+    },
+    {
+      "_path": "include/aws/http/websocket.h",
+      "path_type": "hardlink",
+      "sha256": "96e156f360e46742b4a45f8fde2bb987e073d5bdb379a4d1aa9877c090ba3e51",
+      "size_in_bytes": 18358
+    },
+    {
+      "_path": "lib/cmake/aws-c-http/aws-c-http-config.cmake",
+      "path_type": "hardlink",
+      "sha256": "a2cdcaca62d1ec898e2eb13e83aafbcc585f32d722eba5974072f7363c3637a2",
+      "size_in_bytes": 600
+    },
+    {
+      "_path": "lib/cmake/aws-c-http/shared/aws-c-http-targets-release.cmake",
+      "path_type": "hardlink",
+      "sha256": "5a81f5de6215065d10fbee7a7924cbe36a2ec4775685caa991404de7cfe6b61c",
+      "size_in_bytes": 871
+    },
+    {
+      "_path": "lib/cmake/aws-c-http/shared/aws-c-http-targets.cmake",
+      "path_type": "hardlink",
+      "sha256": "dd49408b2a9160d1d0a0583bbc0aa46a062bd081fb3373af6cc6d3c29c2cbd3e",
+      "size_in_bytes": 4319
+    },
+    {
+      "_path": "lib/libaws-c-http.so",
+      "path_type": "softlink",
+      "sha256": "b22d4fb147f8a2878d84f08b6095f372549d52667c51ce7518bd5005e856ef09",
+      "size_in_bytes": 22
+    },
+    {
+      "_path": "lib/libaws-c-http.so.1.0.0",
+      "path_type": "hardlink",
+      "file_mode": "binary",
+      "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/bld/rattler-build_aws-c-http_1785186134/host_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+      "sha256": "b22d4fb147f8a2878d84f08b6095f372549d52667c51ce7518bd5005e856ef09",
+      "size_in_bytes": 498296
+    }
+  ],
+  "paths_version": 1
+}

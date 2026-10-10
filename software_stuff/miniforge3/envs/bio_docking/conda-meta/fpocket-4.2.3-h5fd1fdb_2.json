@@ -1,0 +1,654 @@
+{
+  "name": "fpocket",
+  "version": "4.2.3",
+  "build": "h5fd1fdb_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "fpocket-4.2.3-h5fd1fdb_2.conda",
+  "md5": "578e892e304443158e15b184df9f4436",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/fpocket-4.2.3-h5fd1fdb_2.conda",
+  "sha256": "0d77bf44c6342d32a78cd9bbde6e478539d02673877cb6c1d65fcb552cca0445",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "libnetcdf >=4.10.1,<4.10.2.0a0"
+  ],
+  "constrains": [],
+  "license": "MIT",
+  "timestamp": 1783928780172,
+  "size": 1769815,
+  "requested_spec": "fpocket",
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/fpocket-4.2.3-h5fd1fdb_2.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/fpocket-4.2.3-h5fd1fdb_2",
+  "files": [
+    "bin/dpocket",
+    "bin/fpocket",
+    "bin/mdpocket",
+    "bin/tpocket",
+    "lib/abinitplugin.so",
+    "lib/amiraplugin.so",
+    "lib/avsplugin.so",
+    "lib/babelplugin.so",
+    "lib/basissetplugin.so",
+    "lib/bgfplugin.so",
+    "lib/binposplugin.so",
+    "lib/biomoccaplugin.so",
+    "lib/brixplugin.so",
+    "lib/carplugin.so",
+    "lib/ccp4plugin.so",
+    "lib/corplugin.so",
+    "lib/cpmdplugin.so",
+    "lib/crdplugin.so",
+    "lib/cubeplugin.so",
+    "lib/dcdplugin.so",
+    "lib/dlpolyplugin.so",
+    "lib/dsn6plugin.so",
+    "lib/dtrplugin.so",
+    "lib/dxplugin.so",
+    "lib/edmplugin.so",
+    "lib/fs4plugin.so",
+    "lib/gamessplugin.so",
+    "lib/graspplugin.so",
+    "lib/grdplugin.so",
+    "lib/gridplugin.so",
+    "lib/gromacsplugin.so",
+    "lib/jsplugin.so",
+    "lib/lammpsplugin.so",
+    "lib/libmolfile_plugin.a",
+    "lib/libmolfile_plugin.h",
+    "lib/maeffplugin.so",
+    "lib/mapplugin.so",
+    "lib/mdfplugin.so",
+    "lib/mol2plugin.so",
+    "lib/moldenplugin.so",
+    "lib/molemeshplugin.so",
+    "lib/msmsplugin.so",
+    "lib/namdbinplugin.so",
+    "lib/offplugin.so",
+    "lib/orcaplugin.so",
+    "lib/parm7plugin.so",
+    "lib/parmplugin.so",
+    "lib/pbeqplugin.so",
+    "lib/pdbplugin.so",
+    "lib/pdbxplugin.so",
+    "lib/phiplugin.so",
+    "lib/pltplugin.so",
+    "lib/plyplugin.so",
+    "lib/pqrplugin.so",
+    "lib/psfplugin.so",
+    "lib/raster3dplugin.so",
+    "lib/rst7plugin.so",
+    "lib/situsplugin.so",
+    "lib/spiderplugin.so",
+    "lib/stlplugin.so",
+    "lib/tinkerplugin.so",
+    "lib/uhbdplugin.so",
+    "lib/vasp5xdatcarplugin.so",
+    "lib/vaspchgcarplugin.so",
+    "lib/vaspoutcarplugin.so",
+    "lib/vaspparchgplugin.so",
+    "lib/vaspposcarplugin.so",
+    "lib/vaspxdatcarplugin.so",
+    "lib/vaspxmlplugin.so",
+    "lib/vtkplugin.so",
+    "lib/xbgfplugin.so",
+    "lib/xsfplugin.so",
+    "lib/xyzplugin.so",
+    "man/man8/Makefile.am",
+    "man/man8/dpocket.8",
+    "man/man8/fpocket.8",
+    "man/man8/tpocket.8"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "bin/dpocket",
+        "path_type": "hardlink",
+        "sha256": "9331e8535b5c239a132b74e7e8f97c93de1ffeb8b6c1326191e174f23c301a2c",
+        "size_in_bytes": 1829336,
+        "sha256_in_prefix": "9331e8535b5c239a132b74e7e8f97c93de1ffeb8b6c1326191e174f23c301a2c"
+      },
+      {
+        "_path": "bin/fpocket",
+        "path_type": "hardlink",
+        "sha256": "18a3a5e78481e572018703fd7e463969dd1cc598464efde18acf30284f5941eb",
+        "size_in_bytes": 1795096,
+        "sha256_in_prefix": "18a3a5e78481e572018703fd7e463969dd1cc598464efde18acf30284f5941eb"
+      },
+      {
+        "_path": "bin/mdpocket",
+        "path_type": "hardlink",
+        "sha256": "9a9bc8c116b4dffdbbd8aebcceb92419815901509babe4a3848d00ec2edd98a8",
+        "size_in_bytes": 2053008,
+        "sha256_in_prefix": "9a9bc8c116b4dffdbbd8aebcceb92419815901509babe4a3848d00ec2edd98a8"
+      },
+      {
+        "_path": "bin/tpocket",
+        "path_type": "hardlink",
+        "sha256": "521563b4bcbbb1254f6ab5edd7c558e5dc386353fa4e23569d2b6852d2c5fc30",
+        "size_in_bytes": 1864520,
+        "sha256_in_prefix": "521563b4bcbbb1254f6ab5edd7c558e5dc386353fa4e23569d2b6852d2c5fc30"
+      },
+      {
+        "_path": "lib/abinitplugin.so",
+        "path_type": "hardlink",
+        "sha256": "1dc7b8708bdabed21d18bb543ffcd9fccd7c0ba91dd28ca6396023c97f0a4a5a",
+        "size_in_bytes": 55289,
+        "sha256_in_prefix": "1dc7b8708bdabed21d18bb543ffcd9fccd7c0ba91dd28ca6396023c97f0a4a5a"
+      },
+      {
+        "_path": "lib/amiraplugin.so",
+        "path_type": "hardlink",
+        "sha256": "fdc799dc44789e772b03cc82e5a9917ef2072fe8b1ce3e49a4244cc026702cbe",
+        "size_in_bytes": 21945,
+        "sha256_in_prefix": "fdc799dc44789e772b03cc82e5a9917ef2072fe8b1ce3e49a4244cc026702cbe"
+      },
+      {
+        "_path": "lib/avsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "5ed285055282f1f216979b58b472af7764d4b47a1c2f56ec41a69058398a9117",
+        "size_in_bytes": 26369,
+        "sha256_in_prefix": "5ed285055282f1f216979b58b472af7764d4b47a1c2f56ec41a69058398a9117"
+      },
+      {
+        "_path": "lib/babelplugin.so",
+        "path_type": "hardlink",
+        "sha256": "18a1f7a1477b5121fedc699d48188ad6534a5c8666bad5699f2a478b6ba23124",
+        "size_in_bytes": 39105,
+        "sha256_in_prefix": "18a1f7a1477b5121fedc699d48188ad6534a5c8666bad5699f2a478b6ba23124"
+      },
+      {
+        "_path": "lib/basissetplugin.so",
+        "path_type": "hardlink",
+        "sha256": "d775ff083b3e6c5bba529f2786ef35322727ba3c2cb1a7bd8ff9193954ee6b5a",
+        "size_in_bytes": 30169,
+        "sha256_in_prefix": "d775ff083b3e6c5bba529f2786ef35322727ba3c2cb1a7bd8ff9193954ee6b5a"
+      },
+      {
+        "_path": "lib/bgfplugin.so",
+        "path_type": "hardlink",
+        "sha256": "00998520746c4fdd9dea688d1b8ad0521e13c78d8902ffc30d79ddfec4372f3c",
+        "size_in_bytes": 26257,
+        "sha256_in_prefix": "00998520746c4fdd9dea688d1b8ad0521e13c78d8902ffc30d79ddfec4372f3c"
+      },
+      {
+        "_path": "lib/binposplugin.so",
+        "path_type": "hardlink",
+        "sha256": "24c077b20cab141edd944823a23afc268f89ac8487484b71698c55bb5c3e368d",
+        "size_in_bytes": 21913,
+        "sha256_in_prefix": "24c077b20cab141edd944823a23afc268f89ac8487484b71698c55bb5c3e368d"
+      },
+      {
+        "_path": "lib/biomoccaplugin.so",
+        "path_type": "hardlink",
+        "sha256": "84bd49355dcae3b607ec762af34323e65bded276139c3b2f573392265d2a870c",
+        "size_in_bytes": 17641,
+        "sha256_in_prefix": "84bd49355dcae3b607ec762af34323e65bded276139c3b2f573392265d2a870c"
+      },
+      {
+        "_path": "lib/brixplugin.so",
+        "path_type": "hardlink",
+        "sha256": "054880899eecbd23047581bf82aef27cde4b402e918f17e5e347e5efd5c2d2ea",
+        "size_in_bytes": 22017,
+        "sha256_in_prefix": "054880899eecbd23047581bf82aef27cde4b402e918f17e5e347e5efd5c2d2ea"
+      },
+      {
+        "_path": "lib/carplugin.so",
+        "path_type": "hardlink",
+        "sha256": "9bd24008d34e54b7dbe7e55b205bb2edbe0e89b44bc1c9b442ba4beb399c313f",
+        "size_in_bytes": 22049,
+        "sha256_in_prefix": "9bd24008d34e54b7dbe7e55b205bb2edbe0e89b44bc1c9b442ba4beb399c313f"
+      },
+      {
+        "_path": "lib/ccp4plugin.so",
+        "path_type": "hardlink",
+        "sha256": "ce3b25893c1e57cb1f62e94b210f478b8fc735e1aa204b1ed446586956aa3bcd",
+        "size_in_bytes": 34377,
+        "sha256_in_prefix": "ce3b25893c1e57cb1f62e94b210f478b8fc735e1aa204b1ed446586956aa3bcd"
+      },
+      {
+        "_path": "lib/corplugin.so",
+        "path_type": "hardlink",
+        "sha256": "490d6063de8673f15353d1c25247ad48cc333957e2b869e5c211b9365f84ac14",
+        "size_in_bytes": 22041,
+        "sha256_in_prefix": "490d6063de8673f15353d1c25247ad48cc333957e2b869e5c211b9365f84ac14"
+      },
+      {
+        "_path": "lib/cpmdplugin.so",
+        "path_type": "hardlink",
+        "sha256": "60cc7af221866b6c85552df03097507ebf6509217225d728205c03112dff9c9f",
+        "size_in_bytes": 21921,
+        "sha256_in_prefix": "60cc7af221866b6c85552df03097507ebf6509217225d728205c03112dff9c9f"
+      },
+      {
+        "_path": "lib/crdplugin.so",
+        "path_type": "hardlink",
+        "sha256": "78bc1d8a8d2220d65a3fc7bae1695d7e15a45b52301d36dd346c744b9a44ff8a",
+        "size_in_bytes": 21921,
+        "sha256_in_prefix": "78bc1d8a8d2220d65a3fc7bae1695d7e15a45b52301d36dd346c744b9a44ff8a"
+      },
+      {
+        "_path": "lib/cubeplugin.so",
+        "path_type": "hardlink",
+        "sha256": "f1d8018e7bd5e883b6306f8220dd1a0f3d5c283d5a941887da6aa2d14e8c19fe",
+        "size_in_bytes": 34721,
+        "sha256_in_prefix": "f1d8018e7bd5e883b6306f8220dd1a0f3d5c283d5a941887da6aa2d14e8c19fe"
+      },
+      {
+        "_path": "lib/dcdplugin.so",
+        "path_type": "hardlink",
+        "sha256": "907f77c01bbfa190076ead58f8117c0f6ef64e9c2d5027a499da53d3df5d7b7e",
+        "size_in_bytes": 30281,
+        "sha256_in_prefix": "907f77c01bbfa190076ead58f8117c0f6ef64e9c2d5027a499da53d3df5d7b7e"
+      },
+      {
+        "_path": "lib/dlpolyplugin.so",
+        "path_type": "hardlink",
+        "sha256": "d95f4bc28693c7f8d25c8fb8440748352ca335fac9bd4bc1aef43f5607aa1fa4",
+        "size_in_bytes": 26017,
+        "sha256_in_prefix": "d95f4bc28693c7f8d25c8fb8440748352ca335fac9bd4bc1aef43f5607aa1fa4"
+      },
+      {
+        "_path": "lib/dsn6plugin.so",
+        "path_type": "hardlink",
+        "sha256": "04b649d3edf7bfb560f5f59d04cd8b860610b131f13e35f11824ea8a18784a7d",
+        "size_in_bytes": 21929,
+        "sha256_in_prefix": "04b649d3edf7bfb560f5f59d04cd8b860610b131f13e35f11824ea8a18784a7d"
+      },
+      {
+        "_path": "lib/dtrplugin.so",
+        "path_type": "hardlink",
+        "sha256": "f094eba974d730f0858c98965775f9531afea39ab404e09f4bf046b7dbdd3e9a",
+        "size_in_bytes": 148433,
+        "sha256_in_prefix": "f094eba974d730f0858c98965775f9531afea39ab404e09f4bf046b7dbdd3e9a"
+      },
+      {
+        "_path": "lib/dxplugin.so",
+        "path_type": "hardlink",
+        "sha256": "737ba243f78e16ba5b51f5cc407699aa58bd9f51f513837bf9f4bdb1c6cb8d01",
+        "size_in_bytes": 26457,
+        "sha256_in_prefix": "737ba243f78e16ba5b51f5cc407699aa58bd9f51f513837bf9f4bdb1c6cb8d01"
+      },
+      {
+        "_path": "lib/edmplugin.so",
+        "path_type": "hardlink",
+        "sha256": "1ef0b2510504fe35ff518aedfd915f5bf17844f6b00aabb60c5e5a4fbe2b17a5",
+        "size_in_bytes": 26521,
+        "sha256_in_prefix": "1ef0b2510504fe35ff518aedfd915f5bf17844f6b00aabb60c5e5a4fbe2b17a5"
+      },
+      {
+        "_path": "lib/fs4plugin.so",
+        "path_type": "hardlink",
+        "sha256": "aec8377fea98b907ca109a3d8de4c592ac235df9372ea65f7d0159c70982cdde",
+        "size_in_bytes": 22001,
+        "sha256_in_prefix": "aec8377fea98b907ca109a3d8de4c592ac235df9372ea65f7d0159c70982cdde"
+      },
+      {
+        "_path": "lib/gamessplugin.so",
+        "path_type": "hardlink",
+        "sha256": "2614593c6bc79a9012a8082bef1f70014db0eedb911e7b93740e256389d5fa57",
+        "size_in_bytes": 79929,
+        "sha256_in_prefix": "2614593c6bc79a9012a8082bef1f70014db0eedb911e7b93740e256389d5fa57"
+      },
+      {
+        "_path": "lib/graspplugin.so",
+        "path_type": "hardlink",
+        "sha256": "7dfde6069ff62ca4b32385683e100bbc8eeb644f950f4e6916b67cd0805cb69c",
+        "size_in_bytes": 26257,
+        "sha256_in_prefix": "7dfde6069ff62ca4b32385683e100bbc8eeb644f950f4e6916b67cd0805cb69c"
+      },
+      {
+        "_path": "lib/grdplugin.so",
+        "path_type": "hardlink",
+        "sha256": "98e6ded31a9f14536652e45bde4618527a4d17eff121f57fb4e5900db8fd25d9",
+        "size_in_bytes": 21857,
+        "sha256_in_prefix": "98e6ded31a9f14536652e45bde4618527a4d17eff121f57fb4e5900db8fd25d9"
+      },
+      {
+        "_path": "lib/gridplugin.so",
+        "path_type": "hardlink",
+        "sha256": "dcf9cf79ece752c19378124a0384c48e05cc8822a0a1f57c91695d406c7cdc3f",
+        "size_in_bytes": 21881,
+        "sha256_in_prefix": "dcf9cf79ece752c19378124a0384c48e05cc8822a0a1f57c91695d406c7cdc3f"
+      },
+      {
+        "_path": "lib/gromacsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "59bcb510ff07df138cd6c0274e50452d21018fd801518e51fe7d51f92e9a8cdb",
+        "size_in_bytes": 47225,
+        "sha256_in_prefix": "59bcb510ff07df138cd6c0274e50452d21018fd801518e51fe7d51f92e9a8cdb"
+      },
+      {
+        "_path": "lib/jsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "6ce48b8369fba6dd513a0be1b955f7d8d8ae3fbf0e880ae9520aec4aa8cf3454",
+        "size_in_bytes": 42609,
+        "sha256_in_prefix": "6ce48b8369fba6dd513a0be1b955f7d8d8ae3fbf0e880ae9520aec4aa8cf3454"
+      },
+      {
+        "_path": "lib/lammpsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "143fad5c844be4768c4779e25bb28533c76394a7f953d9401b7330eec6e1d9d0",
+        "size_in_bytes": 47137,
+        "sha256_in_prefix": "143fad5c844be4768c4779e25bb28533c76394a7f953d9401b7330eec6e1d9d0"
+      },
+      {
+        "_path": "lib/libmolfile_plugin.a",
+        "path_type": "hardlink",
+        "sha256": "374d6b159940bf4a834a949de0bd49deaee91ed39f27e5a048e09d2503eaf707",
+        "size_in_bytes": 1665696,
+        "sha256_in_prefix": "374d6b159940bf4a834a949de0bd49deaee91ed39f27e5a048e09d2503eaf707"
+      },
+      {
+        "_path": "lib/libmolfile_plugin.h",
+        "path_type": "hardlink",
+        "sha256": "217b0e63d8ee4715d208c72c2ffe19a0d6670f9fced6d1533f5a2e24c01f4770",
+        "size_in_bytes": 18513,
+        "sha256_in_prefix": "217b0e63d8ee4715d208c72c2ffe19a0d6670f9fced6d1533f5a2e24c01f4770"
+      },
+      {
+        "_path": "lib/maeffplugin.so",
+        "path_type": "hardlink",
+        "sha256": "ecac54370044953c2d1b9ace734d31ff026ccd3dd4c15b1791319aae623485ce",
+        "size_in_bytes": 145465,
+        "sha256_in_prefix": "ecac54370044953c2d1b9ace734d31ff026ccd3dd4c15b1791319aae623485ce"
+      },
+      {
+        "_path": "lib/mapplugin.so",
+        "path_type": "hardlink",
+        "sha256": "ab1a1b8b09302b44077571471a69b0f81466e5a0d2764bae7b8ca2fab596d67b",
+        "size_in_bytes": 21897,
+        "sha256_in_prefix": "ab1a1b8b09302b44077571471a69b0f81466e5a0d2764bae7b8ca2fab596d67b"
+      },
+      {
+        "_path": "lib/mdfplugin.so",
+        "path_type": "hardlink",
+        "sha256": "9a942f286bc638ac081e2001819a088bd8e1b007b2ac77689fedf0d4975396ce",
+        "size_in_bytes": 26481,
+        "sha256_in_prefix": "9a942f286bc638ac081e2001819a088bd8e1b007b2ac77689fedf0d4975396ce"
+      },
+      {
+        "_path": "lib/mol2plugin.so",
+        "path_type": "hardlink",
+        "sha256": "26b48f9a71eb78db1f68cc21be061e2fe1849b04ed6a1b02d711b86b9bb75ab4",
+        "size_in_bytes": 26217,
+        "sha256_in_prefix": "26b48f9a71eb78db1f68cc21be061e2fe1849b04ed6a1b02d711b86b9bb75ab4"
+      },
+      {
+        "_path": "lib/moldenplugin.so",
+        "path_type": "hardlink",
+        "sha256": "24a290d00e80600a1451bff9b3072b1aaf0a55e0fca5c99c93e07b75d46dc7a7",
+        "size_in_bytes": 38697,
+        "sha256_in_prefix": "24a290d00e80600a1451bff9b3072b1aaf0a55e0fca5c99c93e07b75d46dc7a7"
+      },
+      {
+        "_path": "lib/molemeshplugin.so",
+        "path_type": "hardlink",
+        "sha256": "d62f0f6369937c613f4fd631058bdbdbe6aac4946c2aa32458c0d62a05de4a74",
+        "size_in_bytes": 21953,
+        "sha256_in_prefix": "d62f0f6369937c613f4fd631058bdbdbe6aac4946c2aa32458c0d62a05de4a74"
+      },
+      {
+        "_path": "lib/msmsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "bf65443c4a06a3031400b5e9d2dc35df993424ddcf739845ca8676e850e9d2c8",
+        "size_in_bytes": 22025,
+        "sha256_in_prefix": "bf65443c4a06a3031400b5e9d2dc35df993424ddcf739845ca8676e850e9d2c8"
+      },
+      {
+        "_path": "lib/namdbinplugin.so",
+        "path_type": "hardlink",
+        "sha256": "8aeea0e8876770379763e2f2b01333731660fb91ff8e19aeb742ddcfb96563c7",
+        "size_in_bytes": 21881,
+        "sha256_in_prefix": "8aeea0e8876770379763e2f2b01333731660fb91ff8e19aeb742ddcfb96563c7"
+      },
+      {
+        "_path": "lib/offplugin.so",
+        "path_type": "hardlink",
+        "sha256": "6566c3abfacdedda2650a6a83de9712b01b5894e5ba969255ef3146c3a61b642",
+        "size_in_bytes": 25897,
+        "sha256_in_prefix": "6566c3abfacdedda2650a6a83de9712b01b5894e5ba969255ef3146c3a61b642"
+      },
+      {
+        "_path": "lib/orcaplugin.so",
+        "path_type": "hardlink",
+        "sha256": "b55e8844fe54867be8e03d39a883196f3f0047acf60564fd212b3564014d7414",
+        "size_in_bytes": 108001,
+        "sha256_in_prefix": "b55e8844fe54867be8e03d39a883196f3f0047acf60564fd212b3564014d7414"
+      },
+      {
+        "_path": "lib/parm7plugin.so",
+        "path_type": "hardlink",
+        "sha256": "e1d3be66b4b54d07b95a76efffa951ffbc98787d40206ee99e66ac3ee3ac5eb3",
+        "size_in_bytes": 26529,
+        "sha256_in_prefix": "e1d3be66b4b54d07b95a76efffa951ffbc98787d40206ee99e66ac3ee3ac5eb3"
+      },
+      {
+        "_path": "lib/parmplugin.so",
+        "path_type": "hardlink",
+        "sha256": "8a474d69241aa4883e3f7cccf1cf48e8a302e04759afcea0ef1579b4204d827c",
+        "size_in_bytes": 30617,
+        "sha256_in_prefix": "8a474d69241aa4883e3f7cccf1cf48e8a302e04759afcea0ef1579b4204d827c"
+      },
+      {
+        "_path": "lib/pbeqplugin.so",
+        "path_type": "hardlink",
+        "sha256": "cb97fbc5a51f288b59cfc0741175420693fe4b22c324f3995958b98f4d052b9a",
+        "size_in_bytes": 21801,
+        "sha256_in_prefix": "cb97fbc5a51f288b59cfc0741175420693fe4b22c324f3995958b98f4d052b9a"
+      },
+      {
+        "_path": "lib/pdbplugin.so",
+        "path_type": "hardlink",
+        "sha256": "ef7b48cf5d3ae78ecfb5d03c0f58abbbf6263162f46b60f594a7b545cd5698b5",
+        "size_in_bytes": 34681,
+        "sha256_in_prefix": "ef7b48cf5d3ae78ecfb5d03c0f58abbbf6263162f46b60f594a7b545cd5698b5"
+      },
+      {
+        "_path": "lib/pdbxplugin.so",
+        "path_type": "hardlink",
+        "sha256": "84f8c4880148dc8eeb234e9bc6604bee0a05b4f4265c5ba96ced70b05ac4ea4e",
+        "size_in_bytes": 47297,
+        "sha256_in_prefix": "84f8c4880148dc8eeb234e9bc6604bee0a05b4f4265c5ba96ced70b05ac4ea4e"
+      },
+      {
+        "_path": "lib/phiplugin.so",
+        "path_type": "hardlink",
+        "sha256": "8e439e57c45d287599b6b3465d4d19b4ce31c5bc0f156d58f6941fc8b62002b9",
+        "size_in_bytes": 22049,
+        "sha256_in_prefix": "8e439e57c45d287599b6b3465d4d19b4ce31c5bc0f156d58f6941fc8b62002b9"
+      },
+      {
+        "_path": "lib/pltplugin.so",
+        "path_type": "hardlink",
+        "sha256": "746fe5a64328996879bcad87cbf432ece063d268f61c1d109d1c05c5d915f145",
+        "size_in_bytes": 17705,
+        "sha256_in_prefix": "746fe5a64328996879bcad87cbf432ece063d268f61c1d109d1c05c5d915f145"
+      },
+      {
+        "_path": "lib/plyplugin.so",
+        "path_type": "hardlink",
+        "sha256": "49ca4f6a195bacfb8551f95069dc2e8fb2f4c50a18a767354fdd06866605ad1e",
+        "size_in_bytes": 60633,
+        "sha256_in_prefix": "49ca4f6a195bacfb8551f95069dc2e8fb2f4c50a18a767354fdd06866605ad1e"
+      },
+      {
+        "_path": "lib/pqrplugin.so",
+        "path_type": "hardlink",
+        "sha256": "5042060f8b98196f523ee0c9bd173da1a9497321fd3216e280c5efe6df7766ae",
+        "size_in_bytes": 22273,
+        "sha256_in_prefix": "5042060f8b98196f523ee0c9bd173da1a9497321fd3216e280c5efe6df7766ae"
+      },
+      {
+        "_path": "lib/psfplugin.so",
+        "path_type": "hardlink",
+        "sha256": "4a3ba1c192d78eb44fc05f65904576127e34f252387cb3fc4bb034be564ebab1",
+        "size_in_bytes": 34425,
+        "sha256_in_prefix": "4a3ba1c192d78eb44fc05f65904576127e34f252387cb3fc4bb034be564ebab1"
+      },
+      {
+        "_path": "lib/raster3dplugin.so",
+        "path_type": "hardlink",
+        "sha256": "f3b59df9212e47456b6c5c00ad0070897a36d13981ef8d261bf7b457302d8798",
+        "size_in_bytes": 26201,
+        "sha256_in_prefix": "f3b59df9212e47456b6c5c00ad0070897a36d13981ef8d261bf7b457302d8798"
+      },
+      {
+        "_path": "lib/rst7plugin.so",
+        "path_type": "hardlink",
+        "sha256": "0fa1892521ad34928790aa7ae9087bfd45c871e793f6a26f497b93111164ed81",
+        "size_in_bytes": 26241,
+        "sha256_in_prefix": "0fa1892521ad34928790aa7ae9087bfd45c871e793f6a26f497b93111164ed81"
+      },
+      {
+        "_path": "lib/situsplugin.so",
+        "path_type": "hardlink",
+        "sha256": "32cccfebfc7fea337bde004473e5b0ee17380b89d755ce3570c50d9339390420",
+        "size_in_bytes": 26305,
+        "sha256_in_prefix": "32cccfebfc7fea337bde004473e5b0ee17380b89d755ce3570c50d9339390420"
+      },
+      {
+        "_path": "lib/spiderplugin.so",
+        "path_type": "hardlink",
+        "sha256": "c3ceca8f38fb738777fb58f08a56a73ac564fcd2b71a4c2e9fb8af2547beb1bd",
+        "size_in_bytes": 21865,
+        "sha256_in_prefix": "c3ceca8f38fb738777fb58f08a56a73ac564fcd2b71a4c2e9fb8af2547beb1bd"
+      },
+      {
+        "_path": "lib/stlplugin.so",
+        "path_type": "hardlink",
+        "sha256": "5337722a7bb0472da6d6ac631870c7c05d1430e094b54351c0b277257c755183",
+        "size_in_bytes": 21897,
+        "sha256_in_prefix": "5337722a7bb0472da6d6ac631870c7c05d1430e094b54351c0b277257c755183"
+      },
+      {
+        "_path": "lib/tinkerplugin.so",
+        "path_type": "hardlink",
+        "sha256": "e818fd027abcdc0c8866e4296b23d8e43184073d81fd8b306985e9be64c5ce7a",
+        "size_in_bytes": 21961,
+        "sha256_in_prefix": "e818fd027abcdc0c8866e4296b23d8e43184073d81fd8b306985e9be64c5ce7a"
+      },
+      {
+        "_path": "lib/uhbdplugin.so",
+        "path_type": "hardlink",
+        "sha256": "ba480253a70f86e5cbce70f13b738846674a6ab1195ead86dc5105372995c382",
+        "size_in_bytes": 22097,
+        "sha256_in_prefix": "ba480253a70f86e5cbce70f13b738846674a6ab1195ead86dc5105372995c382"
+      },
+      {
+        "_path": "lib/vasp5xdatcarplugin.so",
+        "path_type": "hardlink",
+        "sha256": "28d0d2bf46f9bb96fca8f21ab7cc05075448df6905ffbfc30b3c9cb6ae4be2e6",
+        "size_in_bytes": 30489,
+        "sha256_in_prefix": "28d0d2bf46f9bb96fca8f21ab7cc05075448df6905ffbfc30b3c9cb6ae4be2e6"
+      },
+      {
+        "_path": "lib/vaspchgcarplugin.so",
+        "path_type": "hardlink",
+        "sha256": "c623103967895fd32aa76d5c2a6dcc4d5664c9fd6876e336257a49f211a68212",
+        "size_in_bytes": 26241,
+        "sha256_in_prefix": "c623103967895fd32aa76d5c2a6dcc4d5664c9fd6876e336257a49f211a68212"
+      },
+      {
+        "_path": "lib/vaspoutcarplugin.so",
+        "path_type": "hardlink",
+        "sha256": "4c8a426c476514f71cf7f44cb547e371e4d2435110cba1328f86b5fd132120cb",
+        "size_in_bytes": 30489,
+        "sha256_in_prefix": "4c8a426c476514f71cf7f44cb547e371e4d2435110cba1328f86b5fd132120cb"
+      },
+      {
+        "_path": "lib/vaspparchgplugin.so",
+        "path_type": "hardlink",
+        "sha256": "206d48a05a870d7f590a3190633d675f514b9ef4d8760166a075e04547babc74",
+        "size_in_bytes": 26241,
+        "sha256_in_prefix": "206d48a05a870d7f590a3190633d675f514b9ef4d8760166a075e04547babc74"
+      },
+      {
+        "_path": "lib/vaspposcarplugin.so",
+        "path_type": "hardlink",
+        "sha256": "9543e22079c0ba922e3e4137d6764f5053801650da960bc0396961a69b97e70e",
+        "size_in_bytes": 38809,
+        "sha256_in_prefix": "9543e22079c0ba922e3e4137d6764f5053801650da960bc0396961a69b97e70e"
+      },
+      {
+        "_path": "lib/vaspxdatcarplugin.so",
+        "path_type": "hardlink",
+        "sha256": "d09411ecc8936050fc2015cc44a5424aeeb7612714cc553571cfcfcfb21f4354",
+        "size_in_bytes": 34617,
+        "sha256_in_prefix": "d09411ecc8936050fc2015cc44a5424aeeb7612714cc553571cfcfcfb21f4354"
+      },
+      {
+        "_path": "lib/vaspxmlplugin.so",
+        "path_type": "hardlink",
+        "sha256": "fb7c7c75536d2259bc75b07f322904a5ce50233fd84251192497b7adc79a1638",
+        "size_in_bytes": 30425,
+        "sha256_in_prefix": "fb7c7c75536d2259bc75b07f322904a5ce50233fd84251192497b7adc79a1638"
+      },
+      {
+        "_path": "lib/vtkplugin.so",
+        "path_type": "hardlink",
+        "sha256": "cadeb3a9f79edc4be55d76c34330a3b22430d210c70051a279dd008cebda000c",
+        "size_in_bytes": 26169,
+        "sha256_in_prefix": "cadeb3a9f79edc4be55d76c34330a3b22430d210c70051a279dd008cebda000c"
+      },
+      {
+        "_path": "lib/xbgfplugin.so",
+        "path_type": "hardlink",
+        "sha256": "d67430f4cd55d430950542c7c7735914c7e2b324f10074e0a4231ee22fb26ac4",
+        "size_in_bytes": 26377,
+        "sha256_in_prefix": "d67430f4cd55d430950542c7c7735914c7e2b324f10074e0a4231ee22fb26ac4"
+      },
+      {
+        "_path": "lib/xsfplugin.so",
+        "path_type": "hardlink",
+        "sha256": "933597e4fcae34b85932c2dcb16e223be311b72caef2a4c3fb367e963231b12c",
+        "size_in_bytes": 38913,
+        "sha256_in_prefix": "933597e4fcae34b85932c2dcb16e223be311b72caef2a4c3fb367e963231b12c"
+      },
+      {
+        "_path": "lib/xyzplugin.so",
+        "path_type": "hardlink",
+        "sha256": "093197dcf187971c866a590ec136c48652e353f140c0915b11ebba31719d1872",
+        "size_in_bytes": 26233,
+        "sha256_in_prefix": "093197dcf187971c866a590ec136c48652e353f140c0915b11ebba31719d1872"
+      },
+      {
+        "_path": "man/man8/Makefile.am",
+        "path_type": "hardlink",
+        "sha256": "1082f93fce20b772b3075d1599c017b0c53b0a255c878411cfbda2e51c0a23d2",
+        "size_in_bytes": 41,
+        "sha256_in_prefix": "1082f93fce20b772b3075d1599c017b0c53b0a255c878411cfbda2e51c0a23d2"
+      },
+      {
+        "_path": "man/man8/dpocket.8",
+        "path_type": "hardlink",
+        "sha256": "40d66ffeae691b2269a53e5d52f610fd120b7f005618e6079bf670f5374c4134",
+        "size_in_bytes": 2056,
+        "sha256_in_prefix": "40d66ffeae691b2269a53e5d52f610fd120b7f005618e6079bf670f5374c4134"
+      },
+      {
+        "_path": "man/man8/fpocket.8",
+        "path_type": "hardlink",
+        "sha256": "ee07ab1fc70047e07c16f9b66721a8bd37c05df9582a474d60f72982e66085ba",
+        "size_in_bytes": 4238,
+        "sha256_in_prefix": "ee07ab1fc70047e07c16f9b66721a8bd37c05df9582a474d60f72982e66085ba"
+      },
+      {
+        "_path": "man/man8/tpocket.8",
+        "path_type": "hardlink",
+        "sha256": "bde901dc831b2f6d45706bb0526e07e1696d11b2e311e89bb92049e681172bf8",
+        "size_in_bytes": 2002,
+        "sha256_in_prefix": "bde901dc831b2f6d45706bb0526e07e1696d11b2e311e89bb92049e681172bf8"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/fpocket-4.2.3-h5fd1fdb_2",
+    "type": 1
+  },
+  "requested_specs": [
+    "fpocket"
+  ]
+}

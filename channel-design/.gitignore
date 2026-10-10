@@ -1,0 +1,63 @@
+# ---------------------------------------------------------------------------
+# Generated pipeline output
+# ---------------------------------------------------------------------------
+work/
+outputs/
+docking_out/
+**/caver_results/
+**/caver_out/
+**/out/data/
+**/boltz_out/
+structures_pdb/
+**/hpc/logs/
+*.obj
+*.dat
+
+# ---------------------------------------------------------------------------
+# Never commit: model weights, licence-restricted software, build artifacts.
+# iGEM forbids committed binaries -- the source must produce the output.
+# ---------------------------------------------------------------------------
+ckpt/
+*.pt
+*.ckpt
+*.jar
+*.zip
+*.exe
+*.bin
+*.o
+*.a
+*.so
+foldx*
+**/fpocket/bin/
+**/fpocket/obj/
+**/qhull/bin/
+**/qhull/lib/
+
+# ---------------------------------------------------------------------------
+# Environments
+# ---------------------------------------------------------------------------
+# NOTE: uv.lock IS committed -- it is the dependency lockfile.
+.venv/
+venv/
+miniforge3/
+*_env/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# ---------------------------------------------------------------------------
+# Editor / OS junk
+# ---------------------------------------------------------------------------
+.DS_Store
+*.bak
+*.swp
+.idea/
+.vscode/
+
+# Your working config -- copy config_template.py to config.py and edit that.
+enzyme_design/partial_diffusion/config.py
+
+# Your sourced site overrides (copy envs/dtu-hpc.env.example)
+envs/site.env
+third_party/*
+!third_party/.gitkeep

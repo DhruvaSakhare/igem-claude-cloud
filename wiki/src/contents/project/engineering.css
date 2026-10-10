@@ -1,0 +1,448 @@
+/* Styles for the Engineering page (engineering.tsx + EngineeringFlow.tsx).
+ * Everything is prefixed `.eng-`, so nothing here reaches another page.
+ *
+ * The page runs on two accent colours, one per enzyme family. They are set on
+ * `.eng-branches[data-branch]` and read by everything inside it, so the toggle,
+ * the cycle rules and the stage initials all recolour together when the reader
+ * switches family — and a third family would be a two-line change here.
+ *
+ * The DBTL stage colours are the ones in the team's own figure (see STAGES in
+ * EngineeringFlow.tsx), not the site palette, so the ring at the top of the
+ * page and the headings further down agree with each other. */
+
+.eng-branches {
+  --eng-accent: #005075;
+  --eng-accent-soft: #d9f0fb;
+  --eng-design: #8e1b1b;
+  --eng-build: #2b35ee;
+  --eng-test: #2ec78d;
+  --eng-learn: #16173f;
+}
+
+.eng-branches[data-branch="laccases"] {
+  --eng-accent: #1f6f8b;
+  --eng-accent-soft: #daf1f8;
+}
+
+.eng-branches[data-branch="upos"] {
+  --eng-accent: #c4560f;
+  --eng-accent-soft: #fdeadd;
+}
+
+/* ========================================================================== *
+ *  Introduction
+ * ========================================================================== */
+
+.eng-intro-title {
+  margin-bottom: 1rem;
+}
+
+.eng-intro .lead {
+  color: var(--color-darkestblue);
+}
+
+.eng-intro p {
+  color: var(--color-darkestblue);
+}
+
+/* ========================================================================== *
+ *  The flow chart (.eng-flow-*)
+ * ========================================================================== */
+
+.eng-flow {
+  margin: 2.5rem 0 0.5rem;
+}
+
+/* Below the figure's natural width the rings would shrink until the letters
+   on the segments were unreadable, so the figure scrolls sideways instead. */
+.eng-flow-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.eng-flow-svg {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+}
+
+.eng-flow-rail line {
+  stroke: rgba(0, 80, 117, 0.35);
+  stroke-width: 3;
+  stroke-dasharray: 7 6;
+}
+
+.eng-flow-rail polygon {
+  fill: rgba(0, 80, 117, 0.55);
+}
+
+.eng-flow-ring {
+  cursor: pointer;
+  outline: none;
+}
+
+.eng-flow-ring:focus-visible .eng-flow-number {
+  text-decoration: underline;
+}
+
+/* The ring lifts as a whole on hover, so it reads as one clickable thing even
+   though it is drawn as four separate segments. */
+.eng-flow-ring:hover,
+.eng-flow-ring:focus-visible {
+  filter: drop-shadow(0 6px 10px rgba(0, 45, 66, 0.25));
+}
+
+.eng-flow-seg path {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* Pointing at one stage fades the other three, across all three rings — the
+   comparison the figure is for is "what does Test mean in each cycle". */
+.eng-flow-seg.is-dim path,
+.eng-flow-seg.is-dim text {
+  opacity: 0.25;
+}
+
+.eng-flow-initial {
+  fill: #ffffff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+.eng-flow-number {
+  fill: var(--color-darkblue);
+  font-family: var(--font);
+  font-size: 28px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.eng-flow-label {
+  fill: var(--color-darkblue);
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.eng-flow-sub {
+  fill: var(--color-darkestblue);
+  font-family: var(--font);
+  font-size: 14px;
+  text-anchor: middle;
+}
+
+.eng-flow-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.6rem;
+  margin-top: 0.35rem;
+  padding: 0 0.5rem;
+  color: var(--color-darkestblue);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.eng-flow-dot {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ========================================================================== *
+ *  The branch toggle (.eng-toggle-*)
+ *
+ *  Sticky under the site navbar: on a page this long the switch has to stay
+ *  reachable, otherwise changing family means scrolling back to the top.
+ * ========================================================================== */
+
+.eng-toggle-wrap {
+  position: sticky;
+  /* Clears the COLLAPSED cloud navbar, not the expanded one: the toggle only
+     ever sticks once the reader has scrolled past COLLAPSE_AFTER_PX (120px in
+     CloudNavbar.tsx), by which point the header has shrunk to
+     NAV_TOP_PADDING + CLOUD_H + 16 = 84px. Using --cloud-header-height would
+     reserve 13.7vw on a desktop — the expanded height, which is never what is
+     overhead here — and leave the toggle floating a third of a screen low. */
+  top: calc(84px + 0.5rem);
+  z-index: 5;
+  padding: 0.75rem 0;
+  /* The page background, so cycles scrolling underneath do not show through. */
+  background: linear-gradient(#b0e6ff 82%, rgba(176, 230, 255, 0));
+}
+
+.eng-toggle {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.eng-toggle-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.85rem 1.1rem;
+  border: 2px solid rgba(0, 80, 117, 0.35);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.75);
+  color: var(--color-darkblue);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.eng-toggle-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-darkblue);
+}
+
+.eng-toggle-btn:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+.eng-toggle-label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* The one-line description of a track. Hidden on the unselected button at
+   narrow widths so two pills still fit side by side. */
+.eng-toggle-blurb {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  opacity: 0.85;
+}
+
+/* The selected branch: filled in its own accent, lifted, and carrying a small
+   pointer down towards the content it controls. Colour is not the only signal
+   — the fill, the shadow and the arrow all change — so the switch still reads
+   as switched for a colour-blind reader. */
+.eng-toggle-btn.is-active {
+  position: relative;
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(0, 45, 66, 0.22);
+}
+
+.eng-toggle-btn.is-active[data-branch="laccases"] {
+  background-color: #1f6f8b;
+}
+
+.eng-toggle-btn.is-active[data-branch="upos"] {
+  background-color: #c4560f;
+}
+
+.eng-toggle-btn.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -9px;
+  width: 16px;
+  height: 16px;
+  background-color: inherit;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 3px;
+}
+
+@media (max-width: 575px) {
+  .eng-toggle {
+    gap: 0.5rem;
+  }
+
+  .eng-toggle-btn:not(.is-active) .eng-toggle-blurb {
+    display: none;
+  }
+}
+
+/* ========================================================================== *
+ *  A cycle
+ * ========================================================================== */
+
+.eng-panel {
+  margin-top: 1.5rem;
+}
+
+.eng-draft-note {
+  padding: 0.7rem 1rem;
+  border-left: 4px solid var(--color-warning);
+  border-radius: 0 0.4rem 0.4rem 0;
+  background-color: rgba(240, 173, 78, 0.16);
+  color: var(--color-darkestblue);
+  font-size: 0.95rem;
+}
+
+.eng-cycle {
+  margin-top: 2.75rem;
+  padding-top: 1.75rem;
+  border-top: 3px solid var(--eng-accent);
+}
+
+.eng-cycle-title {
+  margin-bottom: 0.9rem;
+  color: var(--eng-accent);
+}
+
+/* The question the cycle set out to answer. It is the spine of the page, so it
+   gets its own panel rather than being an italic line under the heading. */
+.eng-question {
+  margin-bottom: 1.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.6rem;
+  background-color: var(--eng-accent-soft);
+  color: var(--color-darkestblue);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.eng-question-tag {
+  display: inline-block;
+  margin-right: 0.6rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--eng-accent);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 0.12em;
+}
+
+/* --- one DBTL stage ------------------------------------------------------ */
+
+.eng-stage {
+  margin-bottom: 1.9rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--eng-stage-color, var(--color-darkblue));
+}
+
+.eng-stage-design {
+  --eng-stage-color: var(--eng-design);
+}
+.eng-stage-build {
+  --eng-stage-color: var(--eng-build);
+}
+.eng-stage-test {
+  --eng-stage-color: var(--eng-test);
+}
+.eng-stage-learn {
+  --eng-stage-color: var(--eng-learn);
+}
+
+.eng-stage-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+  color: var(--eng-stage-color);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The stage's initial in a filled disc — the same letter that labels this
+   stage's segment on the ring at the top of the page. */
+.eng-stage-initial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background-color: var(--eng-stage-color);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex: none;
+}
+
+.eng-stage-body {
+  color: var(--color-darkestblue);
+}
+
+.eng-stage-body p,
+.eng-stage-body li {
+  color: var(--color-darkestblue);
+  line-height: 1.65;
+}
+
+.eng-stage-body ul {
+  padding-left: 1.2rem;
+}
+
+.eng-stage-body li {
+  margin-bottom: 0.4rem;
+}
+
+/* A named sub-part of a stage — an assay, or one of the two engineering
+   strategies. Not a heading the contents should list, hence h4 and no id. */
+.eng-assay {
+  margin: 1.3rem 0 0.4rem;
+  color: var(--color-darkblue);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.eng-lead-in {
+  margin-bottom: 0.4rem;
+}
+
+/* The sentence a cycle ends on, carrying into the next one. */
+.eng-takeaway {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--eng-accent-soft);
+  font-weight: 600;
+}
+
+/* Work that is outstanding. Deliberately quiet and visibly different from the
+   prose around it: it must never be mistakable for a result. */
+.eng-pending {
+  margin-top: 0.9rem;
+  padding-left: 0.85rem;
+  border-left: 3px dashed rgba(0, 80, 117, 0.4);
+  color: #4a6b7c;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+/* ========================================================================== *
+ *  Future steps
+ * ========================================================================== */
+
+.eng-future {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 3px solid rgba(0, 80, 117, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eng-toggle-btn,
+  .eng-flow-seg path {
+    transition: none;
+  }
+}

@@ -1,0 +1,63 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.10.1
+Dispatch Version:       5
+Configured On:		Mon Jul 13 22:34:28 UTC 2026
+Host System:		x86_64-Linux-6.17.0-1018-azure
+Build Directory: 	
+Install Prefix:         /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking
+
+# Compiling Options
+-----------------
+C Compiler:		/home/conda/feedstock_root/build_artifacts/bld/rattler-build_libnetcdf_1783982068/build_env/bin/x86_64-conda-linux-gnu-cc
+CFLAGS:			-march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -fno-merge-constants -isystem /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/bld/rattler-build_libnetcdf_1783982068/work=/usr/local/src/conda/libnetcdf-4.10.1 -fdebug-prefix-map=/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking=/usr/local/src/conda-prefix -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O3 -DNDEBUG
+CPPFLAGS:		 
+LDFLAGS:		-Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now -Wl,--disable-new-dtags -Wl,--gc-sections -Wl,--allow-shlib-undefined -Wl,-rpath,/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib -Wl,-rpath-link,/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib -L/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib 
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		no
+Extra libraries:	 -ldf -lmfhdf -ljpeg -lhdf5 -lhdf5_hl -lm -lz -lzip -lblosc -lzstd -lbz2 -lsz -lcurl -lxml2
+XML Parser:             libxml2
+Legacy Macros:          yes
+
+# Features
+--------
+Benchmarks:		no
+NetCDF-2 API:		yes
+HDF4 Support:		yes
+HDF5 Support:		yes
+CDF5 Support:		yes
+NC-4 Parallel Support:	no
+PnetCDF Support:	no
+
+DAP2 Support:		yes
+DAP4 Support:		yes
+Byte-Range Support:	yes
+
+S3 Support:	        no
+S3 SDK:  	        none
+
+NCZarr Support:		yes
+NCZarr Zip Support:     yes
+
+Diskless Support:	yes
+MMap Support:		yes
+ERANGE Fill Support:	yes
+Relaxed Boundary Check:	yes
+
+Plugins Enabled:        yes
+Plugin Install Dir:     /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib/hdf5/plugin
+Plugin Search Path:     /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib/hdf5/plugin:/usr/local/hdf5/lib/plugin
+UDF Self-Load:          yes
+
+Quantization:		yes
+Logging:     		no
+SZIP Write Support:     yes
+Standard Filters:       deflate szip blosc zstd bz2
+ZSTD Support:           yes
+Parallel Filters:       yes

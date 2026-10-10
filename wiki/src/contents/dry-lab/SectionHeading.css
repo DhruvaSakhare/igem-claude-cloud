@@ -1,0 +1,61 @@
+/* Shared Dry Lab section headings (SectionHeading.tsx).
+ *
+ * Centred, navy, title only:
+ *   section title      45px
+ *   subsection title   30px   (what a section title used to be)
+ *   ...and `plain`     30px   same size, normal weight — see .dlh-plain below
+ *
+ * The bold subtitle and the grey lead paragraph were removed, as was the short
+ * orange rule that used to sit above a subsection title. Size and spacing are
+ * now the only things separating the two levels.
+ *
+ * WHY `#root` ON EVERY SELECTOR: App.css styles typography inside a nested
+ * `html, body, #root { h1 {...} p {...} }` block, giving those rules a
+ * specificity of (1,0,1) — an id plus an element. A bare `.dlh-title` is
+ * (0,1,0) and loses, so headings came out at App.css's 600 weight / #005075.
+ * Prefixing with `#root` makes these (1,1,0), which wins on class count. */
+
+#root .dlh {
+  text-align: center;
+  margin: 0 0 1.25rem;
+}
+
+/* Section title — the <h1> the TOC indexes. */
+#root .dlh-title {
+  margin: 0;
+  font-size: 45px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0e3a57;
+}
+
+/* Subsection: same centred family, one step down, with more air above it so the
+ * extra spacing carries the hierarchy now that the orange rule is gone. */
+#root .dlh-sub {
+  margin: 3rem 0 1rem;
+}
+#root .dlh-sub-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0e3a57;
+}
+
+/* `plain` variant (SubsectionHeading's `plain` prop): subsection SIZE, but not
+ * bold, so a label at this size does not read as a subsection heading. Only the
+ * weight is overridden — size and colour keep coming from the rule above, so
+ * the two stay the same size including at the mobile breakpoint below.
+ * Needs the extra class to out-specify that rule (1,2,0 beats 1,1,0). */
+#root .dlh-sub-title.dlh-plain {
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  #root .dlh-title {
+    font-size: 32px;
+  }
+  #root .dlh-sub-title {
+    font-size: 24px;
+  }
+}

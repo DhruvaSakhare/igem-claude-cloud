@@ -1,0 +1,33 @@
+{
+  "name": "libgfortran",
+  "version": "16.1.0",
+  "build": "h69a702a_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libgfortran-16.1.0-h69a702a_1.conda",
+  "md5": "2fbed65cc90cf0724e1ec4de13696737",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-16.1.0-h69a702a_1.conda",
+  "sha256": "9e82d410a50bd4e5e47cbbb026454c3eb543954baca4db23929575b571bf56a3",
+  "depends": [
+    "libgfortran5 16.1.0 h79bb938_1"
+  ],
+  "constrains": [
+    "libgfortran-ng ==16.1.0 *_1"
+  ],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785375470055,
+  "size": 28134,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran-16.1.0-h69a702a_1.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran-16.1.0-h69a702a_1",
+  "files": [],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": []
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgfortran-16.1.0-h69a702a_1",
+    "type": 1
+  }
+}

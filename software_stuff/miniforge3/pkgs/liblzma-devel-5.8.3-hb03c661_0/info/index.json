@@ -1,0 +1,16 @@
+{
+  "arch": "x86_64",
+  "build": "hb03c661_0",
+  "build_number": 0,
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "liblzma 5.8.3 hb03c661_0"
+  ],
+  "license": "0BSD",
+  "name": "liblzma-devel",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1775825511214,
+  "version": "5.8.3"
+}

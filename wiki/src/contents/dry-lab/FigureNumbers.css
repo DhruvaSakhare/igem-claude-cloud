@@ -1,0 +1,26 @@
+/* ========================================================================== *
+ *  Figure and table numbering (.numfigs / .numfig / .numtab) — see
+ *  FigureNumbers.tsx. Tables count on their own counter, apart from figures.
+ *
+ *  Scoped to a .numfigs root, so a shared figure component (MdFigureBlock) can
+ *  carry .numfig everywhere and only be numbered on pages that opt in.
+ * ========================================================================== */
+.numfigs {
+  counter-reset: wikifig wikitab;
+}
+.numfigs figure.numfig {
+  counter-increment: wikifig;
+}
+.numfigs figure.numfig > figcaption::before {
+  content: "Figure " counter(wikifig) ". ";
+  font-weight: 700;
+  color: #0e3a57;
+}
+.numfigs table.numtab {
+  counter-increment: wikitab;
+}
+.numfigs table.numtab > caption::before {
+  content: "Table " counter(wikitab) ". ";
+  font-weight: 700;
+  color: #0e3a57;
+}

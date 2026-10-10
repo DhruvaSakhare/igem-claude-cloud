@@ -1,0 +1,114 @@
+{
+  "name": "aws-checksums",
+  "version": "0.2.10",
+  "build": "h01ee8f8_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-checksums-0.2.10-h01ee8f8_5.conda",
+  "md5": "4d70caf5260e0787675c3bf61ae5b64c",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-checksums-0.2.10-h01ee8f8_5.conda",
+  "sha256": "f8d2cd9faccb273df739fc28431b484a90aca10027ef44f7fec1d4f0bd229a76",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785159213897,
+  "size": 101887,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-checksums-0.2.10-h01ee8f8_5.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-checksums-0.2.10-h01ee8f8_5",
+  "files": [
+    "bin/checksum-profile",
+    "include/aws/checksums/checksums.h",
+    "include/aws/checksums/crc.h",
+    "include/aws/checksums/exports.h",
+    "include/aws/checksums/xxhash.h",
+    "lib/cmake/aws-checksums/aws-checksums-config.cmake",
+    "lib/cmake/aws-checksums/shared/aws-checksums-targets-release.cmake",
+    "lib/cmake/aws-checksums/shared/aws-checksums-targets.cmake",
+    "lib/libaws-checksums.so",
+    "lib/libaws-checksums.so.1.0.0"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "bin/checksum-profile",
+        "path_type": "hardlink",
+        "sha256": "4727c81446d28573f032558bff25acf675d738bf7d1258f0244d1e5693f5be50",
+        "size_in_bytes": 16952,
+        "sha256_in_prefix": "4727c81446d28573f032558bff25acf675d738bf7d1258f0244d1e5693f5be50"
+      },
+      {
+        "_path": "include/aws/checksums/checksums.h",
+        "path_type": "hardlink",
+        "sha256": "bde060cce0b390856fde03d3929f82919c1b5491d9ac7fcf0aeac2fc4052a74b",
+        "size_in_bytes": 913,
+        "sha256_in_prefix": "bde060cce0b390856fde03d3929f82919c1b5491d9ac7fcf0aeac2fc4052a74b"
+      },
+      {
+        "_path": "include/aws/checksums/crc.h",
+        "path_type": "hardlink",
+        "sha256": "f0a17121cec331d95a7ada574747f893369ab4af38e8f9a0c707b0b08f686463",
+        "size_in_bytes": 6079,
+        "sha256_in_prefix": "f0a17121cec331d95a7ada574747f893369ab4af38e8f9a0c707b0b08f686463"
+      },
+      {
+        "_path": "include/aws/checksums/exports.h",
+        "path_type": "hardlink",
+        "sha256": "6d6d2202b28d993981927e36ee50774e39b4b4ecfa6460c4f473aa6134c6544f",
+        "size_in_bytes": 1005,
+        "sha256_in_prefix": "6d6d2202b28d993981927e36ee50774e39b4b4ecfa6460c4f473aa6134c6544f"
+      },
+      {
+        "_path": "include/aws/checksums/xxhash.h",
+        "path_type": "hardlink",
+        "sha256": "432a23066e6beebd09a78757c6b0e5160441a9a476c278a9b1b46d04d4b36242",
+        "size_in_bytes": 2446,
+        "sha256_in_prefix": "432a23066e6beebd09a78757c6b0e5160441a9a476c278a9b1b46d04d4b36242"
+      },
+      {
+        "_path": "lib/cmake/aws-checksums/aws-checksums-config.cmake",
+        "path_type": "hardlink",
+        "sha256": "ac1243406c196f025ef849fc9bb322194c13ba1c54cd86bf1e4eac984b876b80",
+        "size_in_bytes": 506,
+        "sha256_in_prefix": "ac1243406c196f025ef849fc9bb322194c13ba1c54cd86bf1e4eac984b876b80"
+      },
+      {
+        "_path": "lib/cmake/aws-checksums/shared/aws-checksums-targets-release.cmake",
+        "path_type": "hardlink",
+        "sha256": "96e1d27d9b9096a516fa51a0aa6b0c01e8149cdeeecc1ed4dc9c683fc39b5ffd",
+        "size_in_bytes": 895,
+        "sha256_in_prefix": "96e1d27d9b9096a516fa51a0aa6b0c01e8149cdeeecc1ed4dc9c683fc39b5ffd"
+      },
+      {
+        "_path": "lib/cmake/aws-checksums/shared/aws-checksums-targets.cmake",
+        "path_type": "hardlink",
+        "sha256": "f75440cb27fd33831d608b8a23ffcf2badee9708a6209e5d98f46fcfbedc735c",
+        "size_in_bytes": 4320,
+        "sha256_in_prefix": "f75440cb27fd33831d608b8a23ffcf2badee9708a6209e5d98f46fcfbedc735c"
+      },
+      {
+        "_path": "lib/libaws-checksums.so",
+        "path_type": "softlink",
+        "sha256": "745c1895dec5ae8a477217f1ade7738f15fbb82c9f035968331ee294d19eea5c",
+        "size_in_bytes": 25
+      },
+      {
+        "_path": "lib/libaws-checksums.so.1.0.0",
+        "path_type": "hardlink",
+        "sha256": "745c1895dec5ae8a477217f1ade7738f15fbb82c9f035968331ee294d19eea5c",
+        "size_in_bytes": 139488,
+        "sha256_in_prefix": "745c1895dec5ae8a477217f1ade7738f15fbb82c9f035968331ee294d19eea5c"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-checksums-0.2.10-h01ee8f8_5",
+    "type": 1
+  }
+}

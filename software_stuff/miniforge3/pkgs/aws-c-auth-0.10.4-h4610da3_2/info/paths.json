@@ -1,0 +1,85 @@
+{
+  "paths": [
+    {
+      "_path": "include/aws/auth/auth.h",
+      "path_type": "hardlink",
+      "sha256": "5cf4340d41686a2ef6ca2049e4447223de476ecf4ad32af7ae7ade7677bc1f05",
+      "size_in_bytes": 3835
+    },
+    {
+      "_path": "include/aws/auth/aws_imds_client.h",
+      "path_type": "hardlink",
+      "sha256": "469960ce1ecfaf4b5eb8e5d1d64dc373fef1a61c1780e43f7571bf3ce8456909",
+      "size_in_bytes": 19066
+    },
+    {
+      "_path": "include/aws/auth/credentials.h",
+      "path_type": "hardlink",
+      "sha256": "703b353451f60e85bf4dd57c68cb15e37007ef7000370174531fcd1a35148651",
+      "size_in_bytes": 53267
+    },
+    {
+      "_path": "include/aws/auth/exports.h",
+      "path_type": "hardlink",
+      "sha256": "3ddcb37b60040d141b66a63fb4a168aa19f541e101ea5fe1638ab37524449f2f",
+      "size_in_bytes": 852
+    },
+    {
+      "_path": "include/aws/auth/signable.h",
+      "path_type": "hardlink",
+      "sha256": "3ee67dbb4ac736584d92775d72ca5f768277fcc80d5f31bbd93ffd6aaa3b8c7b",
+      "size_in_bytes": 8518
+    },
+    {
+      "_path": "include/aws/auth/signing.h",
+      "path_type": "hardlink",
+      "sha256": "833ae094420c3dd66c012790bea45938a37f49240ca3673265ec8bf861404815",
+      "size_in_bytes": 5383
+    },
+    {
+      "_path": "include/aws/auth/signing_config.h",
+      "path_type": "hardlink",
+      "sha256": "0377237be7b9a0440b53dcd3b89b471f017af9d7706401df3d14dbd0c81342ca",
+      "size_in_bytes": 10863
+    },
+    {
+      "_path": "include/aws/auth/signing_result.h",
+      "path_type": "hardlink",
+      "sha256": "7fea744cad6d07f0e976d366836486455b70074afe5e6197b4f3403778277bff",
+      "size_in_bytes": 5830
+    },
+    {
+      "_path": "lib/cmake/aws-c-auth/aws-c-auth-config.cmake",
+      "path_type": "hardlink",
+      "sha256": "4137ae92d4ff115e1d563a8ab38cd2c67a2791f9404b684f8106d1c7555cd0d9",
+      "size_in_bytes": 682
+    },
+    {
+      "_path": "lib/cmake/aws-c-auth/shared/aws-c-auth-targets-release.cmake",
+      "path_type": "hardlink",
+      "sha256": "5c412d122b06c7936e260ea19dd66bbf4f909db68d85664719dd893963f615c3",
+      "size_in_bytes": 871
+    },
+    {
+      "_path": "lib/cmake/aws-c-auth/shared/aws-c-auth-targets.cmake",
+      "path_type": "hardlink",
+      "sha256": "b1b328f658da7da978683f17aa21cce1d0d7b0e852e1eacc63303dc9c52ec6ba",
+      "size_in_bytes": 4333
+    },
+    {
+      "_path": "lib/libaws-c-auth.so",
+      "path_type": "softlink",
+      "sha256": "8a8e898b84520c2cd8a4c92371211d9f72d96c7cc46f87bcb10108732e3d7b4b",
+      "size_in_bytes": 22
+    },
+    {
+      "_path": "lib/libaws-c-auth.so.1.0.0",
+      "path_type": "hardlink",
+      "file_mode": "binary",
+      "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/bld/rattler-build_aws-c-auth_1785199053/host_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+      "sha256": "8a8e898b84520c2cd8a4c92371211d9f72d96c7cc46f87bcb10108732e3d7b4b",
+      "size_in_bytes": 327832
+    }
+  ],
+  "paths_version": 1
+}

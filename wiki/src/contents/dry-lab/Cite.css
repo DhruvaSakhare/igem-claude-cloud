@@ -1,0 +1,46 @@
+/* Citations and reference lists on the Dry Lab pages — see Cite.tsx. */
+
+/* Inline (author, year). Quiet enough to read past in a paragraph, but clearly
+   a link: prose colour with a dotted underline rather than the page's accent,
+   so a paragraph with four citations in it does not turn into a row of
+   highlights.
+
+   `#root` on every selector here that colours a link: App.css sets
+   `a { color: var(--color-orange) }` nested inside `html, body, #root`, which
+   is (1,0,1) and beats a bare class — without this the citations come out in
+   the site's orange link colour, which at four citations to a paragraph reads
+   as a row of highlights. */
+#root .cite {
+  color: #123a52;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-darkblue);
+  white-space: nowrap;
+}
+#root .cite:hover,
+#root .cite:focus-visible {
+  color: var(--color-darkblue);
+  border-bottom-style: solid;
+}
+
+/* One entry in a References section. The list around it belongs to
+   `components/ReferenceBar` now — it lays the rows out, numbers them and wraps
+   long DOIs — so what is left here is only how a single entry reads. */
+#root .cite-entry {
+  color: #123a52;
+  line-height: 1.55;
+}
+.cite-authors {
+  font-weight: 600;
+}
+.cite-title {
+  color: var(--color-darkblue);
+}
+#root .cite-doi {
+  color: var(--color-darkblue);
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+#root .cite-doi:hover,
+#root .cite-doi:focus-visible {
+  border-bottom-style: solid;
+}

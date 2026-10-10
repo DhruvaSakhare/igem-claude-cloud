@@ -1,0 +1,27 @@
+{
+  "name": "krb5",
+  "version": "1.22.2",
+  "build": "hbde042b_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "krb5-1.22.2-hbde042b_1.conda",
+  "md5": "54157a1c8c0bb70f62dd0b17fba7e7f2",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/krb5-1.22.2-hbde042b_1.conda",
+  "sha256": "9b07046870772f28740e3f6149f09ff222843733087a33c5540b169c6289652d",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "keyutils >=1.6.3,<2.0a0",
+    "libedit >=3.1.20250104,<3.2.0a0",
+    "libedit >=3.1.20250104,<4.0a0",
+    "libgcc >=14",
+    "libstdcxx >=14",
+    "openssl >=3.5.7,<4.0a0"
+  ],
+  "constrains": [],
+  "license": "MIT",
+  "timestamp": 1781859420533,
+  "size": 1388990
+}

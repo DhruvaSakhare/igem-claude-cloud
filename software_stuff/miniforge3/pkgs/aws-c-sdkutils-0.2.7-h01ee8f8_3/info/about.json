@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-sdkutils",
+  "extra": {
+    "flow_run_id": "github_30270781888",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-sdkutils-feedstock",
+    "sha": "2e30fe35cc726591dda1dcae6db082cc7dc4952a"
+  },
+  "home": "https://github.com/awslabs/aws-c-sdkutils",
+  "license": "Apache-2.0",
+  "summary": "This is a module for the AWS SDK for C."
+}

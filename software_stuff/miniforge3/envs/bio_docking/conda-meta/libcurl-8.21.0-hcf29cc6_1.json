@@ -1,0 +1,180 @@
+{
+  "name": "libcurl",
+  "version": "8.21.0",
+  "build": "hcf29cc6_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libcurl-8.21.0-hcf29cc6_1.conda",
+  "md5": "2c1e55d695b11525c760b486ac0be517",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libcurl-8.21.0-hcf29cc6_1.conda",
+  "sha256": "7d243f45a48f62cb8e3b871dd336137fe0fb90094a191756fb553508837f6338",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "krb5 >=1.22.2,<1.23.0a0",
+    "libgcc >=14",
+    "libnghttp2 >=1.68.1,<2.0a0",
+    "libssh2 >=1.11.1,<2.0a0",
+    "libzlib >=1.3.2,<2.0a0",
+    "openssl >=3.5.7,<4.0a0",
+    "zstd >=1.5.7,<1.6.0a0"
+  ],
+  "constrains": [],
+  "license": "curl",
+  "timestamp": 1782802520033,
+  "size": 478914,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libcurl-8.21.0-hcf29cc6_1.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libcurl-8.21.0-hcf29cc6_1",
+  "files": [
+    "bin/curl-config",
+    "include/curl/curl.h",
+    "include/curl/curlver.h",
+    "include/curl/easy.h",
+    "include/curl/header.h",
+    "include/curl/mprintf.h",
+    "include/curl/multi.h",
+    "include/curl/options.h",
+    "include/curl/stdcheaders.h",
+    "include/curl/system.h",
+    "include/curl/typecheck-gcc.h",
+    "include/curl/urlapi.h",
+    "include/curl/websockets.h",
+    "lib/libcurl.so",
+    "lib/libcurl.so.4",
+    "lib/libcurl.so.4.8.0",
+    "lib/pkgconfig/libcurl.pc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "bin/curl-config",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/curl_split_recipe_1782802322823/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "68a24aeb7edf68abaad0c5842ceda376494118b93d1ce76a76c50435a8936dbc",
+        "size_in_bytes": 12501,
+        "sha256_in_prefix": "15e2ac4e88b5b84688db1cb362fe81e75cdcc636f1bf3c7600bfc1f6d4121b82"
+      },
+      {
+        "_path": "include/curl/curl.h",
+        "path_type": "hardlink",
+        "sha256": "f17ab2d4b216bd96df937dbe494ecae1ea167a3f0e56b8dea83cd32a58cca18a",
+        "size_in_bytes": 135271,
+        "sha256_in_prefix": "f17ab2d4b216bd96df937dbe494ecae1ea167a3f0e56b8dea83cd32a58cca18a"
+      },
+      {
+        "_path": "include/curl/curlver.h",
+        "path_type": "hardlink",
+        "sha256": "b63d97ec4f9cb84d6a6a952c39ab359df3509d7da9acd59c0b7e938160b2b2e4",
+        "size_in_bytes": 3052,
+        "sha256_in_prefix": "b63d97ec4f9cb84d6a6a952c39ab359df3509d7da9acd59c0b7e938160b2b2e4"
+      },
+      {
+        "_path": "include/curl/easy.h",
+        "path_type": "hardlink",
+        "sha256": "f101da02dd373151ea7b00082cb62c9d6e482361ab26b6d430ee96aab1b71565",
+        "size_in_bytes": 4000,
+        "sha256_in_prefix": "f101da02dd373151ea7b00082cb62c9d6e482361ab26b6d430ee96aab1b71565"
+      },
+      {
+        "_path": "include/curl/header.h",
+        "path_type": "hardlink",
+        "sha256": "e92525a91bb1119034dd45dd42d255ff9b6a49d964ca7105964e0107671b3395",
+        "size_in_bytes": 2922,
+        "sha256_in_prefix": "e92525a91bb1119034dd45dd42d255ff9b6a49d964ca7105964e0107671b3395"
+      },
+      {
+        "_path": "include/curl/mprintf.h",
+        "path_type": "hardlink",
+        "sha256": "a79657fa15db71e732bcb58bc4645ab65bdb3222767f34be5bab56aa0d4f4cc9",
+        "size_in_bytes": 3078,
+        "sha256_in_prefix": "a79657fa15db71e732bcb58bc4645ab65bdb3222767f34be5bab56aa0d4f4cc9"
+      },
+      {
+        "_path": "include/curl/multi.h",
+        "path_type": "hardlink",
+        "sha256": "ab3278832925f69a68852e2c6b5a300884ee5f974a2291b642a7d1ef1ed49af9",
+        "size_in_bytes": 21135,
+        "sha256_in_prefix": "ab3278832925f69a68852e2c6b5a300884ee5f974a2291b642a7d1ef1ed49af9"
+      },
+      {
+        "_path": "include/curl/options.h",
+        "path_type": "hardlink",
+        "sha256": "32fe87f843367d25a9db91a47386652402f08c9668617b4c51295ef31d93f8b0",
+        "size_in_bytes": 2402,
+        "sha256_in_prefix": "32fe87f843367d25a9db91a47386652402f08c9668617b4c51295ef31d93f8b0"
+      },
+      {
+        "_path": "include/curl/stdcheaders.h",
+        "path_type": "hardlink",
+        "sha256": "d7588b86814a35ffc3766ff6242e6f6705e04401fc9c208a195caff3503af81c",
+        "size_in_bytes": 1362,
+        "sha256_in_prefix": "d7588b86814a35ffc3766ff6242e6f6705e04401fc9c208a195caff3503af81c"
+      },
+      {
+        "_path": "include/curl/system.h",
+        "path_type": "hardlink",
+        "sha256": "edb2c507a084448a5e3c7e2b9c65c408e22ffeaca5ab0c1ee2e76d82a21113fa",
+        "size_in_bytes": 14943,
+        "sha256_in_prefix": "edb2c507a084448a5e3c7e2b9c65c408e22ffeaca5ab0c1ee2e76d82a21113fa"
+      },
+      {
+        "_path": "include/curl/typecheck-gcc.h",
+        "path_type": "hardlink",
+        "sha256": "ed36a466c3e8c8e77e9a54d7105b466257ae75f91cdd62bac7519091cc0b9bcd",
+        "size_in_bytes": 57755,
+        "sha256_in_prefix": "ed36a466c3e8c8e77e9a54d7105b466257ae75f91cdd62bac7519091cc0b9bcd"
+      },
+      {
+        "_path": "include/curl/urlapi.h",
+        "path_type": "hardlink",
+        "sha256": "4e6a8dbd7de49aa2321679c26432dc5bea6afca444975e315ef903440b34fe27",
+        "size_in_bytes": 5831,
+        "sha256_in_prefix": "4e6a8dbd7de49aa2321679c26432dc5bea6afca444975e315ef903440b34fe27"
+      },
+      {
+        "_path": "include/curl/websockets.h",
+        "path_type": "hardlink",
+        "sha256": "05b70dbce5274aa6e360703bb17d67a0390fea18bf4437745a25b08b55d6962b",
+        "size_in_bytes": 3197,
+        "sha256_in_prefix": "05b70dbce5274aa6e360703bb17d67a0390fea18bf4437745a25b08b55d6962b"
+      },
+      {
+        "_path": "lib/libcurl.so",
+        "path_type": "softlink",
+        "sha256": "22953c449459c38c3df07f6efaa270751c038ec97201ceabc37f7d00c3e76f61",
+        "size_in_bytes": 1091456
+      },
+      {
+        "_path": "lib/libcurl.so.4",
+        "path_type": "softlink",
+        "sha256": "22953c449459c38c3df07f6efaa270751c038ec97201ceabc37f7d00c3e76f61",
+        "size_in_bytes": 1091456
+      },
+      {
+        "_path": "lib/libcurl.so.4.8.0",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/curl_split_recipe_1782802322823/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "sha256": "22953c449459c38c3df07f6efaa270751c038ec97201ceabc37f7d00c3e76f61",
+        "size_in_bytes": 1091456,
+        "sha256_in_prefix": "6c9abbfd248c3f4ffe750fcb5c3dc179442e555e7cd06555d4a04e9eabc86976"
+      },
+      {
+        "_path": "lib/pkgconfig/libcurl.pc",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/curl_split_recipe_1782802322823/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "46a0c700a36ee058c40a27cea3de811a30c05319f5c9632b97dba881d05669ca",
+        "size_in_bytes": 3625,
+        "sha256_in_prefix": "3f1481f3f3da4c03d8967c9324f925f3e936aa8ed84cb5b43f52eedee0c8c1ec"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libcurl-8.21.0-hcf29cc6_1",
+    "type": 1
+  }
+}

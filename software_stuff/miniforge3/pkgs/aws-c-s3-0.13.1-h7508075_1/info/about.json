@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-s3",
+  "extra": {
+    "flow_run_id": "github_30481990249",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-s3-feedstock",
+    "sha": "0a0a72b42b5f55041c17f48d7ceb549d50b95bf6"
+  },
+  "home": "https://github.com/awslabs/aws-c-s3",
+  "license": "Apache-2.0",
+  "summary": "C99 library implementation for communicating with the S3 service."
+}

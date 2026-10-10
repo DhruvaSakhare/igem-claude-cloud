@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-compression",
+  "extra": {
+    "flow_run_id": "github_30268628338",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-compression-feedstock",
+    "sha": "18bd9260f52f88e5e5cacfde2377a0f2714aaab1"
+  },
+  "home": "https://github.com/awslabs/aws-c-compression",
+  "license": "Apache-2.0",
+  "summary": "C99 implementation of huffman encoding/decoding"
+}

@@ -1,0 +1,50 @@
+Caver computation started.
+Settings loaded from:
+/work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/Pada1_withHEMEFE_and_NNBT/config.txt
+
+Basic parameters:
+starting_point_residue 328 A
+probe_radius 0.4
+shell_radius 5.0
+shell_depth 6.0
+frame_weighting_coefficient 1.0
+frame_clustering_threshold 1.0
+
+*** Processing Pada1_withHEMEFE_and_NNBT.pdb ***
+Alternative conformations were removed from residues A:105 (removed conformation A, atoms 754 756 758 760 762 764 766 768), A:191 (removed conformation A, atoms 1441 1445 1447 1449 1451 1453 1455 1457), A:196 (removed conformation A, atoms 1488 1492 1494 1496 1498 1500), A:227 (removed conformation A, atoms 1744 1748 1750 1752 1754 1756 1758 1760) in file /work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/Pada1_withHEMEFE_and_NNBT/pdb/Pada1_withHEMEFE_and_NNBT.pdb
+1321 redundant tunnels removed.
+217 tunnels stored.
+
+Loading tunnels from /work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/Pada1_withHEMEFE_and_NNBT/out/data/tunnels/tunnels_Pada1_withHEMEFE_and_NNBT.pdb.obj
+Loaded 217 tunnels for Pada1_withHEMEFE_and_NNBT.pdb.
+217 tunnels successfully loaded.
+
+Computing average surface for 217 tunnels.
+Average surface represented by 143 points.
+Computing distance matrix using weighting_coefficient 1.0.
+Performing average link hierarchical of 217 tunnels clustering to create /work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/Pada1_withHEMEFE_and_NNBT/out/data/tree_.txt.
+Total java memory: 1258 MB.
+Allocating 1058 MB of RAM...
+Maximum allowed cluster-cluster distance matrix size is 23003, in case of memory error in the next computation phase, try to set the parameter murtagh_matrix_size to a lower value in config.txt.
+217 tunnels clustered into 51 clusters using clustering_threshold 3.5.
+
+Leaving only the cheapest tunnel per cluster per snapshot - 51 tunnels kept.
+Statistical analysis of results started.
+Saving summary information.
+Saving tunnel characteristics.
+Saving tunnel profiles.
+Statistical analysis finished.
+Visualizations started.
+Cluster subsampling for visualization: random.
+Visualizations finished.
+Calculation finished with warnings, summary is in /work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/Pada1_withHEMEFE_and_NNBT/out/warnings.txt (size 1604).
+
+-----------------------------------------------------------------------
+ Thank you for using CAVER, please cite:
+
+ Chovancova, E., Pavelka, A., Benes, P., Strnad, O., Brezovsky, J.,
+ Kozlikova, B., Gora, A., Sustr, V., Klvana, M., Medek, P.,
+ Biedermannova, L., Sochor, J. Damborsky, J. (2012) CAVER 3.0: A Tool
+ for the Analysis of Transport Pathways in Dynamic Protein Structures.
+ PLoS Comput Biol 8: e1002708. doi:10.1371/journal.pcbi.1002708
+-----------------------------------------------------------------------

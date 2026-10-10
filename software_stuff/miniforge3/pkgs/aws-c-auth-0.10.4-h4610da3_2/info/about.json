@@ -1,0 +1,19 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-io",
+  "extra": {
+    "flow_run_id": "github_30317798855",
+    "recipe-maintainers": [
+      "tkelman",
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-auth-feedstock",
+    "sha": "2313c8942241669b3a0ec0668349ff1ed59ad19e"
+  },
+  "home": "https://github.com/awslabs/aws-c-io",
+  "license": "Apache-2.0",
+  "summary": "C99 library implementation of AWS client-side authentication: standard credentials providers and signing."
+}

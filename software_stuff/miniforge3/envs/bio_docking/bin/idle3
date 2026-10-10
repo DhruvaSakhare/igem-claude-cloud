@@ -1,0 +1,5 @@
+#!/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/bin/python3.12
+
+from idlelib.pyshell import main
+if __name__ == '__main__':
+    main()

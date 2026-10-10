@@ -1,0 +1,31 @@
+.parts-table {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--color-brightblue-shadow);
+}
+
+/* Header */
+.parts-table .p-datatable-thead > tr > th {
+    background: var(--color-brightblue);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+/* Odd rows */
+.parts-table .p-datatable-tbody > tr:nth-child(odd) {
+    background: white;
+}
+
+/* Even rows */
+.parts-table .p-datatable-tbody > tr:nth-child(even) {
+    background: var(--color-lightgray);
+}
+
+/* Cells */
+.parts-table .p-datatable-tbody > tr > td {
+    border: none;
+    padding: 0.9rem 1rem;
+}
+
+

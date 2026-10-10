@@ -1,0 +1,56 @@
+{
+  "name": "libgomp",
+  "version": "16.1.0",
+  "build": "he0feb66_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libgomp-16.1.0-he0feb66_0.conda",
+  "md5": "3dd76c45d9e416a3c6e849c731068bde",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.1.0-he0feb66_0.conda",
+  "sha256": "24b6406687ad439e989071e05e7ddbe5980e048650165e61fff40f906c55cc83",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0"
+  ],
+  "constrains": [],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785269468130,
+  "size": 641292,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgomp-16.1.0-he0feb66_0.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgomp-16.1.0-he0feb66_0",
+  "files": [
+    "lib/libgomp.so",
+    "lib/libgomp.so.1.0.0",
+    "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION.gomp_copy"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "lib/libgomp.so",
+        "path_type": "softlink",
+        "sha256": "33a7b4b94efe517741dad165b01383ad5b6e779a74bb77ce05d49ed435be6607",
+        "size_in_bytes": 1674840
+      },
+      {
+        "_path": "lib/libgomp.so.1.0.0",
+        "path_type": "hardlink",
+        "sha256": "33a7b4b94efe517741dad165b01383ad5b6e779a74bb77ce05d49ed435be6607",
+        "size_in_bytes": 1674840,
+        "sha256_in_prefix": "33a7b4b94efe517741dad165b01383ad5b6e779a74bb77ce05d49ed435be6607"
+      },
+      {
+        "_path": "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION.gomp_copy",
+        "path_type": "hardlink",
+        "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+        "size_in_bytes": 3324,
+        "sha256_in_prefix": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libgomp-16.1.0-he0feb66_0",
+    "type": 1
+  }
+}

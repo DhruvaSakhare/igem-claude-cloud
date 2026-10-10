@@ -1,0 +1,16 @@
+{
+  "arch": "x86_64",
+  "build": "h01ee8f8_5",
+  "build_number": 5,
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "license": "Apache-2.0",
+  "name": "aws-checksums",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1785159213897,
+  "version": "0.2.10"
+}

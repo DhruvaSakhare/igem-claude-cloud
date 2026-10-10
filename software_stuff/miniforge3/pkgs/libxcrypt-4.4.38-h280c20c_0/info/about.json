@@ -1,0 +1,20 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/besser82/libxcrypt",
+  "extra": {
+    "feedstock-name": "libxcrypt",
+    "flow_run_id": "github_30960966141",
+    "recipe-maintainers": [
+      "chrisburr",
+      "mbargull",
+      "h-vetinari"
+    ],
+    "remote_url": "https://github.com/conda-forge/libxcrypt-feedstock",
+    "sha": "74617d2c93421fe479362fdfd77302f8a2e69a13"
+  },
+  "home": "https://github.com/besser82/libxcrypt",
+  "license": "LGPL-2.1-or-later",
+  "summary": "Extended crypt library for descrypt, md5crypt, bcrypt, and others"
+}

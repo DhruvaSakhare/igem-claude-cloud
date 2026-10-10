@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    21:
+HEADER 0  - Pocket Score                      : -0.0561
+HEADER 1  - Drug Score                        : 0.0013
+HEADER 2  - Number of alpha spheres           :    16
+HEADER 3  - Mean alpha-sphere radius          : 3.7978
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4965
+HEADER 5  - Mean B-factor of pocket residues  : 0.4756
+HEADER 6  - Hydrophobicity Score              : -14.7778
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 3.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 256.0497
+HEADER 10 - Pocket volume (convex hull)       : 9.8858
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 7.0000
+HEADER 13 - Number of apolar alpha sphere     :     8
+HEADER 14 - Proportion of apolar alpha sphere : 0.5000
+ATOM    791    O PRO A 120      55.644   9.458  53.342  0.60  4.29           O 0
+ATOM    803   CA PRO A 122      57.579  11.557  49.788  0.00  0.00           C 0
+ATOM    798    O PRO A 121      57.075  12.043  52.439  0.57  6.43           O 0
+ATOM    695  CG2 VAL A 105      60.890   5.975  51.063  0.00  0.00           C 0
+ATOM    694  CG1 VAL A 105      60.341   4.876  53.257  0.00  0.00           C 0
+ATOM    792   CB PRO A 120      56.315   9.716  56.322  0.00  0.00           C 0
+ATOM    794   CD PRO A 120      55.129   7.660  56.645  0.00  0.00           C 0
+ATOM    701  CG2 THR A 106      55.870   4.110  54.373  0.00  0.00           C 0
+ATOM      4    O GLN A  14      62.881   4.194  56.425  0.00  0.00           O 0
+ATOM      1    N GLN A  14      60.902   3.730  59.322  0.00  0.00           N 0
+ATOM      3    C GLN A  14      62.272   3.515  57.247  0.00  0.00           C 0
+ATOM      2   CA GLN A  14      62.231   3.999  58.700  0.00  0.00           C 0
+ATOM     10    N GLY A  15      61.640   2.368  56.934  0.33  3.28           N 0
+ATOM    693   CB VAL A 105      59.870   5.137  51.827  0.00  0.00           C 0
+ATOM    793   CG PRO A 120      56.068   8.629  57.337  0.00  0.00           C 0
+ATOM    815   CD PRO A 123      60.376  12.337  49.388  0.00  0.00           C 0
+ATOM    680  OD1 ASN A 103      56.606   5.813  50.788  0.68  1.07           O 0
+TER
+END

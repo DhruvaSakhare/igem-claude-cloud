@@ -1,0 +1,11 @@
+{
+  "channel_targets": "conda-forge main",
+  "c_stdlib": "sysroot",
+  "target_platform": "linux-64",
+  "c_compiler_version": "14",
+  "c_compiler": "gcc",
+  "aws_c_common": "0.14.3",
+  "c_stdlib_version": "2.17",
+  "openssl": "3.5",
+  "__glibc": "__glibc >=2.17,<3.0.a0"
+}

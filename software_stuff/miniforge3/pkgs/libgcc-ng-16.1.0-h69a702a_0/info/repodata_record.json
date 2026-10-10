@@ -1,0 +1,21 @@
+{
+  "name": "libgcc-ng",
+  "version": "16.1.0",
+  "build": "h69a702a_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libgcc-ng-16.1.0-h69a702a_0.conda",
+  "md5": "db3cc8bbdcf7e6b19b43e4b50c95b83e",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-ng-16.1.0-h69a702a_0.conda",
+  "sha256": "2d64b3c46de921c910caac4b8da85be84ac1781ddb5d563d4424267753c122cc",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libgcc 16.1.0 ha9f2e26_0"
+  ],
+  "constrains": [],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785269546419,
+  "size": 28179
+}

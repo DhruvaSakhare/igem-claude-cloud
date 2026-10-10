@@ -1,0 +1,21 @@
+{
+  "name": "libgomp",
+  "version": "16.1.0",
+  "build": "he0feb66_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libgomp-16.1.0-he0feb66_1.conda",
+  "md5": "88f2d91cb1533194c323534253094d23",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.1.0-he0feb66_1.conda",
+  "sha256": "62cb599ad0539d99386515326d9d5e8f51f75a60c69c2131b21df76edf35bd89",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0"
+  ],
+  "constrains": [],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785375373755,
+  "size": 640415
+}

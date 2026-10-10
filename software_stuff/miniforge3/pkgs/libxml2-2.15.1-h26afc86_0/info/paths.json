@@ -1,0 +1,21 @@
+{
+  "paths": [
+    {
+      "_path": "bin/xmlcatalog",
+      "file_mode": "binary",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/libxml2-split_1761015451590/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+      "sha256": "399dcc5fa5a6ce040e3338e5a6029ef2108db3755c98f83fc1cb23cdb99eee66",
+      "size_in_bytes": 26056
+    },
+    {
+      "_path": "bin/xmllint",
+      "file_mode": "binary",
+      "path_type": "hardlink",
+      "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/libxml2-split_1761015451590/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeho",
+      "sha256": "0ef772988c03fdf246fa1bfcd00527fd8ee957fc0fbe130f89808def19cb2bf3",
+      "size_in_bytes": 96544
+    }
+  ],
+  "paths_version": 1
+}

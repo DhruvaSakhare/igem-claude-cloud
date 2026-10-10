@@ -1,0 +1,10 @@
+{
+  "cross_target_platform": "linux-64",
+  "TARGET": "x86_64-conda-linux-gnu",
+  "cross_target_stdlib_version": "2.17",
+  "channel_targets": "conda-forge main",
+  "target_platform": "linux-64",
+  "cross_target_stdlib": "sysroot",
+  "cross_target_cxx_stdlib": "libstdcxx",
+  "__glibc": "__glibc >=2.17,<3.0.a0"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pcre2",
+  "version": "10.47",
+  "build": "haa7fec5_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "pcre2-10.47-haa7fec5_0.conda",
+  "md5": "7a3bff861a6583f1889021facefc08b1",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/pcre2-10.47-haa7fec5_0.conda",
+  "sha256": "5e6f7d161356fefd981948bea5139c5aa0436767751a6930cb1ca801ebb113ff",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "bzip2 >=1.0.8,<2.0a0",
+    "libgcc >=14",
+    "libzlib >=1.3.1,<2.0a0"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "license_family": "BSD",
+  "timestamp": 1763655398280,
+  "size": 1222481
+}

@@ -1,0 +1,4 @@
+stem	filter_status	pocket	druggability	volume	total_sasa	apolar_frac	n_spheres	filter_reason	docking_status	n_poses	n_passing_poses	best_score	best_d_ring	best_d_oxy	outcome
+5FUJ_heme	PASS	3	0.918	597.5	210.6	0.882	68		docking_failed						docking_failed
+5OXU_heme	PASS	2	0.895	796.6	211.1	0.765	81		docking_failed						docking_failed
+9HE9_heme	PASS	1	0.698	706.0	198.1	0.671	73		docking_failed						docking_failed

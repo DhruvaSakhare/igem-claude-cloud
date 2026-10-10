@@ -1,0 +1,23 @@
+{
+  "name": "icu",
+  "version": "75.1",
+  "build": "he02047a_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "icu-75.1-he02047a_0.conda",
+  "md5": "8b189310083baabfb622af68fd9d3ae3",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/icu-75.1-he02047a_0.conda",
+  "sha256": "71e750d509f5fa3421087ba88ef9a7b9be11c53174af3aa4d06aff4c18b38e8e",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc-ng >=12",
+    "libstdcxx-ng >=12"
+  ],
+  "constrains": [],
+  "license": "MIT",
+  "timestamp": 1720853576813,
+  "size": 12129203
+}

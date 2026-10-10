@@ -1,0 +1,137 @@
+[task 113] rfd3_partial_input_partial_rfd3_0_model_6_18_model_1
+Input  : /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/in  (1 file(s))
+Output : /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/out
+
+[RUN ] rfd3_partial_input_partial_rfd3_0_model_6_18_model_1.cif ... done  → /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/out/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1_out/
+
+All done.
+
+============================================================
+STAGE 0 — RECEPTOR PREPARATION (PDB/CIF → PDBQT)
+============================================================
+  rfd3_partial_input_partial_rfd3_0_model_6_18_model_1.cif -> rfd3_partial_input_partial_rfd3_0_model_6_18_model_1.pdbqt
+
+1 prepared, 0 already existed.
+
+[fpocket] /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/bin/python3 /work3/s215098/BioBuilders2026/tools/channel_discovery/fpocket_pipeline/run_fpocket.py /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/in -o /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/out
+
+============================================================
+STAGE 2 — POCKET FILTERING (heme-proximal)
+============================================================
+  FAIL  rfd3_partial_input_partial_rfd3_0_model_6_18_model_1  pocket 1 (min_dist=3.4Å): volume 391.9 < 500.0; total_sasa 13.3 < 80.0
+
+0 / 1 structures pass.
+
+
+============================================================
+STAGE 3 — DOCKING
+============================================================
+
+============================================================
+STAGE 4 — POSE ORIENTATION ANALYSIS
+============================================================
+Results saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_6_18_model_1/out/pocket_selection.tsv
+
+============================================================
+PIPELINE SUMMARY
+============================================================
+  Input structures   : 1
+  After filtering    : 0
+  Docking completed  : 0
+  Docking skipped    : 0
+  Orientation pass   : 0 structure(s) with ≥1 passing pose
+
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210634[113]: <cdfullA0[1-177]%40> in cluster <dcc> Done
+
+Job <cdfullA0[1-177]%40> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:12 2026
+Job was executed on host(s) <4*n-62-11-58>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:11:46 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:11:46 2026
+Terminated at Mon Aug 24 16:11:50 2026
+Results reported at Mon Aug 24 16:11:50 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# STAGE A (array): fpocket + filter + dock + pose analysis, one structure per task.
+# Submitted by submit_all.sh, which supplies -J with the right array range.
+#BSUB -q hpc
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4GB]"
+# DTU's esub rejects a -M more than 1GB above rusage[mem]. Keep them in step.
+#BSUB -M 5GB
+#BSUB -W 04:00
+#BSUB -o logs/stageA_%J_%I.out
+#BSUB -e logs/stageA_%J_%I.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+# LSF caps job arrays (MAX_JOB_ARRAY_SIZE, 1000 here), so large runs are split
+# into several arrays. Each gets an index offset substituted in at submit time;
+# LSB_JOBINDEX is always 1..size, so the offset maps it back to a manifest line.
+OFFSET="0"
+case "$OFFSET" in *OFFSET__) OFFSET=0 ;; esac
+IDX=$((LSB_JOBINDEX + OFFSET))
+STRUCT=$(sed -n "${IDX}p" "$WORK/manifest.txt")
+STEM=$(stem_of "$STRUCT")
+echo "[task ${IDX}] $STEM"
+
+# Each task gets its OWN outputs dir. This is not optional: pipeline.py
+# enumerates every structure in --outputs-dir and rewrites pocket_selection.tsv
+# from that view, so tasks sharing one dir would race and clobber the table.
+# 20_collectA.sh merges the shards afterwards.
+SHARD="$WORK/shards/$STEM"
+mkdir -p "$SHARD/in"
+cp "$STRUCT" "$SHARD/in/"
+
+# Constrain Vina to our actual LSF allocation. Without this it uses cpu=0,
+# meaning every core on the physical node — see docking.py.
+export VINA_CPU="${LSB_DJOB_NUMPROC:-4}"
+export VINA_SEED=42          # reproducible poses; drop for independent replicates
+export OMP_NUM_THREADS="$VINA_CPU"
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2.62 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   4 sec.
+    Turnaround time :                            38 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/stageA_29210634_113.err> for stderr output of this job.
+

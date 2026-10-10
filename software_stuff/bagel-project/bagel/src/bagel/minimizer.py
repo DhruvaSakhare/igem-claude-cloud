@@ -1,0 +1,449 @@
+"""
+Standard template and objects for energy minimization logic.
+
+MIT License
+
+Copyright (c) 2025 Jakub Lála, Ayham Al-Saffar, Stefano Angioletti-Uberti
+"""
+
+import pathlib as pl
+from .system import System
+from .mutation import MutationProtocol
+from abc import ABC, abstractmethod
+from typing import Callable, Any
+import numpy as np
+import inspect
+import csv
+import logging
+import datetime as dt
+import warnings
+
+# Import callbacks at the end to avoid circular imports
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .callbacks import Callback, CallbackManager, CallbackContext
+
+logger = logging.getLogger(__name__)
+
+time_stamp: Callable[[], str] = lambda: dt.datetime.now().strftime('%y%m%d_%H%M%S')
+
+
+class Minimizer(ABC):
+    """Base class for energy minimization logic."""
+
+    def __init__(
+        self,
+        mutator: MutationProtocol,
+        experiment_name: str,
+        log_frequency: int,
+        log_path: pl.Path | str | None,
+        callbacks: list['Callback'] | None = None,
+        **kwargs: Any,
+    ) -> None:
+        self.mutator = mutator
+        self.experiment_name = experiment_name
+        self.log_frequency = log_frequency
+
+        warnings.warn(
+            'log_frequency is deprecated. Please control logging cadence via callback '
+            'parameters (e.g. DefaultLogger(log_interval=...), FoldingLogger(log_interval=...)).',
+            DeprecationWarning,
+            stacklevel=2,
+        )
+
+        # Canonical logging directory for this experiment
+        self.log_path: pl.Path = self.initialize_log_path(log_path)
+
+        # Initialize callback manager (DefaultLogger is injected by callers or higher-level APIs)
+        from .callbacks import CallbackManager, DefaultLogger
+
+        if callbacks is None:
+            callbacks = [DefaultLogger(log_interval=self.log_frequency)]
+
+        self.callback_manager = CallbackManager(callbacks)
+
+        logger.debug(f'Logging path (log_path): {self.log_path}')
+        logger.debug(f'Experiment name: {self.experiment_name}')
+
+    def __post_init__(self) -> None:
+        pass
+
+    def initialize_log_path(self, log_path: None | str | pl.Path) -> pl.Path:
+        """
+        Creates folder next to the .py script run named the <self.experiment_name>. Said folder cannot already exist.
+        """
+        if isinstance(log_path, pl.Path):
+            log_path = log_path / self.experiment_name
+        elif isinstance(log_path, str):
+            log_path = pl.Path(log_path) / self.experiment_name
+        elif log_path is None:
+            executed_py_file_path = inspect.stack()[-1][1]
+            log_path = pl.Path(executed_py_file_path).resolve().parent / self.experiment_name
+        else:
+            raise ValueError(f'log_path must be a Path or str, not {type(log_path)}')
+        assert isinstance(log_path, pl.Path), f'log_path must be a Path, not {type(log_path)}'
+        log_path.mkdir(parents=True, exist_ok=True)
+        return log_path
+
+    def dump_logs(self, output_folder: pl.Path, step: int, **kwargs: Any) -> None:
+        """Dumps logs to CSV file."""
+        output_file = output_folder / f'optimization.log'
+        file_exists = output_file.exists()
+
+        with open(output_file, 'a', newline='') as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                headers = ['step'] + list(kwargs.keys())
+                writer.writerow(headers)
+            row = [step] + list(kwargs.values())
+            writer.writerow(row)
+
+    def log_initial_system(self, system: System, best_system: System) -> None:
+        """Logs initial system state."""
+        assert isinstance(self.log_path, pl.Path), f'log_path must be a Path, not {type(self.log_path)}'
+        system.dump_config(self.log_path)
+        self.log_step(0, system, best_system, False)
+
+    def log_step(self, step: int, system: System, best_system: System, new_best: bool, **kwargs: Any) -> None:
+        """
+        Logs step information.
+
+        TODO: Consider converting log_step to a callback for unified interface.
+        """
+        logger.info(f'Step={step} - ' + ' - '.join(f'{k}={v}' for k, v in kwargs.items()))
+        assert isinstance(self.log_path, pl.Path), f'log_path must be a Path, not {type(self.log_path)}'
+        if step > 0:
+            self.dump_logs(self.log_path, step, **kwargs)
+
+    @abstractmethod
+    def minimize_system(self, system: System) -> System:
+        """
+        Implement a protocol to fully minimize the loss function defined for the system.
+
+        Parameters
+        ----------
+        system : System
+            initial state of the System
+
+        Returns
+        -------
+        system : System
+            System at the end of minimization
+        """
+        raise NotImplementedError('This method should be implemented by the subclass')
+
+
+class MonteCarloMinimizer(Minimizer):
+    """Base class for Monte Carlo based minimization methods."""
+
+    def __init__(
+        self,
+        mutator: MutationProtocol,
+        temperature: float | list[float] | np.ndarray[Any, np.dtype[np.number]],
+        n_steps: int,
+        acceptance_criterion: str = 'metropolis',
+        experiment_name: str | None = None,
+        log_frequency: int = 100,
+        preserve_best_system_every_n_steps: int | None = None,
+        log_path: pl.Path | str | None = None,
+        callbacks: list['Callback'] | None = None,
+        **kwargs: Any,
+    ) -> None:
+        if experiment_name is None:
+            experiment_name = f'mc_minimizer_{time_stamp()}'
+
+        self.temperature_schedule: np.ndarray[Any, np.dtype[np.number]]
+
+        if isinstance(temperature, float):
+            self.temperature_schedule = np.full(shape=n_steps, fill_value=temperature)
+        elif isinstance(temperature, list) or isinstance(temperature, np.ndarray):
+            self.temperature_schedule = np.array(temperature)
+            if len(self.temperature_schedule) != n_steps:
+                raise ValueError(
+                    f'temperature must be a float or a list/array of floats with length {n_steps}, not {len(self.temperature_schedule)}'
+                )
+        else:
+            raise ValueError(f'temperature must be a float or a list/array of floats, not {type(temperature)}')
+
+        self.n_steps = n_steps
+        self.preserve_best_system_every_n_steps = preserve_best_system_every_n_steps
+        self.acceptance_criterion = self._get_acceptance_criterion(acceptance_criterion)
+        super().__init__(
+            mutator=mutator,
+            experiment_name=experiment_name,
+            log_frequency=log_frequency,
+            log_path=log_path,
+            callbacks=callbacks,
+            **kwargs,
+        )
+
+    def _get_acceptance_criterion(self, name: str) -> Callable[[float, float], float]:
+        """
+        Get the acceptance criterion function based on name.
+
+        Parameters
+        ----------
+        name : str
+            Name of the acceptance criterion. Currently supported:
+            - "metropolis": Metropolis criterion exp(-ΔE/T)
+
+        Returns
+        -------
+        Callable[[float, float], float]
+            Function that takes delta_energy and temperature and returns acceptance probability
+        """
+        if name == 'metropolis':
+            return lambda delta_energy, temperature: float(np.exp(-delta_energy / temperature))
+        else:
+            raise ValueError(f'Unknown acceptance criterion: {name}')
+
+    def _before_step(self, system: System, step: int) -> System:
+        """Hook called before each Monte Carlo step."""
+        return system
+
+    def _after_step(
+        self,
+        system: System,
+        best_system: System,
+        step: int,
+        new_best: bool,
+        accept: bool,
+        **kwargs: Any,
+    ) -> tuple[System, bool]:
+        """
+        Hook called after each Monte Carlo step.
+
+        This is the final post-step processing point. It:
+        1. Runs existing preserve_best_system logic (if applicable)
+        2. Extracts metrics and creates CallbackContext
+        3. Executes all callbacks
+        4. Calls log_step as default behavior
+        5. Returns system and early stopping flag
+
+        Parameters
+        ----------
+        system : System
+            Current system state after the step.
+        best_system : System
+            Best system found so far.
+        step : int
+            Current step number (1-indexed). The loop passes 1, 2, 3, ... where
+            step 1 = after first mutation, step 2 = after second mutation, etc.
+        new_best : bool
+            Whether this step found a new best system.
+        accept : bool
+            Whether the mutation was accepted.
+        **kwargs : Any
+            Additional step-specific keyword arguments (e.g., temperature).
+
+        Returns
+        -------
+        tuple[System, bool]
+            Tuple of (system, should_stop) where should_stop indicates if
+            optimization should stop early.
+        """
+        # Run existing preserve_best_system logic first
+        if self.preserve_best_system_every_n_steps is not None:
+            if step % self.preserve_best_system_every_n_steps == 0:
+                logger.debug(f'Starting new cycle with best system from previous cycle')
+                system = best_system.__copy__()
+
+        # Extract metrics and create callback context
+        from .callbacks import CallbackContext
+
+        metrics = self.callback_manager.extract_metrics(system, best_system)
+        step_kwargs = {'accept': accept, **kwargs}
+        # Callback context uses step directly from loop (1, 2, 3...) which represents
+        # step 1 = after first mutation, step 2 = after second mutation, etc.
+        context = CallbackContext(
+            step=step,
+            system=system,
+            best_system=best_system,
+            new_best=new_best,
+            metrics=metrics,
+            minimizer=self,
+            step_kwargs=step_kwargs,
+        )
+
+        # Execute callbacks
+        should_stop = self.callback_manager.on_step_end(context)
+
+        self.log_step(step, system, best_system, new_best, **step_kwargs)
+
+        return system, should_stop
+
+    def minimize_one_step(self, step: int, system: System) -> tuple[System, bool]:
+        """Perform one Monte Carlo step."""
+        mutated_system, _ = self.mutator.one_step(system.__copy__())
+        delta_energy = mutated_system.get_total_energy() - system.get_total_energy()
+
+        acceptance_probability = self.acceptance_criterion(delta_energy, self.temperature_schedule[step - 1])
+        logger.debug(f'{delta_energy=}, {acceptance_probability=}')
+
+        if acceptance_probability > np.random.uniform(low=0.0, high=1.0):
+            return mutated_system, True
+        return system, False
+
+    def minimize_system(self, system: System) -> System:
+        """Minimize system using Monte Carlo method."""
+        system.get_total_energy()  # update the energy internally
+        best_system = system.__copy__()
+        system_energy = system.get_total_energy()
+        if system_energy is None:
+            raise ValueError('Cannot start without system having a calculated energy')
+        best_system_energy = best_system.get_total_energy()
+        if best_system_energy is None:
+            raise ValueError('Cannot start without lowest energy system having a calculated energy')
+
+        # Create initial callback context and call on_optimization_start
+        from .callbacks import CallbackContext
+
+        initial_metrics = self.callback_manager.extract_metrics(system, best_system)
+        initial_context = CallbackContext(
+            step=0,
+            system=system,
+            best_system=best_system,
+            new_best=False,
+            metrics=initial_metrics,
+            minimizer=self,
+            step_kwargs={},
+        )
+        self.callback_manager.on_optimization_start(initial_context)
+
+        self.log_initial_system(system, best_system)
+
+        step = 0
+        for step in range(1, self.n_steps + 1):
+            system = self._before_step(system, step)
+            system, accept = self.minimize_one_step(step, system)
+
+            system_energy = system.get_total_energy()
+            if system_energy is None:
+                raise ValueError('Cannot evolve system if current energy not available')
+
+            new_best = False
+            if system_energy < best_system.get_total_energy():
+                new_best = True
+                best_system = system.__copy__()
+
+            system, should_stop = self._after_step(
+                system,
+                best_system,
+                step,
+                new_best,
+                accept,
+                temperature=self.temperature_schedule[step - 1],
+            )
+
+            # Check for early stopping
+            if should_stop:
+                logger.info(f'Early stopping triggered at step {step}')
+                break
+
+        # Create final callback context and call on_optimization_end
+        final_metrics = self.callback_manager.extract_metrics(best_system, best_system)
+        final_context = CallbackContext(
+            step=step,
+            system=best_system,
+            best_system=best_system,
+            new_best=False,
+            metrics=final_metrics,
+            minimizer=self,
+            step_kwargs={},
+        )
+        self.callback_manager.on_optimization_end(final_context)
+
+        best_final_energy = best_system.get_total_energy()
+        if best_final_energy is None:
+            raise ValueError(f'Best energy cannot be None!')
+        return best_system
+
+
+class SimulatedAnnealing(MonteCarloMinimizer):
+    """Simulated annealing with linearly decreasing temperature schedule."""
+
+    def __init__(
+        self,
+        mutator: MutationProtocol,
+        initial_temperature: float,
+        final_temperature: float,
+        n_steps: int,
+        acceptance_criterion: str = 'metropolis',
+        experiment_name: str | None = None,
+        log_frequency: int = 100,
+        preserve_best_system_every_n_steps: int | None = None,
+        log_path: pl.Path | str | None = None,
+        callbacks: list['Callback'] | None = None,
+        **kwargs: Any,
+    ) -> None:
+        if experiment_name is None:
+            experiment_name = f'simulated_annealing_{time_stamp()}'
+        super().__init__(
+            mutator=mutator,
+            temperature=initial_temperature,  # This will be overwritten
+            n_steps=n_steps,
+            acceptance_criterion=acceptance_criterion,
+            experiment_name=experiment_name,
+            log_frequency=log_frequency,
+            preserve_best_system_every_n_steps=preserve_best_system_every_n_steps,
+            log_path=log_path,
+            callbacks=callbacks,
+            **kwargs,
+        )
+
+        self.initial_temperature = initial_temperature
+        self.final_temperature = final_temperature
+        self.temperature_schedule = np.linspace(
+            start=self.initial_temperature, stop=self.final_temperature, num=self.n_steps
+        )
+
+
+class SimulatedTempering(MonteCarloMinimizer):
+    """Simulated tempering with cycling temperature schedule."""
+
+    def __init__(
+        self,
+        mutator: MutationProtocol,
+        high_temperature: float,
+        low_temperature: float,
+        n_steps_high: int,
+        n_steps_low: int,
+        n_cycles: int,
+        acceptance_criterion: str = 'metropolis',
+        experiment_name: str | None = None,
+        log_frequency: int = 100,
+        preserve_best_system_every_n_steps: int | None = None,
+        log_path: pl.Path | str | None = None,
+        callbacks: list['Callback'] | None = None,
+        **kwargs: Any,
+    ) -> None:
+        if experiment_name is None:
+            experiment_name = f'simulated_tempering_{time_stamp()}'
+        total_n_steps = (n_steps_low + n_steps_high) * n_cycles
+        super().__init__(
+            mutator=mutator,
+            temperature=low_temperature,  # This will be overwritten
+            n_steps=total_n_steps,
+            acceptance_criterion=acceptance_criterion,
+            experiment_name=experiment_name,
+            log_frequency=log_frequency,
+            preserve_best_system_every_n_steps=preserve_best_system_every_n_steps,
+            log_path=log_path,
+            callbacks=callbacks,
+            **kwargs,
+        )
+
+        self.high_temperature = high_temperature
+        self.low_temperature = low_temperature
+        self.n_steps_high = n_steps_high
+        self.n_steps_low = n_steps_low
+        self.n_cycles = n_cycles
+
+        cycle_temperatures = np.concatenate(
+            [
+                np.full(shape=self.n_steps_low, fill_value=self.low_temperature),
+                np.full(shape=self.n_steps_high, fill_value=self.high_temperature),
+            ]
+        )
+        self.temperature_schedule = np.tile(cycle_temperatures, reps=self.n_cycles)

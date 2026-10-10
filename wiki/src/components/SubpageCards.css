@@ -1,0 +1,97 @@
+/* =============================================================================
+ * SubpageCards — shared across all pages.
+ *
+ * TO RESTYLE FOR ONE PAGE, override these variables rather than the rules
+ * below — either in that page's CSS:
+ *
+ *     .my-page-hero .subpage-cards { --subpage-card-bg: #1b4d3e; }
+ *
+ * or inline:  <SubpageCards style={{ "--subpage-card-bg": "#1b4d3e" }} … />
+ *
+ * Variables override cleanly with no specificity fights, which matters here:
+ * App.css colours every link with an ID-level selector (#root a).
+ * ========================================================================== */
+.subpage-cards {
+  --subpage-card-columns: 3;
+  --subpage-card-gap: 0.9rem;
+  --subpage-cards-max-width: 560px;
+  /* Dark panel: the illustrations are drawn for a dark ground, and white
+     strokes (e.g. Discovery's tree) all but vanish on the light-blue page. */
+  --subpage-card-bg: var(--color-darkblue);
+  --subpage-card-radius: 2rem;
+  --subpage-card-shadow: 0 6px 18px rgba(14, 58, 87, 0.22);
+  --subpage-card-shadow-hover: 0 12px 26px rgba(14, 58, 87, 0.32);
+  --subpage-card-title-color: var(--color-orange);
+  --subpage-card-title-size: clamp(1.35rem, 3vw, 1.75rem);
+
+  display: grid;
+  grid-template-columns: repeat(var(--subpage-card-columns), minmax(0, 1fr));
+  gap: var(--subpage-card-gap);
+  max-width: var(--subpage-cards-max-width);
+}
+@media (max-width: 520px) {
+  .subpage-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.subpage-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: var(--subpage-card-radius);
+  overflow: hidden;
+  background: var(--subpage-card-bg);
+  box-shadow: var(--subpage-card-shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.subpage-card:hover,
+.subpage-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--subpage-card-shadow-hover);
+}
+
+.subpage-card-art {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3; /* must match ART_FRAME_ASPECT in SubpageCards.tsx */
+  overflow: hidden;
+}
+.subpage-card-art img {
+  /* Sized and offset per illustration by artFrame(), which crops each one to
+     its drawing so they all come out at a matching scale. */
+  position: absolute;
+  max-width: none;
+}
+
+.subpage-card-placeholder {
+  position: absolute;
+  inset: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed rgba(255, 255, 255, 0.35);
+  border-radius: calc(var(--subpage-card-radius) * 0.6);
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.subpage-card-title {
+  display: block;
+  padding: 0.55rem 0.8rem 0.75rem;
+  text-align: center;
+  /* Same display face as the big page titles, at card size. */
+  font-family: "iGEM Wiki Header", var(--font);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: var(--subpage-card-title-size);
+  line-height: 1.1;
+  /* !important: App.css colours every #root link orange with ID specificity,
+     which would otherwise beat the variable. */
+  color: var(--subpage-card-title-color) !important;
+}

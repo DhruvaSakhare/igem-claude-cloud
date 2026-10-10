@@ -1,0 +1,38 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    10:
+HEADER 0  - Pocket Score                      : 0.0330
+HEADER 1  - Drug Score                        : 0.0069
+HEADER 2  - Number of alpha spheres           :    19
+HEADER 3  - Mean alpha-sphere radius          : 4.0583
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5945
+HEADER 5  - Mean B-factor of pocket residues  : 0.1271
+HEADER 6  - Hydrophobicity Score              : 42.2000
+HEADER 7  - Polarity Score                    :     2
+HEADER 8  - Amino Acid based volume Score     : 4.4000
+HEADER 9  - Pocket volume (Monte Carlo)       : 266.6653
+HEADER 10 - Pocket volume (convex hull)       : 11.9517
+HEADER 11 - Charge Score                      :    -1
+HEADER 12 - Local hydrophobic density Score   : 16.0000
+HEADER 13 - Number of apolar alpha sphere     :    17
+HEADER 14 - Proportion of apolar alpha sphere : 0.8947
+ATOM   2124   CB PHE A 274       2.153  13.791   4.505  0.00  0.00           C 0
+ATOM   1924  CG2 VAL A 248       5.758  11.401   0.161  0.00  0.00           C 0
+ATOM   1923  CG1 VAL A 248       4.074  12.672  -1.199  0.00  0.00           C 0
+ATOM   1896   CA GLU A 245       9.323  14.577  -0.250  0.00  0.00           C 0
+ATOM   1922   CB VAL A 248       5.524  12.193  -1.119  0.00  0.00           C 0
+ATOM   1899   CB GLU A 245       9.587  16.068   0.027  0.00  0.00           C 0
+ATOM   1893  CG1 VAL A 244      10.002  12.449   3.596  0.00  0.00           C 0
+ATOM   1895    N GLU A 245      10.140  13.722   0.617  0.00  0.00           N 0
+ATOM   2128  CE1 PHE A 274       4.042  10.540   4.964  0.00  0.00           C 0
+ATOM   1894  CG2 VAL A 244       9.266  10.229   2.650  0.00  0.00           C 0
+ATOM   2126  CD1 PHE A 274       3.466  11.775   5.215  0.00  0.00           C 0
+ATOM   2127  CD2 PHE A 274       2.699  11.886   2.954  0.00  0.00           C 0
+ATOM   1898    O GLU A 245       8.474  14.321  -2.477  0.00  0.00           O 0
+ATOM   1925    N GLN A 249       6.315  13.140  -3.946  0.00  0.00           N 0
+ATOM   1932  NE2 GLN A 249       5.298  17.437  -4.956  0.00  0.00           N 0
+ATOM   2125   CG PHE A 274       2.787  12.461   4.217  0.00  0.00           C 0
+TER
+END

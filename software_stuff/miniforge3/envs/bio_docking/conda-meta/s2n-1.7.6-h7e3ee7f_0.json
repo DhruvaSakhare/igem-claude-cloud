@@ -1,0 +1,185 @@
+{
+  "name": "s2n",
+  "version": "1.7.6",
+  "build": "h7e3ee7f_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "s2n-1.7.6-h7e3ee7f_0.conda",
+  "md5": "e112cadcd79412d81496e784884bddf0",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/s2n-1.7.6-h7e3ee7f_0.conda",
+  "sha256": "1e1ccc56fdf3fe82150b4eac1d626c806e612af208fbf40ce3abfe9a2eb2a626",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "openssl >=3.5.7,<4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1784674401024,
+  "size": 393680,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/s2n-1.7.6-h7e3ee7f_0.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/s2n-1.7.6-h7e3ee7f_0",
+  "files": [
+    "include/s2n.h",
+    "include/s2n/unstable/allow_ip_in_cn.h",
+    "include/s2n/unstable/async_offload.h",
+    "include/s2n/unstable/cert_authorities.h",
+    "include/s2n/unstable/cleanup.h",
+    "include/s2n/unstable/crl.h",
+    "include/s2n/unstable/custom_x509_extensions.h",
+    "include/s2n/unstable/events.h",
+    "include/s2n/unstable/fingerprint.h",
+    "include/s2n/unstable/ktls.h",
+    "include/s2n/unstable/npn.h",
+    "include/s2n/unstable/renegotiate.h",
+    "lib/libs2n.so",
+    "lib/libs2n.so.1",
+    "lib/libs2n.so.1.0.0",
+    "lib/s2n/cmake/modules/Findcrypto.cmake",
+    "lib/s2n/cmake/s2n-config.cmake",
+    "lib/s2n/cmake/shared/s2n-targets-release.cmake",
+    "lib/s2n/cmake/shared/s2n-targets.cmake"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "include/s2n.h",
+        "path_type": "hardlink",
+        "sha256": "bc1a46b6ada97f8066589e53b65e4ba4170a76fd3da430b59decd860d0a56646",
+        "size_in_bytes": 189304,
+        "sha256_in_prefix": "bc1a46b6ada97f8066589e53b65e4ba4170a76fd3da430b59decd860d0a56646"
+      },
+      {
+        "_path": "include/s2n/unstable/allow_ip_in_cn.h",
+        "path_type": "hardlink",
+        "sha256": "69c93cc190daac07d8e554b0da0bf9c7e8b10cf447be089c8f33996b3ee9e618",
+        "size_in_bytes": 1930,
+        "sha256_in_prefix": "69c93cc190daac07d8e554b0da0bf9c7e8b10cf447be089c8f33996b3ee9e618"
+      },
+      {
+        "_path": "include/s2n/unstable/async_offload.h",
+        "path_type": "hardlink",
+        "sha256": "d0122a16e737a939220d1bd7ced295f567e1c5bf82c19539436e36a1afa4e74d",
+        "size_in_bytes": 4055,
+        "sha256_in_prefix": "d0122a16e737a939220d1bd7ced295f567e1c5bf82c19539436e36a1afa4e74d"
+      },
+      {
+        "_path": "include/s2n/unstable/cert_authorities.h",
+        "path_type": "hardlink",
+        "sha256": "c4071035675c5dba09bc5c025a979fc0c7aac270d9e122779369e24a38798645",
+        "size_in_bytes": 4681,
+        "sha256_in_prefix": "c4071035675c5dba09bc5c025a979fc0c7aac270d9e122779369e24a38798645"
+      },
+      {
+        "_path": "include/s2n/unstable/cleanup.h",
+        "path_type": "hardlink",
+        "sha256": "aff584c81084a3d4e3e63aba5c288e9c433e7b352b5fc0da65cc23a7e3e96719",
+        "size_in_bytes": 913,
+        "sha256_in_prefix": "aff584c81084a3d4e3e63aba5c288e9c433e7b352b5fc0da65cc23a7e3e96719"
+      },
+      {
+        "_path": "include/s2n/unstable/crl.h",
+        "path_type": "hardlink",
+        "sha256": "7f0054982e8181ded019c3a3ae3c281acc58f45b379fc981ed1ab59037a94345",
+        "size_in_bytes": 10927,
+        "sha256_in_prefix": "7f0054982e8181ded019c3a3ae3c281acc58f45b379fc981ed1ab59037a94345"
+      },
+      {
+        "_path": "include/s2n/unstable/custom_x509_extensions.h",
+        "path_type": "hardlink",
+        "sha256": "278617f1041f314671172a5cee04cc4ed6fa3e64e9ee5f3fccbbc4d96f764d95",
+        "size_in_bytes": 2511,
+        "sha256_in_prefix": "278617f1041f314671172a5cee04cc4ed6fa3e64e9ee5f3fccbbc4d96f764d95"
+      },
+      {
+        "_path": "include/s2n/unstable/events.h",
+        "path_type": "hardlink",
+        "sha256": "13f418a8a08d92f3c6844c25a1daf955dbb1e195ff1f8eb67fbd4d8c8d85c404",
+        "size_in_bytes": 5033,
+        "sha256_in_prefix": "13f418a8a08d92f3c6844c25a1daf955dbb1e195ff1f8eb67fbd4d8c8d85c404"
+      },
+      {
+        "_path": "include/s2n/unstable/fingerprint.h",
+        "path_type": "hardlink",
+        "sha256": "925fb3d587e3f6c133818a0958bbb18abd199c497511ded7e0f5e07dbe5bdf4b",
+        "size_in_bytes": 9279,
+        "sha256_in_prefix": "925fb3d587e3f6c133818a0958bbb18abd199c497511ded7e0f5e07dbe5bdf4b"
+      },
+      {
+        "_path": "include/s2n/unstable/ktls.h",
+        "path_type": "hardlink",
+        "sha256": "52b6c8f2ceaac03e16878e60347911b11cfe155957651b430322782771769f85",
+        "size_in_bytes": 7764,
+        "sha256_in_prefix": "52b6c8f2ceaac03e16878e60347911b11cfe155957651b430322782771769f85"
+      },
+      {
+        "_path": "include/s2n/unstable/npn.h",
+        "path_type": "hardlink",
+        "sha256": "0b917b69243f47a3bc3995d45e1913319f466e1f047f6f5a4a8dab2a9e0dbf3c",
+        "size_in_bytes": 2141,
+        "sha256_in_prefix": "0b917b69243f47a3bc3995d45e1913319f466e1f047f6f5a4a8dab2a9e0dbf3c"
+      },
+      {
+        "_path": "include/s2n/unstable/renegotiate.h",
+        "path_type": "hardlink",
+        "sha256": "e99ba2d196076e722738494fd3cf6e61f95651a1d77f7db29286d0ad40a2e793",
+        "size_in_bytes": 8944,
+        "sha256_in_prefix": "e99ba2d196076e722738494fd3cf6e61f95651a1d77f7db29286d0ad40a2e793"
+      },
+      {
+        "_path": "lib/libs2n.so",
+        "path_type": "softlink",
+        "sha256": "f5555c7032a4905bc452ccbb730bb65425722f5876e977b50df55a2867484c4e",
+        "size_in_bytes": 1648968
+      },
+      {
+        "_path": "lib/libs2n.so.1",
+        "path_type": "softlink",
+        "sha256": "f5555c7032a4905bc452ccbb730bb65425722f5876e977b50df55a2867484c4e",
+        "size_in_bytes": 1648968
+      },
+      {
+        "_path": "lib/libs2n.so.1.0.0",
+        "path_type": "hardlink",
+        "sha256": "f5555c7032a4905bc452ccbb730bb65425722f5876e977b50df55a2867484c4e",
+        "size_in_bytes": 1648968,
+        "sha256_in_prefix": "f5555c7032a4905bc452ccbb730bb65425722f5876e977b50df55a2867484c4e"
+      },
+      {
+        "_path": "lib/s2n/cmake/modules/Findcrypto.cmake",
+        "path_type": "hardlink",
+        "sha256": "1f0bc98c53345c40a0e9a9056ce791810ab1e3918edaa8195645d8571676fd7a",
+        "size_in_bytes": 3904,
+        "sha256_in_prefix": "1f0bc98c53345c40a0e9a9056ce791810ab1e3918edaa8195645d8571676fd7a"
+      },
+      {
+        "_path": "lib/s2n/cmake/s2n-config.cmake",
+        "path_type": "hardlink",
+        "sha256": "a12dff5dd700667a7faa53845074dc011dcafc2597729c1349eb276210edd18e",
+        "size_in_bytes": 785,
+        "sha256_in_prefix": "a12dff5dd700667a7faa53845074dc011dcafc2597729c1349eb276210edd18e"
+      },
+      {
+        "_path": "lib/s2n/cmake/shared/s2n-targets-release.cmake",
+        "path_type": "hardlink",
+        "sha256": "063de9a6f04e6e8d5b1a6f4fedc1867b50afb4f96a113cf6ea6d6d3b929de1ec",
+        "size_in_bytes": 811,
+        "sha256_in_prefix": "063de9a6f04e6e8d5b1a6f4fedc1867b50afb4f96a113cf6ea6d6d3b929de1ec"
+      },
+      {
+        "_path": "lib/s2n/cmake/shared/s2n-targets.cmake",
+        "path_type": "hardlink",
+        "sha256": "3d979666668d9f73a60d97f312cdb80cf4133dab88e73363ba2338316a25065e",
+        "size_in_bytes": 4223,
+        "sha256_in_prefix": "3d979666668d9f73a60d97f312cdb80cf4133dab88e73363ba2338316a25065e"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/s2n-1.7.6-h7e3ee7f_0",
+    "type": 1
+  }
+}

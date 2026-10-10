@@ -1,0 +1,24 @@
+{
+  "name": "libaec",
+  "version": "1.1.5",
+  "build": "h088129d_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libaec-1.1.5-h088129d_0.conda",
+  "md5": "86f7414544ae606282352fa1e116b41f",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libaec-1.1.5-h088129d_0.conda",
+  "sha256": "822e4ae421a7e9c04e841323526321185f6659222325e1a9aedec811c686e688",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "libstdcxx >=14"
+  ],
+  "constrains": [],
+  "license": "BSD-2-Clause",
+  "license_family": "BSD",
+  "timestamp": 1769221884824,
+  "size": 36544
+}

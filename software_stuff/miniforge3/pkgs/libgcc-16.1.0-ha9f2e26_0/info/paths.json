@@ -1,0 +1,95 @@
+{
+  "paths": [
+    {
+      "_path": "lib/libatomic.so",
+      "path_type": "softlink",
+      "sha256": "2ba8ac44a2182cce900775ce4aa501eb4963c1f3fadcb9d42d0b4b41f22439a8",
+      "size_in_bytes": 174080
+    },
+    {
+      "_path": "lib/libatomic.so.1",
+      "path_type": "softlink",
+      "sha256": "2ba8ac44a2182cce900775ce4aa501eb4963c1f3fadcb9d42d0b4b41f22439a8",
+      "size_in_bytes": 174080
+    },
+    {
+      "_path": "lib/libatomic.so.1.2.0",
+      "path_type": "hardlink",
+      "sha256": "2ba8ac44a2182cce900775ce4aa501eb4963c1f3fadcb9d42d0b4b41f22439a8",
+      "size_in_bytes": 174080
+    },
+    {
+      "_path": "lib/libgcc_s.so",
+      "path_type": "hardlink",
+      "sha256": "69a56a9993b7729b29b274e65016031c81f2397f176ed5ad44d59bd50425e0bd",
+      "size_in_bytes": 132
+    },
+    {
+      "_path": "lib/libgcc_s.so.1",
+      "path_type": "hardlink",
+      "sha256": "b0d638303806db1eaed3b02c9746aff8ceebccb53fbfba25408bd89c4a15587c",
+      "size_in_bytes": 921296
+    },
+    {
+      "_path": "lib/libgcc_s_asneeded.so",
+      "path_type": "hardlink",
+      "sha256": "10bc094393cfacd92e7683eff066803c7c5bfd51ac8ee8eb7b57847a4c9b3ebb",
+      "size_in_bytes": 108
+    },
+    {
+      "_path": "lib/libitm.so",
+      "path_type": "softlink",
+      "sha256": "909ceedc780c708613d3009a5cd168c8d4b6c0cd6c94dc9faf4baba1a324c92f",
+      "size_in_bytes": 1026536
+    },
+    {
+      "_path": "lib/libitm.so.1",
+      "path_type": "softlink",
+      "sha256": "909ceedc780c708613d3009a5cd168c8d4b6c0cd6c94dc9faf4baba1a324c92f",
+      "size_in_bytes": 1026536
+    },
+    {
+      "_path": "lib/libitm.so.1.0.0",
+      "path_type": "hardlink",
+      "sha256": "909ceedc780c708613d3009a5cd168c8d4b6c0cd6c94dc9faf4baba1a324c92f",
+      "size_in_bytes": 1026536
+    },
+    {
+      "_path": "lib/libquadmath.so",
+      "path_type": "softlink",
+      "sha256": "be7c4d984bb5e0221a9072821313e6c2114f4f6ad6028caa7e4e547c575d0f74",
+      "size_in_bytes": 991576
+    },
+    {
+      "_path": "lib/libquadmath.so.0",
+      "path_type": "softlink",
+      "sha256": "be7c4d984bb5e0221a9072821313e6c2114f4f6ad6028caa7e4e547c575d0f74",
+      "size_in_bytes": 991576
+    },
+    {
+      "_path": "lib/libquadmath.so.0.0.0",
+      "path_type": "hardlink",
+      "sha256": "be7c4d984bb5e0221a9072821313e6c2114f4f6ad6028caa7e4e547c575d0f74",
+      "size_in_bytes": 991576
+    },
+    {
+      "_path": "share/info/libgomp.info",
+      "path_type": "hardlink",
+      "sha256": "e71a6c9d94103477d7383e76fdd1924ac705fdf46301ac720492c9a75b359dfa",
+      "size_in_bytes": 384263
+    },
+    {
+      "_path": "share/info/libquadmath.info",
+      "path_type": "hardlink",
+      "sha256": "e6d4034d7e01dfdf91e4c51bef4eab57e81109d6732921c81b429c84c9181889",
+      "size_in_bytes": 37234
+    },
+    {
+      "_path": "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION",
+      "path_type": "hardlink",
+      "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+      "size_in_bytes": 3324
+    }
+  ],
+  "paths_version": 1
+}

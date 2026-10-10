@@ -1,0 +1,95 @@
+[task 13] rfd3_partial_input_partial_rfd3_0_model_0_2_model_1 — not PASS in Stage A, skipping
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210636[13]: <cdfullB0[1-177]%40> in cluster <dcc> Done
+
+Job <cdfullB0[1-177]%40> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:13 2026
+Job was executed on host(s) <n-62-29-31>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:12:59 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:12:59 2026
+Terminated at Mon Aug 24 16:13:01 2026
+Results reported at Mon Aug 24 16:13:01 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# STAGE B (array): CAVER tunnel detection, one structure per task.
+# CAVER is a single JVM capped at -Xmx1200m (hardcoded in run_batch.py), so one
+# core and modest memory is right. Raise both together if you hit OOM on large
+# receptors — the -Xmx is at caver_pipeline/python_scripts/run_batch.py:218.
+#BSUB -q hpc
+#BSUB -n 1
+#BSUB -R "rusage[mem=4GB]"
+# DTU's esub rejects a -M more than 1GB above rusage[mem]. Keep them in step.
+#BSUB -M 5GB
+#BSUB -W 02:00
+#BSUB -o logs/stageB_%J_%I.out
+#BSUB -e logs/stageB_%J_%I.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+# LSF caps job arrays (MAX_JOB_ARRAY_SIZE, 1000 here), so large runs are split
+# into several arrays. Each gets an index offset substituted in at submit time;
+# LSB_JOBINDEX is always 1..size, so the offset maps it back to a manifest line.
+OFFSET="0"
+case "$OFFSET" in *OFFSET__) OFFSET=0 ;; esac
+IDX=$((LSB_JOBINDEX + OFFSET))
+STRUCT=$(sed -n "${IDX}p" "$WORK/manifest.txt")
+STEM=$(stem_of "$STRUCT")
+
+# CAVER needs PDB; 20_collectA.sh converted any CIF inputs into $PDB_INPUTS.
+PDB="$PDB_INPUTS/$STEM.pdb"
+if [ ! -f "$PDB" ]; then
+    echo "[task ${IDX}] $STEM — no converted PDB at $PDB, skipping" >&2
+    exit 0
+fi
+
+# run_batch.py would skip non-PASS structures itself, but exiting here avoids
+# spinning up a JVM just to no-op.
+if ! awk -F'\t' -v s="$STEM" 'NR>1 && $1==s && $2=="PASS" { found=1 } END { exit !found }' \
+        "$WORK/outputs/pocket_selection.tsv"; then
+    echo "[task ${IDX}] $STEM — not PASS in Stage A, skipping"
+    exit 0
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.91 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   2 sec.
+    Turnaround time :                            108 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/stageB_29210636_13.err> for stderr output of this job.
+

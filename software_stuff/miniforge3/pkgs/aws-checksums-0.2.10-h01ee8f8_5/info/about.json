@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-checksums",
+  "extra": {
+    "flow_run_id": "github_30270753506",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-checksums-feedstock",
+    "sha": "3e11ca3e6d2b261107b3723c05086db08291c89b"
+  },
+  "home": "https://github.com/awslabs/aws-checksums",
+  "license": "Apache-2.0",
+  "summary": "Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations. C interface with language bindings for each of our SDKs."
+}

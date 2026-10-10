@@ -1,0 +1,66 @@
+{
+  "name": "libstdcxx",
+  "version": "16.1.0",
+  "build": "h934c35e_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libstdcxx-16.1.0-h934c35e_0.conda",
+  "md5": "7f73f9e90fcb0f2f164e75061742c3d0",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.1.0-h934c35e_0.conda",
+  "sha256": "a791d1b4bbdd8b6bfbe315b011d479975ab9524115035f474c70d7e438bca12f",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc 16.1.0 ha9f2e26_0"
+  ],
+  "constrains": [
+    "libstdcxx-ng ==16.1.0 *_0"
+  ],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "timestamp": 1785269572774,
+  "size": 6626334,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-16.1.0-h934c35e_0.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-16.1.0-h934c35e_0",
+  "files": [
+    "lib/libstdc++.so",
+    "lib/libstdc++.so.6",
+    "lib/libstdc++.so.6.0.35",
+    "share/licenses/libstdc++/RUNTIME.LIBRARY.EXCEPTION"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "lib/libstdc++.so",
+        "path_type": "softlink",
+        "sha256": "c8c04f6a55fa82948a58c9fe0cd5073b2e86d43510c8bd2565a1e8a7f54da23c",
+        "size_in_bytes": 23906736
+      },
+      {
+        "_path": "lib/libstdc++.so.6",
+        "path_type": "softlink",
+        "sha256": "c8c04f6a55fa82948a58c9fe0cd5073b2e86d43510c8bd2565a1e8a7f54da23c",
+        "size_in_bytes": 23906736
+      },
+      {
+        "_path": "lib/libstdc++.so.6.0.35",
+        "path_type": "hardlink",
+        "sha256": "c8c04f6a55fa82948a58c9fe0cd5073b2e86d43510c8bd2565a1e8a7f54da23c",
+        "size_in_bytes": 23906736,
+        "sha256_in_prefix": "c8c04f6a55fa82948a58c9fe0cd5073b2e86d43510c8bd2565a1e8a7f54da23c"
+      },
+      {
+        "_path": "share/licenses/libstdc++/RUNTIME.LIBRARY.EXCEPTION",
+        "path_type": "hardlink",
+        "sha256": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74",
+        "size_in_bytes": 3324,
+        "sha256_in_prefix": "9d6b43ce4d8de0c878bf16b54d8e7a10d9bd42b75178153e3af6a815bdc90f74"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/libstdcxx-16.1.0-h934c35e_0",
+    "type": 1
+  }
+}

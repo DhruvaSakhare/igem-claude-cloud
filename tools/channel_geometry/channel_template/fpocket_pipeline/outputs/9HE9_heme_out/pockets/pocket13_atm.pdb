@@ -1,0 +1,35 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    13:
+HEADER 0  - Pocket Score                      : 0.0169
+HEADER 1  - Drug Score                        : 0.0002
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.9347
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.6475
+HEADER 5  - Mean B-factor of pocket residues  : 0.2782
+HEADER 6  - Hydrophobicity Score              : 61.1667
+HEADER 7  - Polarity Score                    :     2
+HEADER 8  - Amino Acid based volume Score     : 4.5000
+HEADER 9  - Pocket volume (Monte Carlo)       : 190.1264
+HEADER 10 - Pocket volume (convex hull)       : 3.0601
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 2.0000
+HEADER 13 - Number of apolar alpha sphere     :     3
+HEADER 14 - Proportion of apolar alpha sphere : 0.2000
+ATOM   2534    O PHE A 336      57.637  -5.103  22.972  0.73  5.36           O 0
+ATOM   2181    N LEU A 295      55.809   0.511  21.541  0.67  2.19           N 0
+ATOM   2194   SG CYS A 296      60.601  -1.331  23.821  0.00  0.00           S 0
+ATOM   2167    O THR A 293      56.173   0.008  17.242  0.00  0.00           O 0
+ATOM   2189    N CYS A 296      57.881   0.614  23.482  0.59  2.19           N 0
+ATOM   2172   CA HIS A 294      56.059   1.742  19.444  0.00  0.00           C 0
+ATOM   2187  CD1 LEU A 295      53.534  -3.045  22.694  0.00  0.00           C 0
+ATOM   2185   CB LEU A 295      55.094  -1.100  23.229  0.00  0.00           C 0
+ATOM   2156    O PHE A 292      52.317  -1.917  19.052  0.56  4.29           O 0
+ATOM   2193   CB CYS A 296      60.344   0.465  23.806  0.00  0.00           C 0
+ATOM   2165   CA THR A 293      53.841  -0.490  17.252  0.00  0.00           C 0
+ATOM   2166    C THR A 293      55.091   0.213  17.784  0.00  0.00           C 0
+ATOM   2186   CG LEU A 295      53.749  -1.544  22.649  0.00  0.00           C 0
+TER
+END

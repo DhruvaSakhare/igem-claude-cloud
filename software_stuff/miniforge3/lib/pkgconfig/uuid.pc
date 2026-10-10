@@ -1,0 +1,11 @@
+prefix=/work3/s215098/BioBuilders2026/software/miniforge3
+exec_prefix=/work3/s215098/BioBuilders2026/software/miniforge3
+libdir=/work3/s215098/BioBuilders2026/software/miniforge3/lib
+includedir=/work3/s215098/BioBuilders2026/software/miniforge3/include
+
+Name: uuid
+Description: Universally unique id library
+Version: 2.42.1
+Cflags: -I${includedir}/uuid
+Libs.private:  -lpthread
+Libs: -L${libdir} -luuid

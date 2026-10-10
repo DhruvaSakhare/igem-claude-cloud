@@ -1,0 +1,23 @@
+{
+  "name": "aws-c-common",
+  "version": "0.14.3",
+  "build": "hb03c661_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-common-0.14.3-hb03c661_0.conda",
+  "md5": "ce8664d7c01d4a598ad38107b289b5ec",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-common-0.14.3-hb03c661_0.conda",
+  "sha256": "8ea79f36d50ba90d7147fe1a047f9a7f2d33b114a3d4bacf1360cd8df43986e4",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "timestamp": 1784596136918,
+  "size": 245819
+}

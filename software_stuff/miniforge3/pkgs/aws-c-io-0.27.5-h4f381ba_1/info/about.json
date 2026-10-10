@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-io",
+  "extra": {
+    "flow_run_id": "github_30285242668",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-io-feedstock",
+    "sha": "7db7aa5c4396246351074da96e9f8fce9c1f216e"
+  },
+  "home": "https://github.com/awslabs/aws-c-io",
+  "license": "Apache-2.0",
+  "summary": "This is a module for the AWS SDK for C. It handles all IO and TLS work for application protocols."
+}

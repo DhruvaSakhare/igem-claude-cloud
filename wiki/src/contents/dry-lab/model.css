@@ -1,0 +1,681 @@
+/* Styles for the Model hub page (model.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. */
+
+/* ========================================================================== *
+ *  ProjectOverviewFlowchart — Overview branching diagram (.pf-*)
+ * ========================================================================== */
+.pf {
+  --pf-bg: #ffffff;
+  --pf-border: #f0ad4e;
+  --pf-line: #f0ad4e;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.pf-node {
+  background: var(--pf-bg);
+  border: 1px solid var(--pf-border);
+  border-radius: 0.9rem;
+  padding: 0.85rem 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  cursor: default;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.pf-node:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* connectors */
+.pf-vline {
+  width: 2px;
+  height: 22px;
+  background: var(--pf-line);
+  margin: 0 auto;
+}
+.pf-branch {
+  width: 50%;
+  height: 22px;
+  margin: 0 auto;
+  border: 2px solid var(--pf-line);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+}
+.pf-branch.down {
+  border: 2px solid var(--pf-line);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+}
+
+/* shared-methods block at the top */
+.pf-shared {
+  border: 2px dashed var(--pf-border);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.55);
+  padding: 0.9rem 1rem 1.1rem;
+}
+.pf-shared-label {
+  display: block;
+  text-align: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e8912e;
+  margin-bottom: 0.7rem;
+}
+.pf-shared-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* two parallel tracks */
+.pf-tracks {
+  display: flex;
+  gap: 1.5rem;
+}
+.pf-track {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.pf-track .pf-node {
+  min-width: 150px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.pf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.pf-dot.laccase {
+  background: #2e9e6b;
+}
+.pf-dot.upo {
+  background: #4a6fd0;
+}
+
+.pf-arrow {
+  font-size: 1.3rem;
+  color: #e8912e;
+}
+
+.pf-goal .pf-node {
+  background: linear-gradient(135deg, #f4a63c, #e8912e);
+  border-color: #e8912e;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 575px) {
+  .pf-branch {
+    display: none;
+  }
+  .pf-tracks {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .pf-tracks::before,
+  .pf-tracks::after {
+    content: "";
+  }
+}
+
+/* ========================================================================== *
+ *  EnzymePipelines — Overview two-column pipelines (.def-*)
+ * ========================================================================== */
+/* space after the "Degrade NNBT" goal box above */
+.def {
+  position: relative;
+  margin-top: 3.5rem;
+}
+.def-cols {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.def-col {
+  flex: 0 1 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.def-node {
+  background: #ffffff;
+  border: 1px solid #f0ad4e;
+  border-radius: 0.8rem;
+  padding: 0.85rem 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(24px) scale(0.95);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease,
+    box-shadow 0.2s ease;
+}
+.def-node.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.def-node.visible:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+.def-label {
+  font-weight: 600;
+  color: #123a52;
+}
+/* each column header is an emphasised phase box — fixed min-height +
+   centered content so both headers are the same size despite their
+   notes wrapping to different numbers of lines */
+.def-node.phase {
+  background: linear-gradient(135deg, #f4a63c, #e8912e);
+  border-color: #e8912e;
+  padding: 1rem 1.6rem;
+  min-height: 8rem;
+  justify-content: center;
+}
+.def-node.phase .def-label {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+.def-note {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.4;
+}
+.def-spacer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5vh;
+}
+.def-arrow {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #e8912e;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.def-arrow.visible {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .def-node,
+  .def-arrow {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  EnzymeSplitToggle — Overview UPO/laccase split panel (.st-*)
+ * ========================================================================== */
+.st {
+  --st-line: #f0ad4e;
+  margin: 0 0 0.5rem;
+}
+.st-wrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 440px;
+  border: 1px solid var(--st-line);
+  border-radius: 1.1rem;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(20, 60, 90, 0.12);
+}
+.st-panel {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: flex-basis 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.st-upo {
+  background: rgba(74, 111, 208, 0.06);
+}
+.st-laccase {
+  background: rgba(46, 158, 107, 0.06);
+}
+
+/* faint enzyme render behind each panel; brightens when that side is focused */
+.st-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.08;
+  transition: opacity 0.5s ease;
+}
+.st-bg-left {
+  -webkit-mask-image: linear-gradient(to right, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to right, #000 35%, transparent 92%);
+}
+.st-bg-right {
+  -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+}
+.st-panel.active .st-bg {
+  opacity: 0.2;
+}
+
+.st-content {
+  position: relative;
+  z-index: 1;
+  min-width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 2.25rem 2.4rem;
+}
+.st-content-right {
+  margin-left: auto;
+  text-align: right;
+  align-items: flex-end;
+}
+/* only the focused side shows its text; the collapsed side hides it */
+.st-content {
+  transition: opacity 0.4s ease;
+}
+.st-panel:not(.active) .st-content {
+  opacity: 0;
+  pointer-events: none;
+}
+.st-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.st-content-right .st-eyebrow {
+  flex-direction: row-reverse;
+}
+.st-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.st-name {
+  margin: 0;
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: #0e3a57;
+}
+.st-intro {
+  margin: 0;
+  color: #143247;
+  font-size: 1.12rem;
+  line-height: 1.6;
+  max-width: 42ch;
+}
+.st-content-right .st-intro {
+  margin-left: auto;
+}
+.st-points {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+  color: #143247;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s ease 0.1s,
+    transform 0.4s ease 0.1s;
+}
+.st-content-right .st-points {
+  padding-left: 0;
+  padding-right: 1.1rem;
+  list-style-position: inside;
+}
+.st-points li {
+  margin-bottom: 0.15rem;
+}
+.st-panel.active .st-points {
+  opacity: 1;
+  transform: none;
+}
+
+.st-switch {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f4a63c, #e8912e);
+  box-shadow: 0 6px 16px rgba(232, 145, 46, 0.38);
+  white-space: nowrap;
+  transition:
+    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease;
+}
+.st-switch:hover {
+  box-shadow: 0 10px 22px rgba(232, 145, 46, 0.5);
+}
+.st-switch:active {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+.st-switch:focus-visible {
+  outline: 3px solid rgba(232, 145, 46, 0.45);
+  outline-offset: 2px;
+}
+.st-switch-icon {
+  font-size: 1rem;
+}
+.st-hint {
+  text-align: center;
+  color: #12455f;
+  font-size: 0.95rem;
+  margin: 0.85rem 0 0;
+}
+.st-hint strong {
+  color: #0e3a57;
+}
+
+@media (max-width: 767px) {
+  .st-wrap {
+    flex-direction: column;
+    height: auto;
+  }
+  .st-panel {
+    flex-basis: auto !important;
+    width: 100%;
+  }
+  .st-content,
+  .st-content-right {
+    min-width: 0;
+    text-align: left;
+    align-items: flex-start;
+    margin: 0;
+    opacity: 1 !important;
+  }
+  .st-content-right .st-eyebrow {
+    flex-direction: row;
+  }
+  .st-content-right .st-intro {
+    margin-left: 0;
+  }
+  .st-content-right .st-points {
+    padding-left: 1.1rem;
+    padding-right: 0;
+  }
+  .st-points {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .st-bg {
+    opacity: 0.16 !important;
+  }
+  .st-switch {
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0.9rem auto 0.3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-panel,
+  .st-bg,
+  .st-points,
+  .st-switch {
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  ModelHub nav cards — buttons that lead to the sub-pages (.mh-*)
+ * ========================================================================== */
+.mh-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 1rem 0 0.5rem;
+}
+@media (max-width: 767px) {
+  .mh-nav {
+    grid-template-columns: 1fr;
+  }
+}
+.mh-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  background: #ffffff;
+  border: 1px solid #f4c48f;
+  border-radius: 1rem;
+  padding: 1.5rem 1.4rem;
+  box-shadow: 0 8px 22px rgba(20, 60, 90, 0.1);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.mh-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f4a63c, #e8912e);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.mh-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(20, 60, 90, 0.2);
+  border-color: #e8912e;
+  color: inherit;
+}
+.mh-card:hover::before {
+  transform: scaleX(1);
+}
+.mh-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+.mh-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #0e3a57;
+}
+.mh-desc {
+  margin: 0;
+  color: #33475b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.mh-go {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #e8912e;
+  transition: gap 0.25s ease;
+}
+.mh-card:hover .mh-go {
+  gap: 0.6rem;
+}
+
+/* ========================================================================== *
+ *  Page background — constant light blue while the Model hub is mounted
+ *  (matches the site's page-header banner; body class toggled from Model()).
+ * ========================================================================== */
+body.model-bg {
+  /* Literal colour on purpose: App.css redefines --color-lightblue to #ffffff
+   * further down (a variable collision), so var(--color-lightblue) resolves to
+   * white. Hard-code the intended light blue instead. */
+  background-color: #b0e6ff;
+}
+
+/* ========================================================================== *
+ *  ProjectOverviewFlowchartV2 — enhanced animated flowchart (.pf2-*)
+ *  (backup: the original .pf flowchart above; toggled by USE_V2_FLOWCHART)
+ * ========================================================================== */
+.pf2 {
+  max-width: 640px;
+  margin: 0 auto;
+}
+.pf2-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* connectors: dashed lines that "march" downward to suggest flow */
+.pf2-line {
+  fill: none;
+  stroke: #e8912e;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 6 9;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  animation: pf2-march 1.1s linear infinite;
+}
+.pf2.in .pf2-line {
+  opacity: 1;
+}
+@keyframes pf2-march {
+  to {
+    stroke-dashoffset: -15;
+  }
+}
+
+/* shared-methods container */
+.pf2-shared rect {
+  fill: rgba(255, 255, 255, 0.55);
+  stroke: #f0ad4e;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+}
+.pf2-kicker-t {
+  fill: #e8912e;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-anchor: middle;
+}
+
+/* nodes pop in when the diagram scrolls into view */
+.pf2-node-g {
+  opacity: 0;
+  transform: scale(0.85);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.pf2.in .pf2-node-g {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pf2-rect {
+  fill: #ffffff;
+  stroke: #f0ad4e;
+  stroke-width: 1.5;
+}
+.pf2-rect--goal {
+  fill: url(#pf2-goal-grad);
+  stroke: #e8912e;
+}
+.pf2-label-t {
+  fill: #0e3a57;
+  font-size: 14px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.pf2-arrow-t {
+  fill: #e8912e;
+  font-size: 22px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.pf2-track-t {
+  fill: #0e3a57;
+  font-size: 16px;
+  font-weight: 800;
+  text-anchor: start;
+  dominant-baseline: middle;
+}
+.pf2-goal-t {
+  fill: #ffffff;
+  font-size: 19px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.pf2-dot-c.laccase {
+  fill: #2e9e6b;
+}
+.pf2-dot-c.upo {
+  fill: #4a6fd0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf2-line {
+    animation: none;
+    opacity: 1;
+  }
+  .pf2-node-g {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

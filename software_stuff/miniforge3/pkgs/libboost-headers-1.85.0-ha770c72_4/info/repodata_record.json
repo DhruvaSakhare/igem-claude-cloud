@@ -1,0 +1,21 @@
+{
+  "name": "libboost-headers",
+  "version": "1.85.0",
+  "build": "ha770c72_4",
+  "build_number": 4,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libboost-headers-1.85.0-ha770c72_4.conda",
+  "md5": "00e4848983222729ccb7c69f1039f4b9",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libboost-headers-1.85.0-ha770c72_4.conda",
+  "sha256": "55aa2ac604bd7ed76fae0c93698d37aae455ca2fb229ff9aa45e085ff7ad48ec",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [],
+  "constrains": [
+    "boost-cpp 1.85.0*"
+  ],
+  "license": "BSL-1.0",
+  "timestamp": 1722289776587,
+  "size": 13961521
+}

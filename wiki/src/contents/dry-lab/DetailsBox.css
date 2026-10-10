@@ -1,0 +1,81 @@
+/* ========================================================================== *
+ *  The "More details on …" collapsible (.cmbox-*)
+ *
+ *  The box the Discovery page folds a method write-up into, so a reader can
+ *  have the method beside the results without leaving the page. Shared by every
+ *  such box — see DetailsBox.tsx, and ChannelMethodsBox.css for the extra rules
+ *  the one holding the channel method cards needs.
+ *
+ *  Styled after the per-card `.mviz-more` disclosure in model_methods.css — the
+ *  same idiom the reader already meets inside every method card — but one size
+ *  up, because this one carries a whole section rather than one card's detail.
+ *  The two are separate rule sets on purpose: .mviz-more sits INSIDE a card and
+ *  inherits its width and border colour, while this one is the outermost thing
+ *  on the page at that point.
+ * ========================================================================== */
+.cmbox {
+  margin: 2.5rem 0 1rem;
+  border: 1px solid rgba(240, 173, 78, 0.55);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.6);
+  /* A flex/grid ancestor would otherwise refuse to shrink this below its
+     content's min-content width; the cards inside carry wide SVGs. */
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cmbox-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.95rem 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0e3a57;
+  /* Hide the native disclosure triangle in both engines — the chevron is the
+     affordance, and it sits on the right where it aligns with the text. */
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+.cmbox-toggle::-webkit-details-marker {
+  display: none;
+}
+.cmbox-toggle:hover {
+  background: rgba(240, 173, 78, 0.12);
+}
+.cmbox-toggle:focus-visible {
+  outline: 2px solid var(--color-brightblue);
+  outline-offset: -2px;
+}
+
+/* The toggle is a single line of text. `min-width: 0` lets it shrink and wrap
+   inside the flex row instead of pushing the chevron off the box on a phone.
+   There used to be a muted second line under it (.cmbox-hint) summarising what
+   was inside; it was dropped when the label was rewritten. */
+.cmbox-label {
+  min-width: 0;
+}
+
+.cmbox-chev {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  color: #b06a15;
+  transition: transform 0.25s ease;
+}
+.cmbox[open] .cmbox-chev {
+  transform: rotate(180deg);
+}
+
+.cmbox-body {
+  padding: 0.25rem 1.2rem 1rem;
+  border-top: 1px solid rgba(240, 173, 78, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmbox-toggle,
+  .cmbox-chev {
+    transition: none;
+  }
+}

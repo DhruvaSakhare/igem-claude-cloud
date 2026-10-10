@@ -1,0 +1,4 @@
+/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib/python3.12/site-packages/meeko/preparation.py:693: DeprecationWarning: MoleculePreparation.write_pdbqt_string() is deprecated in Meeko v0.5. Pass the MoleculeSetup instance to PDBQTWriterLegacy.write_string(). MoleculePreparation.prepare() returns a list of MoleculeSetup instances.
+  warnings.warn(msg, DeprecationWarning)
+/work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/lib/python3.12/site-packages/meeko/preparation.py:467: DeprecationWarning: MoleculePreparation.setup is deprecated in Meeko v0.5. MoleculePreparation.prepare() returns a list of MoleculeSetup instances.
+  warnings.warn(msg, DeprecationWarning)

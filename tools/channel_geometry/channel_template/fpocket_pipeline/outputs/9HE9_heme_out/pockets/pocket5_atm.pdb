@@ -1,0 +1,39 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     5:
+HEADER 0  - Pocket Score                      : 0.0994
+HEADER 1  - Drug Score                        : 0.0025
+HEADER 2  - Number of alpha spheres           :    25
+HEADER 3  - Mean alpha-sphere radius          : 3.8015
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.4898
+HEADER 5  - Mean B-factor of pocket residues  : 0.1269
+HEADER 6  - Hydrophobicity Score              : 5.6250
+HEADER 7  - Polarity Score                    :     2
+HEADER 8  - Amino Acid based volume Score     : 4.0000
+HEADER 9  - Pocket volume (Monte Carlo)       : 159.4233
+HEADER 10 - Pocket volume (convex hull)       : 2.5663
+HEADER 11 - Charge Score                      :     0
+HEADER 12 - Local hydrophobic density Score   : 12.0000
+HEADER 13 - Number of apolar alpha sphere     :    13
+HEADER 14 - Proportion of apolar alpha sphere : 0.5200
+ATOM   2326   CB ASN A 312      68.667  14.639  43.633  0.00  0.00           C 0
+ATOM   2322    N ASN A 312      66.578  13.686  42.693  0.57  1.09           N 0
+ATOM   2325    O ASN A 312      67.989  13.025  45.702  0.35  7.50           O 0
+ATOM   2320   CG PRO A 311      64.032  16.000  41.902  0.00  0.00           C 0
+ATOM   2321   CD PRO A 311      63.148  14.770  41.970  0.00  0.00           C 0
+ATOM   2330    N PRO A 313      67.124  11.319  44.521  0.00  0.00           N 0
+ATOM   2331   CA PRO A 313      66.931  10.476  45.706  0.00  0.00           C 0
+ATOM   2363  CD2 LEU A 317      62.887   9.548  47.820  0.00  0.00           C 0
+ATOM   2334   CB PRO A 313      65.978   9.405  45.169  0.00  0.00           C 0
+ATOM    814   CG PRO A 123      61.475  12.969  48.559  0.00  0.00           C 0
+ATOM   2324    C ASN A 312      67.643  12.567  44.614  0.00  0.00           C 0
+ATOM   2304   CA TYR A 310      62.370  11.929  42.008  0.00  0.00           C 0
+ATOM   2309  CD1 TYR A 310      60.990  10.109  44.432  0.00  0.00           C 0
+ATOM   2298    O LEU A 309      59.998  13.309  42.612  0.61  1.07           O 0
+ATOM    812    O PRO A 123      59.003  14.342  46.565  0.00  0.00           O 0
+ATOM    813   CB PRO A 123      61.226  14.481  48.656  0.00  0.00           C 0
+ATOM    819    O PRO A 124      60.157  17.058  45.524  0.85  7.50           O 0
+TER
+END

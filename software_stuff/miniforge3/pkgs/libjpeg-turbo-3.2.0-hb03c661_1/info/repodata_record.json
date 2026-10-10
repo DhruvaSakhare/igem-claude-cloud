@@ -1,0 +1,24 @@
+{
+  "name": "libjpeg-turbo",
+  "version": "3.2.0",
+  "build": "hb03c661_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "libjpeg-turbo-3.2.0-hb03c661_1.conda",
+  "md5": "898d1c9793eaa52efc4727bd84d2e39a",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libjpeg-turbo-3.2.0-hb03c661_1.conda",
+  "sha256": "bba8538e6538ed58a8479b332337b96986561f975d06cfa2039a016c2d246ee4",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14"
+  ],
+  "constrains": [
+    "jpeg <0.0.0a"
+  ],
+  "license": "IJG AND BSD-3-Clause AND Zlib",
+  "timestamp": 1785896381946,
+  "size": 650434
+}

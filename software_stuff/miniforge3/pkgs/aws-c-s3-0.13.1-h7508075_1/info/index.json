@@ -1,0 +1,22 @@
+{
+  "arch": "x86_64",
+  "build": "h7508075_1",
+  "build_number": 1,
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-http >=0.11.0,<0.11.1.0a0",
+    "aws-c-auth >=0.10.4,<0.10.5.0a0",
+    "openssl >=3.5.7,<4.0a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "aws-checksums >=0.2.10,<0.2.11.0a0",
+    "aws-c-io >=0.27.5,<0.27.6.0a0",
+    "aws-c-cal >=0.9.15,<0.9.16.0a0"
+  ],
+  "license": "Apache-2.0",
+  "name": "aws-c-s3",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1785351292770,
+  "version": "0.13.1"
+}

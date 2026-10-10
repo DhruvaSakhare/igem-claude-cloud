@@ -1,0 +1,46 @@
+ATOM      1  H   FIL T  10       4.549  -1.301   0.532        1.13              
+ATOM      2  H   FIL T  10       3.853  -1.842   0.883        1.04              
+CONECT    1    2
+ATOM      3  H   FIL T  10       2.996  -2.069   1.345        1.16              
+CONECT    2    3
+ATOM      4  H   FIL T  10       2.440  -2.466   1.789        1.26              
+CONECT    3    4
+ATOM      5  H   FIL T  10       2.028  -2.911   2.428        1.43              
+CONECT    4    5
+ATOM      6  H   FIL T  10       1.216  -3.163   2.781        1.32              
+CONECT    5    6
+ATOM      7  H   FIL T  10       0.668  -3.321   3.458        1.18              
+CONECT    6    7
+ATOM      8  H   FIL T  10      -0.006  -3.420   4.161        0.99              
+CONECT    7    8
+ATOM      9  H   FIL T  10      -0.774  -3.427   4.795        1.04              
+CONECT    8    9
+ATOM     10  H   FIL T  10      -1.568  -3.737   4.697        0.84              
+CONECT    9   10
+ATOM     11  H   FIL T  10      -2.433  -3.982   4.426        0.84              
+CONECT   10   11
+ATOM     12  H   FIL T  10      -3.112  -3.498   4.623        0.94              
+CONECT   11   12
+ATOM     13  H   FIL T  10      -3.855  -3.707   4.592        1.07              
+CONECT   12   13
+ATOM     14  H   FIL T  10      -4.649  -3.605   5.161        0.97              
+CONECT   13   14
+ATOM     15  H   FIL T  10      -5.010  -3.761   5.975        0.77              
+CONECT   14   15
+ATOM     16  H   FIL T  10      -5.301  -4.142   6.851        0.69              
+CONECT   15   16
+ATOM     17  H   FIL T  10      -5.667  -4.513   7.702        1.04              
+CONECT   16   17
+ATOM     18  H   FIL T  10      -5.733  -5.278   8.328        1.22              
+CONECT   17   18
+ATOM     19  H   FIL T  10      -6.386  -5.381   8.862        1.12              
+CONECT   18   19
+ATOM     20  H   FIL T  10      -7.306  -5.217   9.180        1.03              
+CONECT   19   20
+ATOM     21  H   FIL T  10      -8.223  -4.973   9.350        1.10              
+CONECT   20   21
+ATOM     22  H   FIL T  10      -8.491  -4.895  10.306        0.87              
+CONECT   21   22
+ATOM     23  H   FIL T  10      -8.792  -4.858  11.258        1.03              
+CONECT   22   23
+

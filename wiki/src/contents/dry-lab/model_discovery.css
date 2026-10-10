@@ -1,0 +1,1126 @@
+/* Styles for the Model → Discovery page (model_discovery.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. */
+
+/* ========================================================================== *
+ *  DiscoveryTreeHero — interactive radial phylogenetic tree (.dtree-*)
+ * ========================================================================== */
+.dtree {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 460px);
+  gap: 2rem;
+  align-items: center;
+  /* Centred on the same column as the page content below — see .mxh. */
+  max-width: min(1100px, 100% - 2rem);
+  margin: 0 auto 2.5rem;
+  border-radius: 1.25rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  /* Clear the fixed cloud header (--cloud-header-height in App.css). */
+  padding-top: calc(var(--cloud-header-height) - var(--navbar-height) + 1.5rem);
+  background: transparent; /* Fill the first screen: the hero is all you see on load, and the page
+   * content begins below the fold. min-height (not height) so it still grows
+   * if the content is taller than the viewport — which it is on a landscape
+   * phone. svh is the *small* viewport height, i.e. with the mobile browser
+   * toolbars showing, so the hero never overflows behind them; the vh line
+   * above is the fallback for browsers without svh. */
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  align-content: center;
+}
+
+@media (max-width: 900px) {
+  .dtree {
+    grid-template-columns: 1fr;
+  }
+}
+.dtree-eyebrow {
+  display: inline-block;
+  white-space: nowrap;
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f4a63c, #e8912e);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(232, 145, 46, 0.28);
+}
+.dtree-title {
+  margin: 0 0 0.85rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #0e3a57;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+}
+.dtree-title span {
+  background: linear-gradient(120deg, #f4a63c, #e8912e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dtree-sub {
+  margin: 0 0 1rem;
+  max-width: 46ch;
+  color: #143247;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2vw, 1.12rem);
+}
+/* .dtree-hint (the status line under the hero lead) was removed. */
+
+.dtree-viz {
+  min-width: 0;
+}
+.dtree-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.dtree-guides circle {
+  fill: none;
+  stroke: rgba(14, 58, 87, 0.12);
+  stroke-dasharray: 3 7;
+}
+.dtree-root {
+  fill: #0e3a57;
+}
+
+/* links: drawn outward on reveal; coloured by clade unless on a hovered lineage */
+.dtree-link {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: opacity 0.25s ease;
+}
+.dtree-svg.in .dtree-link {
+  animation: dtree-draw 1.3s ease forwards;
+}
+@keyframes dtree-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.dtree-link.hl {
+  stroke: #e8912e;
+  stroke-width: 3.5;
+}
+.dtree-svg.hovering .dtree-link:not(.hl) {
+  opacity: 0.18;
+}
+
+/* tips: fade in after the branches, scale up + trace on hover/focus */
+.dtree-tip {
+  cursor: pointer;
+  outline: none;
+}
+.dtree-tip-hit {
+  fill: transparent;
+}
+.dtree-tip-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease 2.2s,
+    transform 0.2s ease;
+}
+.dtree-svg.in .dtree-tip-dot {
+  opacity: 1;
+}
+.dtree-tip.hl .dtree-tip-dot {
+  transform: scale(1.8);
+}
+.dtree-tip:focus-visible .dtree-tip-dot {
+  transform: scale(1.8);
+}
+.dtree-svg.hovering .dtree-tip:not(.hl) .dtree-tip-dot {
+  opacity: 0.3;
+  transition-delay: 0s;
+}
+
+/* fixed reader window at 3 o'clock + the sequence panel it feeds */
+.dtree-slot {
+  fill: rgba(232, 145, 46, 0.1);
+  stroke: #e8912e;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.dtree-lead {
+  stroke: #e8912e;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+.dtree-reader {
+  animation: dtree-reveal 0.35s ease;
+}
+@keyframes dtree-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.dtree-reader-box {
+  fill: #ffffff;
+  stroke: #f0ad4e;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 6px 14px rgba(20, 60, 90, 0.12));
+}
+.dtree-reader-title {
+  font-size: 15px;
+  font-weight: 800;
+}
+/* .dtree-reader-sub (the "PLACEHOLDER SEQUENCE" label inside the reader box)
+ * was removed along with the element it styled. */
+.dtree-reader-seq {
+  fill: #0e3a57;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dtree-link {
+    stroke-dashoffset: 0;
+  }
+  .dtree-svg.in .dtree-link {
+    animation: none;
+  }
+  .dtree-tip-dot {
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease;
+  }
+  .dtree-reader {
+    animation: none;
+  }
+}
+
+/* ========================================================================== *
+ *  ResultsFigures — Results pop-up figures (.rf-*)
+ * ========================================================================== */
+.rf {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.rf-fig {
+  margin: 0;
+  opacity: 0;
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* No frame/box: just the figure, big, shifted off-centre and tilted.
+   Hidden state = scaled-down + tilted; .show pops it up. Reversible. */
+.rf-fig:first-of-type {
+  transform: scale(0.7) rotate(-5deg) translateX(-8%);
+  transform-origin: left center;
+}
+.rf-fig:first-of-type.show {
+  opacity: 1;
+  transform: scale(1) rotate(-3deg) translateX(-8%);
+}
+.rf-fig:last-of-type {
+  margin-top: 96px;
+  transform: scale(0.7) rotate(5deg) translateX(8%);
+  transform-origin: right center;
+}
+.rf-fig:last-of-type.show {
+  opacity: 1;
+  transform: scale(1) rotate(3deg) translateX(8%);
+}
+.rf-fig img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0.8rem;
+  filter: drop-shadow(0 20px 40px rgba(120, 100, 40, 0.28));
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+/* "Liquid molecule" hover: organic drifting wobble + morphing blob.
+   Irregular keyframes and desynced durations make it feel random. */
+.rf-fig:hover img {
+  filter: drop-shadow(0 26px 52px rgba(120, 100, 40, 0.36));
+  will-change: transform, border-radius;
+  animation:
+    rf-liquid 4.6s ease-in-out infinite,
+    rf-blob 6.5s ease-in-out infinite;
+}
+.rf-fig:first-of-type:hover img {
+  animation-duration: 4.3s, 6.9s;
+}
+.rf-fig:last-of-type:hover img {
+  animation-duration: 5.2s, 7.6s;
+  animation-direction: alternate, alternate-reverse;
+}
+@keyframes rf-liquid {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1.04);
+  }
+  14% {
+    transform: translate(7px, -9px) rotate(1.6deg) scale(1.05);
+  }
+  28% {
+    transform: translate(-6px, 6px) rotate(-2.1deg) scale(1.045);
+  }
+  43% {
+    transform: translate(9px, 5px) rotate(1.1deg) scale(1.055);
+  }
+  57% {
+    transform: translate(-8px, -4px) rotate(-1.4deg) scale(1.045);
+  }
+  71% {
+    transform: translate(4px, 8px) rotate(2deg) scale(1.05);
+  }
+  85% {
+    transform: translate(-5px, -7px) rotate(-0.9deg) scale(1.045);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1.04);
+  }
+}
+@keyframes rf-blob {
+  0%,
+  100% {
+    border-radius: 0.8rem;
+  }
+  25% {
+    border-radius: 38% 62% 63% 37% / 49% 41% 59% 51%;
+  }
+  50% {
+    border-radius: 59% 41% 35% 65% / 38% 63% 37% 62%;
+  }
+  75% {
+    border-radius: 44% 56% 58% 42% / 57% 39% 61% 43%;
+  }
+}
+.rf-fig figcaption {
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  color: #123a52;
+  text-align: center;
+}
+@media (max-width: 575px) {
+  .rf {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .rf-fig:last-of-type {
+    margin-top: 0;
+  }
+  .rf-fig:first-of-type,
+  .rf-fig:last-of-type {
+    transform: scale(0.85) rotate(0deg) translateX(0);
+  }
+  .rf-fig:first-of-type.show,
+  .rf-fig:last-of-type.show {
+    transform: scale(1) rotate(0deg) translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rf-fig {
+    transition: none;
+    opacity: 1;
+  }
+  .rf-fig:hover img {
+    animation: none;
+    transform: scale(1.03);
+  }
+}
+
+/* ========================================================================== *
+ *  PocketDockingDemo — Results interactive pocket/docking demo (.pd-*)
+ * ========================================================================== */
+.pd {
+  --pd-accent: #e8912e;
+  --pd-accent-2: #f0ad4e;
+  --pd-line: #f4c48f;
+  margin: 1.5rem 0 2.75rem;
+}
+.pd-head {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+.pd-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--pd-accent);
+  background: linear-gradient(
+    90deg,
+    rgba(240, 173, 78, 0.2),
+    rgba(232, 145, 46, 0.2)
+  );
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+.pd-head h3 {
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 700;
+  color: #0e3a57;
+}
+.pd-head p {
+  color: #123a52;
+  margin: 0;
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- stage: stacked structure images + flying substrate ---- */
+.pd-stage {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.25rem;
+  border: 1px solid var(--pd-line);
+  background: radial-gradient(
+    circle at 50% 45%,
+    #ffffff 0%,
+    #eaf6ff 70%,
+    #d9edfb 100%
+  );
+  box-shadow: 0 16px 36px rgba(20, 60, 90, 0.14);
+  overflow: hidden;
+}
+.pd-struct {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.pd-struct.active {
+  opacity: 1;
+}
+/* let the docked image arrive as the molecule lands */
+.pd-struct--3.active {
+  transition-delay: 0.8s;
+}
+
+/* anchor sits ON the pocket; the molecule animates relative to it */
+.pd-nnbt-anchor {
+  position: absolute;
+  left: 46%;
+  top: 56%;
+  width: 130px;
+  height: 130px;
+  margin: -65px 0 0 -65px;
+  pointer-events: none;
+  z-index: 3;
+}
+.pd-nnbt {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.12));
+}
+.pd-nnbt.floating {
+  animation: pd-float 9s ease-in-out infinite;
+}
+.pd-nnbt.docking {
+  animation: pd-dock 1.9s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+}
+
+/* free drift around the structure (translate(0,0) = the pocket) */
+@keyframes pd-float {
+  0% {
+    transform: translate(-150px, -120px) rotate(-8deg) scale(0.92);
+  }
+  20% {
+    transform: translate(135px, -95px) rotate(10deg) scale(0.98);
+  }
+  40% {
+    transform: translate(150px, 70px) rotate(-6deg) scale(0.9);
+  }
+  60% {
+    transform: translate(-55px, 135px) rotate(9deg) scale(0.96);
+  }
+  80% {
+    transform: translate(-160px, 25px) rotate(-11deg) scale(0.9);
+  }
+  100% {
+    transform: translate(-150px, -120px) rotate(-8deg) scale(0.92);
+  }
+}
+/* swoop in along a path, shrink into the pocket, fade as it "binds" */
+@keyframes pd-dock {
+  0% {
+    transform: translate(-150px, -120px) rotate(-8deg) scale(0.92);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(95px, -70px) rotate(150deg) scale(0.8);
+    opacity: 1;
+  }
+  78% {
+    transform: translate(16px, -4px) rotate(300deg) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.34);
+    opacity: 0;
+  }
+}
+
+.pd-badge {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 4;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0e3a57;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--pd-line);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* ====== step 4: MD trajectory playing on a "TV", filmed by a beaver ======
+   The square stage turns into a chunky CRT/monitor: dark bezel, dark
+   screen (so the white GIF letterboxes like widescreen video), scanlines,
+   glare, a live REC timecode and a "channel" tag. A beaver camera-operator
+   stands at the lower-left aiming its lens right into the screen, with a
+   translucent "recording beam" fanning across the picture. */
+
+/* wrapper lets the beaver + beam overflow outside the TV bezel */
+.pd-stage-wrap {
+  position: relative;
+}
+
+.pd-md {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.6s ease;
+}
+.pd-md.active {
+  opacity: 1;
+}
+
+/* the TV set */
+.pd-stage--md {
+  border: 12px solid #24262d;
+  background: radial-gradient(circle at 50% 42%, #11151c 0%, #080a0e 100%);
+  box-shadow:
+    inset 0 0 0 2px #0d0f13,
+    inset 0 0 46px rgba(0, 0, 0, 0.7),
+    0 24px 48px rgba(0, 0, 0, 0.38);
+  animation: pd-tv-flicker 5s steps(60) infinite;
+}
+/* tiny brightness flicker, like a live screen */
+@keyframes pd-tv-flicker {
+  0%,
+  97%,
+  100% {
+    filter: brightness(1);
+  }
+  98% {
+    filter: brightness(1.05);
+  }
+  99% {
+    filter: brightness(0.96);
+  }
+}
+
+/* CRT scanlines + a faint rolling band */
+.pd-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.16) 0 1px,
+    rgba(0, 0, 0, 0) 1px 3px
+  );
+}
+.pd-scanlines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  animation: pd-roll 6s linear infinite;
+}
+@keyframes pd-roll {
+  0% {
+    top: -25%;
+  }
+  100% {
+    top: 105%;
+  }
+}
+/* glossy screen glare in the top-left */
+.pd-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 80% at 18% 12%,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0) 45%
+  );
+}
+
+/* live REC badge with running timecode */
+.pd-rec {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: #ffd9d4;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 0.22rem 0.55rem;
+  border-radius: 0.4rem;
+}
+.pd-rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff3b2f;
+  box-shadow: 0 0 8px 1px rgba(255, 59, 47, 0.8);
+  animation: pd-rec-blink 1.1s steps(2, jump-none) infinite;
+}
+@keyframes pd-rec-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+/* "channel" tag bottom-right */
+.pd-tvtag {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.7rem;
+  z-index: 6;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* the recording light-beam from the camera into the screen */
+.pd-rec-cone {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(246, 224, 150, 0.32) 100%
+  );
+  /* apex = camera lens; the two far points = where the beam hits the
+     screen. Tuned to the raised + tilted beaver below. */
+  clip-path: polygon(37% 50%, 92% 12%, 99% 40%);
+  mix-blend-mode: screen;
+  animation: pd-cone-pulse 2.6s ease-in-out infinite;
+}
+@keyframes pd-cone-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* the beaver camera operator */
+.pd-beaver {
+  position: absolute;
+  left: -2%;
+  bottom: 28%;
+  width: 42%;
+  height: auto;
+  z-index: 7;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.3));
+  transform-origin: 70% 80%;
+  animation: pd-beaver-bob 3.4s ease-in-out infinite;
+}
+/* base tilt of ~ -6deg lifts the lens (right side) up toward the screen */
+@keyframes pd-beaver-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-7.5deg);
+  }
+}
+
+/* ---- side panel: step list, controls, caption ---- */
+.pd-steps {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.pd-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--pd-line);
+  border-radius: 0.7rem;
+  background: #ffffff;
+  opacity: 0.55;
+  transition:
+    opacity 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.pd-steps li.done {
+  opacity: 0.85;
+}
+.pd-steps li.current {
+  opacity: 1;
+  border-color: var(--pd-accent);
+  box-shadow: 0 4px 12px rgba(232, 145, 46, 0.16);
+}
+.pd-step-dot {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  background: rgba(240, 173, 78, 0.22);
+  color: var(--pd-accent);
+}
+.pd-steps li.current .pd-step-dot {
+  background: linear-gradient(135deg, var(--pd-accent-2), var(--pd-accent));
+  color: #fff;
+}
+.pd-steps li strong {
+  display: block;
+  font-size: 0.92rem;
+}
+.pd-steps li em {
+  font-style: normal;
+  font-size: 0.72rem;
+  color: #6b7c88;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pd-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+.pd-btn {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--pd-accent-2), var(--pd-accent));
+  box-shadow: 0 6px 14px rgba(232, 145, 46, 0.28);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+.pd-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(232, 145, 46, 0.36);
+}
+.pd-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.pd-btn--ghost {
+  background: transparent;
+  color: #6b7c88;
+  border: 1px solid var(--pd-line);
+  box-shadow: none;
+}
+
+.pd-caption {
+  color: #123a52;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  min-height: 4em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-nnbt.floating {
+    animation: none;
+  }
+  .pd-nnbt.docking {
+    animation: none;
+    opacity: 0;
+  }
+  .pd-struct {
+    transition: none;
+  }
+  .pd-stage--md,
+  .pd-rec-dot,
+  .pd-rec-cone,
+  .pd-beaver {
+    animation: none;
+  }
+  .pd-scanlines::after {
+    display: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Channel-discovery tunnel figures (.chf-*)
+ *  Rows of tunnel cross-sections, one figure per structure, styled to match
+ *  the MD figures (.mdf-*, now in MdFigures.css). Used by both tunnel rows:
+ *  the literature one (3 figures) and the database one (9, so it wraps).
+ *
+ *  Capped at THREE per row. Still auto-fit rather than `repeat(3, 1fr)`,
+ *  because a hard three-column grid would give ~110px columns on a 360px
+ *  phone; the track floor below keeps the phone behaviour intact.
+ *
+ *  The floor is the LARGER of:
+ *    • min(240px, 100%) — the readable minimum, itself capped at the container
+ *      so a single column can never overflow a very narrow one; and
+ *    • (100% - 2rem) / 3 — one third of the row, less the two 1rem gaps
+ *      between three columns.
+ *  Above ~800px the third term wins and exactly three columns fit; below it
+ *  the 240px floor takes over and the row drops to two, then one. Keep the
+ *  `2rem` in step with `gap` (2 x 1rem) if the gap ever changes.
+ * ========================================================================== */
+.chf-row {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 2rem) / 3), 1fr)
+  );
+  gap: 1rem;
+  margin: 2rem 0 0.5rem;
+}
+
+/* Two-column variant, for a row of FOUR that should read as a 2x2 block rather
+ * than three-plus-an-orphan. Same construction as above with the third term
+ * changed from a third of the row to a half: one 1rem gap between two columns
+ * instead of two between three. The 240px floor is untouched, so this still
+ * degrades to a single column on a phone exactly as the 3-column row does —
+ * it caps the columns at two, it does not force two.
+ *
+ * Two classes so it out-specifies .chf-row (0,2,0 beats 0,1,0). Keep the `1rem`
+ * in step with `gap` if that ever changes. */
+.chf-row.chf-row-2col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 1rem) / 2), 1fr)
+  );
+}
+
+.chf-fig {
+  margin: 0;
+  min-width: 0;
+}
+.chf-pdb {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #0e3a57;
+}
+.chf-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #f0ad4e;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 60, 90, 0.08);
+}
+.chf-fig figcaption {
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7c88;
+}
+
+/* ========================================================================== *
+ *  Body prose on this page (.md-prose)
+ *
+ *  Full section width and justified, matching .mm-prose on the Methods page —
+ *  see the note there for why. The width to line up with here is the one the
+ *  tunnel-figure rows and the structure viewers use (.chf-row, .sv), so a
+ *  paragraph and the figures under it share a left edge.
+ *
+ *  `#root` on the selector because App.css styles `p` at (1,0,1) inside
+ *  `html, body, #root`, which beats a bare class.
+ * ========================================================================== */
+#root .md-prose {
+  margin: 0 0 1.15rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  color: #123a52;
+  line-height: 1.7;
+}
+
+/* Justification needs a wide enough line to distribute space into. The content
+   column is ~69 characters at a 768px viewport and only ~33 at 390px, where
+   justifying opens visible gaps between words on almost every line — so below
+   this breakpoint the text goes back to a flush left edge and a ragged right
+   one. Matches the same guard on .mm-prose on the Methods page. */
+@media (max-width: 767px) {
+  #root .md-prose {
+    text-align: left;
+  }
+}
+
+/* ========================================================================== *
+ *  Standalone figures (.wfig)
+ *
+ *  One uploaded plot with the description its source document gives it, for
+ *  the figures that do not belong to a row — the InterPro and CUPP panels on
+ *  the laccase branch, the reference-region comparison, the channel-cluster
+ *  overlays and dendrogram.
+ *
+ *  Framed like the tunnel figures (.chf-fig) so every figure on the page reads
+ *  as the same kind of object, but centred in a column of its own: these are
+ *  wide, multi-panel plots, and stretching one to the full text measure on a
+ *  large screen makes its axis labels smaller than the body text beside it.
+ *
+ *  The caption is left-aligned rather than centred, unlike the one-line row
+ *  captions — several of these run to four or five lines, and a centred
+ *  paragraph gives the eye no left edge to return to.
+ * ========================================================================== */
+/* `fit-content` rather than a fixed width, so the frame takes the size of the
+   PLOT inside it. That is what keeps a small upload from being BLOWN UP to fill
+   the column: two of these plots are only ~620px wide, and stretching one to a
+   1036px column resamples it to a soft, blurry version of a crisp image. The
+   floor stops a narrow plot from squeezing its caption into a thin ribbon.
+
+   Only the image gets a say in that width — see the figcaption rule below,
+   which is what makes this work. */
+.wfig {
+  width: fit-content;
+  min-width: min(320px, 100%);
+  max-width: min(620px, 100%);
+  margin: 2rem auto 1.5rem;
+}
+
+/* For a figure whose panels are stacked vertically, or that carries small
+   labelled sub-panels: the cap above would shrink each panel to unreadable.
+   It still only ever grows to the plot's own resolution, never past it. */
+.wfig.wfig-wide {
+  max-width: 100%;
+}
+
+.wfig img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #f0ad4e;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 60, 90, 0.08);
+}
+
+/* `width: 0` keeps the caption OUT of the figure's intrinsic width, and
+   `min-width: 100%` then stretches it to whatever width the image settled on.
+
+   Without this the caption decides: a figure's fit-content width is the widest
+   of its children, a paragraph's max-content width is one long line, so the
+   frame grew to the full column while the image stayed at its own size — the
+   plot stranded against the left edge with its caption running wider than it on
+   the right. (`min-content` on the figure is not the fix either: an image whose
+   own `max-width` is a percentage contributes nothing to a min-content
+   calculation, so the figure collapses to its floor.) */
+.wfig figcaption {
+  width: 0;
+  min-width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #4a6b80;
+}
+
+/* ---- figures side by side (.wfig-row) -------------------------------------
+   A row of figures that are ONE comparison: the same plot with and without its
+   window, or the same points under three fits. See FigureRow in
+   model_discovery.tsx.
+
+   Same auto-fit construction as .chf-row above — the track floor is the LARGER
+   of a readable minimum and one column's share of the row — so these rows
+   degrade the same way the tunnel rows do: three across, then two, then one,
+   with no orphan on a line of its own. Keep the subtracted gap totals in step
+   with `gap` if it changes: 2rem for three columns (two gaps), 1rem for two. */
+.wfig-row {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  align-items: start;
+}
+
+.wfig-row-3col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 2rem) / 3), 1fr)
+  );
+}
+
+.wfig-row-2col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(320px, 100%), (100% - 1rem) / 2), 1fr)
+  );
+}
+
+/* Inside a row the grid cell sets the width, so the figure gives up the width
+   cap, the centring margins and the caption floor it uses when it stands alone.
+   `min-width: 0` is what actually lets a cell shrink below its content — a grid
+   item's default `min-width: auto` would otherwise push the row wider than the
+   column and reintroduce the sideways scroll. */
+.wfig-row .wfig {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ---- equal heights (.wfig-row-matched) -----------------------------------
+   See `matchHeights` on FigureRow. Figures of different shapes, placed side by
+   side at equal widths, come out at different heights. Here each figure's
+   share of the row is its image's aspect ratio (`--wfig-ar`, set from the
+   loaded image by FigureRow) instead: widths in proportion to width/height
+   means heights come out equal, with every image still at its own shape.
+
+   Flex rather than the grid above, since flex-grow is the proportional share.
+   `flex-basis: 0` so the ratio alone divides the row, and `width: 100%` on the
+   image so it fills its share — the arithmetic only holds if it does.
+   `align-items: start` keeps each figure its own height, so captions of
+   different lengths do not pull the frames out of line. */
+.wfig-row.wfig-row-matched {
+  display: flex;
+  align-items: flex-start;
+}
+.wfig-row-matched > .wfig {
+  flex: var(--wfig-ar, 1) 1 0;
+}
+.wfig-row-matched .wfig img {
+  width: 100%;
+}
+
+/* Too narrow for two plots to be read side by side: one per line, each at its
+   full width, the same breakpoint the other multi-figure layouts use. */
+@media (max-width: 767.98px) {
+  .wfig-row.wfig-row-matched {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .wfig-row-matched > .wfig {
+    flex: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Prose tables (.mm-table.dtable)
+ *
+ *  A modifier on the shared `.mm-table` for the two laccase tables, whose cells
+ *  hold sentences rather than numbers: the anchor sequences and the candidate
+ *  shortlist.
+ *
+ *  `.mm-table` was written for the worked interpolation example — right-aligned
+ *  cells that never wrap, so a row of measurements stays on one line and the
+ *  wrapper scrolls if there are too many columns. Applied to a rationale
+ *  running to two lines of prose, `white-space: nowrap` pushes the column off
+ *  the page and the reader has to scroll a paragraph sideways to read it. This
+ *  variant lets those cells wrap and reads them left to right instead, which is
+ *  what a table of text needs. The numeric table is untouched.
+ * ========================================================================== */
+.mm-table.dtable th,
+.mm-table.dtable td {
+  white-space: normal;
+  text-align: left;
+  vertical-align: top;
+}
+
+/* The label column carries a UniProt accession or a group name — short, and the
+   thing the reader scans down — so it keeps to its own width and does not wrap
+   mid-accession. */
+.mm-table.dtable th[scope="row"] {
+  white-space: nowrap;
+  width: 1%;
+}
+
+/* These tables are text, so they may use the full column rather than the 70ch
+   the numeric example is capped at.
+   BOTH classes, deliberately: `.mm-tablewrap` sets that cap and lives in
+   model_methods.css, so a single `.dtable-wrap` would only match it on
+   specificity and the winner would come down to the order the two stylesheets
+   happen to land in the bundle. Two classes (0,2,0) beat one (0,1,0) whatever
+   the order. */
+.mm-tablewrap.dtable-wrap {
+  max-width: 100%;
+}
+
+/* ---- a bulleted list in the body prose (.md-list) ---- */
+#root .md-list {
+  margin: 0 0 1.15rem;
+  padding-left: 1.4rem;
+  color: #123a52;
+  line-height: 1.7;
+}

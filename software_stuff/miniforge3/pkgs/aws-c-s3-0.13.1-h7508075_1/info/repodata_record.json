@@ -1,0 +1,29 @@
+{
+  "name": "aws-c-s3",
+  "version": "0.13.1",
+  "build": "h7508075_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-s3-0.13.1-h7508075_1.conda",
+  "md5": "2daf54d3eef87b757f68d7597534dd2f",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-s3-0.13.1-h7508075_1.conda",
+  "sha256": "d24f7f34b3b564535b533b17176e71f71b6944aa2cb71813283bece139908d9f",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-http >=0.11.0,<0.11.1.0a0",
+    "aws-c-auth >=0.10.4,<0.10.5.0a0",
+    "openssl >=3.5.7,<4.0a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "aws-checksums >=0.2.10,<0.2.11.0a0",
+    "aws-c-io >=0.27.5,<0.27.6.0a0",
+    "aws-c-cal >=0.9.15,<0.9.16.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785351292770,
+  "size": 157667
+}

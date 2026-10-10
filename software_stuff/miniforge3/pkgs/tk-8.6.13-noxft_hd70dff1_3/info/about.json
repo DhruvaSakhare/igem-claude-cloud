@@ -1,0 +1,23 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/tcltk/tk",
+  "extra": {
+    "flow_run_id": "github_29526879564",
+    "recipe-maintainers": [
+      "jakirkham",
+      "msarahan",
+      "pelson",
+      "ocefpaf",
+      "isuruf",
+      "matthiasdiener",
+      "xhochy"
+    ],
+    "remote_url": "https://github.com/conda-forge/tk-feedstock",
+    "sha": "6924fff6adba24d31a817d37b3c4acb01d7d2825"
+  },
+  "home": "http://www.tcl.tk/",
+  "license": "TCL",
+  "summary": "A dynamic programming language with GUI support.  Bundles Tcl and Tk."
+}

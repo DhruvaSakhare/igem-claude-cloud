@@ -1,0 +1,193 @@
+[task 127] rfd3_partial_input_partial_rfd3_0_model_7_17_model_3
+Input  : /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/in  (1 file(s))
+Output : /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/out
+
+[RUN ] rfd3_partial_input_partial_rfd3_0_model_7_17_model_3.cif ... done  → /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/out/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3_out/
+
+All done.
+Computing Vina grid ... done.
+Performing docking (random seed: 42) ... 
+0%   10   20   30   40   50   60   70   80   90   100%
+|----|----|----|----|----|----|----|----|----|----|
+***************************************************
+----------------------------------------
+Mode:           Targeted Docking
+Receptor:       /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/in/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3.pdbqt
+Ligand:         /work3/s215098/BioBuilders2026/tools/channel_discovery/fpocket_pipeline/ligands/NNBT.sdf
+Center Coords:  [4.23, -7.24, -0.93]
+Box Dimensions: [14.0, 12.9, 16.4]
+Output File:    /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/docking_out/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3_NNBT_targeted_4.2_-7.2_-0.9.pdbqt
+----------------------------------------
+Preparing ligand with RDKit and Meeko...
+Computing Vina maps...
+Docking (Exhaustiveness: 8, Poses: 10)...
+Docking complete. Results saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/docking_out/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3_NNBT_targeted_4.2_-7.2_-0.9.pdbqt
+
+mode |   affinity | dist from best mode
+     | (kcal/mol) | rmsd l.b.| rmsd u.b.
+-----+------------+----------+----------
+   1      -0.9209          0          0
+   2      -0.7044    0.07368      2.467
+   3         0.55      3.825       4.81
+   4       0.5643      2.653      5.852
+   5       0.6723      3.595      5.018
+   6       0.8544      2.919      5.358
+   7        3.823      1.103      3.184
+   8        21.34       2.29       3.74
+   9         30.1      2.848      4.451
+  10        49.78      4.231      5.024
+
+============================================================
+STAGE 0 — RECEPTOR PREPARATION (PDB/CIF → PDBQT)
+============================================================
+  rfd3_partial_input_partial_rfd3_0_model_7_17_model_3.cif -> rfd3_partial_input_partial_rfd3_0_model_7_17_model_3.pdbqt
+
+1 prepared, 0 already existed.
+
+[fpocket] /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/bin/python3 /work3/s215098/BioBuilders2026/tools/channel_discovery/fpocket_pipeline/run_fpocket.py /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/in -o /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/out
+
+============================================================
+STAGE 2 — POCKET FILTERING (heme-proximal)
+============================================================
+  PASS  rfd3_partial_input_partial_rfd3_0_model_7_17_model_3  pocket 1  drugg=0.744  vol=779
+
+1 / 1 structures pass.
+
+
+============================================================
+STAGE 3 — DOCKING
+============================================================
+
+  rfd3_partial_input_partial_rfd3_0_model_7_17_model_3
+    pocket     : 1
+    box center : 4.23 -7.24 -0.93
+    box size   : 14.0 12.9 16.4
+
+[vina/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3] /work3/s215098/BioBuilders2026/software/miniforge3/envs/bio_docking/bin/python3 /work3/s215098/BioBuilders2026/tools/channel_discovery/fpocket_pipeline/docking.py -r /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/in/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3.pdbqt -l /work3/s215098/BioBuilders2026/tools/channel_discovery/fpocket_pipeline/ligands/NNBT.sdf -o /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/docking_out --center 4.23 -7.24 -0.93 --box_size 14.0 12.9 16.4 --exhaustiveness 8 --n_poses 10
+
+============================================================
+STAGE 4 — POSE ORIENTATION ANALYSIS
+============================================================
+
+============================================================
+File      : /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/docking_out/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3_NNBT_targeted_4.2_-7.2_-0.9.pdbqt
+Thresholds: score ≤ -5.0  |  d_ring ≤ 8.0 Å  |  flexibility 2.0 Å
+Poses     : 6   Passing: 0
+────────────────────────────────────────────────────────────
+ Pose    Score    d_ring     d_oxy   Feasible   Oriented  Pass
+────────────────────────────────────────────────────────────
+    1   -0.921     12.40     14.77      False       True
+    2   -0.704     12.42     14.75      False       True
+    3    0.550     14.60     12.93      False       True
+    4    0.564     13.09     13.28      False       True
+    5    0.672     14.57     13.82      False       True
+    6    0.854     13.17     13.04      False       True
+────────────────────────────────────────────────────────────
+Results saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/shards/rfd3_partial_input_partial_rfd3_0_model_7_17_model_3/out/pocket_selection.tsv
+
+============================================================
+PIPELINE SUMMARY
+============================================================
+  Input structures   : 1
+  After filtering    : 1
+  Docking completed  : 1
+  Docking skipped    : 0
+  Orientation pass   : 0 structure(s) with ≥1 passing pose
+
+  Structure                       Poses  Pass  Best passing pose
+  ──────────────────────────────────────────────────────────────────────
+  rfd3_partial_input_partial_rfd3_0_model_7_17_model_3      6     0  —
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210634[127]: <cdfullA0[1-177]%40> in cluster <dcc> Done
+
+Job <cdfullA0[1-177]%40> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:12 2026
+Job was executed on host(s) <4*n-62-21-21>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:11:51 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:11:51 2026
+Terminated at Mon Aug 24 16:12:08 2026
+Results reported at Mon Aug 24 16:12:08 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# STAGE A (array): fpocket + filter + dock + pose analysis, one structure per task.
+# Submitted by submit_all.sh, which supplies -J with the right array range.
+#BSUB -q hpc
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=4GB]"
+# DTU's esub rejects a -M more than 1GB above rusage[mem]. Keep them in step.
+#BSUB -M 5GB
+#BSUB -W 04:00
+#BSUB -o logs/stageA_%J_%I.out
+#BSUB -e logs/stageA_%J_%I.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+# LSF caps job arrays (MAX_JOB_ARRAY_SIZE, 1000 here), so large runs are split
+# into several arrays. Each gets an index offset substituted in at submit time;
+# LSB_JOBINDEX is always 1..size, so the offset maps it back to a manifest line.
+OFFSET="0"
+case "$OFFSET" in *OFFSET__) OFFSET=0 ;; esac
+IDX=$((LSB_JOBINDEX + OFFSET))
+STRUCT=$(sed -n "${IDX}p" "$WORK/manifest.txt")
+STEM=$(stem_of "$STRUCT")
+echo "[task ${IDX}] $STEM"
+
+# Each task gets its OWN outputs dir. This is not optional: pipeline.py
+# enumerates every structure in --outputs-dir and rewrites pocket_selection.tsv
+# from that view, so tasks sharing one dir would race and clobber the table.
+# 20_collectA.sh merges the shards afterwards.
+SHARD="$WORK/shards/$STEM"
+mkdir -p "$SHARD/in"
+cp "$STRUCT" "$SHARD/in/"
+
+# Constrain Vina to our actual LSF allocation. Without this it uses cpu=0,
+# meaning every core on the physical node — see docking.py.
+export VINA_CPU="${LSB_DJOB_NUMPROC:-4}"
+export VINA_SEED=42          # reproducible poses; drop for independent replicates
+export OMP_NUM_THREADS="$VINA_CPU"
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   37.45 sec.
+    Max Memory :                                 480 MB
+    Average Memory :                             480.00 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               15904.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                11
+    Run time :                                   17 sec.
+    Turnaround time :                            56 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/stageA_29210634_127.err> for stderr output of this job.
+

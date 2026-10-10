@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     viewBox="0 2700 4979 500" preserveAspectRatio="none"
+     width="100%" height="100%">
+  <!-- Wave path exported from Affinity, closed along the bottom and filled so
+       it reads as solid soil instead of a 1px outline. -->
+  <path d="M-4.96,2794.797c0,0 317.904,-66.661 513.167,-56.34c191.826,10.139 571.681,131.807 821.521,132.622c655.017,2.135 791.24,-195.949 1201.583,-150.81c217.339,23.908 230.582,105.084 727.451,38.144c315.592,-42.518 931.193,112.969 1253.103,74.262c315.767,-37.968 467.625,-120.653 467.625,-120.653L4979,3200L-4.96,3200Z"
+        fill="#aa4e36"/>
+</svg>

@@ -1,0 +1,37 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    18:
+HEADER 0  - Pocket Score                      : -0.1098
+HEADER 1  - Drug Score                        : 0.0001
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.9668
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5886
+HEADER 5  - Mean B-factor of pocket residues  : 0.0639
+HEADER 6  - Hydrophobicity Score              : 4.7500
+HEADER 7  - Polarity Score                    :     6
+HEADER 8  - Amino Acid based volume Score     : 4.6250
+HEADER 9  - Pocket volume (Monte Carlo)       : 216.3546
+HEADER 10 - Pocket volume (convex hull)       : 5.7128
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 3.0000
+HEADER 13 - Number of apolar alpha sphere     :     4
+HEADER 14 - Proportion of apolar alpha sphere : 0.2667
+ATOM    230    O ARG A  33      14.083 -12.607  10.926  0.64  2.14           O 0
+ATOM    849  ND2 ASN A 116       9.323 -13.140  11.378  0.00  0.00           N 0
+ATOM   1016  ND1 HIS A 138      10.447 -14.114   8.113  0.11  1.09           N 0
+ATOM   1017  CE1 HIS A 138       9.783 -15.254   8.182  0.00  0.00           C 0
+ATOM   1025  OD1 ASP A 139      12.968 -15.229   6.131  0.00  0.00           O 0
+ATOM    231   CB ARG A  33      17.260 -12.047  10.466  0.00  0.00           C 0
+ATOM    187  CD1 LEU A  27      19.918 -15.962  10.071  0.00  0.00           C 0
+ATOM    227    N ARG A  33      16.221 -13.017  12.476  0.00  0.00           N 0
+ATOM    214    O ASP A  31      17.689 -16.548  13.804  0.67  6.43           O 0
+ATOM    706   CBAARG A  97       9.849 -15.270  14.303  0.00  0.00           C 0
+ATOM    708   CGAARG A  97      11.046 -15.881  15.000  0.00  0.00           C 0
+ATOM    220   CA ILE A  32      16.352 -14.202  14.588  0.00  0.00           C 0
+ATOM    712   NEAARG A  97      12.340 -17.906  15.398  0.00  0.00           N 0
+ATOM    710   CDAARG A  97      11.081 -17.392  14.877  0.00  0.00           C 0
+ATOM    225  CG2 ILE A  32      14.165 -13.050  15.082  0.00  0.00           C 0
+TER
+END

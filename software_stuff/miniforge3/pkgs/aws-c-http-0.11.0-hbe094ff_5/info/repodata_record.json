@@ -1,0 +1,26 @@
+{
+  "name": "aws-c-http",
+  "version": "0.11.0",
+  "build": "hbe094ff_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-http-0.11.0-hbe094ff_5.conda",
+  "md5": "c09f7ec7327b8bd52fc2d6eacaa18d3b",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-http-0.11.0-hbe094ff_5.conda",
+  "sha256": "a4a5e24b398e7c0ef64de5a341ecb3f0fa87c2879177695c5d0bcbde0c4f8b5e",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "aws-c-io >=0.27.5,<0.27.6.0a0",
+    "aws-c-cal >=0.9.15,<0.9.16.0a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "aws-c-compression >=0.3.2,<0.3.3.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785186134512,
+  "size": 231270
+}

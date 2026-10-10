@@ -1,0 +1,11 @@
+prefix=/work3/s215098/BioBuilders2026/software/miniforge3
+exec_prefix=${prefix}
+includedir=/work3/s215098/BioBuilders2026/software/miniforge3/include
+libdir=/work3/s215098/BioBuilders2026/software/miniforge3/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

@@ -1,0 +1,24 @@
+{
+  "name": "s2n",
+  "version": "1.7.6",
+  "build": "h7e3ee7f_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "s2n-1.7.6-h7e3ee7f_0.conda",
+  "md5": "e112cadcd79412d81496e784884bddf0",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/s2n-1.7.6-h7e3ee7f_0.conda",
+  "sha256": "1e1ccc56fdf3fe82150b4eac1d626c806e612af208fbf40ce3abfe9a2eb2a626",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "openssl >=3.5.7,<4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "timestamp": 1784674401024,
+  "size": 393680
+}

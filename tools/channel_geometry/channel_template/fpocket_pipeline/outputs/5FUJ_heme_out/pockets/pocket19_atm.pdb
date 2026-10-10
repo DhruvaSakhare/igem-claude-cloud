@@ -1,0 +1,35 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket    19:
+HEADER 0  - Pocket Score                      : -0.0648
+HEADER 1  - Drug Score                        : 0.0006
+HEADER 2  - Number of alpha spheres           :    15
+HEADER 3  - Mean alpha-sphere radius          : 3.8690
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.5148
+HEADER 5  - Mean B-factor of pocket residues  : 0.1487
+HEADER 6  - Hydrophobicity Score              : 27.5000
+HEADER 7  - Polarity Score                    :     3
+HEADER 8  - Amino Acid based volume Score     : 4.1667
+HEADER 9  - Pocket volume (Monte Carlo)       : 163.9275
+HEADER 10 - Pocket volume (convex hull)       : 1.3528
+HEADER 11 - Charge Score                      :     1
+HEADER 12 - Local hydrophobic density Score   : 5.0000
+HEADER 13 - Number of apolar alpha sphere     :     6
+HEADER 14 - Proportion of apolar alpha sphere : 0.4000
+ATOM   1001  CE1 HIS A 131      23.724  -5.130 -18.466  0.00  0.00           C 0
+ATOM    996    O HIS A 131      21.356  -8.022 -16.109  0.65  1.07           O 0
+ATOM   1000  ND1 HIS A 131      22.675  -4.668 -17.801  0.44  1.09           N 0
+ATOM   1029  CD2 LEU A 134      17.675  -7.957 -19.982  0.00  0.00           C 0
+ATOM   1055  CD1 LEU A 138      20.501 -10.868 -21.917  0.00  0.00           C 0
+ATOM   1034   CB ALA A 135      23.421 -10.540 -17.405  0.00  0.00           C 0
+ATOM   1030    N ALA A 135      20.963 -10.654 -17.378  0.00  0.00           N 0
+ATOM   1031   CA ALA A 135      22.181 -11.274 -17.913  0.00  0.00           C 0
+ATOM   1712    O LYS A 221      17.294  -6.158 -24.046  0.72  7.50           O 0
+ATOM   1709    N LYS A 221      18.423  -3.843 -23.388  0.00  0.00           N 0
+ATOM   1713   CB LYS A 221      19.184  -4.255 -25.698  0.00  0.00           C 0
+ATOM   1690    O ASP A 219      21.295  -2.979 -20.565  0.52  5.36           O 0
+ATOM   1027   CG LEU A 134      18.020  -9.320 -19.355  0.00  0.00           C 0
+TER
+END

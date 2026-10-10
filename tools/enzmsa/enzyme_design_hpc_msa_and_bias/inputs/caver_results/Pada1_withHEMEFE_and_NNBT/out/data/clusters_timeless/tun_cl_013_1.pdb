@@ -1,0 +1,64 @@
+ATOM      1  H   FIL T  13     -34.164  26.512 -12.619        1.03              
+ATOM      2  H   FIL T  13     -33.769  25.888 -12.002        0.80              
+CONECT    1    2
+ATOM      3  H   FIL T  13     -33.426  25.067 -11.677        0.76              
+CONECT    2    3
+ATOM      4  H   FIL T  13     -33.653  24.320 -11.069        0.59              
+CONECT    3    4
+ATOM      5  H   FIL T  13     -33.936  23.634 -10.464        0.79              
+CONECT    4    5
+ATOM      6  H   FIL T  13     -33.453  22.946 -10.070        0.71              
+CONECT    5    6
+ATOM      7  H   FIL T  13     -32.893  22.226  -9.743        0.74              
+CONECT    6    7
+ATOM      8  H   FIL T  13     -32.634  21.518  -9.781        0.80              
+CONECT    7    8
+ATOM      9  H   FIL T  13     -32.614  21.054 -10.612        1.04              
+CONECT    8    9
+ATOM     10  H   FIL T  13     -32.477  20.370 -11.040        1.43              
+CONECT    9   10
+ATOM     11  H   FIL T  13     -31.750  19.891 -11.093        1.28              
+CONECT   10   11
+ATOM     12  H   FIL T  13     -31.817  19.140 -11.556        1.10              
+CONECT   11   12
+ATOM     13  H   FIL T  13     -32.263  18.280 -11.800        0.97              
+CONECT   12   13
+ATOM     14  H   FIL T  13     -32.663  17.570 -12.000        1.12              
+CONECT   13   14
+ATOM     15  H   FIL T  13     -33.306  16.987 -11.815        1.21              
+CONECT   14   15
+ATOM     16  H   FIL T  13     -33.256  16.086 -11.433        1.30              
+CONECT   15   16
+ATOM     17  H   FIL T  13     -33.080  15.212 -10.979        1.65              
+CONECT   16   17
+ATOM     18  H   FIL T  13     -32.703  14.413 -10.680        2.00              
+CONECT   17   18
+ATOM     19  H   FIL T  13     -32.935  13.638 -10.808        2.13              
+CONECT   18   19
+ATOM     20  H   FIL T  13     -32.913  12.850 -11.141        2.25              
+CONECT   19   20
+ATOM     21  H   FIL T  13     -32.299  12.200 -11.562        2.53              
+CONECT   20   21
+ATOM     22  H   FIL T  13     -31.497  11.816 -11.618        2.64              
+CONECT   21   22
+ATOM     23  H   FIL T  13     -30.933  11.991 -12.304        2.17              
+CONECT   22   23
+ATOM     24  H   FIL T  13     -30.532  11.995 -13.101        1.71              
+CONECT   23   24
+ATOM     25  H   FIL T  13     -30.097  11.766 -13.915        1.26              
+CONECT   24   25
+ATOM     26  H   FIL T  13     -29.591  11.178 -14.540        0.82              
+CONECT   25   26
+ATOM     27  H   FIL T  13     -29.056  10.813 -15.074        0.72              
+CONECT   26   27
+ATOM     28  H   FIL T  13     -28.766   9.989 -15.537        0.88              
+CONECT   27   28
+ATOM     29  H   FIL T  13     -27.995   9.376 -15.712        1.05              
+CONECT   28   29
+ATOM     30  H   FIL T  13     -27.711   8.747 -15.302        1.01              
+CONECT   29   30
+ATOM     31  H   FIL T  13     -27.148   8.449 -14.534        0.79              
+CONECT   30   31
+ATOM     32  H   FIL T  13     -26.569   8.214 -13.840        0.98              
+CONECT   31   32
+

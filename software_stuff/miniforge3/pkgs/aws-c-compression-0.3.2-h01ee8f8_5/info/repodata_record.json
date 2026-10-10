@@ -1,0 +1,23 @@
+{
+  "name": "aws-c-compression",
+  "version": "0.3.2",
+  "build": "h01ee8f8_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-compression-0.3.2-h01ee8f8_5.conda",
+  "md5": "ae862abdbb3160f97478d3d4749164c0",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-compression-0.3.2-h01ee8f8_5.conda",
+  "sha256": "27f8581573c533a92a1a9619516ebb66d390b9923d296331985cfd342dc32d29",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785157574179,
+  "size": 22282
+}

@@ -1,0 +1,37 @@
+/* Project Description page (description.tsx).
+ *
+ * `#root` on the selectors that compete with App.css's nested typography rules
+ * (specificity 1,0,1) — see the note in contents/dry-lab/SectionHeading.css. */
+
+/* Subsection headings inside a section's text box. */
+#root .desc h2 {
+  margin: 2rem 0 0.75rem;
+  color: var(--color-darkblue);
+  font-weight: 700;
+}
+
+/* The collapsible boxes sit inside a text box here, not on the bare page, so
+   they need less space above than on the Discovery page. */
+#root .desc .cmbox {
+  margin: 1.5rem 0 0.5rem;
+}
+#root .desc .cmbox-body p {
+  margin: 0.75rem 0 0;
+}
+
+/* A citation without a DOI or URL in the source: same look, but not a link. */
+#root .desc-cite-plain {
+  cursor: default;
+}
+
+/* Open problem in the source text — deliberately loud, so it is fixed before
+   the wiki freeze rather than overlooked. */
+#root .desc-todo {
+  display: inline;
+  padding: 0 0.3em;
+  border-radius: 0.25rem;
+  background: #fff3a8;
+  color: #7a4b00;
+  font-size: 0.85em;
+  font-weight: 700;
+}

@@ -1,0 +1,42 @@
+ATOM      1  H   FIL T   6       3.517  -1.902   1.048        1.07              
+ATOM      2  H   FIL T   6       3.062  -1.108   1.159        0.97              
+CONECT    1    2
+ATOM      3  H   FIL T   6       2.795  -0.399   1.449        0.94              
+CONECT    2    3
+ATOM      4  H   FIL T   6       2.433   0.160   2.086        0.92              
+CONECT    3    4
+ATOM      5  H   FIL T   6       1.873   0.821   2.309        0.83              
+CONECT    4    5
+ATOM      6  H   FIL T   6       1.382   1.533   2.231        0.73              
+CONECT    5    6
+ATOM      7  H   FIL T   6       1.259   2.504   2.081        0.78              
+CONECT    6    7
+ATOM      8  H   FIL T   6       1.006   3.409   1.756        1.07              
+CONECT    7    8
+ATOM      9  H   FIL T   6       1.091   4.161   1.275        1.17              
+CONECT    8    9
+ATOM     10  H   FIL T   6       1.388   5.100   1.117        1.04              
+CONECT    9   10
+ATOM     11  H   FIL T   6       1.692   5.999   0.884        1.13              
+CONECT   10   11
+ATOM     12  H   FIL T   6       1.949   6.804   0.391        1.36              
+CONECT   11   12
+ATOM     13  H   FIL T   6       2.606   7.557   0.400        1.19              
+CONECT   12   13
+ATOM     14  H   FIL T   6       2.934   8.464   0.184        1.18              
+CONECT   13   14
+ATOM     15  H   FIL T   6       3.171   9.015   0.732        1.14              
+CONECT   14   15
+ATOM     16  H   FIL T   6       3.165   9.685   1.396        1.10              
+CONECT   15   16
+ATOM     17  H   FIL T   6       2.835  10.525   1.656        1.12              
+CONECT   16   17
+ATOM     18  H   FIL T   6       2.812  11.514   1.566        1.06              
+CONECT   17   18
+ATOM     19  H   FIL T   6       3.384  12.205   1.414        0.92              
+CONECT   18   19
+ATOM     20  H   FIL T   6       4.120  12.820   1.227        0.89              
+CONECT   19   20
+ATOM     21  H   FIL T   6       4.190  13.790   1.455        0.80              
+CONECT   20   21
+

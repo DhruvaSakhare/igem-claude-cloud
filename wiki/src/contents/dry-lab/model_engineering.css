@@ -1,0 +1,294 @@
+/* Styles for the Model → Engineering page (model_engineering.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. The shared
+ * sticky page-switcher is the ModelNav component (its own .tsx + .css). */
+
+/* ========================================================================== *
+ *  Funnel cone geometry + pipeline stages (.efn-*)
+ *  Rendered by FunnelCone / FunnelStages and composed directly by
+ *  EngineeringHero — there is no wrapper card around them any more.
+ * ========================================================================== */
+.efn-stage-wrap {
+  min-width: 0;
+}
+.efn-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* funnel geometry */
+.efn-fill {
+  fill: url(#efn-fill);
+}
+.efn-wall {
+  fill: none;
+  stroke: #e8912e;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.efn-div {
+  stroke: rgba(14, 58, 87, 0.22);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 5;
+}
+.efn-tray {
+  fill: #ffffff;
+  stroke: #e8912e;
+  stroke-width: 2;
+}
+
+/* particle streams (circles start at the SVG origin and are translated) */
+.efn-p {
+  pointer-events: none;
+}
+.efn-p.reject {
+  fill: #9fb6c6;
+  animation-name: efn-reject;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+.efn-p.pass {
+  fill: #0d9488;
+  filter: drop-shadow(0 0 4px rgba(13, 148, 136, 0.5));
+  animation-name: efn-pass;
+  animation-timing-function: cubic-bezier(0.5, 0, 0.7, 1);
+  animation-iteration-count: infinite;
+}
+@keyframes efn-reject {
+  0% {
+    transform: translate(var(--sx), 24px);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.85;
+  }
+  52% {
+    transform: translate(var(--mx), var(--my));
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(var(--rx), var(--ry));
+    opacity: 0;
+  }
+}
+@keyframes efn-pass {
+  0% {
+    transform: translate(var(--sx), 24px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--ex), 322px);
+    opacity: 0;
+  }
+}
+
+/* collected shortlist candidates, glowing */
+.efn-cand {
+  fill: #e8912e;
+  filter: drop-shadow(0 0 6px rgba(232, 145, 46, 0.7));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: efn-cand 1.9s ease-in-out infinite;
+}
+@keyframes efn-cand {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.efn-top-t,
+.efn-bottom-t {
+  fill: #0e3a57;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-anchor: middle;
+}
+.efn-bottom-t {
+  fill: #b06a15;
+}
+
+/* The stage list that used to sit beside/under the cone (.efn-stages,
+ * .efn-stage, .efn-stage-num, .efn-stage-text) was removed — the hero is the
+ * cone alone. The four steps remain documented on the Methods page. */
+
+@media (prefers-reduced-motion: reduce) {
+  .efn-p.reject {
+    animation: none;
+    opacity: 0;
+  }
+  .efn-p.pass {
+    animation: none;
+    transform: translate(var(--ex), 300px);
+    opacity: 0.8;
+  }
+  .efn-cand {
+    animation: none;
+  }
+}
+
+/* ========================================================================== *
+ *  EngineeringHero — banner matching the other Model pages (.ehero-*)
+ *  Sits directly on the light-blue page, same eyebrow/title/sub layout as
+ *  ModelHero/MethodsHero/DiscoveryTreeHero, plus a placeholder pipeline motif.
+ * ========================================================================== */
+.ehero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 1.25rem;
+  /* Centred on the same column as the page content below — see .mxh. */
+  max-width: min(1100px, 100% - 2rem);
+  margin: 0 auto 2.5rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  /* Clear the fixed cloud header (--cloud-header-height in App.css). */
+  padding-top: calc(var(--cloud-header-height) - var(--navbar-height) + 1.5rem);
+  background: transparent;
+  /* Same two-column layout as the Discovery hero (.dtree): text left,
+   * illustration right, both vertically centred. */
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 460px);
+  gap: 2rem;
+  align-items: center;
+  /* Fill the first screen: the hero is all you see on load, and the page
+   * content begins below the fold. min-height (not height) so it still grows
+   * if the content is taller than the viewport — which it is on a landscape
+   * phone. svh is the *small* viewport height, i.e. with the mobile browser
+   * toolbars showing, so the hero never overflows behind them; the vh line
+   * above is the fallback for browsers without svh. */
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  align-content: center;
+}
+@media (max-width: 900px) {
+  .ehero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The placeholder pipeline motif (.ehero-ph-*) that used to sit here was
+ * removed: the Engineering hero graphic is now the DesignFunnel (.efn-*),
+ * moved up from the Results section. */
+.ehero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+.ehero-eyebrow {
+  display: inline-block;
+  margin-bottom: 1.1rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, #f4a63c, #e8912e);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(232, 145, 46, 0.28);
+}
+.ehero-title {
+  margin: 0 0 0.9rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #0e3a57;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+}
+.ehero-title span {
+  background: linear-gradient(120deg, #f4a63c, #e8912e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ehero-sub {
+  margin: 0;
+  max-width: 40ch;
+  color: #12455f;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+}
+
+/* ========================================================================== *
+ *  Funnel-as-hero (.ehero-viz)
+ *  The right-hand column of the hero: the cone with the four pipeline stages
+ *  under it. The bordered "From many designs to a shortlist" card that used to
+ *  wrap them (.efn / .efn-head / .efn-body / .efn-note) is gone — the hero now
+ *  composes FunnelCone + FunnelStages directly, so only the cone geometry and
+ *  the stage-row styles below are still used.
+ * ========================================================================== */
+.ehero-viz {
+  min-width: 0;
+  display: grid;
+  gap: 1rem;
+  align-content: center;
+}
+
+
+/* ---- the construct list in the laccase rational-design section ---- */
+#root .me-constructs {
+  margin: 0 0 1.15rem;
+  padding-left: 1.4rem;
+  color: #123a52;
+  line-height: 1.7;
+}
+
+/* ---- one tall figure beside two stacked ones (.wfig-mosaic) ----
+   The MutateX alignment (Figure 1) on the left; the two ΔΔG heatmaps
+   (Figures 2 and 3) stacked on the right. `stretch` makes both columns the
+   height of the taller one, and the column shares are chosen from the three
+   images' shapes (and the lengths of their captions) so the two come out
+   about even — retune `--mosaic-left` if a figure is re-uploaded at a
+   different shape. Each figure keeps its own caption under it. */
+.wfig-mosaic {
+  --mosaic-left: 1.6;
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  margin: 2rem 0 1.5rem;
+}
+.wfig-mosaic > .wfig {
+  flex: var(--mosaic-left) 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wfig-mosaic-stack {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-width: 0;
+}
+.wfig-mosaic .wfig {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+.wfig-mosaic .wfig img {
+  width: 100%;
+}
+
+/* Too narrow for the pair of columns: back to one figure per line. */
+@media (max-width: 767.98px) {
+  .wfig-mosaic {
+    flex-direction: column;
+  }
+  .wfig-mosaic > .wfig {
+    flex: none;
+  }
+}

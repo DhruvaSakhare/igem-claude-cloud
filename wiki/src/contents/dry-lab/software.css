@@ -1,0 +1,519 @@
+/* ========================================================================== *
+ *  Software page
+ *
+ *  Only the pieces this page needs that are not already in the shared Model
+ *  bundles: the repository callout, the pipeline strip, the two-column
+ *  "what it does / what it needs" grid, and the measurement-bug table.
+ *  Prose, headings and figure numbering all come from model_methods.css.
+ * ========================================================================== */
+
+/* --- repository callout ---------------------------------------------------- */
+.sw-repo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin: 0 auto 2rem;
+  padding: 1rem 1.25rem;
+  max-width: 52rem;
+  border: 1px solid #cfe0ea;
+  border-left: 4px solid #123a52;
+  border-radius: 6px;
+  background: #f4f9fc;
+}
+.sw-repo-label {
+  font-weight: 700;
+  color: #123a52;
+}
+.sw-repo code {
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+.sw-repo-meta {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: #46687c;
+}
+
+/* --- the pipeline strip ---------------------------------------------------- */
+.sw-flow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 1.5rem auto 2rem;
+  max-width: 60rem;
+  list-style: none;
+  padding: 0;
+}
+.sw-flow li {
+  flex: 1 1 10rem;
+  min-width: 9rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid #cfe0ea;
+  border-radius: 6px;
+  background: #fff;
+  text-align: center;
+}
+.sw-flow-step {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b8ea3;
+  margin-bottom: 0.25rem;
+}
+.sw-flow-tool {
+  display: block;
+  font-weight: 700;
+  color: #123a52;
+}
+.sw-flow-what {
+  display: block;
+  font-size: 0.85rem;
+  color: #46687c;
+  margin-top: 0.2rem;
+}
+/* The measurement step is the contribution, so it is the one that is marked. */
+.sw-flow li.sw-flow-key {
+  border-color: #123a52;
+  background: #eaf4f9;
+}
+
+/* --- requirement tiers ---------------------------------------------------- */
+.sw-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem auto 2rem;
+  max-width: 58rem;
+}
+.sw-tier {
+  padding: 1rem 1.1rem;
+  border: 1px solid #cfe0ea;
+  border-radius: 6px;
+  background: #fff;
+}
+.sw-tier h4 {
+  font-size: 1rem;
+  color: #123a52;
+  margin-bottom: 0.4rem;
+}
+.sw-tier p {
+  font-size: 0.9rem;
+  color: #46687c;
+  margin-bottom: 0;
+}
+
+/* --- tables --------------------------------------------------------------- */
+.sw-table {
+  width: 100%;
+  max-width: 54rem;
+  margin: 1rem auto 2rem;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.sw-table th,
+.sw-table td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid #dceaf2;
+  text-align: left;
+  vertical-align: top;
+  color: #123a52;
+}
+.sw-table thead th {
+  border-bottom: 2px solid #123a52;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #46687c;
+}
+.sw-table td.sw-num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.sw-table tr.sw-highlight td {
+  background: #eaf4f9;
+  font-weight: 600;
+}
+
+/* --- caveat block --------------------------------------------------------- */
+.sw-caveat {
+  margin: 1.5rem auto;
+  padding: 0.9rem 1.1rem;
+  max-width: 52rem;
+  border: 1px solid #e6cfa8;
+  border-left: 4px solid #c8922f;
+  border-radius: 6px;
+  background: #fdf7ec;
+  font-size: 0.92rem;
+  color: #5e4715;
+}
+.sw-caveat strong {
+  color: #4a3610;
+}
+
+/* --- command blocks ------------------------------------------------------- */
+.sw-cmd {
+  max-width: 52rem;
+  margin: 0.75rem auto 1.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  background: #0f2b3d;
+  color: #e6f1f7;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+.sw-cmd code {
+  color: inherit;
+  background: none;
+  padding: 0;
+}
+.sw-cmd .sw-comment {
+  color: #7fa8bf;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sw-flow li,
+  .sw-tier {
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+  .sw-flow li:hover,
+  .sw-tier:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(18, 58, 82, 0.12);
+  }
+}
+
+/* ========================================================================== *
+ *  Figures (.swf-*) and the architecture diagram (.swa-*)
+ *
+ *  Inline SVG — see SoftwareFigures.tsx for why. Colours come from the page
+ *  palette above rather than being baked into the SVG, so the diagram matches
+ *  the rest of the page and a palette change reaches it.
+ * ========================================================================== */
+.swf-fig {
+  margin: 1.75rem auto 2rem;
+  max-width: 44rem;
+}
+.swf-fig-wide {
+  max-width: 54rem;
+}
+.swf-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #cfe0ea;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* --- the measured profile plot --------------------------------------------- */
+.swf-grid {
+  stroke: #e6f1f7;
+  stroke-width: 1;
+}
+.swf-axis {
+  stroke: #7fa8bf;
+  stroke-width: 1;
+}
+.swf-area {
+  fill: #eaf4f9;
+}
+.swf-line {
+  fill: none;
+  stroke: #123a52;
+  stroke-width: 2.25;
+  stroke-linejoin: round;
+}
+.swf-dot {
+  fill: #c8922f;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+/* The design's bottleneck: a reference level, so dashed — it is a single
+   measured number from another run, not a curve we have here. */
+.swf-ref {
+  stroke: #c8922f;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+.swf-ref-label,
+.swf-callout {
+  font-size: 12px;
+  font-weight: 700;
+  fill: #5e4715;
+}
+.swf-callout {
+  fill: #123a52;
+}
+.swf-ref-sub,
+.swf-callout-sub {
+  font-size: 10.5px;
+  font-weight: 400;
+  fill: #46687c;
+}
+.swf-tick {
+  font-size: 11px;
+  fill: #46687c;
+  text-anchor: middle;
+}
+.swf-tick-y {
+  text-anchor: end;
+}
+.swf-axis-label {
+  font-size: 11.5px;
+  fill: #46687c;
+  text-anchor: middle;
+}
+
+/* --- the architecture diagram --------------------------------------------- */
+.swa-head {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #6b8ea3;
+  letter-spacing: 0.06em;
+}
+.swa-in,
+.swa-driver {
+  fill: #f4f9fc;
+  stroke: #cfe0ea;
+}
+.swa-driver {
+  fill: #fff;
+  stroke-dasharray: 4 3;
+}
+.swa-in-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: #123a52;
+}
+.swa-in-body {
+  font-size: 11px;
+  fill: #46687c;
+}
+.swa-box {
+  stroke-width: 1;
+}
+.swa-cpu {
+  fill: #fff;
+  stroke: #cfe0ea;
+}
+.swa-gpu {
+  fill: #eaf4f9;
+  stroke: #7fa8bf;
+}
+/* The gate is the design of the pipeline, so it is the one thing that gets a
+   colour of its own. */
+.swa-gate {
+  fill: #fdf7ec;
+  stroke: #c8922f;
+  stroke-width: 1.75;
+}
+.swa-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: #123a52;
+  text-anchor: middle;
+}
+.swa-sub {
+  font-size: 10.5px;
+  fill: #46687c;
+  text-anchor: middle;
+}
+.swa-arrow {
+  fill: none;
+  stroke: #7fa8bf;
+  stroke-width: 1.5;
+}
+.swa-arrow-note {
+  fill: none;
+  stroke: #c8922f;
+  stroke-width: 1.25;
+  stroke-dasharray: 3 3;
+}
+.swa-tip {
+  fill: #7fa8bf;
+  stroke: none;
+}
+.swa-note {
+  fill: #fdf7ec;
+  stroke: #e6cfa8;
+}
+.swa-note-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  fill: #5e4715;
+}
+.swa-note-body {
+  font-size: 10.5px;
+  fill: #4a3610;
+}
+.swa-foot {
+  font-size: 11px;
+  fill: #46687c;
+}
+.swa-em {
+  font-weight: 700;
+  fill: #123a52;
+}
+
+/* --- captured terminal output ---------------------------------------------- */
+.swf-term {
+  margin: 1.5rem auto 2rem;
+  max-width: 48rem;
+  border: 1px solid #cfe0ea;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #0f2b3d;
+}
+.swf-term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.75rem;
+  background: #123a52;
+  border-bottom: 1px solid #1d4d6b;
+}
+.swf-term-dots {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+.swf-term-dots i {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #46687c;
+}
+.swf-term-title {
+  font-size: 0.78rem;
+  color: #cfe0ea;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.swf-term-body {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  background: #0f2b3d;
+}
+.swf-term-body code {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: #dceaf2;
+  background: none;
+  white-space: pre;
+}
+.swf-term-prompt {
+  color: #7fa8bf;
+}
+.swf-term-cmd {
+  color: #fff;
+  font-weight: 700;
+}
+.swf-term-dim {
+  color: #7fa8bf;
+}
+.swf-term-key {
+  color: #f0c674;
+  font-weight: 700;
+}
+.swf-term-head {
+  color: #fff;
+  font-weight: 700;
+}
+.swf-term + figcaption,
+.swf-term figcaption {
+  padding: 0.6rem 1rem;
+  background: #f4f9fc;
+  border-top: 1px solid #cfe0ea;
+}
+
+@media (max-width: 575px) {
+  .swf-term-body code {
+    font-size: 0.68rem;
+  }
+}
+
+/* --- design choices, each with its cost ------------------------------------ */
+.sw-tradeoffs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem auto 2rem;
+  max-width: 60rem;
+}
+.sw-tradeoff {
+  padding: 1rem 1.1rem;
+  border: 1px solid #cfe0ea;
+  border-radius: 6px;
+  background: #fff;
+}
+.sw-tradeoff h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #123a52;
+  line-height: 1.35;
+}
+.sw-tradeoff p {
+  margin: 0 0 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #2c4a5c;
+}
+.sw-tradeoff p:last-child {
+  margin-bottom: 0;
+}
+/* The label carries the meaning here, so it reads without relying on colour. */
+.sw-to-gain,
+.sw-to-cost {
+  font-weight: 700;
+  margin-right: 0.3rem;
+}
+.sw-to-gain {
+  color: #123a52;
+}
+.sw-to-cost {
+  color: #8a5a12;
+}
+
+/* --- the three stable interfaces ------------------------------------------- */
+.sw-api {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem auto 1.75rem;
+  max-width: 60rem;
+}
+.sw-api-item {
+  padding: 1rem 1.1rem;
+  border: 1px solid #cfe0ea;
+  border-left: 3px solid #123a52;
+  border-radius: 6px;
+  background: #f4f9fc;
+}
+.sw-api-item h4 {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #123a52;
+}
+.sw-api-item p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #2c4a5c;
+}
+
+/* A caption for a captured terminal, which is a <figure> whose caption has to
+   sit outside it so the dark body keeps its own rounding. */
+.sw-figcap {
+  max-width: 48rem;
+  margin: -1.25rem auto 2rem;
+  font-size: 0.86rem;
+  color: #46687c;
+}

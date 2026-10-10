@@ -1,0 +1,77 @@
+{
+  "paths": [
+    {
+      "_path": "include/libaec.h",
+      "path_type": "hardlink",
+      "sha256": "dcb4fa38abaad9a0c0a2068c4fb2430c2af64cfb5944408dc02f8762e9b8b5e9",
+      "size_in_bytes": 6629
+    },
+    {
+      "_path": "include/szlib.h",
+      "path_type": "hardlink",
+      "sha256": "f602a233368540744ff27e573658fa0d2c18227488518a01911ad3276697cee5",
+      "size_in_bytes": 2670
+    },
+    {
+      "_path": "lib/cmake/libaec/libaec-config-version.cmake",
+      "path_type": "hardlink",
+      "sha256": "0346abd8399ecb184c475455b5939ba7a841e0265fed1ceb437cc2454c683867",
+      "size_in_bytes": 2762
+    },
+    {
+      "_path": "lib/cmake/libaec/libaec-config.cmake",
+      "path_type": "hardlink",
+      "sha256": "99c209b68d5cde6b06c4eaf1c29885dd8c061eba10ab839f27fbe65a5a968867",
+      "size_in_bytes": 4211
+    },
+    {
+      "_path": "lib/cmake/libaec/libaec_shared-targets-release.cmake",
+      "path_type": "hardlink",
+      "sha256": "7d858a92a5f3d1ba5f7aa78d9eec6f906fba3f2e7f2fc809a74f9a8caaee4984",
+      "size_in_bytes": 1336
+    },
+    {
+      "_path": "lib/cmake/libaec/libaec_shared-targets.cmake",
+      "path_type": "hardlink",
+      "sha256": "313135fb5fb4adb3fffad342a1b136d7113b7a5ce5d15b4b223ebaf27e013559",
+      "size_in_bytes": 5029
+    },
+    {
+      "_path": "lib/libaec.so",
+      "path_type": "softlink",
+      "sha256": "8ff42461ab6425737443673e175e06a20aad5cf0623f55f8ce14194655fcfde6",
+      "size_in_bytes": 46984
+    },
+    {
+      "_path": "lib/libaec.so.0",
+      "path_type": "softlink",
+      "sha256": "8ff42461ab6425737443673e175e06a20aad5cf0623f55f8ce14194655fcfde6",
+      "size_in_bytes": 46984
+    },
+    {
+      "_path": "lib/libaec.so.0.1.5",
+      "path_type": "hardlink",
+      "sha256": "8ff42461ab6425737443673e175e06a20aad5cf0623f55f8ce14194655fcfde6",
+      "size_in_bytes": 46984
+    },
+    {
+      "_path": "lib/libsz.so",
+      "path_type": "softlink",
+      "sha256": "c034db431229f40daed1602f2413c2fbdebe6c2fbd1ca13be44ab747238cd3ce",
+      "size_in_bytes": 55392
+    },
+    {
+      "_path": "lib/libsz.so.2",
+      "path_type": "softlink",
+      "sha256": "c034db431229f40daed1602f2413c2fbdebe6c2fbd1ca13be44ab747238cd3ce",
+      "size_in_bytes": 55392
+    },
+    {
+      "_path": "lib/libsz.so.2.0.1",
+      "path_type": "hardlink",
+      "sha256": "c034db431229f40daed1602f2413c2fbdebe6c2fbd1ca13be44ab747238cd3ce",
+      "size_in_bytes": 55392
+    }
+  ],
+  "paths_version": 1
+}

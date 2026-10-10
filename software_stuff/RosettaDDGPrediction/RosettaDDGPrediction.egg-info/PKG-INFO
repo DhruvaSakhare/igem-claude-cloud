@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: RosettaDDGPrediction
+Version: 0.0.1
+Summary: Python wrapper of Rosetta-based protocols for ΔΔG calculation.
+Home-page: https://github.com/ELELAB/RosettaDDGPrediction
+Author: Valentina Sora, Matteo Tiberti, Elena Papaleo
+License-File: LICENSE

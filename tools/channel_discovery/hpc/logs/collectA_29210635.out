@@ -1,0 +1,99 @@
+collected 177 fpocket output dir(s)
+pruned fpocket visualisation files: 69MB -> 54MB
+pocket_selection.tsv: 177 structure(s), 103 PASS
+CAVER inputs: 174 converted, 3 copied, 0 already present
+CAVER inputs ready: 177 PDB file(s) in /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/pdb_inputs
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210635: <cdfullAc> in cluster <dcc> Done
+
+Job <cdfullAc> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:12 2026
+Job was executed on host(s) <n-62-31-5>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:12:25 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:12:25 2026
+Terminated at Mon Aug 24 16:12:57 2026
+Results reported at Mon Aug 24 16:12:57 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# Merge the Stage A shards into the single outputs/ layout Stage B expects:
+#   outputs/pocket_selection.tsv        <- run_batch.py load_pocket_selection()
+#   outputs/<stem>_out/pockets/*.pqr    <- run_batch.py pocket_center()
+# Both must sit in the SAME directory, which is what --fpocket-dir points at.
+#BSUB -q hpc
+#BSUB -n 1
+#BSUB -R "rusage[mem=2GB]"
+#BSUB -W 00:30
+#BSUB -o logs/collectA_%J.out
+#BSUB -e logs/collectA_%J.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+mkdir -p "$WORK/outputs"
+
+# fpocket _out/ dirs are named per structure and never collide.
+# MOVE rather than copy: copying leaves a second full set under shards/, which
+# at ~1400 structures is tens of GB of pure duplication and will exhaust a
+# /work3 quota. Stage A is re-runnable if a shard is ever needed again.
+n=0
+for d in "$WORK"/shards/*/out; do
+    [ -d "$d" ] || continue
+    for o in "$d"/*_out; do
+        [ -d "$o" ] || continue
+        rm -rf "$WORK/outputs/$(basename "$o")"
+        mv "$o" "$WORK/outputs/"
+        n=$((n + 1))
+    done
+done
+echo "collected $n fpocket output dir(s)"
+
+# Drop fpocket's visualisation output. Downstream only ever reads:
+#   <stem>_info.txt              filter_pockets.py metrics
+#   pockets/pocket<N>_vert.pqr   run_batch.py pocket_center()
+#   <stem>_out.pdb               pipeline.py find_receptor_pdb() fallback
+# The .tcl/.pml/VMD/PYMOL scripts and per-pocket _atm.pdb files are for manual
+# inspection only and dominate the on-disk size.
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   17.32 sec.
+    Max Memory :                                 12 MB
+    Average Memory :                             12.00 MB
+    Total Requested Memory :                     2048.00 MB
+    Delta Memory :                               2036.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   32 sec.
+    Turnaround time :                            105 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/collectA_29210635.err> for stderr output of this job.
+

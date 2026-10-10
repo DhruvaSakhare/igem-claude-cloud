@@ -1,0 +1,47 @@
+/* ========================================================================== *
+ *  The channel-method box's own rules (.cmbox-body …)
+ *
+ *  ONLY what the box holding the three method CARDS needs. The collapsible
+ *  itself — .cmbox, .cmbox-toggle, .cmbox-body and the rest — is shared with
+ *  every other "More details on …" box on the page and lives in DetailsBox.css.
+ * ========================================================================== */
+
+/* ---- the method cards, unframed -----------------------------------------
+   A bordered card, holding a bordered detail panel, inside a bordered box is
+   three frames deep for one piece of writing — so inside this box the cards
+   lose their own shell and the three methods become sections of one document,
+   separated by a rule with air on both sides of it.
+
+   Scoped by the box's own body rather than by a modifier class on `.mviz`,
+   because the cards are rendered several components below it and those
+   components are shared, unchanged, with the Methods page — where the framed
+   card is still the right thing and must not be touched by any of this. */
+.cmbox-body .mviz {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+/* Air above every section, and a rule only BETWEEN them — the box's own header
+   rule already closes the top, so a second one under it would double up. The
+   equal margin and padding put the rule midway in the gap. */
+.cmbox-body .mm-msub {
+  margin-top: 2.5rem;
+}
+.cmbox-body .mm-msub + .mm-msub {
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(240, 173, 78, 0.4);
+}
+
+/* The inlined detail panel keeps its own top rule inside a card, where it
+   divides the card's two halves. With the card gone that rule reads as a
+   section break, competing with the real one above — so it becomes plain
+   space, and the detail simply continues the section's text. */
+.cmbox-body .mviz-more {
+  margin-top: 0.2rem;
+  padding-top: 0;
+  border-top: 0;
+}

@@ -1,0 +1,126 @@
+[task 66] rfd3_partial_input_partial_rfd3_0_model_3_6_model_4
+fpocket: 103 PASS structure(s): 5FUJ_heme→pocket3, 5OXU_heme→pocket2, 9HE9_heme→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_11_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_16_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_17_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_18_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_1_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_4_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_5_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_8_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_9_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_11_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_13_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_15_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_2_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_3_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_4_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_5_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_11_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_1_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_11_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_16_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_17_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_2_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_3_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_4_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_7_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_8_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_9_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_11_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_13_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_16_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_17_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_18_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_1_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_2_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_3_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_7_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_8_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_0_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_11_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_15_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_17_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_19_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_1_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_2_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_7_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_9_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_11_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_13_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_15_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_1_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_0_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_11_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_12_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_14_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_15_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_16_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_17_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_19_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_2_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_3_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_6_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_9_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_13_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_15_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_16_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_17_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_4_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_5_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_13_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_15_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_16_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_17_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_3_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_5_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_6_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_7_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_8_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_9_model_2→pocket1
+Found 1 PDB file(s)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_6_model_4]
+  Fe at (-6.20, 0.18, -2.86)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center 2.7, 1.7, -7.5), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_8_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_8_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_11_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_11_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_13_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_13_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_16_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_16_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_18_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_18_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_21_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_21_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_26_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots/tunnel_26_R_shape.png
+  Filter: kept [1, 2, 8, 11, 13, 16, 18, 21, 26], discarded [3, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_6_model_4/plots
+
+Done.
+Tunnel selection summary → /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/tunnel_selection.csv
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210636[66]: <cdfullB0[1-177]%40> in cluster <dcc> Done
+
+Job <cdfullB0[1-177]%40> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:13 2026
+Job was executed on host(s) <n-62-12-66>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:13:06 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:13:06 2026
+Terminated at Mon Aug 24 16:16:51 2026
+Results reported at Mon Aug 24 16:16:51 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# STAGE B (array): CAVER tunnel detection, one structure per task.
+# CAVER is a single JVM capped at -Xmx1200m (hardcoded in run_batch.py), so one
+# core and modest memory is right. Raise both together if you hit OOM on large
+# receptors — the -Xmx is at caver_pipeline/python_scripts/run_batch.py:218.
+#BSUB -q hpc
+#BSUB -n 1
+#BSUB -R "rusage[mem=4GB]"
+# DTU's esub rejects a -M more than 1GB above rusage[mem]. Keep them in step.
+#BSUB -M 5GB
+#BSUB -W 02:00
+#BSUB -o logs/stageB_%J_%I.out
+#BSUB -e logs/stageB_%J_%I.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+# LSF caps job arrays (MAX_JOB_ARRAY_SIZE, 1000 here), so large runs are split
+# into several arrays. Each gets an index offset substituted in at submit time;
+# LSB_JOBINDEX is always 1..size, so the offset maps it back to a manifest line.
+OFFSET="0"
+case "$OFFSET" in *OFFSET__) OFFSET=0 ;; esac
+IDX=$((LSB_JOBINDEX + OFFSET))
+STRUCT=$(sed -n "${IDX}p" "$WORK/manifest.txt")
+STEM=$(stem_of "$STRUCT")
+
+# CAVER needs PDB; 20_collectA.sh converted any CIF inputs into $PDB_INPUTS.
+PDB="$PDB_INPUTS/$STEM.pdb"
+if [ ! -f "$PDB" ]; then
+    echo "[task ${IDX}] $STEM — no converted PDB at $PDB, skipping" >&2
+    exit 0
+fi
+
+# run_batch.py would skip non-PASS structures itself, but exiting here avoids
+# spinning up a JVM just to no-op.
+if ! awk -F'\t' -v s="$STEM" 'NR>1 && $1==s && $2=="PASS" { found=1 } END { exit !found }' \
+        "$WORK/outputs/pocket_selection.tsv"; then
+    echo "[task ${IDX}] $STEM — not PASS in Stage A, skipping"
+    exit 0
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   35.58 sec.
+    Max Memory :                                 766 MB
+    Average Memory :                             763.25 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3330.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                19
+    Run time :                                   225 sec.
+    Turnaround time :                            338 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/stageB_29210636_66.err> for stderr output of this job.
+

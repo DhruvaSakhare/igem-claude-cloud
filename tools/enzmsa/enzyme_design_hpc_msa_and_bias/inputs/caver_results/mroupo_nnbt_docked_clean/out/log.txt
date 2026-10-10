@@ -1,0 +1,25 @@
+Caver computation started.
+Settings loaded from:
+/work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/mroupo_nnbt_docked_clean/config.txt
+
+Basic parameters:
+starting_point_residue 235 C
+probe_radius 0.4
+shell_radius 5.0
+shell_depth 6.0
+frame_weighting_coefficient 1.0
+frame_clustering_threshold 1.0
+
+*** Processing mroupo_nnbt_docked_clean.pdb0 ***
+
+Calculation finished with warnings, summary is in /work3/s215098/BioBuilders2026/tools/enzyme_design_hpc_msa_and_bias/inputs/caver_results/mroupo_nnbt_docked_clean/out/warnings.txt (size 1451).
+
+-----------------------------------------------------------------------
+ Thank you for using CAVER, please cite:
+
+ Chovancova, E., Pavelka, A., Benes, P., Strnad, O., Brezovsky, J.,
+ Kozlikova, B., Gora, A., Sustr, V., Klvana, M., Medek, P.,
+ Biedermannova, L., Sochor, J. Damborsky, J. (2012) CAVER 3.0: A Tool
+ for the Analysis of Transport Pathways in Dynamic Protein Structures.
+ PLoS Comput Biol 8: e1002708. doi:10.1371/journal.pcbi.1002708
+-----------------------------------------------------------------------

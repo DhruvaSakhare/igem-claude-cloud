@@ -1,0 +1,25 @@
+{
+  "name": "aws-c-io",
+  "version": "0.27.5",
+  "build": "h4f381ba_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-io-0.27.5-h4f381ba_1.conda",
+  "md5": "948f5a4fddac779b7942626e5807caba",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-io-0.27.5-h4f381ba_1.conda",
+  "sha256": "76ab4eb6cae12e14244cb1fe11ecccc2f103f8ffa7e80e222099c6b16c19ae20",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "aws-c-cal >=0.9.15,<0.9.16.0a0",
+    "s2n >=1.7.6,<1.7.7.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785170070776,
+  "size": 183633
+}

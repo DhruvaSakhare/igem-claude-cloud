@@ -1,0 +1,18 @@
+{
+  "arch": "x86_64",
+  "build": "h6bbde05_1",
+  "build_number": 1,
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "libgcc >=14",
+    "openssl >=3.5.7,<4.0a0"
+  ],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "name": "aws-c-cal",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1785157790550,
+  "version": "0.9.15"
+}

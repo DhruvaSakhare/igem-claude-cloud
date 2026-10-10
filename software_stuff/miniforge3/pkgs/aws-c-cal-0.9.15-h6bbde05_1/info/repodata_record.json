@@ -1,0 +1,25 @@
+{
+  "name": "aws-c-cal",
+  "version": "0.9.15",
+  "build": "h6bbde05_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-cal-0.9.15-h6bbde05_1.conda",
+  "md5": "8f2b374c79908f271be3d0e9f1c462a8",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-cal-0.9.15-h6bbde05_1.conda",
+  "sha256": "6eb21a0129e0aa7c6be733c7f2d1de6bc97a60c8382c1016f19dced722600d73",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "libgcc >=14",
+    "openssl >=3.5.7,<4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "license_family": "Apache",
+  "timestamp": 1785157790550,
+  "size": 56630
+}

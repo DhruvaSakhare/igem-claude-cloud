@@ -1,0 +1,8 @@
+#!/work3/s215098/BioBuilders2026/software/miniforge3/envs/boltz_vina/bin/python3.12
+# -*- coding: UTF-8 -*-
+from __future__ import print_function, division, absolute_import
+
+from numba.misc.numba_entry import main
+
+if __name__ == "__main__":
+    main()

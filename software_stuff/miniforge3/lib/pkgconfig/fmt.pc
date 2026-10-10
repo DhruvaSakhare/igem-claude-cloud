@@ -1,0 +1,11 @@
+prefix=/work3/s215098/BioBuilders2026/software/miniforge3
+exec_prefix=/work3/s215098/BioBuilders2026/software/miniforge3
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 12.1.0
+Libs: -L${libdir} -lfmt
+Cflags: -I${includedir}
+

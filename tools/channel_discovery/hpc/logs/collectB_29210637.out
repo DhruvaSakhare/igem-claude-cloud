@@ -1,0 +1,1350 @@
+fpocket: 103 PASS structure(s): 5FUJ_heme→pocket3, 5OXU_heme→pocket2, 9HE9_heme→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_11_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_16_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_17_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_18_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_1_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_4_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_5_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_8_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_0_9_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_11_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_13_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_15_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_2_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_3_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_4_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_1_5_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_11_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_1_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_2_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_11_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_16_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_17_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_19_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_2_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_3_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_4_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_7_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_8_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_3_9_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_11_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_12_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_13_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_16_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_17_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_18_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_1_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_2_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_3_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_7_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_4_8_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_0_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_11_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_15_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_17_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_19_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_1_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_2_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_7_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_5_9_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_11_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_13_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_15_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_1_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_6_5_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_0_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_11_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_12_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_14_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_15_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_16_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_17_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_19_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_2_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_3_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_6_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_7_9_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_13_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_15_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_16_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_17_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_4_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_5_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_8_6_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_13_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_14_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_15_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_16_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_17_model_2→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_3_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_4_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_5_model_3→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_6_model_1→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_7_model_0→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_8_model_4→pocket1, rfd3_partial_input_partial_rfd3_0_model_9_9_model_2→pocket1
+Found 177 PDB file(s)
+
+[5FUJ_heme]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 3 (center 1.9, -4.3, -14.2), radius 12.0 Å
+  Filter: kept [1, 2, 3, 6, 10, 23], discarded [4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40]
+  Plots skipped (already computed)
+
+[5OXU_heme]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 2 (center 8.9, 8.4, 11.9), radius 12.0 Å
+  Filter: kept [1, 2, 5, 7, 14, 20, 31, 44], discarded [3, 4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[9HE9_heme]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 48.2, -3.9, 30.0), radius 12.0 Å
+  Filter: kept [1, 2, 4, 10, 17, 22, 32, 36], discarded [3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_0_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_10_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_11_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.9, -2.8, -5.8), radius 12.0 Å
+  Filter: kept [1, 2, 6, 14, 15, 25, 29], discarded [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_12_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_13_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_14_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_15_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_16_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.2, -6.5, -5.4), radius 12.0 Å
+  Filter: kept [1, 2, 4, 7, 9, 11, 16, 27, 32, 33, 36], discarded [3, 5, 6, 8, 10, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_17_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.0, -6.3, -7.4), radius 12.0 Å
+  Filter: kept [1, 3, 6, 7, 8, 20, 29, 30, 41], discarded [2, 4, 5, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_18_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.8, -10.0, -1.3), radius 12.0 Å
+  Filter: kept [1, 4], discarded [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_19_model_2]
+  Fe at (4.50, 1.01, -0.39)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -5.3, 6.6, 0.4), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_5_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_5_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_9_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_9_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_12_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_12_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_17_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_17_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_36_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots/tunnel_36_R_shape.png
+  Filter: kept [1, 2, 3, 5, 9, 12, 17, 36], discarded [4, 6, 7, 8, 10, 11, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_19_model_2/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_0_1_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.5, -4.1, -6.9), radius 12.0 Å
+  Filter: kept [1, 2, 4, 6, 12, 20], discarded [3, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_2_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_3_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_4_model_2]
+  Fe at (-2.50, 4.81, 3.09)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center 5.3, -1.3, 0.0), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_5_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_5_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_22_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_22_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_28_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_28_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_33_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots/tunnel_33_R_shape.png
+  Filter: kept [1, 4, 5, 22, 28, 33], discarded [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_0_4_model_2/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_0_5_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -3.3, -9.3, -3.3), radius 12.0 Å
+  Filter: kept [1, 3, 4, 6, 8, 15], discarded [2, 5, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_6_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -6.4, 1.5, 8.8), radius 12.0 Å
+  Filter: kept [1, 3, 5, 11, 12, 15, 23, 33, 35], discarded [2, 4, 6, 7, 8, 9, 10, 13, 14, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_7_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_0_8_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -0.1, -10.0, 3.2), radius 12.0 Å
+  Filter: kept [1, 2, 4, 5], discarded [3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_0_9_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -7.3, -7.6, 1.7), radius 12.0 Å
+  Filter: kept [1, 3, 4, 7, 9, 12], discarded [2, 5, 6, 8, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_11_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -11.5, -2.8, 0.7), radius 12.0 Å
+  Filter: kept [1, 2, 5, 15, 21, 22, 29, 30], discarded [3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_12_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 8.1, -0.7, 3.4), radius 12.0 Å
+  Filter: kept [1, 5, 8, 9, 14, 18, 19], discarded [2, 3, 4, 6, 7, 10, 11, 12, 13, 15, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_13_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 0.6, 7.6, 2.8), radius 12.0 Å
+  Filter: kept [1, 2, 5, 6, 24, 28, 30], discarded [3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_14_model_3]
+  Fe at (-0.74, -4.00, 3.95)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -6.0, 3.2, -0.9), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_11_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_11_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_15_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_15_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_22_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots/tunnel_22_R_shape.png
+  Filter: kept [1, 2, 3, 4, 11, 15, 22], discarded [5, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_1_14_model_3/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_1_15_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 3.0, 7.8, 7.1), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 11, 25, 29, 35, 36], discarded [4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_17_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_18_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_19_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_1_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_2_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -0.6, 2.2, 8.3), radius 12.0 Å
+  Filter: kept [2, 3, 4, 5, 9, 28], discarded [1, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_3_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -3.4, -10.1, 3.6), radius 12.0 Å
+  Filter: kept [1, 2, 6, 9, 26, 27, 30, 31, 33], discarded [3, 4, 5, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 29, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_4_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.4, 0.5, 9.6), radius 12.0 Å
+  Filter: kept [1, 2, 4, 14, 18, 21, 26], discarded [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_5_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 7.8, 7.2, -2.8), radius 12.0 Å
+  Filter: kept [1, 4, 5, 12, 19], discarded [2, 3, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_1_7_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_8_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_1_9_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_11_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 3.3, 8.1, -5.2), radius 12.0 Å
+  Filter: kept [1, 3, 5, 7, 10, 18, 27], discarded [2, 4, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_2_12_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_14_model_3]
+  Fe at (-1.45, -0.69, -0.15)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center 7.6, -1.3, 0.3), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_5_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_5_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_9_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_9_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_10_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_10_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_13_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_13_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_24_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_24_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_29_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_29_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_31_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots/tunnel_31_R_shape.png
+  Filter: kept [1, 2, 3, 5, 9, 10, 13, 24, 29, 31], discarded [4, 6, 7, 8, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_2_14_model_3/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_2_15_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_17_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_18_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_19_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.5, -2.7, 1.7), radius 12.0 Å
+  Filter: kept [1, 7, 16, 24, 38], discarded [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_2_1_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.1, 3.4, 1.8), radius 12.0 Å
+  Filter: kept [1, 3, 4, 6, 9, 15, 16, 19, 25, 37, 42], discarded [2, 5, 7, 8, 10, 11, 12, 13, 14, 17, 18, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_2_2_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_4_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 2.9, 2.0, -13.3), radius 12.0 Å
+  Filter: kept [2, 4, 9], discarded [1, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_2_5_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 11.1, 2.8, -0.3), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 10, 25, 29], discarded [5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_2_7_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_2_8_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_0_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_10_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_11_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 2.9, 0.5, 6.0), radius 12.0 Å
+  Filter: kept [1, 5, 9, 21], discarded [2, 3, 4, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_12_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.5, -5.2, -8.4), radius 12.0 Å
+  Filter: kept [1, 2, 4, 7], discarded [3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_13_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_14_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_15_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_16_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -7.1, -4.1, -2.2), radius 12.0 Å
+  Filter: kept [1, 2, 6, 15, 24, 32], discarded [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_17_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -3.2, 1.0, 11.6), radius 12.0 Å
+  Filter: kept [1, 2, 5, 8, 21, 29], discarded [3, 4, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_18_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_19_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.1, -7.5, 4.9), radius 12.0 Å
+  Filter: kept [1, 2, 5, 6, 13, 20, 32, 38], discarded [3, 4, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_1_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_2_model_4]
+  Fe at (-4.20, -3.26, -1.26)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center 4.5, -2.3, 1.8), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_5_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_5_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_21_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_21_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_26_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_26_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_30_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots/tunnel_30_R_shape.png
+  Filter: kept [1, 2, 3, 4, 5, 21, 26, 30], discarded [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_3_2_model_4/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_3_3_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.6, 0.8, -0.4), radius 12.0 Å
+  Filter: kept [1, 7, 16, 26, 31], discarded [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_4_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -6.0, -5.5, 6.6), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 9, 11, 13, 22, 32], discarded [5, 6, 7, 8, 10, 12, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_5_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_3_6_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 2.7, 1.7, -7.5), radius 12.0 Å
+  Filter: kept [1, 2, 8, 11, 13, 16, 18, 21, 26], discarded [3, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_7_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 4.8, 0.7, -0.0), radius 12.0 Å
+  Filter: kept [1, 2, 4, 10, 19, 26, 27], discarded [3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_8_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.3, -1.2, 1.1), radius 12.0 Å
+  Filter: kept [1, 2, 3, 6, 10, 14, 23, 34], discarded [4, 5, 7, 8, 9, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_3_9_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.5, -4.6, 4.6), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 6, 16, 17, 33], discarded [4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_0_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_10_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_11_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.3, 1.4, 5.2), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 7, 21, 24, 28, 30, 32], discarded [5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 25, 26, 27, 29, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_12_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.6, -1.8, 5.4), radius 12.0 Å
+  Filter: kept [1, 2, 12], discarded [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_13_model_3]
+  Fe at (0.35, 0.46, -2.04)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -9.1, -5.0, 0.9), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_7_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_7_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_11_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_11_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_28_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_28_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_31_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_31_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_41_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots/tunnel_41_R_shape.png
+  Filter: kept [1, 3, 7, 11, 28, 31, 41], discarded [2, 4, 5, 6, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_13_model_3/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_14_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_15_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_16_model_0]
+  Fe at (-1.18, -2.41, -3.52)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -7.1, 0.9, 6.1), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_7_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_7_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_9_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_9_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_18_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots/tunnel_18_R_shape.png
+  Filter: kept [1, 2, 3, 4, 7, 9, 18], discarded [5, 6, 8, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_16_model_0/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_17_model_0]
+  Fe at (1.26, -0.96, -4.43)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -7.9, -2.5, -2.7), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_5_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_5_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_7_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_7_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_10_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_10_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_29_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_29_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_36_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots/tunnel_36_R_shape.png
+  Filter: kept [1, 2, 4, 5, 7, 10, 29, 36], discarded [3, 6, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_17_model_0/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_18_model_4]
+  Fe at (5.34, -4.55, -0.76)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center 6.9, -8.5, -11.0), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_4_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_4_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_10_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_10_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_21_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots/tunnel_21_R_shape.png
+  Filter: kept [1, 2, 4, 10, 21], discarded [3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_18_model_4/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_19_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_1_model_3]
+  Fe at (7.36, 2.42, 4.47)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -1.5, 8.3, -0.2), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_2_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_2_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_7_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_7_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_9_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_9_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_12_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots/tunnel_12_R_shape.png
+  Filter: kept [1, 2, 3, 7, 9, 12], discarded [4, 5, 6, 8, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_1_model_3/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_2_model_3]
+  Fe at (-2.82, -0.28, 0.27)
+  Starting point: synthetic Fe residue 336 A
+  Running CAVER...
+  Pocket filter: using fpocket pocket 1 (center -7.4, -3.0, 10.8), radius 12.0 Å
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_1_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_1_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_3_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_3_R_shape.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_24_R_distribution.png
+Saved: /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots/tunnel_24_R_shape.png
+  Filter: kept [1, 3, 24], discarded [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/rfd3_partial_input_partial_rfd3_0_model_4_2_model_3/plots
+
+[rfd3_partial_input_partial_rfd3_0_model_4_3_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -10.1, 1.0, -4.8), radius 12.0 Å
+  Filter: kept [1, 3, 4, 17, 36], discarded [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_4_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.5, -5.5, 5.4), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 5, 34, 35], discarded [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_5_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_4_6_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.1, -4.8, 10.4), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 9], discarded [4, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_7_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -6.1, 0.8, 5.1), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 5, 30], discarded [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_8_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -11.2, 0.0, 1.3), radius 12.0 Å
+  Filter: kept [1, 2, 6, 10, 36], discarded [3, 4, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_4_9_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_0_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 6.1, -7.4, -2.9), radius 12.0 Å
+  Filter: kept [1, 3, 9, 10, 21, 31, 32, 38], discarded [2, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 33, 34, 35, 36, 37, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_11_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.5, 3.2, -4.2), radius 12.0 Å
+  Filter: kept [1, 2, 4, 17, 27, 48], discarded [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_12_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_14_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_15_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 0.2, -1.3, -9.8), radius 12.0 Å
+  Filter: kept [1, 2, 3, 7, 23, 28], discarded [4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_16_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_17_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.9, 6.6, 5.1), radius 12.0 Å
+  Filter: kept [1, 3, 4, 5, 11, 15, 18, 24, 26], discarded [2, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17, 19, 20, 21, 22, 23, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_18_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_19_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 2.3, 4.9, -6.3), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 5], discarded [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_1_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.6, -4.1, -6.9), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 17, 22, 24], discarded [4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_2_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.0, 6.5, 3.5), radius 12.0 Å
+  Filter: kept [1, 3, 6, 10, 12, 16], discarded [2, 4, 5, 7, 8, 9, 11, 13, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_4_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -0.8, -0.5, -6.3), radius 12.0 Å
+  Filter: kept [1, 4, 6, 10, 31], discarded [2, 3, 5, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_5_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.1, -8.7, 1.8), radius 12.0 Å
+  Filter: kept [1, 2, 3, 12, 14, 23], discarded [4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_6_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 6.4, 1.1, 7.8), radius 12.0 Å
+  Filter: kept [1, 2, 3, 9, 10, 12, 13, 14, 21, 27, 28, 32, 50], discarded [4, 5, 6, 7, 8, 11, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 29, 30, 31, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_7_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 0.5, -8.9, 4.2), radius 12.0 Å
+  Filter: kept [1, 4, 13, 21], discarded [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_5_8_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_5_9_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.3, 7.1, 1.6), radius 12.0 Å
+  Filter: kept [2, 5, 9, 15, 16], discarded [1, 3, 4, 6, 7, 8, 10, 11, 12, 13, 14, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_11_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.4, -5.7, 2.6), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 5, 11, 15, 27], discarded [6, 7, 8, 9, 10, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_12_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_13_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 3.0, 12.0, 1.8), radius 12.0 Å
+  Filter: kept [1, 2, 4, 7, 14, 20, 30], discarded [3, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_14_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_15_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 4.1, -6.6, -1.6), radius 12.0 Å
+  Filter: kept [1, 3, 7, 20, 34, 38, 42], discarded [2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_17_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_18_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_1_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -8.8, 6.1, -3.4), radius 12.0 Å
+  Filter: kept [1, 2, 3, 4, 26, 27, 28, 42], discarded [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_2_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_5_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 0.3, 3.6, -3.6), radius 12.0 Å
+  Filter: kept [1, 2, 5, 6, 17, 32, 34, 35], discarded [3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_6_7_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_6_8_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_0_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -3.3, 4.8, -6.8), radius 12.0 Å
+  Filter: kept [1, 2, 7, 10, 12, 14, 25, 27, 35], discarded [3, 4, 5, 6, 8, 9, 11, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28, 29, 30, 31, 32, 33, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_10_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_11_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 3.3, -1.1, 2.9), radius 12.0 Å
+  Filter: kept [1, 2, 3, 12, 14, 21, 22], discarded [4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_12_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.1, -7.0, 5.0), radius 12.0 Å
+  Filter: kept [1, 2, 5, 7, 8, 16, 21, 29], discarded [3, 4, 6, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_13_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_14_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 4.8, 2.9, -0.8), radius 12.0 Å
+  Filter: kept [1, 2, 4, 5, 17], discarded [3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_15_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 3.9, -3.1, -5.7), radius 12.0 Å
+  Filter: kept [1, 2, 6, 14, 19, 20, 40], discarded [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_16_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.8, 2.9, -7.5), radius 12.0 Å
+  Filter: kept [1, 2, 7, 18, 23, 26, 28], discarded [3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 24, 25, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_17_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 4.8, -9.1, -1.0), radius 12.0 Å
+  Filter: kept [1, 2, 5, 6, 7, 9, 17, 21, 23, 27], discarded [3, 4, 8, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 24, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_18_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_19_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.3, -6.6, -0.5), radius 12.0 Å
+  Filter: kept [1, 3, 4, 5], discarded [2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_1_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_2_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -6.4, 5.3, 3.1), radius 12.0 Å
+  Filter: kept [1, 2, 3, 6, 18, 26, 29], discarded [4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_3_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -4.6, 2.4, -9.0), radius 12.0 Å
+  Filter: kept [3, 5, 11, 21], discarded [1, 2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_4_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_5_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_6_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -7.4, 0.0, -4.9), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 7, 9, 15, 18, 24, 30], discarded [4, 6, 8, 10, 11, 12, 13, 14, 16, 17, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_7_7_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_8_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_7_9_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 7.1, -0.3, -6.7), radius 12.0 Å
+  Filter: kept [2, 3, 4, 5, 6, 16, 18, 36], discarded [1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_0_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_11_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_12_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_13_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 10.8, -3.7, 7.7), radius 12.0 Å
+  Filter: kept [1, 2, 4, 5, 6, 9, 14, 29], discarded [3, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_14_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 0.8, -6.6, 14.0), radius 12.0 Å
+  Filter: kept [1, 2, 3], discarded [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_15_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 7.0, -8.4, -4.7), radius 12.0 Å
+  Filter: kept [3, 9, 10, 17, 21], discarded [1, 2, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_16_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 7.5, -0.9, -1.9), radius 12.0 Å
+  Filter: kept [1, 2, 4, 31], discarded [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_17_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -12.9, 2.0, -3.6), radius 12.0 Å
+  Filter: kept [1, 3, 4, 7, 22], discarded [2, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_18_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_19_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_1_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_2_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_3_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_4_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.7, 5.4, 8.3), radius 12.0 Å
+  Filter: kept [1, 2, 9], discarded [3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_5_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -1.8, 0.6, -3.9), radius 12.0 Å
+  Filter: kept [2, 3, 9, 14, 19, 23], discarded [1, 4, 5, 6, 7, 8, 10, 11, 12, 13, 15, 16, 17, 18, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_6_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 1.3, 2.6, -9.3), radius 12.0 Å
+  Filter: kept [1, 2, 3, 7, 9, 11, 23, 33, 34], discarded [4, 5, 6, 8, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 30, 31, 32, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_8_7_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_8_model_3]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_8_9_model_2]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_11_model_4]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_12_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_13_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -0.1, -6.9, 2.4), radius 12.0 Å
+  Filter: kept [1, 2, 3, 8, 22, 24], discarded [4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_14_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.6, 2.6, -8.2), radius 12.0 Å
+  Filter: kept [1, 2, 6, 20, 21, 24, 27], discarded [3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 25, 26, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_15_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -2.6, 4.8, 4.5), radius 12.0 Å
+  Filter: kept [1, 2, 3, 8, 14, 28, 51], discarded [4, 5, 6, 7, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_16_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -5.5, 2.3, -8.0), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 12, 24], discarded [4, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_17_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -0.6, -5.0, -4.3), radius 12.0 Å
+  Filter: kept [1, 2, 4, 5, 6, 13, 14, 24, 34], discarded [3, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_19_model_0]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_1_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_2_model_1]
+  Skipped — not in fpocket PASS list
+
+[rfd3_partial_input_partial_rfd3_0_model_9_3_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.5, -6.1, 5.8), radius 12.0 Å
+  Filter: kept [1, 2, 4, 6, 11, 13], discarded [3, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_4_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 2.6, 2.6, -9.2), radius 12.0 Å
+  Filter: kept [1, 2, 4, 6, 7, 10, 23, 30, 31], discarded [3, 5, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 24, 25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_5_model_3]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 6.5, 6.3, -1.6), radius 12.0 Å
+  Filter: kept [1, 2, 4, 5, 8, 15], discarded [3, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_6_model_1]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center -1.1, 4.1, 13.6), radius 12.0 Å
+  Filter: kept [1, 2, 3, 5, 8, 12, 14, 20, 26, 39], discarded [4, 6, 7, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_7_model_0]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 5.9, -0.9, 2.9), radius 12.0 Å
+  Filter: kept [1, 2, 5, 8, 25, 37], discarded [3, 4, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_8_model_4]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 4.9, -4.7, 3.7), radius 12.0 Å
+  Filter: kept [1, 3, 5, 8, 17], discarded [2, 4, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+  Plots skipped (already computed)
+
+[rfd3_partial_input_partial_rfd3_0_model_9_9_model_2]
+  Skipping CAVER — output already exists (--skip-existing)
+  Pocket filter: using fpocket pocket 1 (center 6.7, -1.5, -1.5), radius 12.0 Å
+  Filter: kept [1, 3, 4, 9, 17, 24], discarded [2, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
+  Plots skipped (already computed)
+
+Done.
+Tunnel selection summary → /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/tunnel_selection.csv
+fpocket PASS structures: 5FUJ_heme, 5OXU_heme, 9HE9_heme, rfd3_partial_input_partial_rfd3_0_model_0_11_model_4, rfd3_partial_input_partial_rfd3_0_model_0_16_model_3, rfd3_partial_input_partial_rfd3_0_model_0_17_model_1, rfd3_partial_input_partial_rfd3_0_model_0_18_model_1, rfd3_partial_input_partial_rfd3_0_model_0_19_model_2, rfd3_partial_input_partial_rfd3_0_model_0_1_model_2, rfd3_partial_input_partial_rfd3_0_model_0_4_model_2, rfd3_partial_input_partial_rfd3_0_model_0_5_model_1, rfd3_partial_input_partial_rfd3_0_model_0_6_model_4, rfd3_partial_input_partial_rfd3_0_model_0_8_model_3, rfd3_partial_input_partial_rfd3_0_model_0_9_model_3, rfd3_partial_input_partial_rfd3_0_model_1_11_model_1, rfd3_partial_input_partial_rfd3_0_model_1_12_model_0, rfd3_partial_input_partial_rfd3_0_model_1_13_model_4, rfd3_partial_input_partial_rfd3_0_model_1_14_model_3, rfd3_partial_input_partial_rfd3_0_model_1_15_model_2, rfd3_partial_input_partial_rfd3_0_model_1_2_model_1, rfd3_partial_input_partial_rfd3_0_model_1_3_model_2, rfd3_partial_input_partial_rfd3_0_model_1_4_model_4, rfd3_partial_input_partial_rfd3_0_model_1_5_model_3, rfd3_partial_input_partial_rfd3_0_model_2_11_model_3, rfd3_partial_input_partial_rfd3_0_model_2_14_model_3, rfd3_partial_input_partial_rfd3_0_model_2_19_model_2, rfd3_partial_input_partial_rfd3_0_model_2_1_model_1, rfd3_partial_input_partial_rfd3_0_model_2_4_model_3, rfd3_partial_input_partial_rfd3_0_model_2_5_model_4, rfd3_partial_input_partial_rfd3_0_model_3_11_model_0, rfd3_partial_input_partial_rfd3_0_model_3_12_model_0, rfd3_partial_input_partial_rfd3_0_model_3_16_model_0, rfd3_partial_input_partial_rfd3_0_model_3_17_model_4, rfd3_partial_input_partial_rfd3_0_model_3_19_model_2, rfd3_partial_input_partial_rfd3_0_model_3_2_model_4, rfd3_partial_input_partial_rfd3_0_model_3_3_model_0, rfd3_partial_input_partial_rfd3_0_model_3_4_model_4, rfd3_partial_input_partial_rfd3_0_model_3_6_model_4, rfd3_partial_input_partial_rfd3_0_model_3_7_model_0, rfd3_partial_input_partial_rfd3_0_model_3_8_model_1, rfd3_partial_input_partial_rfd3_0_model_3_9_model_2, rfd3_partial_input_partial_rfd3_0_model_4_11_model_2, rfd3_partial_input_partial_rfd3_0_model_4_12_model_0, rfd3_partial_input_partial_rfd3_0_model_4_13_model_3, rfd3_partial_input_partial_rfd3_0_model_4_16_model_0, rfd3_partial_input_partial_rfd3_0_model_4_17_model_0, rfd3_partial_input_partial_rfd3_0_model_4_18_model_4, rfd3_partial_input_partial_rfd3_0_model_4_1_model_3, rfd3_partial_input_partial_rfd3_0_model_4_2_model_3, rfd3_partial_input_partial_rfd3_0_model_4_3_model_1, rfd3_partial_input_partial_rfd3_0_model_4_4_model_3, rfd3_partial_input_partial_rfd3_0_model_4_6_model_4, rfd3_partial_input_partial_rfd3_0_model_4_7_model_4, rfd3_partial_input_partial_rfd3_0_model_4_8_model_1, rfd3_partial_input_partial_rfd3_0_model_5_0_model_3, rfd3_partial_input_partial_rfd3_0_model_5_11_model_1, rfd3_partial_input_partial_rfd3_0_model_5_15_model_3, rfd3_partial_input_partial_rfd3_0_model_5_17_model_2, rfd3_partial_input_partial_rfd3_0_model_5_19_model_4, rfd3_partial_input_partial_rfd3_0_model_5_1_model_2, rfd3_partial_input_partial_rfd3_0_model_5_2_model_2, rfd3_partial_input_partial_rfd3_0_model_5_4_model_3, rfd3_partial_input_partial_rfd3_0_model_5_5_model_4, rfd3_partial_input_partial_rfd3_0_model_5_6_model_4, rfd3_partial_input_partial_rfd3_0_model_5_7_model_2, rfd3_partial_input_partial_rfd3_0_model_5_9_model_1, rfd3_partial_input_partial_rfd3_0_model_6_11_model_4, rfd3_partial_input_partial_rfd3_0_model_6_13_model_0, rfd3_partial_input_partial_rfd3_0_model_6_15_model_3, rfd3_partial_input_partial_rfd3_0_model_6_1_model_1, rfd3_partial_input_partial_rfd3_0_model_6_5_model_4, rfd3_partial_input_partial_rfd3_0_model_7_0_model_3, rfd3_partial_input_partial_rfd3_0_model_7_11_model_2, rfd3_partial_input_partial_rfd3_0_model_7_12_model_1, rfd3_partial_input_partial_rfd3_0_model_7_14_model_2, rfd3_partial_input_partial_rfd3_0_model_7_15_model_4, rfd3_partial_input_partial_rfd3_0_model_7_16_model_2, rfd3_partial_input_partial_rfd3_0_model_7_17_model_3, rfd3_partial_input_partial_rfd3_0_model_7_19_model_0, rfd3_partial_input_partial_rfd3_0_model_7_2_model_3, rfd3_partial_input_partial_rfd3_0_model_7_3_model_4, rfd3_partial_input_partial_rfd3_0_model_7_6_model_2, rfd3_partial_input_partial_rfd3_0_model_7_9_model_2, rfd3_partial_input_partial_rfd3_0_model_8_13_model_3, rfd3_partial_input_partial_rfd3_0_model_8_14_model_3, rfd3_partial_input_partial_rfd3_0_model_8_15_model_1, rfd3_partial_input_partial_rfd3_0_model_8_16_model_3, rfd3_partial_input_partial_rfd3_0_model_8_17_model_3, rfd3_partial_input_partial_rfd3_0_model_8_4_model_2, rfd3_partial_input_partial_rfd3_0_model_8_5_model_0, rfd3_partial_input_partial_rfd3_0_model_8_6_model_4, rfd3_partial_input_partial_rfd3_0_model_9_13_model_2, rfd3_partial_input_partial_rfd3_0_model_9_14_model_3, rfd3_partial_input_partial_rfd3_0_model_9_15_model_4, rfd3_partial_input_partial_rfd3_0_model_9_16_model_4, rfd3_partial_input_partial_rfd3_0_model_9_17_model_2, rfd3_partial_input_partial_rfd3_0_model_9_3_model_0, rfd3_partial_input_partial_rfd3_0_model_9_4_model_3, rfd3_partial_input_partial_rfd3_0_model_9_5_model_3, rfd3_partial_input_partial_rfd3_0_model_9_6_model_1, rfd3_partial_input_partial_rfd3_0_model_9_7_model_0, rfd3_partial_input_partial_rfd3_0_model_9_8_model_4, rfd3_partial_input_partial_rfd3_0_model_9_9_model_2
+Using best kept tunnel per structure from tunnel_selection.csv
+  [5FUJ_heme] tunnel 1 — length 10.1 Å, 24 points
+  [5OXU_heme] tunnel 1 — length 9.1 Å, 22 points
+  [9HE9_heme] tunnel 1 — length 10.4 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_11_model_4] tunnel 1 — length 10.3 Å, 25 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_16_model_3] tunnel 1 — length 13.5 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_17_model_1] tunnel 1 — length 11.7 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_18_model_1] tunnel 1 — length 18.5 Å, 51 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_19_model_2] tunnel 1 — length 13.6 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_1_model_2] tunnel 1 — length 10.4 Å, 25 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_4_model_2] tunnel 1 — length 12.7 Å, 39 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_5_model_1] tunnel 1 — length 10.9 Å, 28 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_6_model_4] tunnel 1 — length 13.0 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_8_model_3] tunnel 1 — length 15.6 Å, 41 points
+  [rfd3_partial_input_partial_rfd3_0_model_0_9_model_3] tunnel 1 — length 13.1 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_11_model_1] tunnel 1 — length 12.7 Å, 39 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_12_model_0] tunnel 1 — length 13.3 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_13_model_4] tunnel 1 — length 13.1 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_14_model_3] tunnel 1 — length 13.0 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_15_model_2] tunnel 1 — length 12.3 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_2_model_1] tunnel 2 — length 13.0 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_3_model_2] tunnel 1 — length 13.1 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_4_model_4] tunnel 1 — length 12.9 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_1_5_model_3] tunnel 1 — length 10.5 Å, 26 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_11_model_3] tunnel 1 — length 13.6 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_14_model_3] tunnel 1 — length 12.9 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_19_model_2] tunnel 1 — length 14.0 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_1_model_1] tunnel 1 — length 13.3 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_4_model_3] tunnel 2 — length 13.3 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_2_5_model_4] tunnel 1 — length 11.1 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_11_model_0] tunnel 1 — length 12.7 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_12_model_0] tunnel 1 — length 12.8 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_16_model_0] tunnel 1 — length 12.9 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_17_model_4] tunnel 1 — length 13.1 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_19_model_2] tunnel 1 — length 13.1 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_2_model_4] tunnel 1 — length 17.9 Å, 46 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_3_model_0] tunnel 1 — length 13.0 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_4_model_4] tunnel 1 — length 12.9 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_6_model_4] tunnel 1 — length 13.0 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_7_model_0] tunnel 1 — length 13.1 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_8_model_1] tunnel 1 — length 13.3 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_3_9_model_2] tunnel 1 — length 11.9 Å, 31 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_11_model_2] tunnel 1 — length 13.0 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_12_model_0] tunnel 1 — length 10.1 Å, 27 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_13_model_3] tunnel 1 — length 13.5 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_16_model_0] tunnel 1 — length 13.6 Å, 39 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_17_model_0] tunnel 1 — length 11.8 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_18_model_4] tunnel 1 — length 13.9 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_1_model_3] tunnel 1 — length 12.2 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_2_model_3] tunnel 1 — length 10.1 Å, 28 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_3_model_1] tunnel 1 — length 11.0 Å, 30 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_4_model_3] tunnel 1 — length 14.4 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_6_model_4] tunnel 1 — length 12.7 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_7_model_4] tunnel 1 — length 11.5 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_4_8_model_1] tunnel 1 — length 14.1 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_0_model_3] tunnel 1 — length 13.6 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_11_model_1] tunnel 1 — length 13.1 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_15_model_3] tunnel 1 — length 13.5 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_17_model_2] tunnel 1 — length 13.7 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_19_model_4] tunnel 1 — length 13.0 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_1_model_2] tunnel 1 — length 12.9 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_2_model_2] tunnel 1 — length 13.5 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_4_model_3] tunnel 1 — length 12.7 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_5_model_4] tunnel 1 — length 10.1 Å, 26 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_6_model_4] tunnel 1 — length 13.0 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_7_model_2] tunnel 1 — length 13.8 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_5_9_model_1] tunnel 2 — length 12.9 Å, 41 points
+  [rfd3_partial_input_partial_rfd3_0_model_6_11_model_4] tunnel 1 — length 13.2 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_6_13_model_0] tunnel 1 — length 11.6 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_6_15_model_3] tunnel 1 — length 13.3 Å, 37 points
+  [rfd3_partial_input_partial_rfd3_0_model_6_1_model_1] tunnel 1 — length 13.5 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_6_5_model_4] tunnel 1 — length 11.8 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_0_model_3] tunnel 1 — length 13.1 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_11_model_2] tunnel 1 — length 12.9 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_12_model_1] tunnel 1 — length 13.0 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_14_model_2] tunnel 1 — length 13.0 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_15_model_4] tunnel 1 — length 10.9 Å, 31 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_16_model_2] tunnel 1 — length 12.9 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_17_model_3] tunnel 1 — length 13.3 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_19_model_0] tunnel 1 — length 13.1 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_2_model_3] tunnel 1 — length 12.0 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_3_model_4] tunnel 3 — length 13.1 Å, 32 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_6_model_2] tunnel 1 — length 12.8 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_7_9_model_2] tunnel 2 — length 10.5 Å, 29 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_13_model_3] tunnel 1 — length 13.1 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_14_model_3] tunnel 1 — length 13.0 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_15_model_1] tunnel 3 — length 13.2 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_16_model_3] tunnel 1 — length 12.9 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_17_model_3] tunnel 1 — length 13.3 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_4_model_2] tunnel 1 — length 13.6 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_5_model_0] tunnel 2 — length 10.4 Å, 31 points
+  [rfd3_partial_input_partial_rfd3_0_model_8_6_model_4] tunnel 1 — length 12.9 Å, 41 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_13_model_2] tunnel 1 — length 13.1 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_14_model_3] tunnel 1 — length 12.3 Å, 31 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_15_model_4] tunnel 1 — length 13.3 Å, 34 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_16_model_4] tunnel 1 — length 11.5 Å, 31 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_17_model_2] tunnel 1 — length 14.2 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_3_model_0] tunnel 1 — length 14.9 Å, 39 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_4_model_3] tunnel 1 — length 13.0 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_5_model_3] tunnel 1 — length 13.0 Å, 33 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_6_model_1] tunnel 1 — length 12.9 Å, 35 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_7_model_0] tunnel 1 — length 11.7 Å, 36 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_8_model_4] tunnel 1 — length 13.1 Å, 38 points
+  [rfd3_partial_input_partial_rfd3_0_model_9_9_model_2] tunnel 1 — length 12.1 Å, 35 points
+
+Dendrogram saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_dendrogram.png
+
+Cluster assignments (n=8):
+  cluster 4  5FUJ_heme  tunnel 1  (length 10.1 Å)
+  cluster 5  5OXU_heme  tunnel 1  (length 9.1 Å)
+  cluster 4  9HE9_heme  tunnel 1  (length 10.4 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_0_11_model_4  tunnel 1  (length 10.3 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_0_16_model_3  tunnel 1  (length 13.5 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_0_17_model_1  tunnel 1  (length 11.7 Å)
+  cluster 6  rfd3_partial_input_partial_rfd3_0_model_0_18_model_1  tunnel 1  (length 18.5 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_0_19_model_2  tunnel 1  (length 13.6 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_0_1_model_2  tunnel 1  (length 10.4 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_0_4_model_2  tunnel 1  (length 12.7 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_0_5_model_1  tunnel 1  (length 10.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_0_6_model_4  tunnel 1  (length 13.0 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_0_8_model_3  tunnel 1  (length 15.6 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_0_9_model_3  tunnel 1  (length 13.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_1_11_model_1  tunnel 1  (length 12.7 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_1_12_model_0  tunnel 1  (length 13.3 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_1_13_model_4  tunnel 1  (length 13.1 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_1_14_model_3  tunnel 1  (length 13.0 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_1_15_model_2  tunnel 1  (length 12.3 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_1_2_model_1  tunnel 2  (length 13.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_1_3_model_2  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_1_4_model_4  tunnel 1  (length 12.9 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_1_5_model_3  tunnel 1  (length 10.5 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_2_11_model_3  tunnel 1  (length 13.6 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_2_14_model_3  tunnel 1  (length 12.9 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_2_19_model_2  tunnel 1  (length 14.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_2_1_model_1  tunnel 1  (length 13.3 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_2_4_model_3  tunnel 2  (length 13.3 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_2_5_model_4  tunnel 1  (length 11.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_11_model_0  tunnel 1  (length 12.7 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_12_model_0  tunnel 1  (length 12.8 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_3_16_model_0  tunnel 1  (length 12.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_17_model_4  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_19_model_2  tunnel 1  (length 13.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_3_2_model_4  tunnel 1  (length 17.9 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_3_3_model_0  tunnel 1  (length 13.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_4_model_4  tunnel 1  (length 12.9 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_3_6_model_4  tunnel 1  (length 13.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_7_model_0  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_3_8_model_1  tunnel 1  (length 13.3 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_3_9_model_2  tunnel 1  (length 11.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_4_11_model_2  tunnel 1  (length 13.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_4_12_model_0  tunnel 1  (length 10.1 Å)
+  cluster 6  rfd3_partial_input_partial_rfd3_0_model_4_13_model_3  tunnel 1  (length 13.5 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_4_16_model_0  tunnel 1  (length 13.6 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_4_17_model_0  tunnel 1  (length 11.8 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_4_18_model_4  tunnel 1  (length 13.9 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_4_1_model_3  tunnel 1  (length 12.2 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_4_2_model_3  tunnel 1  (length 10.1 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_4_3_model_1  tunnel 1  (length 11.0 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_4_4_model_3  tunnel 1  (length 14.4 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_4_6_model_4  tunnel 1  (length 12.7 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_4_7_model_4  tunnel 1  (length 11.5 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_4_8_model_1  tunnel 1  (length 14.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_5_0_model_3  tunnel 1  (length 13.6 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_5_11_model_1  tunnel 1  (length 13.1 Å)
+  cluster 6  rfd3_partial_input_partial_rfd3_0_model_5_15_model_3  tunnel 1  (length 13.5 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_5_17_model_2  tunnel 1  (length 13.7 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_5_19_model_4  tunnel 1  (length 13.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_5_1_model_2  tunnel 1  (length 12.9 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_5_2_model_2  tunnel 1  (length 13.5 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_5_4_model_3  tunnel 1  (length 12.7 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_5_5_model_4  tunnel 1  (length 10.1 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_5_6_model_4  tunnel 1  (length 13.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_5_7_model_2  tunnel 1  (length 13.8 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_5_9_model_1  tunnel 2  (length 12.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_6_11_model_4  tunnel 1  (length 13.2 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_6_13_model_0  tunnel 1  (length 11.6 Å)
+  cluster 6  rfd3_partial_input_partial_rfd3_0_model_6_15_model_3  tunnel 1  (length 13.3 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_6_1_model_1  tunnel 1  (length 13.5 Å)
+  cluster 7  rfd3_partial_input_partial_rfd3_0_model_6_5_model_4  tunnel 1  (length 11.8 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_7_0_model_3  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_7_11_model_2  tunnel 1  (length 12.9 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_12_model_1  tunnel 1  (length 13.0 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_7_14_model_2  tunnel 1  (length 13.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_15_model_4  tunnel 1  (length 10.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_7_16_model_2  tunnel 1  (length 12.9 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_17_model_3  tunnel 1  (length 13.3 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_19_model_0  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_7_2_model_3  tunnel 1  (length 12.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_3_model_4  tunnel 3  (length 13.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_7_6_model_2  tunnel 1  (length 12.8 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_7_9_model_2  tunnel 2  (length 10.5 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_8_13_model_3  tunnel 1  (length 13.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_8_14_model_3  tunnel 1  (length 13.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_8_15_model_1  tunnel 3  (length 13.2 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_8_16_model_3  tunnel 1  (length 12.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_8_17_model_3  tunnel 1  (length 13.3 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_8_4_model_2  tunnel 1  (length 13.6 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_8_5_model_0  tunnel 2  (length 10.4 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_8_6_model_4  tunnel 1  (length 12.9 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_9_13_model_2  tunnel 1  (length 13.1 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_9_14_model_3  tunnel 1  (length 12.3 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_9_15_model_4  tunnel 1  (length 13.3 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_9_16_model_4  tunnel 1  (length 11.5 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_9_17_model_2  tunnel 1  (length 14.2 Å)
+  cluster 6  rfd3_partial_input_partial_rfd3_0_model_9_3_model_0  tunnel 1  (length 14.9 Å)
+  cluster 2  rfd3_partial_input_partial_rfd3_0_model_9_4_model_3  tunnel 1  (length 13.0 Å)
+  cluster 3  rfd3_partial_input_partial_rfd3_0_model_9_5_model_3  tunnel 1  (length 13.0 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_9_6_model_1  tunnel 1  (length 12.9 Å)
+  cluster 1  rfd3_partial_input_partial_rfd3_0_model_9_7_model_0  tunnel 1  (length 11.7 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_9_8_model_4  tunnel 1  (length 13.1 Å)
+  cluster 8  rfd3_partial_input_partial_rfd3_0_model_9_9_model_2  tunnel 1  (length 12.1 Å)
+Cluster assignments saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_assignments.csv
+Overlay plot saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_overlay.png
+Uncoloured overlay plot saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_overlay_uncolored.png
+Unlabelled cluster overlay saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_overlay_nolabels.png
+Cluster means plot saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_cluster_means.png
+Per-cluster overlay grid saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/best_tunnel_cluster_overlays.png
+  Cluster 1 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_1.png
+  Cluster 1 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_1_overlay.png
+  Cluster 2 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_2.png
+  Cluster 2 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_2_overlay.png
+  Cluster 3 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_3.png
+  Cluster 3 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_3_overlay.png
+  Cluster 4 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_4.png
+  Cluster 4 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_4_overlay.png
+  Cluster 5 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_5.png
+  Cluster 5 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_5_overlay.png
+  Cluster 6 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_6.png
+  Cluster 6 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_6_overlay.png
+  Cluster 7 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_7.png
+  Cluster 7 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_7_overlay.png
+  Cluster 8 figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_8.png
+  Cluster 8 overlay figure saved to /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_8_overlay.png
+
+Done. Key outputs:
+  /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/outputs/pocket_selection.tsv
+  /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/tunnel_selection.csv
+  /work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/results/clustering/cluster_assignments.csv
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 29210637: <cdfullBc> in cluster <dcc> Done
+
+Job <cdfullBc> was submitted from host <n-62-30-2> by user <s225191> in cluster <dcc> at Mon Aug 24 16:11:13 2026
+Job was executed on host(s) <4*n-62-31-15>, in queue <hpc>, as user <s225191> in cluster <dcc> at Mon Aug 24 16:28:22 2026
+</zhome/54/2/187738> was used as the home directory.
+</work3/s215098/BioBuilders2026/tools/channel_discovery/hpc> was used as the working directory.
+Started at Mon Aug 24 16:28:22 2026
+Terminated at Mon Aug 24 16:37:13 2026
+Results reported at Mon Aug 24 16:37:13 2026
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+# Rebuild the combined tunnel table, then cluster across all structures.
+# Clustering is inherently a gather step — it compares every structure against
+# every other — so it cannot be part of the array.
+#BSUB -q hpc
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=8GB]"
+# DTU's esub rejects a -M more than 1GB above rusage[mem]. Keep them in step.
+#BSUB -M 9GB
+#BSUB -W 02:00
+#BSUB -o logs/collectB_%J.out
+#BSUB -e logs/collectB_%J.err
+set -eu
+# This LSF does not propagate the submitting environment, and `bsub < script`
+# makes $0 a spool file, so neither env vars nor $0 can locate our settings.
+# submit_all.sh substitutes the absolute path to a generated runconfig below
+# before piping the script to bsub. The fallback lets the script still run
+# standalone (e.g. by hand on an interactive node).
+RUNCONFIG="/work3/s215098/BioBuilders2026/dhruva/channel_discovery_runs_new/runconfig.sh"
+# Pattern deliberately omits the leading underscores so the sed substitution
+# cannot rewrite it too — otherwise the fallback would clobber the real path.
+case "$RUNCONFIG" in
+    *RUNCONFIG__) RUNCONFIG="$(cd "$(dirname "$0")" && pwd)/config.sh" ;;
+esac
+. "$RUNCONFIG"
+activate_env
+
+cd "$PROJECT/caver_pipeline"
+
+# --skip-existing recomputes nothing: every structure already has
+# results/<stem>/out/summary.txt from the array, so this only re-emits the rows
+# into one complete tunnel_selection.csv, repairing the races from Stage B.
+python3 python_scripts/run_batch.py \
+    --pdb-dir "$PDB_INPUTS" \
+    --results-dir "$WORK/results" \
+    --fpocket-dir "$WORK/outputs" \
+    --skip-existing
+
+python3 python_scripts/cluster_tunnels.py \
+    --results-dir "$WORK/results" \
+    --fpocket-dir "$WORK/outputs" \
+    --n-clusters "$N_CLUSTERS" \
+    --out "$WORK/results/clustering"
+
+echo
+echo "Done. Key outputs:"
+echo "  $WORK/outputs/pocket_selection.tsv"
+echo "  $WORK/results/tunnel_selection.csv"
+echo "  $WORK/results/clustering/cluster_assignments.csv"
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   464.49 sec.
+    Max Memory :                                 1310 MB
+    Average Memory :                             581.00 MB
+    Total Requested Memory :                     32768.00 MB
+    Delta Memory :                               31458.00 MB
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                30
+    Run time :                                   531 sec.
+    Turnaround time :                            1560 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <logs/collectB_29210637.err> for stderr output of this job.
+

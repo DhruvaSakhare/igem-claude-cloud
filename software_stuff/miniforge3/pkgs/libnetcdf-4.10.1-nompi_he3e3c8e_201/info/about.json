@@ -1,0 +1,25 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/Unidata/netcdf-c",
+  "extra": {
+    "flow_run_id": "github_29290254110",
+    "recipe-maintainers": [
+      "WardF",
+      "groutr",
+      "kmuehlbauer",
+      "ocefpaf",
+      "mingwandroid",
+      "msarahan",
+      "xylar",
+      "dopplershift",
+      "zklaus"
+    ],
+    "remote_url": "https://github.com/conda-forge/libnetcdf-feedstock",
+    "sha": "427106b9e03f3ffc6796a09617b3f723c73b49f0"
+  },
+  "home": "http://www.unidata.ucar.edu/software/netcdf/",
+  "license": "MIT",
+  "summary": "Libraries and data formats that support array-oriented scientific data"
+}

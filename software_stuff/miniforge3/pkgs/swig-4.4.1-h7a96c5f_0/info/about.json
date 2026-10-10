@@ -1,0 +1,25 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "description": "SWIG is an interface compiler that connects programs written in C and C++\nwith scripting languages such as Perl, Python, Ruby, and Tcl. It works by\ntaking the declarations found in C/C++ header files and using them to\ngenerate the wrapper code that scripting languages need to access the\nunderlying C/C++ code. In addition, SWIG provides a variety of\ncustomization features that let you tailor the wrapping process to suit\nyour application.",
+  "dev_url": "https://github.com/swig/swig",
+  "doc_url": "https://www.swig.org/doc.html",
+  "extra": {
+    "feedstock-name": "swig",
+    "flow_run_id": "azure_20260311.1.1",
+    "recipe-maintainers": [
+      "jakirkham",
+      "jschueller",
+      "msarahan",
+      "ocefpaf",
+      "beckermr"
+    ],
+    "remote_url": "https://github.com/conda-forge/swig-feedstock",
+    "sha": "209c5f76869d65906f3b62db7ab5333c208ac857"
+  },
+  "home": "http://www.swig.org/",
+  "license": "GPL-3.0-or-later",
+  "license_family": "GPL",
+  "summary": "C/C++ parser code generator"
+}

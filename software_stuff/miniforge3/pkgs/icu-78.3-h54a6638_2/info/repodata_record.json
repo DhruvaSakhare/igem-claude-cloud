@@ -1,0 +1,23 @@
+{
+  "name": "icu",
+  "version": "78.3",
+  "build": "h54a6638_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "icu-78.3-h54a6638_2.conda",
+  "md5": "4ef4b977bb216a3001a3334696a80850",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/icu-78.3-h54a6638_2.conda",
+  "sha256": "d7c260b7e1cf22ce04d6ba8a86eabf4e6c50bc96a5c27fe2ecb32298af3e88eb",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libstdcxx >=14",
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0"
+  ],
+  "constrains": [],
+  "license": "MIT",
+  "timestamp": 1784916378180,
+  "size": 14455340
+}

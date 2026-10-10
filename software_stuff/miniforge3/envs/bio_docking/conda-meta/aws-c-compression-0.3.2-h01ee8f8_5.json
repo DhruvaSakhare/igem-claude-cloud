@@ -1,0 +1,98 @@
+{
+  "name": "aws-c-compression",
+  "version": "0.3.2",
+  "build": "h01ee8f8_5",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-compression-0.3.2-h01ee8f8_5.conda",
+  "md5": "ae862abdbb3160f97478d3d4749164c0",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-compression-0.3.2-h01ee8f8_5.conda",
+  "sha256": "27f8581573c533a92a1a9619516ebb66d390b9923d296331985cfd342dc32d29",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785157574179,
+  "size": 22282,
+  "_requested_specs": [],
+  "package_tarball_full_path": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-c-compression-0.3.2-h01ee8f8_5.conda",
+  "extracted_package_dir": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-c-compression-0.3.2-h01ee8f8_5",
+  "files": [
+    "include/aws/compression/compression.h",
+    "include/aws/compression/exports.h",
+    "include/aws/compression/huffman.h",
+    "lib/cmake/aws-c-compression/aws-c-compression-config.cmake",
+    "lib/cmake/aws-c-compression/shared/aws-c-compression-targets-release.cmake",
+    "lib/cmake/aws-c-compression/shared/aws-c-compression-targets.cmake",
+    "lib/libaws-c-compression.so",
+    "lib/libaws-c-compression.so.1.0.0"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "include/aws/compression/compression.h",
+        "path_type": "hardlink",
+        "sha256": "4a7e0eba0e35676fbacfb6c1d08ada087a21ec4b3a4245a75c95b72ad23e8aa3",
+        "size_in_bytes": 1128,
+        "sha256_in_prefix": "4a7e0eba0e35676fbacfb6c1d08ada087a21ec4b3a4245a75c95b72ad23e8aa3"
+      },
+      {
+        "_path": "include/aws/compression/exports.h",
+        "path_type": "hardlink",
+        "sha256": "d247ddc3009872e51bc2c530fdd5086041af1479b1ab46581d63d0c5384eec49",
+        "size_in_bytes": 1030,
+        "sha256_in_prefix": "d247ddc3009872e51bc2c530fdd5086041af1479b1ab46581d63d0c5384eec49"
+      },
+      {
+        "_path": "include/aws/compression/huffman.h",
+        "path_type": "hardlink",
+        "sha256": "a0ae03aa45aa8049d704105d6ccaf52342e94f279c04b5616a9416e5a408c43e",
+        "size_in_bytes": 4752,
+        "sha256_in_prefix": "a0ae03aa45aa8049d704105d6ccaf52342e94f279c04b5616a9416e5a408c43e"
+      },
+      {
+        "_path": "lib/cmake/aws-c-compression/aws-c-compression-config.cmake",
+        "path_type": "hardlink",
+        "sha256": "0b355e8406ff62a1379aa02bce03381d4489a1df03ceea0ef4ff5d6aa9e54e59",
+        "size_in_bytes": 576,
+        "sha256_in_prefix": "0b355e8406ff62a1379aa02bce03381d4489a1df03ceea0ef4ff5d6aa9e54e59"
+      },
+      {
+        "_path": "lib/cmake/aws-c-compression/shared/aws-c-compression-targets-release.cmake",
+        "path_type": "hardlink",
+        "sha256": "fab21e766b671c48064d483966b3fc554a00edf304d531774b9abfcc1ec29863",
+        "size_in_bytes": 927,
+        "sha256_in_prefix": "fab21e766b671c48064d483966b3fc554a00edf304d531774b9abfcc1ec29863"
+      },
+      {
+        "_path": "lib/cmake/aws-c-compression/shared/aws-c-compression-targets.cmake",
+        "path_type": "hardlink",
+        "sha256": "51f4b6d0ed64f5ede95887ee2a700614f019fffb5a7e9c7a7a6e9a09aa12569c",
+        "size_in_bytes": 4342,
+        "sha256_in_prefix": "51f4b6d0ed64f5ede95887ee2a700614f019fffb5a7e9c7a7a6e9a09aa12569c"
+      },
+      {
+        "_path": "lib/libaws-c-compression.so",
+        "path_type": "softlink",
+        "sha256": "69b38edaf7870511b34fd759bc52f222eabdc3331f37237711f3820230fb1919",
+        "size_in_bytes": 29
+      },
+      {
+        "_path": "lib/libaws-c-compression.so.1.0.0",
+        "path_type": "hardlink",
+        "sha256": "69b38edaf7870511b34fd759bc52f222eabdc3331f37237711f3820230fb1919",
+        "size_in_bytes": 16816,
+        "sha256_in_prefix": "69b38edaf7870511b34fd759bc52f222eabdc3331f37237711f3820230fb1919"
+      }
+    ]
+  },
+  "link": {
+    "source": "/work3/s215098/BioBuilders2026/software/miniforge3/pkgs/aws-c-compression-0.3.2-h01ee8f8_5",
+    "type": 1
+  }
+}

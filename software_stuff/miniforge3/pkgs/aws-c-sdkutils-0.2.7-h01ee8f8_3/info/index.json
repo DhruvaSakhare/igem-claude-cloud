@@ -1,0 +1,16 @@
+{
+  "arch": "x86_64",
+  "build": "h01ee8f8_3",
+  "build_number": 3,
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=14",
+    "aws-c-common >=0.14.3,<0.14.4.0a0"
+  ],
+  "license": "Apache-2.0",
+  "name": "aws-c-sdkutils",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1785159234141,
+  "version": "0.2.7"
+}

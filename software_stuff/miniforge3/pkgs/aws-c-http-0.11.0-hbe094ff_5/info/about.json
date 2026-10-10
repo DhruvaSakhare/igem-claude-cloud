@@ -1,0 +1,18 @@
+{
+  "channels": [
+    "https://conda.anaconda.org/conda-forge/"
+  ],
+  "dev_url": "https://github.com/awslabs/aws-c-http",
+  "extra": {
+    "flow_run_id": "github_30305040414",
+    "recipe-maintainers": [
+      "xhochy",
+      "conda-forge/aws-sdk-cpp"
+    ],
+    "remote_url": "https://github.com/conda-forge/aws-c-http-feedstock",
+    "sha": "e0e0e8650c9a01660f4dda61b6401ec5c2e1c34c"
+  },
+  "home": "https://github.com/awslabs/aws-c-http",
+  "license": "Apache-2.0",
+  "summary": "C99 implementation of the HTTP/1.1 and HTTP/2 specifications"
+}

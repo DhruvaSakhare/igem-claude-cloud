@@ -1,0 +1,38 @@
+HEADER
+HEADER This is a pdb format file writen by the programm fpocket.                 
+HEADER It represents the atoms contacted by the voronoi vertices of the pocket.  
+HEADER                                                                           
+HEADER Information about the pocket     2:
+HEADER 0  - Pocket Score                      : 0.1868
+HEADER 1  - Drug Score                        : 0.0007
+HEADER 2  - Number of alpha spheres           :    18
+HEADER 3  - Mean alpha-sphere radius          : 3.5266
+HEADER 4  - Mean alpha-sphere Solvent Acc.    : 0.3620
+HEADER 5  - Mean B-factor of pocket residues  : 0.0631
+HEADER 6  - Hydrophobicity Score              : 24.6667
+HEADER 7  - Polarity Score                    :     7
+HEADER 8  - Amino Acid based volume Score     : 4.1111
+HEADER 9  - Pocket volume (Monte Carlo)       : 101.0123
+HEADER 10 - Pocket volume (convex hull)       : 1.7201
+HEADER 11 - Charge Score                      :     2
+HEADER 12 - Local hydrophobic density Score   : 3.0000
+HEADER 13 - Number of apolar alpha sphere     :     4
+HEADER 14 - Proportion of apolar alpha sphere : 0.2222
+ATOM   1177  NH1 ARG A 154      14.462  -7.395 -17.319  0.81  1.09           N 1
+ATOM   1686   OG SER A 218      17.412  -1.430 -17.428  0.69  5.36           O 0
+ATOM    987    O GLN A 130      18.420  -7.334 -14.937  0.79  1.07           O 0
+ATOM   1701  CD1 TRP A 220      16.127  -4.897 -20.763  0.00  0.00           C 0
+ATOM    988   CB GLN A 130      16.687  -4.927 -13.581  0.00  0.00           C 0
+ATOM   1029  CD2 LEU A 134      17.675  -7.957 -19.982  0.00  0.00           C 0
+ATOM   1663  OG1 THR A 215      12.597   0.312 -17.322  0.88  2.14           O 0
+ATOM   1152   CB ALA A 151      11.934  -4.444 -20.202  0.00  0.00           C 0
+ATOM   1151    O ALA A 151      10.743  -3.654 -17.232  0.00  0.00           O 0
+ATOM    992  OE1 GLN A 130      14.341  -3.389 -14.329  0.47  2.14           O 0
+ATOM   1184   OG SER A 155      12.339  -1.332 -15.068  0.46  1.07           O 0
+ATOM   1662  CG2 THR A 215      13.990   0.781 -19.278  0.00  0.00           C 0
+ATOM    994   CA HIS A 131      20.637  -5.818 -15.442  0.00  0.00           C 0
+ATOM   1684    O SER A 218      20.482  -2.474 -17.700  0.64  3.21           O 0
+ATOM    993    N HIS A 131      19.646  -5.514 -14.415  0.00  0.00           N 0
+ATOM   1700   CG TRP A 220      16.208  -3.592 -21.157  0.00  0.00           C 0
+TER
+END

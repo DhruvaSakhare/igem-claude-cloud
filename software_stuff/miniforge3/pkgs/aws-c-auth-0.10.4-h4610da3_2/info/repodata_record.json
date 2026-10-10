@@ -1,0 +1,27 @@
+{
+  "name": "aws-c-auth",
+  "version": "0.10.4",
+  "build": "h4610da3_2",
+  "build_number": 2,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "subdir": "linux-64",
+  "fn": "aws-c-auth-0.10.4-h4610da3_2.conda",
+  "md5": "cefa84dbf94066e7a6902af288a2fedd",
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/aws-c-auth-0.10.4-h4610da3_2.conda",
+  "sha256": "0c92dc5ddf4edd4038a63adb79f9f0b03f61e9455ce3253b7d2cf708e06ff99e",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "aws-c-http >=0.11.0,<0.11.1.0a0",
+    "aws-c-common >=0.14.3,<0.14.4.0a0",
+    "aws-c-io >=0.27.5,<0.27.6.0a0",
+    "aws-c-sdkutils >=0.2.7,<0.2.8.0a0",
+    "aws-c-cal >=0.9.15,<0.9.16.0a0"
+  ],
+  "constrains": [],
+  "license": "Apache-2.0",
+  "timestamp": 1785199053057,
+  "size": 135127
+}

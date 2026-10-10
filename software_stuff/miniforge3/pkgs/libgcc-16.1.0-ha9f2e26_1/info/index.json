@@ -1,0 +1,19 @@
+{
+  "arch": "x86_64",
+  "build": "ha9f2e26_1",
+  "build_number": 1,
+  "constrains": [
+    "libgomp 16.1.0 he0feb66_1",
+    "libgcc-ng ==16.1.0=*_1"
+  ],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "_openmp_mutex >=4.5"
+  ],
+  "license": "GPL-3.0-only WITH GCC-exception-3.1",
+  "name": "libgcc",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1785375436766,
+  "version": "16.1.0"
+}

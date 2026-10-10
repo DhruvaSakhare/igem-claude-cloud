@@ -1,0 +1,21 @@
+{
+  "arch": "x86_64",
+  "build": "h7a96c5f_0",
+  "build_number": 0,
+  "constrains": [
+    "swig-abi ==5"
+  ],
+  "depends": [
+    "libstdcxx >=14",
+    "libgcc >=14",
+    "__glibc >=2.17,<3.0.a0",
+    "pcre2 >=10.47,<10.48.0a0"
+  ],
+  "license": "GPL-3.0-or-later",
+  "license_family": "GPL",
+  "name": "swig",
+  "platform": "linux",
+  "subdir": "linux-64",
+  "timestamp": 1773251886390,
+  "version": "4.4.1"
+}
