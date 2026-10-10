@@ -634,3 +634,65 @@
   fill: #7fa8bf;
   stroke: none;
 }
+
+/* A heading inside a run step, for a part of that step worth finding on its
+   own. Smaller than a SubsectionHeading and left-aligned, because it lives in
+   the step's indented body rather than in the page's centred spine. */
+#root .sw-step-sub {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--sw-ink);
+}
+
+/* The ways of supplying something, numbered because they are alternatives
+   rather than sequence — the numbers name them, they are not steps 1-2-3 of
+   anything. */
+.sw-ways {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+  color: var(--sw-ink);
+}
+.sw-ways > li {
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+.sw-ways > li:last-child {
+  margin-bottom: 0;
+}
+/* A command block inside a list item sits under its text, not centred in the
+   column the way a top-level one does. */
+.sw-ways .sw-cmd {
+  margin: 0.75rem 0 0;
+  max-width: none;
+}
+/* The caveat inside a step is already indented by the step body. */
+.sw-step-body > .sw-caveat {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
+/* ...but a BLOCK of code is not an inline literal. The chip rule above matches
+   any <code> inside a p/li/td, which catches the command blocks and terminals
+   nested in a list item — they came out as navy text on a pale chip, over a
+   dark block, i.e. invisible. Put them back. The chip selector is (1,1,2) --
+   #root, .page-start, the :is() element and code -- so this one carries
+   .page-start too and wins at (1,2,1) on class count. */
+#root .page-start .sw-cmd code,
+#root .page-start .swf-term code {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: inherit;
+}
+/* Colour has to be re-asserted per block rather than set to `inherit` here:
+   a command block's <code> inherits the right colour from .sw-cmd, but a
+   terminal's sits in a <pre> that sets none, so `inherit` handed it Bootstrap's
+   body grey on a near-black ground. */
+#root .page-start .sw-cmd code {
+  color: inherit;
+}
+#root .page-start .swf-term-body code {
+  color: #dceaf2;
+}

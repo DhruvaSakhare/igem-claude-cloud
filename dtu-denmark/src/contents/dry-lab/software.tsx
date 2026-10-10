@@ -123,7 +123,13 @@ const CONFIG_ROWS = [
   },
   {
     setting: <code>FLEXIBLE_RESIDUES</code>,
-    to: "the list step 3 printed. Everything not in it is held rigid in diffusion and native in sequence design — that is the whole idea: change the tunnel, keep the enzyme",
+    to: (
+      <>
+        the residue numbers RFdiffusion may move and LigandMPNN may redesign —
+        normally the list step 3 printed. Everything not in it is held rigid and
+        native: change the tunnel, keep the enzyme. See below
+      </>
+    ),
   },
   {
     setting: <code>SUBSTRATE_SMILES</code>,
@@ -735,8 +741,104 @@ export function Software() {
                     columns={CONFIG_COLUMNS}
                     data={CONFIG_ROWS}
                     numberId="config"
-                    caption="The four settings you have to supply. FLEXIBLE_RESIDUES is copied straight from what step 3 printed."
+                    caption="The four settings you have to supply. FLEXIBLE_RESIDUES is the one that decides what the run actually does."
                   />
+
+                  <h4 className="sw-step-sub">
+                    Entering the residues you want changed
+                  </h4>
+                  <p>
+                    <code>FLEXIBLE_RESIDUES</code> is the main knob, so it is
+                    worth being exact about.{" "}
+                    <strong>
+                      It is a list of residue numbers on chain A that
+                      RFdiffusion may move and LigandMPNN may redesign.
+                      Everything not in the list is frozen
+                    </strong>{" "}
+                    &mdash; held rigid during diffusion and left at the native
+                    sequence &mdash; which is how you target a region without
+                    disturbing the fold. In the config it is a plain Python
+                    list, and comments are worth keeping:
+                  </p>
+                  <Cmd
+                    lines={[
+                      "FLEXIBLE_RESIDUES = [",
+                      "    195,                            # entrance",
+                      "    257, 258, 259, 260, 261, 262,   # middle constriction loop",
+                      "    292, 295,                       # helix narrowers",
+                      "    335, 336,                       # entrance narrowers",
+                      "]",
+                    ]}
+                  />
+                  <p>
+                    There are three ways to fill it in, and they all end at that
+                    same list.
+                  </p>
+                  <ol className="sw-ways">
+                    <li>
+                      <strong>From the measurement, which is the point.</strong>{" "}
+                      Step 3 prints the list and writes it to{" "}
+                      <code>&lt;stem&gt;_flex.json</code>. Paste it in, or hand
+                      the JSON to <code>00_from_pymol.py</code> and it writes
+                      the whole <code>config.py</code> from the template for you
+                      &mdash; residues, input structure, and optionally the
+                      experiment name and substrate:
+                      <Cmd
+                        lines={[
+                          "python partial_diffusion/scripts/00_from_pymol.py \\",
+                          "  my_enzyme.pdb my_enzyme_flex.json \\",
+                          '  --experiment widen_01 --substrate-smiles "CC..."',
+                        ]}
+                      />
+                    </li>
+                    <li>
+                      <strong>By hand, in PyMOL.</strong> Open your structure,
+                      select the residues you want, name the selection{" "}
+                      <code>flexible</code>, then run{" "}
+                      <code>mark_flexible.py</code>. It exports a PDB and a{" "}
+                      <code>_flex.json</code> in exactly the same format as the
+                      measurement does, so it feeds into{" "}
+                      <code>00_from_pymol.py</code> identically.
+                      <Cmd
+                        lines={[
+                          { c: "# in PyMOL" },
+                          "select flexible, chain A and resi 195+257-262+292+295+335-336",
+                          "run mark_flexible.py",
+                          "mark_flexible",
+                        ]}
+                      />
+                    </li>
+                    <li>
+                      <strong>
+                        Typing the numbers into <code>config.py</code>
+                      </strong>{" "}
+                      yourself. Nothing stops you, and for a second run that
+                      only widens the list it is the quickest route.
+                    </li>
+                  </ol>
+
+                  <div className="sw-caveat">
+                    <strong>Check it against the pins before you run.</strong>{" "}
+                    A second list, <code>_CATALYTIC_PINS</code>, holds catalytic
+                    and structural residues rigid with extra sidechain atoms
+                    pinned. A residue named in <em>both</em> lists gets{" "}
+                    <strong>no pin at all</strong> &mdash; full backbone freedom
+                    rather than the protected geometry the comment beside it
+                    implies, so the pin reads as active while being dead code.
+                    List the residues appearing in both and decide deliberately.
+                    This is <code>KNOWN_ISSUES</code>&nbsp;#3, and it has a
+                    worse form: if such a residue is also in{" "}
+                    <code>SHRINK_RESIDUES</code>, the run may be actively
+                    forbidding the amino acid whose job that comment describes.
+                  </div>
+
+                  <p>
+                    Choosing these residues by eye defeats the point of the
+                    tool, which is why step 3 comes first &mdash; but the manual
+                    routes exist because a homology argument (&ldquo;this
+                    position substitutes the one AaeUPO uses&rdquo;) is
+                    sometimes a better reason than geometry alone.
+                  </p>
                 </Step>
 
                 <Step n={5} title="Preflight, then pilot">
