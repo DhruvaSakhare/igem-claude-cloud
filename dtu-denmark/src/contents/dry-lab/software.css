@@ -588,93 +588,108 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* --- design choices, each with its cost ------------------------------------ *
-   Flat panels like the rest of the page; the Why/Cost labels carry the
-   meaning, so the pair reads without relying on colour. */
-.sw-tradeoffs {
+/* --- the Claude Code skill -------------------------------------------------- *
+   Same flat panels as everything else; two columns on a wide screen. */
+.sw-skill {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   gap: 1rem;
   margin: 2rem auto;
-  max-width: 60rem;
+  max-width: 58rem;
 }
-.sw-tradeoff {
+.sw-skill-item {
   padding: 1.2rem 1.3rem;
   border-radius: var(--sw-r);
   background: var(--sw-fill);
 }
-.sw-tradeoff h4 {
-  margin: 0 0 0.7rem;
-  font-size: 1.02rem;
+.sw-skill-item h4 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.35;
   color: var(--sw-ink);
 }
-.sw-tradeoff p {
-  margin: 0 0 0.6rem;
+.sw-skill-item p {
+  margin: 0;
   font-size: 0.89rem;
   line-height: 1.6;
   color: #2c4a5c;
 }
-.sw-tradeoff p:last-child {
-  margin-bottom: 0;
-}
-.sw-to-gain,
-.sw-to-cost {
-  font-weight: 800;
-  margin-right: 0.3rem;
-}
-.sw-to-gain {
-  color: var(--sw-ink);
-}
-.sw-to-cost {
-  color: #a8430a;
-}
 
-/* --- copy button ----------------------------------------------------------- *
-   Always visible rather than appearing on hover: a control that only exists
-   under a pointer is one a touch user never finds, and on a documentation page
-   this is the most-used thing on the screen. Sits inside the dark block, so it
-   is tinted from the block's own palette rather than introducing a colour. */
-.sw-copy {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  padding: 0.3rem 0.7rem;
-  border: 0;
-  border-radius: 8px;
-  background: rgba(230, 241, 247, 0.12);
-  color: #cfe0ea;
-  font-size: 0.74rem;
+/* ========================================================================== *
+ *  Storage figure (.sws-*)
+ *
+ *  Same palette as the architecture diagram: white cards on a tinted ground,
+ *  orange on the one thing being pointed at (the gate, and the directory the
+ *  run is ultimately for).
+ * ========================================================================== */
+.sws-card {
+  fill: #fff;
+  stroke: #d8eefa;
+  stroke-width: 1;
+}
+.sws-card-dim {
+  fill: #f6fcff;
+}
+.sws-card-key {
+  fill: #fff2e9;
+  stroke: var(--color-orange);
+  stroke-width: 1.5;
+}
+.sws-card-out {
+  fill: #e1f4fe;
+  stroke: #9bdcfb;
+}
+/* The run directory: the ground everything else sits on. */
+.sws-run {
+  fill: #eef9ff;
+  stroke: #bfe6f7;
+  stroke-width: 1.5;
+}
+.sws-run-title {
+  font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  /* Wide enough that "Copy" -> "Copied" does not shift the button's edge. */
-  min-width: 4.6rem;
-  cursor: pointer;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease;
+  fill: var(--sw-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-.sw-copy:hover,
-.sw-copy:focus-visible {
-  background: rgba(230, 241, 247, 0.22);
-  color: #fff;
+.sws-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  fill: var(--sw-ink-dim);
 }
-.sw-copy:focus-visible {
-  outline: 2px solid var(--color-orange);
-  outline-offset: 2px;
+.sws-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  fill: var(--sw-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-
-@media (max-width: 575px) {
-  /* On a phone the button would eat a third of the line, so it goes above the
-     commands instead of beside them. */
-  .sw-cmd {
-    padding-right: 1.2rem;
-    padding-top: 2.9rem;
-  }
-  .sw-copy {
-    top: 0.55rem;
-    left: 0.6rem;
-    right: auto;
-  }
+.sws-sub {
+  font-size: 10.5px;
+  fill: var(--sw-ink-dim);
+}
+.sws-note-text {
+  font-size: 10.5px;
+  font-style: italic;
+  fill: var(--sw-ink-dim);
+}
+.sws-gate-text {
+  font-size: 11px;
+  font-weight: 700;
+  fill: #a8430a;
+}
+.sws-arrow {
+  fill: none;
+  stroke: #7fa8bf;
+  stroke-width: 1.5;
+}
+.sws-arrow-gate {
+  fill: none;
+  stroke: var(--color-orange);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+.sws-tip {
+  fill: #7fa8bf;
+  stroke: none;
 }

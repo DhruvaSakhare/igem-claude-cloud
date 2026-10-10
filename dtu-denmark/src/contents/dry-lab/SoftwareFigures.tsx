@@ -473,3 +473,286 @@ export function Terminal({
     </figure>
   );
 }
+
+/* ========================================================================== *
+ *  Storage figure (.sws-*) — where a run's files actually go.
+ *
+ *  Transcribed from the repository, not drawn from memory:
+ *    - the three input layers are enzyme_design/inputs/, the gitignored
+ *      partial_diffusion/config.py and envs/site.env (lib/paths.py and
+ *      docs/walkthrough-gpu.md steps 3-4 and 7);
+ *    - the run directory and its nine subdirectories are the derived-paths
+ *      block at the end of config_template.py, verbatim and in that order:
+ *      WORK = SHARED_ROOT / YOUR_NAME / EXPERIMENT, then configs, submit,
+ *      logs, cmds, scores, diffusion_out, mpnn_out, rf3_out, best_designs;
+ *    - the stage numbers are STAGES in run_local.py.
+ *
+ *  If any of those move, this figure is wrong and has to move with them.
+ * ========================================================================== */
+
+/** A labelled box. `sub` lines are stacked under the title. */
+function SwsBox({
+  x,
+  y,
+  w,
+  h,
+  title,
+  sub = [],
+  cls = "sws-card",
+  tag,
+}: {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  title: string;
+  sub?: string[];
+  cls?: string;
+  tag?: string;
+}) {
+  return (
+    <g>
+      <rect x={x} y={y} width={w} height={h} rx="8" className={cls} />
+      {tag ? (
+        <text x={x + 12} y={y + 17} className="sws-tag">
+          {tag}
+        </text>
+      ) : null}
+      <text x={x + 12} y={y + (tag ? 36 : 23)} className="sws-title">
+        {title}
+      </text>
+      {sub.map((s, i) => (
+        <text
+          key={i}
+          x={x + 12}
+          y={y + (tag ? 52 : 41) + i * 13}
+          className="sws-sub"
+        >
+          {s}
+        </text>
+      ))}
+    </g>
+  );
+}
+
+/** A right-pointing arrow between two boxes on the same row. */
+function SwsArrow({ x1, x2, y }: { x1: number; x2: number; y: number }) {
+  return (
+    <g>
+      <path d={`M${x1},${y} L${x2 - 6},${y}`} className="sws-arrow" />
+      <path
+        d={`M${x2},${y} l-7,-4 l0,8 Z`}
+        className="sws-tip"
+        strokeLinejoin="round"
+      />
+    </g>
+  );
+}
+
+export function StorageFigure() {
+  // Five result directories, written in pipeline order; the number is the
+  // stage in run_local.py that writes each one.
+  const CHAIN = [
+    { dir: "diffusion_out/", by: "1 · RFD3", what: "backbones" },
+    { dir: "mpnn_out/", by: "4 · MPNN", what: "sequences" },
+    { dir: "rf3_out/", by: "5 · RF3", what: "folded designs" },
+    { dir: "scores/", by: "6 · score", what: "metrics, CSV" },
+    { dir: "best_designs/", by: "7 · collect", what: "what passed" },
+  ];
+  const CW = 168;
+  const CGAP = 14;
+  const CX0 = 40;
+  const CY = 330;
+
+  return (
+    <figure className="swf-fig swf-fig-wide numfig">
+      <svg
+        viewBox="0 0 950 560"
+        className="swf-svg"
+        role="img"
+        aria-label={
+          "Where a run's files go. Three inputs — your structure in " +
+          "enzyme_design/inputs, the experiment in config.py and the machine " +
+          "paths in envs/site.env — feed one run directory, PIPELINE_WORK_ROOT " +
+          "over your name over the experiment name. Inside it, configs, cmds, " +
+          "submit and logs hold the bookkeeping, and five directories hold the " +
+          "results in pipeline order: diffusion_out from RFD3, mpnn_out from " +
+          "LigandMPNN, rf3_out from RF3, scores, and best_designs. The " +
+          "analysis scripts read rf3_out and best_designs and write beside them."
+        }
+      >
+        {/* ---- inputs ---- */}
+        <text x="40" y="26" className="swa-head">
+          WHAT YOU SUPPLY — three layers, kept apart on purpose
+        </text>
+
+        <SwsBox
+          x={40}
+          y={38}
+          w={280}
+          h={78}
+          tag="IN THE REPOSITORY"
+          title="enzyme_design/inputs/"
+          sub={[
+            "your prepared structure, as PDB",
+            "ships empty — ours stay in examples/",
+          ]}
+        />
+        <SwsBox
+          x={335}
+          y={38}
+          w={280}
+          h={78}
+          tag="GITIGNORED — YOUR COPY"
+          title="partial_diffusion/config.py"
+          sub={[
+            "the experiment: which residues may",
+            "move, which substrate, how many",
+          ]}
+        />
+        <SwsBox
+          x={630}
+          y={38}
+          w={280}
+          h={78}
+          tag="NEVER COMMITTED"
+          title="envs/site.env"
+          sub={[
+            "the machine: checkpoints, queues,",
+            "scratch space. One file to change",
+          ]}
+        />
+
+        {/* three arrows converging into the run directory */}
+        <path
+          d="M180,116 L180,140 L475,140 L475,166"
+          className="sws-arrow"
+        />
+        <path d="M475,116 L475,166" className="sws-arrow" />
+        <path d="M770,116 L770,140 L475,140" className="sws-arrow" />
+        <path
+          d="M475,172 l-5,-9 l10,0 Z"
+          className="sws-tip"
+          strokeLinejoin="round"
+        />
+
+        {/* ---- the run directory ---- */}
+        <rect
+          x="25"
+          y="176"
+          width="900"
+          height="290"
+          rx="12"
+          className="sws-run"
+        />
+        <text x="40" y="200" className="sws-run-title">
+          $PIPELINE_WORK_ROOT / &lt;your name&gt; / &lt;experiment&gt;/
+        </text>
+        <text x="40" y="217" className="sws-sub">
+          One directory per run, created by the driver. Nothing else writes
+          here, and nothing here is in version control.
+        </text>
+
+        {/* bookkeeping row */}
+        <text x="40" y="243" className="swa-head">
+          BOOKKEEPING — written before any GPU time is spent
+        </text>
+        <SwsBox
+          x={40}
+          y={250}
+          w={200}
+          h={48}
+          title="configs/"
+          sub={["the config, frozen at submit"]}
+          cls="sws-card sws-card-dim"
+        />
+        <SwsBox
+          x={252}
+          y={250}
+          w={200}
+          h={48}
+          title="cmds/ · submit/"
+          sub={["the exact commands that ran"]}
+          cls="sws-card sws-card-dim"
+        />
+        <SwsBox
+          x={464}
+          y={250}
+          w={200}
+          h={48}
+          title="logs/"
+          sub={["per-job output"]}
+          cls="sws-card sws-card-dim"
+        />
+        <text x={680} y={272} className="sws-note-text">
+          A finished run can be read
+        </text>
+        <text x={680} y={284} className="sws-note-text">
+          back without the repository.
+        </text>
+
+        {/* results chain */}
+        <text x="40" y={CY - 12} className="swa-head">
+          RESULTS — one directory per stage, in the order they are written
+        </text>
+        {CHAIN.map((c, i) => {
+          const x = CX0 + i * (CW + CGAP);
+          return (
+            <g key={c.dir}>
+              <SwsBox
+                x={x}
+                y={CY}
+                w={CW}
+                h={72}
+                tag={c.by}
+                title={c.dir}
+                sub={[c.what]}
+                cls={i === 4 ? "sws-card sws-card-key" : "sws-card"}
+              />
+              {i < CHAIN.length - 1 ? (
+                <SwsArrow x1={x + CW} x2={x + CW + CGAP} y={CY + 36} />
+              ) : null}
+            </g>
+          );
+        })}
+
+        {/* the gate sits between diffusion_out and mpnn_out */}
+        <path
+          d={`M${CX0 + CW / 2},${CY + 72} L${CX0 + CW / 2},${CY + 92} L${CX0 + CW + CGAP + CW / 2},${CY + 92} L${CX0 + CW + CGAP + CW / 2},${CY + 78}`}
+          className="sws-arrow-gate"
+        />
+        <text x={CX0 + 14} y={CY + 110} className="sws-gate-text">
+          3 · the CAVER gate measures every backbone here, and only the
+          survivors reach LigandMPNN
+        </text>
+
+        {/* ---- analysis out ---- */}
+        <path d="M475,466 L475,490" className="sws-arrow" />
+        <path
+          d="M475,496 l-5,-9 l10,0 Z"
+          className="sws-tip"
+          strokeLinejoin="round"
+        />
+        <SwsBox
+          x={225}
+          y={500}
+          w={500}
+          h={40}
+          title="analysis 07–12"
+          sub={[
+            "read rf3_out/ and best_designs/, write CSV and PNG beside them",
+          ]}
+          cls="sws-card sws-card-out"
+        />
+      </svg>
+      <figcaption>
+        Where a run's files go. The three things you supply are kept apart on
+        purpose: the experiment is publishable, the machine paths are not, and
+        neither is mixed into the results. Everything a run produces lands under
+        one directory named for you and the experiment — so a second run never
+        overwrites a first, and a finished run can be read back without the
+        repository that made it.
+      </figcaption>
+    </figure>
+  );
+}

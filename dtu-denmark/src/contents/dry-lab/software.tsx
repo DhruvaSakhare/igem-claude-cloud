@@ -13,6 +13,7 @@ import { FigNum, NumberedFigures, TabNum } from "./FigureNumbers";
 import {
   ArchitectureFigure,
   ChannelProfileFigure,
+  StorageFigure,
   Terminal,
 } from "./SoftwareFigures";
 import "./software.css";
@@ -227,50 +228,6 @@ const MODEL_ROWS = [
     model: "RF3",
     role: "folds and scores each design with its cofactors",
     source: FOUNDRY,
-  },
-];
-
-/* --- design choices, each with what it cost -------------------------------- *
-   The Best Software page is asked for the key design decisions AND the
-   trade-offs they carried, so each one here is stated with its downside
-   attached: a tool described only by what it does well is not a description
-   anyone can act on. The long form is docs/architecture.md. */
-const TRADEOFFS = [
-  {
-    title: "Rank by measured geometry, not model confidence",
-    why: "a model’s confidence in a structure says nothing about whether the tunnel through it is wider. Ranking by pLDDT would have selected for designs that fold predictably, which is not what we wanted.",
-    cost: "a CAVER run per design, which is minutes of CPU each and the slowest part of scoring. We accept the wall-clock for a number that means what it says.",
-  },
-  {
-    title: "Put the cheap measurement in the middle, not at the end",
-    why: "a diffusion model handed a narrow tunnel will sometimes close it completely, and no amount of sequence design reopens a channel that is not there. Measuring before the two most expensive stages means that failure costs a minute of CPU instead of hours of GPU.",
-    cost: "a stage that most pipelines do not have, and one more tool to install. Running it after the pipeline — the obvious place — would have told us the same thing and charged us for the privilege.",
-  },
-  {
-    title: "The gate fails open",
-    why: "it runs unattended inside a queued job chain. A filter that can fail closed can silently discard an entire run, hours after you stopped watching.",
-    cost: "a run with CAVER missing completes and looks normal while having skipped its own central idea. The gate says so loudly in the log, and the first thing to check on a disappointing run is whether it actually ran.",
-  },
-  {
-    title: "Three config layers instead of one file",
-    why: "it is what lets an experiment be published while the filesystem stays private, and what made this repository publishable at all — the working tree it came from had one contributor’s user id in it over five thousand times.",
-    cost: (
-      <>
-        three places to look when a path is wrong instead of one. A{" "}
-        <code>--check</code> subcommand exists specifically to collapse them
-        back into one report.
-      </>
-    ),
-  },
-  {
-    title: "Two drivers for one pipeline",
-    why: "a single-GPU user should not have to understand LSF, and a cluster user should not run two hundred designs in series.",
-    cost: "they drifted apart three separate times — a stage present in one and not the other, a flag documented but only implemented in one, and two pilots that tested different things. All three were real bugs. The test suite now asserts the two expose the same stages, which is a patch over a design that would be better as one shared definition. It is written down as open work rather than claimed as finished.",
-  },
-  {
-    title: "No SBOL, and no genetic-circuit standards",
-    why: "this is structural tooling. Its vocabulary is atoms, chains, residue numbers and ligand codes, and the standards that matter for that are PDB, mmCIF, FASTA and SMILES — all of which it reads and writes.",
-    cost: "it does not plug into the synthetic-biology tool ecosystem the way a circuit-design tool would. Claiming SBOL support would be easy and false, so we say plainly that there is none.",
   },
 ];
 
@@ -863,6 +820,93 @@ export function Software() {
             </section>
 
             {/* ---------------------------------------------------------------- */}
+            <section id="software-skill" className="mt-5">
+              <SectionHeading title="Running it with Claude Code" />
+
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  The repository ships{" "}
+                  <strong>
+                    a Claude Code skill, <code>run-pipeline</code>
+                  </strong>
+                  , at <code>.claude/skills/run-pipeline/SKILL.md</code>. It is
+                  a plain Markdown file that an assistant reads before touching
+                  the pipeline, and it exists because the mistakes worth
+                  preventing here are not coding mistakes. This pipeline spends
+                  shared GPU hours and produces numbers that go on a public wiki
+                  and into a competition.
+                </p>
+                <p className="mm-prose">
+                  Clone the repository and open it in Claude Code and the skill
+                  loads itself &mdash; there is nothing to install and no key to
+                  configure. If you do not use Claude Code, read it anyway: it
+                  is the shortest honest description of how to drive this
+                  pipeline that we have written.
+                </p>
+              </TextBox>
+
+              <div className="sw-skill">
+                <div className="sw-skill-item">
+                  <h4>Cheapest check first, always</h4>
+                  <p>
+                    Six steps in a fixed order, each with what it costs and what
+                    it proves: the test suite, then path resolution, then{" "}
+                    <code>--check</code>, then <code>--dry-run</code>, then a
+                    one-backbone pilot, and only then the full run. Each rules
+                    out a class of failure that would otherwise surface hours
+                    into a run.
+                  </p>
+                </div>
+                <div className="sw-skill-item">
+                  <h4>Stop and ask before spending</h4>
+                  <p>
+                    The skill tells the assistant to halt after the pilot and
+                    report, and to ask a human before submitting a full run,
+                    before re-running a stage that already has output, before
+                    deleting anything under the work root, and before any
+                    commit. It is not allowed to decide on its own that your GPU
+                    hours are worth spending.
+                  </p>
+                </div>
+                <div className="sw-skill-item">
+                  <h4>Failures that are not failures</h4>
+                  <p>
+                    Two things in this pipeline look like crashes and are not: a{" "}
+                    <code>signal 9</code> from a job whose output exists, and
+                    the CAVER gate failing open. Both are written down, so an
+                    assistant reports them accurately instead of &ldquo;fixing&rdquo;
+                    a run that was fine.
+                  </p>
+                </div>
+                <div className="sw-skill-item">
+                  <h4>Never report what you did not measure</h4>
+                  <p>
+                    The rule the skill opens and closes on. Do not summarise a
+                    run as successful because it exited&nbsp;0; check the files
+                    exist and the numbers are there, and say plainly if a stage
+                    was skipped. An assistant is also told not to invent a{" "}
+                    <code>FLEXIBLE_RESIDUES</code> list &mdash; choosing those
+                    residues by eye defeats the point of the tool &mdash; and
+                    never to guess a cluster path.
+                  </p>
+                </div>
+              </div>
+
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  Those constraints are the point. An assistant that is fast and
+                  confident is exactly the wrong thing to put in front of a
+                  queue of shared GPU jobs and a wiki full of measured numbers,
+                  and the skill is mostly a list of the things it must not do on
+                  its own. The same policy for the whole repository is in{" "}
+                  <code>.claude/RESPONSIBLE_AI_USE.md</code>: we remain
+                  accountable for every claim, and nothing on this page was
+                  reported without being measured.
+                </p>
+              </TextBox>
+            </section>
+
+            {/* ---------------------------------------------------------------- */}
             <section id="software-troubleshooting" className="mt-5">
               <SectionHeading title="When something breaks" />
 
@@ -964,32 +1008,58 @@ export function Software() {
             </section>
 
             {/* ---------------------------------------------------------------- */}
-            <section id="software-tradeoffs" className="mt-5">
-              <SectionHeading title="Design choices, and what they cost" />
+            <section id="software-storage" className="mt-5">
+              <SectionHeading title="How a run is laid out" />
 
               <TextBox className="model-prose">
                 <p className="mm-prose">
-                  Every one of these was a decision with a downside, and they
-                  are the decisions that shape what it is like to use the tool.
-                  Each is stated with its cost attached. The reasoning in full,
-                  including the two hand-offs between components, is{" "}
-                  <code>docs/architecture.md</code>.
+                  Figure <FigNum of="storage" /> is where everything a run
+                  touches actually lives. Two things about it are worth knowing
+                  before your first run, because both are easier to arrange at
+                  the start than to unpick afterwards.
+                </p>
+                <p className="mm-prose">
+                  <strong>What you supply is split three ways.</strong> The
+                  experiment &mdash; which enzyme, which residues may move,
+                  which substrate &mdash; is in version control and publishable.
+                  The machine &mdash; checkpoints, queues, scratch space
+                  &mdash; is one file that is never committed. Your own paths
+                  are a third. That is why the configs in the repository can be
+                  read by anyone without exposing the filesystem they ran on,
+                  and why moving to another cluster is one file rather than
+                  thirty.
+                </p>
+                <p className="mm-prose">
+                  <strong>
+                    Everything a run produces lands under one directory
+                  </strong>
+                  , named for you and for the experiment, so a second run never
+                  overwrites a first. Each stage writes its own subdirectory,
+                  and the config and the exact commands are frozen there before
+                  any GPU time is spent &mdash; which means a finished run can
+                  be read back, and repeated, without the repository that made
+                  it.
                 </p>
               </TextBox>
 
-              <div className="sw-tradeoffs">
-                {TRADEOFFS.map((t) => (
-                  <div className="sw-tradeoff" key={t.title}>
-                    <h4>{t.title}</h4>
-                    <p>
-                      <span className="sw-to-gain">Why:</span> {t.why}
-                    </p>
-                    <p>
-                      <span className="sw-to-cost">Cost:</span> {t.cost}
-                    </p>
-                  </div>
-                ))}
+              <div data-fig="storage">
+                <StorageFigure />
               </div>
+
+              <TextBox className="model-prose">
+                <p className="mm-prose">
+                  The pipeline itself flows left to right through the same
+                  directories: each stage reads what the stage before it wrote
+                  and writes its own, so you can stop after any of them, inspect
+                  the files, and resume. Stages are addressable by name as well
+                  as by number &mdash;{" "}
+                  <code>--stages prep-caver_filter</code> is the pilot, and
+                  names are stable where numbers shift if a stage is ever
+                  inserted. Figure <FigNum of="architecture" /> above is the
+                  same eight stages seen as cost: which of them want a GPU, and
+                  where the cheap measurement sits relative to them.
+                </p>
+              </TextBox>
             </section>
 
             {/* ---------------------------------------------------------------- */}
