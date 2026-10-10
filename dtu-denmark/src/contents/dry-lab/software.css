@@ -334,65 +334,6 @@
   color: var(--sw-ink-dim);
 }
 
-/* --- the measured profile plot --------------------------------------------- */
-.swf-grid {
-  stroke: #e6f1f7;
-  stroke-width: 1;
-}
-.swf-axis {
-  stroke: #7fa8bf;
-  stroke-width: 1;
-}
-.swf-area {
-  fill: #e8f6fe;
-}
-.swf-line {
-  fill: none;
-  stroke: var(--sw-ink);
-  stroke-width: 2.25;
-  stroke-linejoin: round;
-}
-.swf-dot {
-  fill: var(--color-orange);
-  stroke: #fff;
-  stroke-width: 1.5;
-}
-/* The design's bottleneck: a reference level, so dashed — it is a single
-   measured number from another run, not a curve we have here. */
-.swf-ref {
-  stroke: var(--color-orange);
-  stroke-width: 1.5;
-  stroke-dasharray: 5 4;
-}
-.swf-ref-label,
-.swf-callout {
-  font-size: 12px;
-  font-weight: 700;
-  fill: #a8430a;
-}
-.swf-callout {
-  fill: var(--sw-ink);
-}
-.swf-ref-sub,
-.swf-callout-sub {
-  font-size: 10.5px;
-  font-weight: 400;
-  fill: var(--sw-ink-dim);
-}
-.swf-tick {
-  font-size: 11px;
-  fill: var(--sw-ink-dim);
-  text-anchor: middle;
-}
-.swf-tick-y {
-  text-anchor: end;
-}
-.swf-axis-label {
-  font-size: 11.5px;
-  fill: var(--sw-ink-dim);
-  text-anchor: middle;
-}
-
 /* --- the architecture diagram --------------------------------------------- */
 .swa-head {
   font-size: 11px;

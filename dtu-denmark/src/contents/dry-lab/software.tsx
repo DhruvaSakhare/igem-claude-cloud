@@ -12,7 +12,6 @@ import { DetailsBox } from "./DetailsBox";
 import { FigNum, NumberedFigures, TabNum } from "./FigureNumbers";
 import {
   ArchitectureFigure,
-  ChannelProfileFigure,
   StorageFigure,
   Terminal,
 } from "./SoftwareFigures";
@@ -386,9 +385,9 @@ export function Software() {
                   site. In unspecific peroxygenases (UPOs) that journey runs
                   through a narrow tunnel to the heme, and for a bulky substrate
                   the tunnel &mdash; not the chemistry &mdash; is what stops the
-                  reaction. The constriction we started from is under
-                  1&nbsp;&Aring; in radius (Figure <FigNum of="profile" />
-                  ).
+                  reaction. In the UPOs we looked at, that constriction is
+                  around 1&nbsp;&Aring; in radius &mdash; narrower than the
+                  substrate that has to pass it.
                 </p>
                 <p className="mm-prose">
                   <strong>
@@ -402,10 +401,6 @@ export function Software() {
                   itself.
                 </p>
               </TextBox>
-
-              <div data-fig="profile">
-                <ChannelProfileFigure />
-              </div>
 
               <ul className="sw-flow">
                 {FLOW.map((f) => (
@@ -712,10 +707,9 @@ export function Software() {
                     ]}
                   />
                   <p className="sw-figcap">
-                    Real output on the structure bundled with the repository.
-                    The three numbers at the top are the same ones in Figure{" "}
-                    <FigNum of="profile" />, and you can reproduce them in about
-                    a minute on a laptop.
+                    Real output, on the example structure bundled with the
+                    repository, so you can reproduce it in about a minute on a
+                    laptop before pointing the tool at anything of your own.
                   </p>
                   <p>
                     You will also want an alignment, once per enzyme:{" "}
@@ -1091,7 +1085,7 @@ export function Software() {
                 result the pipeline gives you is computational. Nothing it has
                 designed for us has been expressed or assayed in a laboratory; a
                 design that folds confidently may not express or function; and
-                pLDDT&nbsp;0.96 says the network is certain rather than right
+                a high pLDDT says the network is certain rather than right
                 &mdash; which matters most at exactly the redesigned positions,
                 where there is least evolutionary signal behind it.
               </div>
