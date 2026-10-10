@@ -314,7 +314,24 @@ function CopyButton({ text }: { text: string }) {
   }
 
   return (
-    <button type="button" className="sw-copy" onClick={copy} aria-label="Copy">
+    <button
+      type="button"
+      className={`sw-copy${state === "done" ? " is-done" : ""}`}
+      onClick={copy}
+      aria-label="Copy"
+    >
+      {/* Same icon idiom as the page's other control (.xim-btn): stroked, round
+          caps, currentColor, so it takes the button's state colour. */}
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        {state === "done" ? (
+          <polyline points="4,12.5 9.5,18 20,6.5" />
+        ) : (
+          <>
+            <rect x="8.5" y="8.5" width="11" height="11" rx="2.5" />
+            <path d="M15.5 5.5 h-11 v11" />
+          </>
+        )}
+      </svg>
       <span aria-hidden="true">
         {state === "idle" ? "Copy" : state === "done" ? "Copied" : "Press ⌘C"}
       </span>

@@ -696,3 +696,90 @@
 #root .page-start .swf-term-body code {
   color: #dceaf2;
 }
+
+/* --- copy button ----------------------------------------------------------- *
+   Styled as one of this wiki's own controls rather than a generic docs-site
+   chip: the same white pill, soft shadow, navy icon and orange focus ring as
+   .xim-btn, the expand button on the Model pages' figures, and the same icon
+   idiom — stroked, round caps, currentColor, so the glyph takes the button's
+   state colour.
+
+   (These rules went missing once already: a stylesheet edit that cut the
+   trade-off block by truncating at its comment took them with it, and the
+   button silently fell back to the browser's default. Keep them at the end of
+   the file, where a truncation would be obvious.)
+
+   Always visible rather than appearing on hover: a control that only exists
+   under a pointer is one a touch user never finds, and on a documentation page
+   this is the most-used thing on the screen. */
+.sw-copy {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0e3a57;
+  box-shadow: 0 2px 8px rgba(20, 60, 90, 0.25);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+  /* Wide enough that "Copy" -> "Copied" does not shift the button's edge. */
+  min-width: 5.9rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.sw-copy svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sw-copy:hover {
+  background: #fff;
+  transform: scale(1.06);
+}
+.sw-copy:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
+/* Confirmed: the page's accent, used the way it is used everywhere else on
+   this page — to mark the one thing being pointed at. */
+.sw-copy.is-done {
+  background: var(--color-orange);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sw-copy {
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .sw-copy:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 575px) {
+  /* On a phone the button would eat a third of the line, so it goes above the
+     commands instead of beside them. */
+  .sw-cmd {
+    padding-right: 1.2rem;
+    padding-top: 3rem;
+  }
+  .sw-copy {
+    top: 0.6rem;
+    left: 0.65rem;
+    right: auto;
+  }
+}
