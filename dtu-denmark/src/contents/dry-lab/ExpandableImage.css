@@ -1,0 +1,134 @@
+/* Styles for ExpandableImage (ExpandableImage.tsx). */
+
+/* The wrapper is a plain block so the page's own figure rules still size the
+   image; it only exists to anchor the expand button to the image's corner. */
+.xim {
+  position: relative;
+}
+
+.xim-btn {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  color: #0e3a57;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 8px rgba(20, 60, 90, 0.25);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+.xim-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.xim-btn:hover {
+  background: #ffffff;
+  transform: scale(1.06);
+}
+.xim-btn:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+/* Expand button: top-right corner of the plot. Half-visible until the plot is
+   hovered so it does not sit on top of the data; always fully visible on touch
+   screens, which have no hover. */
+.xim-open {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  opacity: 0.55;
+}
+.xim:hover .xim-open,
+.xim-open:focus-visible {
+  opacity: 1;
+}
+@media (hover: none) {
+  .xim-open {
+    opacity: 1;
+  }
+}
+
+/* ---- the expanded view ---- */
+.xim-overlay {
+  position: fixed;
+  inset: 0;
+  /* Above the navbar (10000) and every other fixed piece of site chrome. */
+  z-index: 10050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 1.5rem 1.5rem;
+  background: rgba(8, 26, 40, 0.82);
+  animation: xim-fade 0.2s ease;
+}
+.xim-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+.xim-close svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.xim-figure {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+/* As large as the window allows — small plots are scaled UP to fit too — and
+   never distorted: the width is the smaller of the window's width and the
+   window's height times the image's aspect ratio (--xim-ar, set on load). */
+.xim-figure img {
+  display: block;
+  width: min(
+    calc(100vw - 3rem),
+    calc((100vh - 9rem) * var(--xim-ar, 1.6))
+  );
+  height: auto;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.xim-figure figcaption {
+  max-width: min(900px, 100%);
+  color: #e6f2fa;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@keyframes xim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xim-overlay {
+    animation: none;
+  }
+  .xim-btn {
+    transition: none;
+  }
+}

@@ -1,0 +1,389 @@
+/* IMPORT INDIVIDUAL STYLING PAGES */
+@import "../../contents/project/engineering.css";
+
+/* FONTS */
+
+/* The team's display font, used for the big page-header titles.
+   The file lives in src/assets/fonts (NOT public/) so Vite bundles it with a
+   content hash and rewrites this URL to the deployed base path — a plain
+   `/font.otf` from public/ would 404, because the wiki is served from
+   /<team-slug>/ rather than from the domain root.
+
+   `font-display: swap` means the title renders immediately in the fallback and
+   re-renders once the file arrives, instead of leaving a blank heading. */
+@font-face {
+  font-family: "iGEM Wiki Header";
+  src: url("../../assets/fonts/igem-wiki-header-regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ROOT VARIABLES */
+
+:root {
+  /* Colors */
+  --color-white: #ffffff;
+  --color-lightblue: #d6f2ff;
+  --color-brightblue: #57caff;
+  --color-darkblue: #005075;
+  --color-darkestblue: #002d42;
+  --color-orange: #ff6a14;
+  --color-burgundy: #732640;
+  --color-offwhite: #c2e8ff;
+  --color-green: #60856a;
+  --color-dark: #353b41;
+  --color-shadow: rgba(39, 71, 110, 0.08);
+  --color-brightblue-shadow: #57caff4d;
+  --color-lightgray: #f2f2f2;
+
+  /* Callout colors */
+  --color-info: #5bc0de;
+  --color-warning: #f0ad4e;
+  --color-danger: #d9534f;
+
+  /* Typography */
+  --font: "Outfit", sans-serif;
+  --secondary-font: "Times New Roman", Times, serif;
+
+  /* Layout */
+  --navbar-height: 68px;
+
+  /* How far down the viewport the page's sky gradient fades from brightblue to
+     lightblue. Bump this up (e.g. 120vh) to pull the gradient further down. */
+  --bg-fade-distance: 85vh;
+
+  /* How tall the fixed cloud header actually renders — which is NOT
+   * --navbar-height. Only 68px is reserved by `body { padding-top }`, but the
+   * swoop artwork (Navbar_with_logo.svg, 1920 × 263) is drawn full-width, so
+   * above the CloudNavbar's 900px breakpoint it is 263/1920 = 13.7% of the
+   * width; below it the navbar collapses to the small badge. Anything that
+   * must sit clear of the header (e.g. the Dry Lab page heroes) should offset
+   * by this, not by --navbar-height. Keep in sync with NARROW_BREAKPOINT_PX
+   * and the swoop dimensions in components/CloudNavbar.tsx. */
+  --cloud-header-height: 84px;
+}
+
+@media (min-width: 900px) {
+  :root {
+    --cloud-header-height: 13.7vw;
+  }
+}
+
+/* GENERAL STYLING */
+/* Page-wide sky gradient: brightblue at the very top fading to lightblue further
+   down the screen. `background-attachment: fixed` pins it to the viewport, so the
+   fade spans the screen (not each element) and stays put as you scroll — one
+   continuous field of colour behind every page. --bg-fade-distance controls how
+   far down the fade reaches; raise it to stretch the gradient lower.
+
+   `html body` (specificity 0,0,2) rather than a bare `body` so this wins over
+   Bootstrap's own `body { background-color: var(--bs-body-bg) }` (white), which
+   otherwise ties on specificity and overrides us on load order — leaving a white
+   body painted on top of the gradient. */
+html,
+html body,
+#root {
+  background-color: var(--color-brightblue);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-brightblue) 0%,
+    var(--color-lightblue) var(--bg-fade-distance)
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  font-family: var(
+    --font
+  ); /* This changes the font of everything on the page */
+  h1 {
+    color: var(--color-darkblue);
+    font-size: 30px;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 26px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  h6 {
+    font-size: 16px;
+  }
+  p {
+    font-size: 16px;
+  }
+  a {
+    color: var(--color-orange);
+  }
+}
+
+body {
+  padding-top: var(--navbar-height);
+}
+
+.left-aligned {
+  margin-left: auto;
+}
+
+/* Content column. The width and the side padding must NOT both be percentages —
+ * they compound, so the usable box shrinks far faster than the viewport (at a
+ * 360px phone the old `max-width: 85%; padding: 0 10%` left only 224px, which
+ * was narrower than the fixed-size widgets inside it). Width is capped in px so
+ * it stops growing on desktop; padding is in rem so it stays constant on phones
+ * and the box tracks the viewport 1:1. */
+.page-container {
+  width: min(1100px, 100% - 2rem);
+  margin: 0 auto;
+  padding: 0 clamp(0.75rem, 2vw, 2rem);
+}
+
+/* Pages with a floating table of contents give up some column width so the TOC
+ * has a gutter to sit in. 544px is 2 × (220px TOC + 24px gap + 20px viewport
+ * edge), plus 16px of slack for the scrollbar; below 1350px the TOC is not
+ * floating (see TOC.css / FLOAT_MIN_WIDTH in TOC.tsx) and the column keeps its
+ * full width. On a 1440px laptop this trades ~1060px of column for ~880px and
+ * a sidebar; past ~1660px the 1100px cap wins again and nothing changes.
+ *
+ * `:has()` so the reservation only applies where a TOC is actually rendered —
+ * pages without one (Home, Team, the section overviews) are untouched. */
+@media (min-width: 1350px) {
+  .page-container:has(.toc) {
+    width: min(1100px, 100% - 544px);
+  }
+}
+
+/* NAVIGATION */
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle {
+  color: var(--color-white) !important;
+}
+
+.navbar-brand-custom {
+  color: var(--color-white) !important;
+  font-weight: 500;
+}
+
+.navbar-custom {
+  background-color: var(--color-brightblue);
+}
+
+/* PAGE HEADER */
+
+.page-header {
+  background-color: var(--color-darkblue);
+
+  margin-top: -68px;
+  padding-top: calc(4rem + 68px);
+  padding-bottom: 3rem;
+
+  margin-bottom: 3rem;
+}
+
+/* FULL-SCREEN VARIANT — the header fills the viewport on landing, so the page
+   opens on the title alone and the content below is reached by scrolling.
+   `min-height` rather than `height`: a long title on a narrow screen must be
+   able to grow past the viewport instead of overflowing the band. The -68px
+   margin above is cancelled by the same amount of padding, so 100vh here is
+   exactly one screen. */
+.page-header-full {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 4rem;
+  /* Transparent so the page-wide sky gradient (on html/body) shows through the
+     full-screen title band instead of a flat fill covering it. */
+  background-color: transparent;
+}
+
+/* The default lead is near-white, which all but disappears on the light blue —
+   dark blue instead, matching the navbar's own text. */
+.page-header-full .page-header-lead {
+  color: var(--color-darkblue);
+}
+
+.page-header-full .page-header-title-orange {
+  font-family: "iGEM Wiki Header", var(--font);
+  /* Scales with the viewport: never smaller than 3rem on a phone, never larger
+     than 7rem on a wide screen. */
+  /* !important because the global `h1 { font-size: 30px }` above is nested
+     under `html, body, #root` — that id makes it outrank any class here. */
+  font-size: clamp(3rem, 9vw, 7rem) !important;
+  /* The display font has no bold cut, so 700 would only give a synthesised
+     one — keep it at its drawn weight. */
+  font-weight: 400 !important;
+  letter-spacing: 0.02em;
+}
+
+
+.page-header-title-white,
+.page-header-title-orange,
+.page-header-title-brightblue {
+  font-size: 2.75rem;
+  font-weight: 700 !important;
+  line-height: 1.1;
+}
+
+.page-header-title-white {
+  color: var(--color-white);
+}
+
+.page-header-title-orange {
+  color: var(--color-orange);
+}
+
+.page-header-title-brightblue {
+  color: var(--color-darkblue);
+}
+
+.page-header-lead {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.6rem !important;
+}
+
+/* BACKGROUND COLORS */
+
+.bg-dark {
+  background-color: var(--color-dark) !important;
+}
+
+.bg-lightblue {
+  background-color: var(--color-lightblue);
+}
+
+.bg-hero {
+  background-color: var(--color-brightblue);
+}
+
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.bg-darkblue-official {
+  background-color: var(--color-darkblue);
+}
+
+.bg-mediumblue-official {
+  background-color: var(--color-brightblue);
+}
+
+.bg-lightblue-official {
+  background-color: var(--color-lightblue);
+}
+
+.bg-orange-official {
+  background-color: var(--color-orange);
+}
+
+.bg-darkred-official {
+  background-color: var(--color-burgundy);
+}
+
+.bg-offwhite-official {
+  background-color: var(--color-offwhite);
+}
+
+.bg-green-official {
+  background-color: var(--color-green);
+}
+
+/* TEXT COLORS */
+
+.text-orange {
+  color: var(--color-orange) !important;
+}
+
+.text-darkblue-official {
+  color: var(--color-darkblue);
+}
+
+.text-mediumblue-official {
+  color: var(--color-brightblue);
+}
+
+.text-lightblue-official {
+  color: var(--color-lightblue);
+}
+
+.text-orange-official {
+  color: var(--color-orange);
+}
+
+.text-darkred-official {
+  color: var(--color-burgundy);
+}
+
+.text-offwhite-official {
+  color: var(--color-offwhite);
+}
+
+.text-green-official {
+  color: var(--color-green);
+}
+
+/* CALLOUTS */
+
+.bd-callout {
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  border: 1px solid #e9ecef;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.bd-callout h4 {
+  margin-bottom: 0.25rem;
+}
+
+.bd-callout p:last-child {
+  margin-bottom: 0;
+}
+
+.bd-callout code {
+  border-radius: 0.25rem;
+}
+
+.bd-callout + .bd-callout {
+  margin-top: -0.25rem;
+}
+
+.bd-callout-info {
+  border-left-color: var(--color-info);
+}
+
+.bd-callout-warning {
+  border-left-color: var(--color-warning);
+}
+
+.bd-callout-danger {
+  border-left-color: var(--color-danger);
+}
+
+/* FOOTER */
+
+footer a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-link-blue {
+  color: var(--color-lightblue) !important;
+  font-weight: normal !important;
+}
+
+.footer-link-blue:hover {
+  color: var(--color-lightblue) !important;
+  text-decoration: underline;
+}
+
+/* Scroll margins for anchor links */
+section[id] {
+  scroll-margin-top: 40px;
+}

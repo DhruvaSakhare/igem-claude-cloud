@@ -1,0 +1,59 @@
+/* Styles for the Model → Engineering page (model_engineering.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. The shared
+ * sticky page-switcher is the ModelNav component (its own .tsx + .css). */
+
+/* ---- the construct list in the laccase rational-design section ---- */
+#root .me-constructs {
+  margin: 0 0 1.15rem;
+  padding-left: 1.4rem;
+  color: #123a52;
+  line-height: 1.7;
+}
+
+/* ---- one tall figure beside two stacked ones (.wfig-mosaic) ----
+   The MutateX alignment (Figure 1) on the left; the two ΔΔG heatmaps
+   (Figures 2 and 3) stacked on the right. `stretch` makes both columns the
+   height of the taller one, and the column shares are chosen from the three
+   images' shapes (and the lengths of their captions) so the two come out
+   about even — retune `--mosaic-left` if a figure is re-uploaded at a
+   different shape. Each figure keeps its own caption under it. */
+.wfig-mosaic {
+  --mosaic-left: 1.6;
+  display: flex;
+  align-items: stretch;
+  gap: 1.25rem;
+  margin: 2rem 0 1.5rem;
+}
+.wfig-mosaic > .wfig {
+  flex: var(--mosaic-left) 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wfig-mosaic-stack {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-width: 0;
+}
+.wfig-mosaic .wfig {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+.wfig-mosaic .wfig img {
+  width: 100%;
+}
+
+/* Too narrow for the pair of columns: back to one figure per line. */
+@media (max-width: 767.98px) {
+  .wfig-mosaic {
+    flex-direction: column;
+  }
+  .wfig-mosaic > .wfig {
+    flex: none;
+  }
+}

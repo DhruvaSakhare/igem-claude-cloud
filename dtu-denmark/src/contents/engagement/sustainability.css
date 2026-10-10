@@ -1,0 +1,60 @@
+/* Prefixed (sus-, sdg-) to avoid clashes with other wiki pages */
+
+.sus-page {
+  --sus-ink: #1f2a24;
+  --sus-muted: #5d6b63;
+  --sus-line: #d5ddd8;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+  color: var(--sus-ink);
+  line-height: 1.6;
+}
+
+.sus-page p { max-width: 70ch; }
+.sus-block { margin-top: 3rem; }
+
+/* Figures */
+.sus-figure { margin: 1.5rem 0; }
+.sus-figure__frame {
+  display: flex; align-items: center; justify-content: center;
+  border: 2px dashed var(--sus-line); border-radius: 6px; overflow: hidden;
+}
+.sus-figure__frame img { display: block; max-width: 100%; height: auto; }
+.sus-figure__hint { color: var(--sus-muted); }
+.sus-figure figcaption { margin-top: 0.5rem; font-size: 0.9rem; color: var(--sus-muted); }
+
+/* Impact groups → SDG → target */
+.sdg-group { margin-top: 2.5rem; }
+.sdg-section { margin-top: 1.5rem; padding-left: 1rem; border-left: 4px solid; }
+.sdg-section h4 { display: flex; align-items: center; gap: 0.6rem; margin: 0 0 0.5rem; }
+/*.sdg-icon { display: block; flex-shrink: 0; width: 3rem; height: 3rem; object-fit: contain; }*/
+.sdg-icon { display: block; flex-shrink: 0; width: 5.25rem; height: 5.25rem; object-fit: contain; }          /* was 3rem */
+.sdg-target h5 { margin: 1rem 0 0.25rem; font-size: 1rem; }
+.sdg-target p { margin: 0; }
+
+/* Impact chart */
+.impact-chart {
+  --c-strong-pos: #3a8a5c; --c-pos: #8cc4a2;
+  --c-neg: #e8a3ac;        --c-strong-neg: #c9435a;
+  width: 100%; padding: 1rem;
+}
+.impact-chart__cols { display: flex; gap: 0.4rem; overflow-x: auto; }
+.impact-col { flex: 1 0 2.5rem; display: flex; flex-direction: column; align-items: center; }
+.impact-col__half { width: 100%; height: 160px; display: flex; }
+.impact-col__half.is-up   { flex-direction: column-reverse; } /* bars grow up from the axis */
+.impact-col__half.is-down { flex-direction: column; }         /* bars grow down from the axis */
+/*.sdg-icon--chart { width: 100%; max-width: 3.5rem; height: auto; aspect-ratio: 1; margin: 0.3rem 0; }*/
+.sdg-icon--chart { width: 100%; max-width: 6.125rem; height: auto; aspect-ratio: 1; margin: 0.3rem 0; }      /* was 3.5rem */
+.bar { width: 100%; }
+.bar--strong-pos { background: var(--c-strong-pos); }
+.bar--pos        { background: var(--c-pos); }
+.bar--neg        { background: var(--c-neg); }
+.bar--strong-neg { background: var(--c-strong-neg); }
+
+.impact-legend {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; justify-content: center;
+  list-style: none; margin: 1rem 0 0; padding: 0; font-size: 0.9rem;
+}
+.impact-legend li { display: flex; align-items: center; gap: 0.4rem; }
+.impact-legend i { width: 0.9rem; height: 0.9rem; border-radius: 50%; }

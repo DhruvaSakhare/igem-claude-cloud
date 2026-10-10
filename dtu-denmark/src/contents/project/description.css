@@ -1,0 +1,338 @@
+/* Project Description page (description.tsx).
+ *
+ * `#root` on the selectors that compete with App.css's nested typography rules
+ * (specificity 1,0,1) — see the note in contents/dry-lab/SectionHeading.css. */
+
+/* Subsection headings inside a section's text box. */
+#root .desc h2 {
+  margin: 2rem 0 0.75rem;
+  color: var(--color-darkblue);
+  font-weight: 700;
+}
+
+/* The collapsible boxes sit inside a text box here, not on the bare page, so
+   they need less space above than on the Discovery page. */
+#root .desc .cmbox {
+  margin: 1.5rem 0 0.5rem;
+}
+#root .desc .cmbox-body p {
+  margin: 0.75rem 0 0;
+}
+
+/* A citation without a DOI or URL in the source: same look, but not a link. */
+#root .desc-cite-plain {
+  cursor: default;
+}
+
+/* Open problem in the source text — deliberately loud, so it is fixed before
+   the wiki freeze rather than overlooked. */
+#root .desc-todo {
+  display: inline;
+  padding: 0 0.3em;
+  border-radius: 0.25rem;
+  background: #fff3a8;
+  color: #7a4b00;
+  font-size: 0.85em;
+  font-weight: 700;
+}
+
+/* Figures from the source document, framed like the Dry Lab figures. */
+#root .desc-fig {
+  margin: 1.5rem auto;
+  max-width: 40rem;
+}
+#root .desc-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  background: #ffffff;
+}
+#root .desc-fig figcaption {
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7c88;
+}
+
+/* ---- Future prospects flowchart (FutureFlow.tsx, .ff-*) ---------------- */
+#root .ff {
+  margin: 1.5rem 0 2rem;
+}
+#root .ff-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#root .ff-item {
+  flex: 1 1 0;
+  max-width: 10rem;
+  margin: 0;
+}
+#root .ff-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0.25rem;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  background: none;
+  color: var(--color-darkblue);
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+#root .ff-step:hover,
+#root .ff-step:focus-visible,
+#root .ff-step.is-active {
+  border-color: var(--color-brightblue);
+  background: var(--color-lightblue);
+  outline: none;
+}
+#root .ff-step svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+#root .ff-label {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  min-height: 2.4em; /* two-line labels must not shift their drawing */
+}
+#root .ff-arrow {
+  flex: 0 0 4.5rem;
+  margin: 0;
+}
+#root .ff-arrow svg {
+  display: block;
+  width: 4.5rem;
+  height: auto;
+  margin-bottom: 3rem; /* line up with the drawings, not their labels */
+}
+#root .ff-info {
+  min-height: 3em;
+  margin: 0.75rem 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+#root .ff figcaption {
+  margin-top: 0.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #6b7c88;
+}
+
+/* Phone: one step per line, arrows pointing down. */
+@media (max-width: 640px) {
+  #root .ff-row {
+    flex-direction: column;
+  }
+  #root .ff-item {
+    width: 7.5rem;
+    flex: none;
+  }
+  #root .ff-label {
+    min-height: 0;
+  }
+  #root .ff-arrow {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4.5rem;
+  }
+  #root .ff-arrow svg {
+    margin: 0;
+    transform: rotate(90deg);
+  }
+}
+
+/* Motion. Transforms on SVG elements count in viewBox units. */
+#root .ff-drift {
+  animation: ff-drift 3s linear infinite;
+}
+#root .ff-rise {
+  animation: ff-rise 2.4s ease-out infinite;
+}
+/* Mediator cycle, one 4 s loop: the reduced mediator (green) docks at the
+   laccase and is oxidised (purple), crosses to the fragment, oxidises it —
+   the fragment splits in two — and is back to green on its way home. */
+#root .ff-mediator {
+  fill: #2ec78d;
+  animation: ff-mediator 4s ease-in-out infinite;
+}
+#root .ff-half {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+#root .ff-half-l {
+  animation: ff-split-l 4s ease-in-out infinite;
+}
+#root .ff-half-r {
+  animation: ff-split-r 4s ease-in-out infinite;
+}
+#root .ff-enter {
+  animation: ff-enter 2s ease-in infinite;
+}
+#root .ff-emit {
+  animation: ff-emit 2.4s ease-out infinite;
+}
+#root .ff-d1 {
+  animation-delay: 0.8s;
+}
+#root .ff-d2 {
+  animation-delay: 1.6s;
+}
+/* The drifting cargo is two copies, half a cycle apart. */
+#root .ff-drift.ff-d1 {
+  animation-delay: 1.5s;
+}
+#root .ff-step.is-active .ff-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ff-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes ff-drift {
+  0% {
+    transform: translateX(4px);
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(58px);
+    opacity: 0;
+  }
+}
+@keyframes ff-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+}
+@keyframes ff-mediator {
+  0% {
+    transform: translate(0, 0);
+    fill: #2ec78d;
+  }
+  22% {
+    transform: translate(20px, 10px);
+    fill: #2ec78d;
+  }
+  32%,
+  36% {
+    transform: translate(20px, 10px);
+    fill: #8e3ccb;
+  }
+  58% {
+    transform: translate(-6px, 40px);
+    fill: #8e3ccb;
+  }
+  64% {
+    transform: translate(-6px, 40px);
+    fill: #2ec78d;
+  }
+  100% {
+    transform: translate(0, 0);
+    fill: #2ec78d;
+  }
+}
+@keyframes ff-split-l {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10%,
+  58% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70%,
+  88% {
+    transform: translate(-5px, 3px) rotate(-10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-5px, 3px) rotate(-10deg);
+    opacity: 0;
+  }
+}
+@keyframes ff-split-r {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10%,
+  58% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  70%,
+  88% {
+    transform: translate(5px, 3px) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(5px, 3px) rotate(10deg);
+    opacity: 0;
+  }
+}
+@keyframes ff-enter {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+}
+@keyframes ff-emit {
+  0% {
+    transform: translateX(-14px);
+    opacity: 0;
+  }
+  40%,
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ff-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #root .ff *,
+  #root .ff *::before {
+    animation: none !important;
+  }
+}

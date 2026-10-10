@@ -1,0 +1,380 @@
+/* Styles for the Engineering page (engineering.tsx + EngineeringFlow.tsx).
+ * Everything is prefixed `.eng-`, so nothing here reaches another page.
+ *
+ * Each cycle is drawn in its enzyme family's colour: its <section> carries
+ * `track-laccase` (bright blue) or `track-upo` (orange) from
+ * dry-lab/tracks.css, the same classes the Model pages use, and the accents
+ * below read `--track` / `--track-soft` from it.
+ *
+ * The DBTL stage colours are the ones in the team's own figure (see STAGES in
+ * EngineeringFlow.tsx), not the site palette, so the ring at the top of the
+ * page and the headings further down agree with each other. */
+
+.page-start {
+  --eng-design: #8e1b1b;
+  --eng-build: #2b35ee;
+  --eng-test: #2ec78d;
+  --eng-learn: #16173f;
+}
+
+/* ========================================================================== *
+ *  Introduction
+ * ========================================================================== */
+
+.eng-intro p {
+  color: var(--color-darkestblue);
+}
+
+/* ========================================================================== *
+ *  The flow chart (.eng-flow-*)
+ * ========================================================================== */
+
+/* On a white card like the cycles: the laccase blue is the page's own sky
+   blue and would vanish drawn straight on it. */
+.eng-flow {
+  margin: 2.5rem 0 0.5rem;
+  padding: 1.25rem 1rem 0.5rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 28px rgba(0, 45, 66, 0.12);
+}
+
+/* Below the figure's natural width the rings would shrink until the letters
+   on the segments were unreadable, so the figure scrolls sideways instead. */
+.eng-flow-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.eng-flow-svg {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+}
+
+.eng-flow-rail line {
+  stroke: rgba(0, 80, 117, 0.35);
+  stroke-width: 3;
+  stroke-dasharray: 7 6;
+}
+
+.eng-flow-rail polygon {
+  fill: rgba(0, 80, 117, 0.55);
+}
+
+.eng-flow-ring {
+  cursor: pointer;
+  outline: none;
+}
+
+.eng-flow-ring:focus-visible .eng-flow-hole {
+  stroke: var(--color-darkblue);
+  stroke-width: 3;
+}
+
+/* The ring lifts as a whole on hover, so it reads as one clickable thing even
+   though it is drawn as four separate segments. */
+.eng-flow-ring:hover,
+.eng-flow-ring:focus-visible {
+  filter: drop-shadow(0 6px 10px rgba(0, 45, 66, 0.25));
+}
+
+.eng-flow-seg path {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* Pointing at one stage fades the other three, across all four rings — the
+   comparison the figure is for is "what does Test mean in each cycle". */
+.eng-flow-seg.is-dim path,
+.eng-flow-seg.is-dim text {
+  opacity: 0.25;
+}
+
+.eng-flow-initial {
+  fill: #ffffff;
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+}
+
+/* Family colours, as in dry-lab/tracks.css. Spelled out here because the
+   figure sits in the intro, outside any track section. */
+.eng-flow-hole-laccase,
+.eng-flow-bar-laccase {
+  fill: #57caff;
+}
+.eng-flow-hole-upo,
+.eng-flow-bar-upo {
+  fill: #ff6a14;
+}
+
+.eng-flow-label {
+  fill: var(--color-darkblue);
+  font-family: var(--font);
+  font-size: 17px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.eng-flow-family {
+  fill: var(--color-darkblue);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-anchor: middle;
+  text-transform: uppercase;
+}
+
+.eng-flow-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.6rem;
+  margin-top: 0.35rem;
+  padding: 0 0.5rem;
+  color: var(--color-darkestblue);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.eng-flow-dot {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ========================================================================== *
+ *  A cycle
+ * ========================================================================== */
+
+.eng-future p {
+  color: var(--color-darkestblue);
+}
+
+/* Each cycle is a white card edged in its family's colour. The card is what
+   makes the laccase blue visible at all: it is the page's own sky blue, so
+   drawn straight on the page it would vanish. */
+.eng-cycle {
+  margin-top: 3.5rem;
+  padding: 1.75rem 2rem 0.75rem;
+  border-top: 8px solid var(--track);
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 28px var(--track-shadow);
+}
+
+/* The card already opens the section, so the heading needs less air above. */
+#root .eng-cycle .dlh {
+  margin-top: 0;
+}
+
+@media (max-width: 575px) {
+  .eng-cycle {
+    padding: 1.25rem 1rem 0.5rem;
+  }
+}
+
+/* The enzyme family, as a pill in its colour just above the cycle heading.
+   Dark text on both: white on the bright blue would be too faint. */
+.eng-family {
+  display: table;
+  margin: 0 auto 1rem;
+  padding: 0.15rem 0.8rem;
+  border-radius: 999px;
+  background-color: var(--track);
+  color: #0e3a57;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* The question the cycle set out to answer. It is the spine of the page, so it
+   gets its own panel rather than being an italic line under the heading. */
+.eng-question {
+  margin-bottom: 1.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.6rem;
+  border-left: 5px solid var(--track);
+  background-color: var(--track-soft);
+  color: var(--color-darkestblue);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+/* The pending line sits inline after the tag inside the panel. */
+.eng-question .eng-pending {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.eng-question > p:last-child {
+  margin-bottom: 0;
+}
+
+.eng-question-tag {
+  display: inline-block;
+  margin-right: 0.6rem;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background-color: var(--track);
+  color: #0e3a57;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 0.12em;
+}
+
+/* --- one DBTL stage ------------------------------------------------------ */
+
+.eng-stage {
+  margin-bottom: 1.9rem;
+  padding-left: 1.1rem;
+  border-left: 3px solid var(--eng-stage-color, var(--color-darkblue));
+}
+
+.eng-stage-design {
+  --eng-stage-color: var(--eng-design);
+}
+.eng-stage-build {
+  --eng-stage-color: var(--eng-build);
+}
+.eng-stage-test {
+  --eng-stage-color: var(--eng-test);
+}
+.eng-stage-learn {
+  --eng-stage-color: var(--eng-learn);
+}
+
+.eng-stage-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+  color: var(--eng-stage-color);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The stage's initial in a filled disc — the same letter that labels this
+   stage's segment on the ring at the top of the page. */
+.eng-stage-initial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background-color: var(--eng-stage-color);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  flex: none;
+}
+
+.eng-stage-body {
+  color: var(--color-darkestblue);
+}
+
+.eng-stage-body p,
+.eng-stage-body li {
+  color: var(--color-darkestblue);
+  line-height: 1.65;
+}
+
+.eng-stage-body ul {
+  padding-left: 1.2rem;
+}
+
+.eng-stage-body li {
+  margin-bottom: 0.4rem;
+}
+
+/* A named sub-part of a stage — an assay, or one of the two engineering
+   strategies. Not a heading the contents should list, hence h4 and no id. */
+.eng-assay {
+  margin: 1.3rem 0 0.4rem;
+  color: var(--color-darkblue);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.eng-lead-in {
+  margin-bottom: 0.4rem;
+}
+
+/* The sentence a cycle ends on, carrying into the next one. */
+.eng-takeaway {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--track-soft);
+  font-weight: 600;
+}
+
+/* Work that is outstanding. Deliberately quiet and visibly different from the
+   prose around it: it must never be mistakable for a result. */
+.eng-pending {
+  margin-top: 0.9rem;
+  padding-left: 0.85rem;
+  border-left: 3px dashed rgba(0, 80, 117, 0.4);
+  color: #4a6b7c;
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+/* ========================================================================== *
+ *  Future steps
+ * ========================================================================== */
+
+.eng-future {
+  margin-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eng-flow-seg path {
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Things borrowed from the Project Description page
+ * ========================================================================== */
+
+/* The "More about …" boxes in the introduction, spaced as they were there. */
+.eng-intro .cmbox {
+  margin: 1.5rem 0;
+}
+
+.eng-intro .cmbox-body p {
+  margin: 0.75rem 0 0;
+}
+
+/* <Todo>: a gap the source document still has. Loud on purpose, so it is
+   fixed before the wiki freeze (same look as on the Description page). */
+#root .page-start .desc-todo {
+  display: inline;
+  padding: 0 0.3em;
+  border-radius: 0.25rem;
+  background: #fff3a8;
+  color: #7a4b00;
+  font-size: 0.85em;
+  font-style: normal;
+  font-weight: 700;
+}

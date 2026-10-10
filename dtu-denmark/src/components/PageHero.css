@@ -1,0 +1,160 @@
+/* =============================================================================
+ * PageHero — see PageHero.tsx for the layout.
+ * Title + lead + icon in the middle, a windmill standing on the bottom edge on
+ * each side. The hero is one screen tall and everything fits inside it, so the
+ * bottoms of the windmills and the icon are visible without scrolling.
+ * ========================================================================== */
+
+.page-hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Exactly one screen. svh = the visible height on phones, where plain vh
+     would hide the bottom behind the browser's toolbar. A fixed height (not
+     min-height), so a long lead shrinks the icon instead of making the hero
+     taller than the screen. */
+  height: 100vh;
+  height: 100svh;
+  /* Tucked up under the fixed navbar (body has padding-top: --navbar-height),
+     so the hero starts at the very top of the screen. */
+  margin-top: calc(-1 * var(--navbar-height));
+  /* Keep the text clear of the cloud navbar. */
+  padding: calc(var(--cloud-header-height) + 1rem) 2vw 2rem;
+  margin-bottom: 3rem;
+  background-color: var(--color-brightblue);
+  overflow: hidden;
+}
+
+.page-hero-flush {
+  margin-bottom: 0;
+}
+
+/* ---- Middle column ------------------------------------------------------ */
+
+.page-hero-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* The middle, between the two windmills. */
+  max-width: 50vw;
+  /* Fill the space under the navbar but never more, so the icon below can
+     shrink to whatever room the title and lead leave. */
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+/* `.page-hero` in front + !important to beat the global
+   `html, body, #root { h1 { … } }` rules in App.css, which have id weight. */
+.page-hero .page-hero-title {
+  margin: 0 0 0.75rem;
+  font-family: "iGEM Wiki Header", var(--font);
+  font-weight: 400 !important;
+  font-size: clamp(2.6rem, 6.5vw, 6rem) !important;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--color-darkestblue) !important;
+}
+
+.page-hero .page-hero-lead {
+  max-width: 42rem;
+  margin: 0 0 1.5rem;
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem) !important;
+  line-height: 1.4;
+  color: var(--color-darkblue);
+}
+
+/* The page's own illustration. Fixed 4:3 frame; PageHero.tsx sizes and
+   offsets the image inside it so only the drawing shows.
+   Normally 315px tall (420px wide). It takes whatever height is left under
+   the title and lead, so with a long lead or a short screen it shrinks just
+   enough to fit — the title and lead text never change size.
+   --icon-scale comes from `scale` in pages.ts (default 1). */
+.page-hero-icon {
+  position: relative;
+  flex: 0 1 calc(315px * var(--icon-scale, 1));
+  min-height: 90px;
+  max-width: 100%;
+  aspect-ratio: 4 / 3; /* must match ICON_FRAME_ASPECT in PageHero.tsx */
+  overflow: hidden;
+}
+.page-hero-icon img {
+  position: absolute;
+  max-width: none;
+}
+
+/* ---- Windmills ---------------------------------------------------------- */
+
+/* Pinned to the bottom corners, standing on the bottom edge of the hero.
+   Out of the normal layout, so they can never make the hero taller than
+   the screen. */
+.page-hero-windmill {
+  position: absolute;
+  bottom: 0;
+  width: 22vw;
+  height: 78%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+.page-hero-windmill-left {
+  left: 2vw;
+}
+.page-hero-windmill-right {
+  right: 2vw;
+}
+.page-hero-windmill img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+}
+
+/* ---- Smaller screens ---------------------------------------------------- */
+
+/* Tablets: slimmer windmills so the text keeps room. */
+@media (max-width: 900px) {
+  .page-hero-center {
+    max-width: 66vw;
+  }
+  .page-hero-windmill {
+    width: 14vw;
+    height: 55%;
+  }
+}
+
+/* Phones: no room beside the text, so the windmills sit behind it in the
+   bottom corners, small and faded. */
+@media (max-width: 600px) {
+  .page-hero {
+    /* Narrow screens wrap the lead onto many lines; let the hero grow
+       rather than squash the icon to nothing. */
+    height: auto;
+    min-height: 100svh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .page-hero-center {
+    max-width: 100%;
+  }
+  .page-hero-windmill {
+    width: 30vw;
+    height: 40%;
+    opacity: 0.5;
+  }
+  .page-hero-windmill-left {
+    left: 0;
+  }
+  .page-hero-windmill-right {
+    right: 0;
+  }
+}

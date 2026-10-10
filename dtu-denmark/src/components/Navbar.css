@@ -1,0 +1,119 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 10000;
+    line-height: 0;
+
+    transition: transform 0.35s ease;
+    will-change: transform;
+}
+
+.navbar.show {
+    transform: translateY(0);
+}
+
+.navbar.hide {
+    transform: translateY(-100%);
+}
+
+.navbar-bg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.navbar-content {
+    position: absolute;
+    top: -10px;
+    right: 150px;
+
+    height: 80px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white !important;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: normal;
+
+    cursor: pointer;
+    /*background: red; */ /*is used to see where the link boxes are*/
+}
+
+.dropdown,
+.navbar-link {
+    width: 120px;      /* adjust to taste */
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-link:hover {
+}
+
+/* Invisible clickable area over the logo */
+.navbar-logo-link {
+    position: absolute;
+
+    top: 20px;
+    left: 45px;
+
+    width: 120px;
+    height: 155px;
+
+    /*border: 3px solid red;*/ /*is used to see where the invisible box is*/
+
+    z-index: 10000;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 68px;
+    left: 80%;
+    transform: translateX(-50%);
+
+    margin-top: 0;
+
+    background: white;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 12px 18px;
+
+    color: var(--color-darkblue) !important;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background: var(--color-brightblue);
+    color: white !important;
+}

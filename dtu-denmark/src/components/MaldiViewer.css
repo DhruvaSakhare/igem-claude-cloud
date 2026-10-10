@@ -1,0 +1,279 @@
+/* =============================================================================
+ * MALDI spectrum viewer. Colours for the traces themselves live in
+ * MaldiViewer.tsx (SERIES_COLORS) — they are data, not decoration, and are
+ * validated as a set, so they are kept together in one place.
+ * ========================================================================== */
+.maldi {
+  --maldi-surface: #ffffff;
+  --maldi-ink: var(--color-darkblue);
+  --maldi-muted: #5c7a8c;
+  --maldi-rule: #d3e4ee;
+
+  margin: 1.5rem 0 2rem;
+  color: var(--maldi-ink);
+}
+
+.maldi-loading,
+.maldi-error {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-darkblue);
+}
+
+/* ── Controls ─────────────────────────────────────────────────────────────── */
+.maldi-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+.maldi-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+}
+.maldi-btn {
+  border: 1px solid var(--maldi-rule);
+  background: var(--maldi-surface);
+  color: var(--maldi-ink);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.maldi-btn:hover:not(:disabled) {
+  border-color: var(--color-orange);
+}
+.maldi-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.maldi-main {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .maldi-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Sample picker ────────────────────────────────────────────────────────── */
+.maldi-samples {
+  background: var(--maldi-surface);
+  border-radius: 14px;
+  padding: 0.85rem 1rem 1rem;
+  max-height: 520px;
+  overflow-y: auto;
+  font-size: 0.86rem;
+}
+.maldi-samples-head {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+.maldi-count {
+  color: var(--maldi-muted);
+  font-weight: 400;
+}
+.maldi-group {
+  border: 0;
+  border-top: 1px solid var(--maldi-rule);
+  margin: 0 0 0.4rem;
+  padding: 0.4rem 0 0;
+}
+.maldi-group legend {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--maldi-muted);
+  padding: 0;
+  float: none;
+  width: auto;
+}
+.maldi-sample {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.16rem 0;
+  cursor: pointer;
+}
+.maldi-sample input:disabled {
+  cursor: not-allowed;
+}
+.maldi-sample:has(input:disabled) {
+  opacity: 0.45;
+}
+.maldi-swatch {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1.5px solid currentColor;
+  flex: none;
+}
+
+/* ── Plot ─────────────────────────────────────────────────────────────────── */
+.maldi-plot {
+  background: var(--maldi-surface);
+  border-radius: 14px;
+  padding: 0.6rem 0.6rem 0.8rem;
+}
+.maldi-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none; /* so a drag zooms rather than scrolling the page */
+  cursor: crosshair;
+}
+
+.maldi-grid {
+  stroke: var(--maldi-rule);
+  stroke-width: 1;
+}
+.maldi-axis {
+  stroke: #9bb4c4;
+  stroke-width: 1;
+}
+.maldi-tick {
+  fill: var(--maldi-muted);
+  font-size: 12px;
+  text-anchor: middle;
+}
+.maldi-tick-y {
+  text-anchor: end;
+}
+.maldi-axis-label {
+  fill: var(--maldi-muted);
+  font-size: 12px;
+  text-anchor: middle;
+}
+
+.maldi-crosshair {
+  stroke: #9bb4c4;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+  pointer-events: none;
+}
+.maldi-band {
+  fill: rgba(27, 127, 168, 0.14);
+  pointer-events: none;
+}
+
+.maldi-peak {
+  cursor: pointer;
+}
+.maldi-peak-line {
+  stroke: var(--color-orange);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.maldi-peak-label {
+  fill: var(--color-orange);
+  font-size: 12px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+/* ── Readout and legend ───────────────────────────────────────────────────── */
+.maldi-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1rem;
+  min-height: 1.5rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+.maldi-readout-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.maldi-hint {
+  color: var(--maldi-muted);
+}
+
+.maldi-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+.maldi-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Peak note ────────────────────────────────────────────────────────────── */
+.maldi-note {
+  position: relative;
+  margin-top: 0.9rem;
+  background: var(--maldi-surface);
+  border-left: 4px solid var(--color-orange);
+  border-radius: 10px;
+  padding: 0.9rem 2.5rem 1rem 1rem;
+}
+.maldi-note h4 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+}
+.maldi-note p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+.maldi-note-close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  border: 0;
+  background: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--maldi-muted);
+  cursor: pointer;
+}
+
+/* ── Table view ───────────────────────────────────────────────────────────── */
+.maldi-table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  background: var(--maldi-surface);
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+.maldi-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 0 0 0.4rem;
+  color: var(--maldi-muted);
+  font-size: 0.85rem;
+}
+.maldi-table th,
+.maldi-table td {
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid var(--maldi-rule);
+}
+.maldi-table thead th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--maldi-muted);
+}

@@ -1,0 +1,49 @@
+/* ── NOTEBOOK ───────────────────────────────────────────────────────────── */
+
+/* Date range beside the week number: same line, quieter than the heading. */
+.week-dates {
+  color: var(--color-dark);
+  font-size: 1rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Space between two days inside the same week. */
+.daily-log + .daily-log {
+  margin-top: 1.5rem;
+}
+
+/* Dev-only reminder of fields not yet transcribed from Benchling. Styled to
+   look unmistakably like scaffolding, so it can never be mistaken for content
+   (it is stripped from the production build anyway — see DailyLog.tsx). */
+.daily-log-todo {
+  display: inline-block;
+  border: 1px dashed var(--color-warning);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  color: var(--color-dark);
+  font-size: 0.85rem !important;
+  font-style: italic;
+}
+
+/* The list view is the narrow-screen counterpart to the lab book: exactly one
+   of the two is visible, with the switch at the same 780px the book uses. It
+   stays in the DOM at all widths so in-page search and screen readers can reach
+   the entries even while the book is what is on show. */
+@media (min-width: 781px) {
+  .notebook-list {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+.notebook-result {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  color: var(--color-orange);
+}

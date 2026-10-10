@@ -1,0 +1,258 @@
+/* Styles for the Model → Discovery page (model_discovery.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. */
+
+/* ========================================================================== *
+ *  Channel-discovery tunnel figures (.chf-*)
+ *  Rows of tunnel cross-sections, one figure per structure, styled to match
+ *  the MD figures (.mdf-*, now in MdFigures.css). Used by both tunnel rows:
+ *  the literature one (3 figures) and the database one (9, so it wraps).
+ *
+ *  Capped at THREE per row. Still auto-fit rather than `repeat(3, 1fr)`,
+ *  because a hard three-column grid would give ~110px columns on a 360px
+ *  phone; the track floor below keeps the phone behaviour intact.
+ *
+ *  The floor is the LARGER of:
+ *    • min(240px, 100%) — the readable minimum, itself capped at the container
+ *      so a single column can never overflow a very narrow one; and
+ *    • (100% - 2rem) / 3 — one third of the row, less the two 1rem gaps
+ *      between three columns.
+ *  Above ~800px the third term wins and exactly three columns fit; below it
+ *  the 240px floor takes over and the row drops to two, then one. Keep the
+ *  `2rem` in step with `gap` (2 x 1rem) if the gap ever changes.
+ * ========================================================================== */
+.chf-row {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 2rem) / 3), 1fr)
+  );
+  gap: 1rem;
+  margin: 2rem 0 0.5rem;
+}
+
+/* Two-column variant, for a row of FOUR that should read as a 2x2 block rather
+ * than three-plus-an-orphan. Same construction as above with the third term
+ * changed from a third of the row to a half: one 1rem gap between two columns
+ * instead of two between three. The 240px floor is untouched, so this still
+ * degrades to a single column on a phone exactly as the 3-column row does —
+ * it caps the columns at two, it does not force two.
+ *
+ * Two classes so it out-specifies .chf-row (0,2,0 beats 0,1,0). Keep the `1rem`
+ * in step with `gap` if that ever changes. */
+.chf-row.chf-row-2col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 1rem) / 2), 1fr)
+  );
+}
+
+.chf-fig {
+  margin: 0;
+  min-width: 0;
+}
+.chf-pdb {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: #0e3a57;
+}
+.chf-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 60, 90, 0.08);
+}
+.chf-fig figcaption {
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7c88;
+}
+
+/* ========================================================================== *
+ *  Body prose on this page (.md-prose)
+ *
+ *  Full section width and justified, matching .mm-prose on the Methods page —
+ *  see the note there for why. The width to line up with here is the one the
+ *  tunnel-figure rows and the structure viewers use (.chf-row, .sv), so a
+ *  paragraph and the figures under it share a left edge.
+ *
+ *  `#root` on the selector because App.css styles `p` at (1,0,1) inside
+ *  `html, body, #root`, which beats a bare class.
+ * ========================================================================== */
+#root .md-prose {
+  margin: 0 0 1.15rem;
+  text-align: justify;
+  overflow-wrap: break-word;
+  color: #123a52;
+  line-height: 1.7;
+}
+
+/* Justification needs a wide enough line to distribute space into. The content
+   column is ~69 characters at a 768px viewport and only ~33 at 390px, where
+   justifying opens visible gaps between words on almost every line — so below
+   this breakpoint the text goes back to a flush left edge and a ragged right
+   one. Matches the same guard on .mm-prose on the Methods page. */
+@media (max-width: 767px) {
+  #root .md-prose {
+    text-align: left;
+  }
+}
+
+/* ========================================================================== *
+ *  Standalone figures (.wfig)
+ *
+ *  One uploaded plot with the description its source document gives it, for
+ *  the figures that do not belong to a row — the InterPro and CUPP panels on
+ *  the laccase branch, the reference-region comparison, the channel-cluster
+ *  overlays and dendrogram.
+ *
+ *  Framed like the tunnel figures (.chf-fig) so every figure on the page reads
+ *  as the same kind of object, but centred in a column of its own: these are
+ *  wide, multi-panel plots, and stretching one to the full text measure on a
+ *  large screen makes its axis labels smaller than the body text beside it.
+ *
+ *  The caption is left-aligned rather than centred, unlike the one-line row
+ *  captions — several of these run to four or five lines, and a centred
+ *  paragraph gives the eye no left edge to return to.
+ * ========================================================================== */
+/* `fit-content` rather than a fixed width, so the frame takes the size of the
+   PLOT inside it. That is what keeps a small upload from being BLOWN UP to fill
+   the column: two of these plots are only ~620px wide, and stretching one to a
+   1036px column resamples it to a soft, blurry version of a crisp image. The
+   floor stops a narrow plot from squeezing its caption into a thin ribbon.
+
+   Only the image gets a say in that width — see the figcaption rule below,
+   which is what makes this work. */
+.wfig {
+  width: fit-content;
+  min-width: min(320px, 100%);
+  max-width: min(620px, 100%);
+  margin: 2rem auto 1.5rem;
+}
+
+/* For a figure whose panels are stacked vertically, or that carries small
+   labelled sub-panels: the cap above would shrink each panel to unreadable.
+   It still only ever grows to the plot's own resolution, never past it. */
+.wfig.wfig-wide {
+  max-width: 100%;
+}
+
+.wfig img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 60, 90, 0.08);
+}
+
+/* `width: 0` keeps the caption OUT of the figure's intrinsic width, and
+   `min-width: 100%` then stretches it to whatever width the image settled on.
+
+   Without this the caption decides: a figure's fit-content width is the widest
+   of its children, a paragraph's max-content width is one long line, so the
+   frame grew to the full column while the image stayed at its own size — the
+   plot stranded against the left edge with its caption running wider than it on
+   the right. (`min-content` on the figure is not the fix either: an image whose
+   own `max-width` is a percentage contributes nothing to a min-content
+   calculation, so the figure collapses to its floor.) */
+.wfig figcaption {
+  width: 0;
+  min-width: 100%;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #4a6b80;
+}
+
+/* ---- figures side by side (.wfig-row) -------------------------------------
+   A row of figures that are ONE comparison: the same plot with and without its
+   window, or the same points under three fits. See FigureRow in
+   model_discovery.tsx.
+
+   Same auto-fit construction as .chf-row above — the track floor is the LARGER
+   of a readable minimum and one column's share of the row — so these rows
+   degrade the same way the tunnel rows do: three across, then two, then one,
+   with no orphan on a line of its own. Keep the subtracted gap totals in step
+   with `gap` if it changes: 2rem for three columns (two gaps), 1rem for two. */
+.wfig-row {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  align-items: start;
+}
+
+.wfig-row-3col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(240px, 100%), (100% - 2rem) / 3), 1fr)
+  );
+}
+
+.wfig-row-2col {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(max(min(320px, 100%), (100% - 1rem) / 2), 1fr)
+  );
+}
+
+/* Inside a row the grid cell sets the width, so the figure gives up the width
+   cap, the centring margins and the caption floor it uses when it stands alone.
+   `min-width: 0` is what actually lets a cell shrink below its content — a grid
+   item's default `min-width: auto` would otherwise push the row wider than the
+   column and reintroduce the sideways scroll. */
+.wfig-row .wfig {
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ---- equal heights (.wfig-row-matched) -----------------------------------
+   See `matchHeights` on FigureRow. Figures of different shapes, placed side by
+   side at equal widths, come out at different heights. Here each figure's
+   share of the row is its image's aspect ratio (`--wfig-ar`, set from the
+   loaded image by FigureRow) instead: widths in proportion to width/height
+   means heights come out equal, with every image still at its own shape.
+
+   Flex rather than the grid above, since flex-grow is the proportional share.
+   `flex-basis: 0` so the ratio alone divides the row, and `width: 100%` on the
+   image so it fills its share — the arithmetic only holds if it does.
+   `align-items: start` keeps each figure its own height, so captions of
+   different lengths do not pull the frames out of line. */
+.wfig-row.wfig-row-matched {
+  display: flex;
+  align-items: flex-start;
+}
+.wfig-row-matched > .wfig {
+  flex: var(--wfig-ar, 1) 1 0;
+}
+.wfig-row-matched .wfig img {
+  width: 100%;
+}
+
+/* Too narrow for two plots to be read side by side: one per line, each at its
+   full width, the same breakpoint the other multi-figure layouts use. */
+@media (max-width: 767.98px) {
+  .wfig-row.wfig-row-matched {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .wfig-row-matched > .wfig {
+    flex: none;
+  }
+}
+
+/* ---- a bulleted list in the body prose (.md-list) ---- */
+#root .md-list {
+  margin: 0 0 1.15rem;
+  padding-left: 1.4rem;
+  color: #123a52;
+  line-height: 1.7;
+}

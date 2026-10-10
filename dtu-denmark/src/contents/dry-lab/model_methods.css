@@ -1,0 +1,2538 @@
+/* Styles for the Model → Methods page (model_methods.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. */
+
+/* ========================================================================== *
+ *  SectionIntro — intro paragraph under a section heading (.mm-sintro)
+ *
+ *  Centred on a comfortable reading measure, matching the centred headings in
+ *  SectionHeading.css. `#root` on the selector for the same reason given there:
+ *  App.css styles `p` inside `html, body, #root { p {...} }`, which is (1,0,1)
+ *  and beats a bare class.
+ * ========================================================================== */
+/* Wrapper around one illustration card (MethodBlock) — a TOC anchor, so it
+ * needs the same scroll margin `section[id]` gets in App.css and nothing
+ * else. */
+.mm-msub {
+  scroll-margin-top: 40px;
+}
+
+#root .mm-sintro {
+  max-width: 62ch;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: #123a52;
+  line-height: 1.6;
+}
+
+/* ========================================================================== *
+ *  Body prose (.mm-prose)
+ *
+ *  The written method text, as opposed to .mm-sintro's centred one-line blurb.
+ *
+ *  FULL SECTION WIDTH, not a reading measure: it lines up with the flowchart,
+ *  the method cards and every other block in the section (838px at a 1440px
+ *  viewport), so the left edge of a paragraph and the left edge of the card
+ *  under it are the same edge. This was capped at 70ch and centred before,
+ *  which left it inset by ~52px on each side and reading as a narrower column
+ *  than everything around it.
+ *
+ *  JUSTIFIED, so both edges are flush and consecutive paragraphs agree. The
+ *  measure is wide enough (~105 characters) that justification does not open
+ *  visible rivers between words; do not carry this to a narrow column, where it
+ *  would.
+ *
+ *  `#root` on the selector for the same reason .mm-sintro needs it: App.css
+ *  styles `p` at (1,0,1) inside `html, body, #root`, which beats a bare class.
+ * ========================================================================== */
+#root .mm-prose {
+  margin: 0 0 1.15rem;
+  text-align: justify;
+  /* Long unbroken tokens (accessions, upload names) must not stretch a line. */
+  overflow-wrap: break-word;
+  color: #123a52;
+  line-height: 1.7;
+}
+
+/* Justification needs a wide enough line to distribute space into. The content
+   column is ~69 characters at a 768px viewport and only ~33 at 390px, where
+   justifying opens visible gaps between words on almost every line — so below
+   this breakpoint the text goes back to a flush left edge and a ragged right
+   one. Same 767px breakpoint the .mviz-stage rule in this file already uses. */
+@media (max-width: 767px) {
+  #root .mm-prose {
+    text-align: left;
+  }
+}
+
+/* --------------------------------------------------------------- worked sum --
+   The interpolation arithmetic: each line a name and its expression, in two
+   grid columns so the `=` signs line up the way they were written.
+
+   NEVER SCROLLS. This used to be a <pre> capped at 70ch, which came out at
+   474px for two lines needing 556px (the −, × and ≈ glyphs fall back to a wider
+   font than the monospace `0` that `ch` is measured on) — so it scrolled even
+   in a 1000px column. Now the block is as wide as its content and no wider
+   than its column, and when the column is too narrow for both sides of a line
+   it stacks each expression under its name instead; an expression that still
+   does not fit wraps at its spaces.
+
+   The wrapper is the size container the query below reads. It is its own
+   element, rather than the query reading the viewport, because this block sits
+   in columns of very different widths: beside an illustration inside a card on
+   the Methods page, and full width inside a box on the Discovery page. */
+.mm-calc-wrap {
+  container-type: inline-size;
+}
+.mm-calc {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  column-gap: 1ch;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.4rem;
+  padding: 0.9rem 1rem;
+  background: #f7fbfe;
+  border: 1px solid var(--color-shadow);
+  border-radius: 6px;
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #123a52;
+}
+/* Side by side the block measures about 540px, border and padding included;
+   the breakpoint leaves some room above that for platforms whose fallback
+   glyphs for −, × and ≈ run wider. */
+@container (max-width: 36rem) {
+  .mm-calc {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mm-calc-rhs {
+    padding-left: 2ch;
+  }
+  .mm-calc-rhs:not(:last-child) {
+    margin-bottom: 0.35rem;
+  }
+}
+
+/* ========================================================================== *
+ *  ModelPipeline — Methods pipeline timeline (.mp-*)
+ * ========================================================================== */
+.mp-wrap {
+  /* The look of the Model pages' tables and fold-out boxes (PartsTable,
+     DetailsBox): white surfaces, the solid light-blue drop shadow, and bright
+     blue for the accents a table header would carry. */
+  --mp-accent: var(--color-brightblue);
+  --mp-accent-2: var(--color-brightblue);
+  --mp-card: #ffffff;
+  --mp-line: var(--track-line, rgba(87, 202, 255, 0.3));
+  --mp-shadow: var(--color-brightblue-shadow);
+  --mp-row: 200px;
+  position: relative;
+  padding: 1rem 0;
+}
+.mp-head {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.mp-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--mp-accent);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+.mp-head h3 {
+  margin: 0.75rem 0 0.25rem;
+  font-weight: 700;
+}
+.mp-head p {
+  color: #33475b;
+  margin: 0;
+}
+
+/* The vertical track + self-drawing spine (centered) */
+.mp-track {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+.mp-spine {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--mp-line);
+  overflow: hidden;
+  z-index: 1;
+}
+.mp-spine-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* height is set inline from fillPct (see .mp-spine-fill in model.tsx) */
+  background: linear-gradient(180deg, var(--mp-accent-2), var(--mp-accent));
+  border-radius: 4px;
+  transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mp-spine-fill::after {
+  /* travelling shimmer at the leading edge */
+  content: "";
+  position: absolute;
+  left: -3px;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--mp-accent-2);
+  box-shadow: 0 0 12px 4px color-mix(in srgb, var(--mp-accent-2) 70%, transparent);
+}
+
+/* Each step: card on one side, image on the other, dot on the spine */
+.mp-node {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  align-items: stretch;
+  margin-bottom: 3.25rem;
+}
+.mp-node:last-child {
+  margin-bottom: 0;
+}
+
+.mp-cell {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Big figure that "pops up" in the background as the step reveals,
+   behind the cards, while the neat image stays in its placeholder. */
+.mp-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(820px, 105%);
+  height: auto;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  filter: saturate(1.05);
+  -webkit-mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 55%, transparent 100%);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mp-node.visible .mp-bg {
+  opacity: 0.22;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Keep all three cells on the SAME grid row. Without this, the "right"
+   rows (card=col3, dot=col2, image=col1) place columns in descending
+   order, which makes grid auto-placement push each cell onto a new row
+   — producing a diagonal staircase. Pinning grid-row: 1 prevents it. */
+.mp-card-cell,
+.mp-dot-cell,
+.mp-img-cell {
+  grid-row: 1;
+}
+/* Default (even / "left"): card left, image right */
+.mp-node .mp-card-cell {
+  grid-column: 1;
+}
+.mp-node .mp-img-cell {
+  grid-column: 3;
+}
+/* Odd / "right": swap sides */
+.mp-node.right .mp-card-cell {
+  grid-column: 3;
+}
+.mp-node.right .mp-img-cell {
+  grid-column: 1;
+}
+.mp-dot-cell {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* slide-in: card from its own side, image from the opposite side */
+.mp-card,
+.mp-imgph {
+  opacity: 0;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.mp-node.left .mp-card {
+  transform: translateX(-44px);
+}
+.mp-node.left .mp-imgph {
+  transform: translateX(44px);
+}
+.mp-node.right .mp-card {
+  transform: translateX(44px);
+}
+.mp-node.right .mp-imgph {
+  transform: translateX(-44px);
+}
+.mp-node.visible .mp-card,
+.mp-node.visible .mp-imgph {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* The milestone marker on the spine. It holds nothing — the emoji that used to
+   sit in it is gone (see PipelineStep in model_methods.tsx) — so it is sized
+   directly and needs no font-size or centring of its own. */
+.mp-dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--mp-card);
+  border: 3px solid var(--mp-line);
+  box-shadow: 0 4px 0 var(--mp-shadow);
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+.mp-node.visible .mp-dot {
+  border-color: var(--mp-accent);
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--mp-accent) 18%, transparent),
+    0 4px 0 var(--mp-shadow);
+}
+.mp-node.active .mp-dot {
+  animation: mp-pulse 1.8s ease-in-out infinite;
+}
+@keyframes mp-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--mp-accent) 18%, transparent),
+      0 4px 0 var(--mp-shadow);
+  }
+  50% {
+    box-shadow:
+      0 0 0 12px color-mix(in srgb, var(--mp-accent) 5%, transparent),
+      0 4px 0 var(--mp-shadow);
+  }
+}
+
+/* A step card in the style of the tables and fold-out boxes: white, 16px
+ * corners, the solid light-blue drop shadow, and the step number and tag in a
+ * bright-blue header bar like a table's. overflow: hidden clips that bar to
+ * the rounded top corners. (--mp-card / --mp-line still colour the spine and
+ * the step dots, which are meant to look like the track rather than a card.) */
+.mp-card {
+  position: relative;
+  height: var(--mp-row);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 0 1.4rem 1.25rem;
+  box-shadow: 0 12px 0 var(--mp-shadow);
+}
+/* Hover lifts the card and lengthens its shadow, so it keeps its footing. */
+.mp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 0 var(--mp-shadow);
+}
+
+.mp-card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 -1.4rem 1rem;
+  padding: 0.65rem 1.4rem;
+  background: var(--mp-accent);
+}
+.mp-num {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+.mp-tag {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+}
+.mp-card h4 {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  font-size: 1.12rem;
+  color: #000000;
+}
+.mp-blurb {
+  margin: 0;
+  color: #33475b;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* Image frame on the opposite side of the spine. Only rendered when a step
+ * actually supplies an `image` — the dashed "🖼️ Image placeholder" empty state
+ * that used to sit here was removed, so there is no placeholder styling left. */
+.mp-imgph {
+  display: flex;
+  height: var(--mp-row);
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 0 var(--mp-shadow);
+  overflow: hidden;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    opacity 0.55s ease;
+}
+.mp-imgph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mp-imgph:hover {
+  box-shadow: 0 18px 0 var(--mp-shadow);
+}
+
+/* Stack into a single left-spine column on narrow screens */
+@media (max-width: 767px) {
+  .mp-track {
+    padding-left: 56px;
+  }
+  .mp-spine {
+    left: 20px;
+    transform: none;
+  }
+  .mp-node {
+    display: block;
+    position: relative;
+    padding-left: 0;
+  }
+  .mp-node .mp-card-cell,
+  .mp-node .mp-img-cell,
+  .mp-node.right .mp-card-cell,
+  .mp-node.right .mp-img-cell {
+    grid-column: auto;
+  }
+  .mp-img-cell {
+    margin-top: 1rem;
+  }
+  .mp-dot-cell {
+    position: absolute;
+    left: -52px;
+    top: 0;
+    display: block;
+  }
+  .mp-node .mp-card,
+  .mp-node .mp-imgph {
+    transform: translateX(0);
+  }
+  .mp-node:not(.visible) .mp-card,
+  .mp-node:not(.visible) .mp-imgph {
+    transform: translateY(24px);
+  }
+  .mp-dot {
+    width: 46px;
+    height: 46px;
+  }
+  .mp-card {
+    height: auto;
+  }
+  .mp-imgph {
+    height: 150px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-card,
+  .mp-imgph {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .mp-bg {
+    transition: none;
+  }
+  .mp-node.active .mp-dot {
+    animation: none;
+  }
+  .mp-spine-fill {
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Method illustrations — shared light card shell (.mviz-*) + four stages
+ *  (.fp2-*, .dsv-*, .mdv-*, .phy-*), so the page reads as one system.
+ * ========================================================================== */
+/* Two columns when there is room for both, one when there isn't — decided by
+ * the space actually available inside the card, so it works at any viewport. A
+ * width breakpoint can't, because a landscape phone is wide (780–930px) while
+ * the column it has to fit is not.
+ *
+ * flex-wrap, not `grid + repeat(auto-fit, minmax(...))`: with auto-fit the
+ * number of TRACKS comes from the container width, so adding the full-width
+ * .mviz-more panel as a third child stopped the spare tracks collapsing and
+ * silently split the card into three columns, squeezing the text from 473px to
+ * 306px. Flex lines depend on the items, so the panel simply takes its own row. */
+.mviz {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin: 2.5rem 0;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--track, var(--color-orange));
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, #ffffff, #eaf6ff);
+  box-shadow: 0 10px 26px rgba(20, 60, 90, 0.1);
+}
+/* Never wider than its grid cell: a fixed 300px here used to overhang the card
+ * by up to 65px on a phone. aspect-ratio keeps the stage square as it shrinks. */
+.mviz-stage {
+  position: relative;
+  width: min(300px, 100%);
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0 auto;
+}
+/* flex: grow into the space left by the stage, but wrap onto its own line once
+ * the two no longer fit side by side. min-width:0 lets it shrink below its
+ * longest word instead of forcing the row wider; break-word is the backstop for
+ * the long tool names. */
+.mviz-info {
+  flex: 1 1 240px;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.mviz-info h4 {
+  margin: 0 0 0.5rem;
+  font-weight: 800;
+  color: #0e3a57;
+}
+.mviz-info p {
+  margin: 0 0 0.5rem;
+  color: #33475b;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+.mviz-note {
+  color: #6b7c88 !important;
+  font-style: italic;
+  font-size: 0.82rem !important;
+}
+
+/* ---- expandable "More about this method" panel (.mviz-more) ----
+   flex-basis 100% keeps it on its own full-width line under the stage and text,
+   whatever the card width. */
+.mviz-more {
+  flex: 1 1 100%;
+  /* A flex item's min-width is `auto`, i.e. its content's min-content width —
+     so a panel holding a table of nowrap cells refuses to shrink and pushes the
+     whole page sideways (615px of body on a 390px phone, before this). `0`
+     lets it shrink to the card and hands the overflow to the table's own
+     scroll wrapper (PartsTable), which is the thing that should scroll. */
+  min-width: 0;
+  border-top: 1px solid var(--track-line, rgba(255, 106, 20, 0.5));
+  padding-top: 0.7rem;
+}
+.mviz-more-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #0e3a57;
+  /* Hide the native disclosure triangle in both engines — the chevron below is
+     the affordance, and it sits on the right where it can align with the text. */
+  list-style: none;
+  transition: color 0.2s ease;
+}
+.mviz-more-toggle::-webkit-details-marker {
+  display: none;
+}
+.mviz-more-toggle:hover {
+  color: var(--color-orange);
+}
+/* Keyboard users must still see focus — the summary is the tab stop. */
+.mviz-more-toggle:focus-visible {
+  outline: 2px solid var(--track, var(--color-orange));
+  outline-offset: 3px;
+  border-radius: 0.35rem;
+}
+.mviz-more-chev {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--track, var(--color-orange));
+  transition: transform 0.25s ease;
+}
+.mviz-more[open] .mviz-more-chev {
+  transform: rotate(180deg);
+}
+.mviz-more-body {
+  margin-top: 0.6rem;
+  color: #33475b;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+.mviz-more-body p {
+  margin: 0 0 0.6rem;
+}
+.mviz-more-body p:last-child {
+  margin-bottom: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mviz-more-chev {
+    transition: none;
+  }
+}
+
+/* auto-fit already collapses this to one column, and the stage is now capped by
+ * its cell — so this only trims the stage a little on small screens. It must
+ * stay a `min()` cap, not a fixed width, or the overhang comes back. */
+@media (max-width: 767px) {
+  .mviz-stage {
+    width: min(260px, 100%);
+  }
+}
+
+/* ---- fpocket: the algorithm in four beats (.fp2-*) ----
+       One 7s loop, shared by every element:
+         0–14%   the structure alone
+         14–34%  alpha spheres generated all over it
+         34–52%  radius filter — the too-small (buried in the core) ones go
+         52–72%  survivors tighten into clusters, pocket hulls draw in
+         72–92%  hold the identified pockets, then reset ---- */
+.fp2-stage {
+  display: grid;
+  place-items: center;
+}
+.fp2-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.fp2-atom {
+  fill: #dff0fb;
+  stroke: #bfe0f4;
+  stroke-width: 1.5;
+}
+.fp2-alpha {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+}
+/* discarded by the radius filter: appear with the rest, then go */
+.fp2-alpha.small {
+  fill: rgba(148, 163, 184, 0.55);
+  stroke: rgba(100, 116, 139, 0.7);
+  stroke-width: 1.5;
+  animation: fp2-drop 7s ease-in-out infinite;
+}
+@keyframes fp2-drop {
+  0%,
+  12% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  22%,
+  36% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50%,
+  100% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+/* kept: survive the filter, then draw in towards their cluster centre */
+.fp2-alpha.top,
+.fp2-alpha.alt {
+  animation: fp2-keep 7s ease-in-out infinite;
+}
+.fp2-alpha.top {
+  fill: rgba(255, 106, 20, 0.55);
+  stroke: rgba(255, 106, 20, 0.9);
+  stroke-width: 1.5;
+}
+.fp2-alpha.alt {
+  fill: rgba(13, 148, 136, 0.45);
+  stroke: rgba(13, 148, 136, 0.85);
+  stroke-width: 1.5;
+}
+@keyframes fp2-keep {
+  0%,
+  12% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+  22%,
+  52% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  70%,
+  92% {
+    transform: translate(var(--dx), var(--dy)) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+}
+/* the pocket each surviving cluster defines */
+.fp2-hull {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-dasharray: 8 6;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation:
+    fp2-hull 7s ease-in-out infinite,
+    fp2-hull-march 3s linear infinite;
+}
+.fp2-hull.top {
+  stroke: var(--color-orange);
+}
+.fp2-hull.alt {
+  stroke: rgba(13, 148, 136, 0.8);
+}
+@keyframes fp2-hull {
+  0%,
+  58% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  72%,
+  92% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+@keyframes fp2-hull-march {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* settle on the end state: pockets found, discarded spheres gone */
+  .fp2-alpha.small {
+    animation: none;
+    opacity: 0;
+  }
+  .fp2-alpha.top,
+  .fp2-alpha.alt {
+    animation: none;
+    transform: translate(var(--dx), var(--dy));
+    opacity: 1;
+  }
+  .fp2-hull {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ---- docking stage: poses sampled in the pocket (.dsv-*) ---- */
+.dsv-rings {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.dsv-rings span {
+  position: absolute;
+  border: 1px dashed rgba(13, 148, 136, 0.3);
+  border-radius: 50%;
+}
+/* Percentages of the (square) stage rather than px — see .mdv-ring. The 268px
+ * outer ring was the widest offender: on a 360px phone it overhung the 240px
+ * stage and painted outside the card. 110/190/268 of 300 = 36.7/63.3/89.3%. */
+.dsv-rings span:nth-child(1) {
+  width: 36.7%;
+  aspect-ratio: 1;
+}
+.dsv-rings span:nth-child(2) {
+  width: 63.3%;
+  aspect-ratio: 1;
+}
+.dsv-rings span:nth-child(3) {
+  width: 89.3%;
+  aspect-ratio: 1;
+  animation: dsv-spin 26s linear infinite;
+}
+@keyframes dsv-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.dsv-pocket {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 78px;
+  height: 78px;
+  transform: translate(-50%, -50%);
+  border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+  background: radial-gradient(
+    circle at 40% 35%,
+    rgba(255, 106, 20, 0.35),
+    rgba(255, 106, 20, 0.06) 70%
+  );
+  border: 1px solid rgba(255, 106, 20, 0.5);
+}
+.dsv-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--color-orange);
+  box-shadow: 0 0 14px 3px rgba(255, 106, 20, 0.6);
+  animation: dsv-pulse 1.9s ease-in-out infinite;
+}
+@keyframes dsv-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.28);
+    opacity: 1;
+  }
+}
+.dsv-pose {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 3px;
+  background: #0d9488;
+  box-shadow: 0 0 8px rgba(13, 148, 136, 0.5);
+  animation: dsv-fly 2.4s ease-in-out infinite;
+}
+@keyframes dsv-fly {
+  0% {
+    transform: translate(var(--x), var(--y)) scale(0.55) rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  70% {
+    transform: translate(0, 0) scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(0.4) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+/* ---- molecular-dynamics stage: a jiggling, swaying molecule (.mdv-*) ---- */
+.mdv-stage {
+  display: grid;
+  place-items: center;
+}
+.mdv-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.mdv-mol {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mdv-sway 6s ease-in-out infinite;
+}
+@keyframes mdv-sway {
+  0%,
+  100% {
+    transform: rotate(-3deg) translateY(-2px);
+  }
+  50% {
+    transform: rotate(3deg) translateY(2px);
+  }
+}
+.mdv-bond {
+  stroke: #94a3b8;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.mdv-atom {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mdv-jiggle 0.9s ease-in-out infinite;
+}
+@keyframes mdv-jiggle {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(2px, -2px);
+  }
+  50% {
+    transform: translate(-2px, 1px);
+  }
+  75% {
+    transform: translate(1px, 2px);
+  }
+}
+/* thermostat "bath" ring around the molecule.
+ * Sized as a share of the (square) stage, not in px: the stage is fluid now, so
+ * a fixed 250px ring overhung it — and the card — on a phone. 250/300 = 83.3%. */
+.mdv-ring {
+  position: absolute;
+  width: 83.3%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dashed rgba(13, 148, 136, 0.3);
+  animation: dsv-spin 30s linear infinite;
+}
+
+/* ---- phylogenetics stage: self-drawing cladogram (.phy-*) ---- */
+.phy-viz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.phy-svg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  overflow: visible;
+}
+.phy-branch {
+  fill: none;
+  stroke: #2e9e6b;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.phy-svg.draw .phy-branch {
+  animation: phy-draw 0.55s ease forwards;
+}
+@keyframes phy-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.phy-tip {
+  fill: var(--color-orange);
+  stroke: var(--color-orange);
+  stroke-width: 1.5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.phy-svg.draw .phy-tip {
+  animation: phy-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes phy-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dsv-pose {
+    animation: none;
+    opacity: 0.5;
+    transform: translate(var(--x), var(--y));
+  }
+  .dsv-core,
+  .dsv-rings span,
+  .mdv-mol,
+  .mdv-atom,
+  .mdv-ring {
+    animation: none;
+  }
+  .phy-branch {
+    stroke-dashoffset: 0;
+  }
+  .phy-tip {
+    opacity: 1;
+  }
+  .phy-svg.draw .phy-branch,
+  .phy-svg.draw .phy-tip {
+    animation: none;
+  }
+}
+
+/* ========================================================================== *
+ *  More method illustrations — BLAST, RFdiffusion, LigandMPNN, Boltz
+ *  (share the .mviz shell above; stages namespaced .blast-/.rfd-/.lmp-/.blz-)
+ * ========================================================================== */
+
+/* ---- BLAST: local alignment / sequence search (.blast-*) ---- */
+.blast-stage {
+  display: grid;
+  place-items: center;
+}
+/* width:100% is load-bearing. .blast-stage is `place-items: center`, which would
+ * otherwise size this fit-content — i.e. from the cells — and flexible cells
+ * sized by their own container is circular: they collapse to 0 and only the
+ * gaps remain. A definite width gives the rows something to shrink against. */
+.blast-grid {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+}
+.blast-row {
+  display: flex;
+  gap: 4px;
+}
+.blast-row.query {
+  margin-bottom: 6px;
+}
+/* 14 cells of a fixed 15px + gaps + padding came to 278px, which overhung the
+ * 240px stage on a phone.
+ *
+ * The basis must stay 15px, NOT 0: .blast-stage is `place-items: center`, so
+ * .blast-grid is sized fit-content from its max-content contribution — and a
+ * zero basis contributes zero, collapsing every cell to 0x0. Keeping the basis
+ * and allowing shrink (with min-width:0) gives the same 15px cells on desktop
+ * and lets them shrink only once the stage clamps the grid. grow:0 stops them
+ * ever exceeding 15px. */
+.blast-cell {
+  flex: 0 1 15px;
+  min-width: 0;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: #cfe0ee;
+}
+.blast-row.query .blast-cell {
+  background: #0e3a57;
+}
+.blast-cell.hit {
+  animation: blast-hit 3s ease-in-out infinite;
+}
+@keyframes blast-hit {
+  0%,
+  100% {
+    background: #cfe0ee;
+    box-shadow: none;
+  }
+  50% {
+    background: #2e9e6b;
+    box-shadow: 0 0 8px rgba(46, 158, 107, 0.6);
+  }
+}
+.blast-scan {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  width: 3px;
+  left: 2%;
+  border-radius: 2px;
+  background: linear-gradient(var(--color-orange), rgba(255, 106, 20, 0.15));
+  box-shadow: 0 0 10px rgba(255, 106, 20, 0.7);
+  animation: blast-scan 3s linear infinite;
+}
+@keyframes blast-scan {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 96%;
+  }
+}
+
+/* ---- RFdiffusion: noise → ordered backbone (.rfd-*) ---- */
+.rfd-svg,
+.lmp-svg,
+.blz-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* rfd only: the denoising animation starts each atom at a pseudo-random offset
+ * of up to ±75 user units (see RFD_ATOMS in model_methods.tsx) inside a 300-unit
+ * viewBox, so the scattered frames reach ~47 units outside it. The scatter is
+ * the point of the effect, so clip it at the stage instead of shrinking it —
+ * otherwise the atoms paint outside the card on narrow screens. */
+.rfd-svg {
+  overflow: hidden;
+}
+.rfd-atom {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rfd-denoise 4.6s ease-in-out infinite;
+}
+@keyframes rfd-denoise {
+  0% {
+    transform: translate(var(--nx), var(--ny));
+    opacity: 0.2;
+  }
+  40% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--nx), var(--ny));
+    opacity: 0.2;
+  }
+}
+.rfd-chain {
+  fill: none;
+  stroke: #0e3a57;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: rfd-chain 4.6s ease-in-out infinite;
+}
+@keyframes rfd-chain {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  75% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+}
+
+/* ---- LigandMPNN: residues filled in along the backbone (.lmp-*) ---- */
+.lmp-chain {
+  fill: none;
+  stroke: #0e3a57;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.45;
+}
+.lmp-res {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lmp-fill 5s ease-in-out infinite;
+}
+@keyframes lmp-fill {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  82% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+.lmp-bead {
+  fill: var(--color-orange);
+  stroke: var(--color-orange);
+  stroke-width: 1.5;
+}
+.lmp-letter {
+  fill: #0e3a57;
+  font-size: 11px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* ---- Boltz: extended chain folds + HEME settles in (.blz-*) ---- */
+.blz-bead {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blz-fold 5s ease-in-out infinite;
+}
+@keyframes blz-fold {
+  0% {
+    transform: translate(var(--dx), var(--dy));
+  }
+  45% {
+    transform: translate(0, 0);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+.blz-heme {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blz-heme 5s ease-in-out infinite;
+}
+.blz-heme-sq {
+  fill: #d9534f;
+  stroke: #a4302c;
+  stroke-width: 1.5;
+}
+@keyframes blz-heme {
+  0%,
+  20% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blast-cell.hit {
+    animation: none;
+  }
+  .blast-scan {
+    display: none;
+  }
+  .rfd-atom {
+    animation: none;
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  .rfd-chain {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .lmp-res {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .blz-bead {
+    animation: none;
+    transform: translate(0, 0);
+  }
+  .blz-heme {
+    animation: none;
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+}
+
+/* ---- ProSmith: sequence × SMILES attention, then a score (.psm-*) ----
+       Sequence tokens (blue, top) and substrate tokens (orange, bottom) with
+       attention lines flickering between them on a 3s cycle; underneath, the
+       pair's score bar fills and resets on a 5s one. Schematic only. */
+.psm-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.psm-seq {
+  fill: #4a6fd0;
+}
+.psm-mol {
+  fill: var(--color-orange);
+  stroke: #b84200;
+  stroke-width: 1.5;
+}
+.psm-bond {
+  fill: none;
+  stroke: var(--color-orange);
+  stroke-width: 3;
+}
+.psm-attn {
+  stroke: #0e3a57;
+  stroke-width: 1.4;
+  opacity: 0;
+  animation: psm-attn 3s ease-in-out infinite;
+}
+@keyframes psm-attn {
+  0%,
+  100% {
+    opacity: 0.05;
+  }
+  30% {
+    opacity: 0.55;
+  }
+  60% {
+    opacity: 0.1;
+  }
+}
+.psm-track {
+  fill: #dcecf7;
+}
+.psm-fill {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: psm-score 5s ease-in-out infinite;
+}
+@keyframes psm-score {
+  0%,
+  20% {
+    transform: scaleX(0);
+  }
+  65%,
+  88% {
+    transform: scaleX(0.62);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .psm-attn {
+    animation: none;
+    opacity: 0.25;
+  }
+  .psm-fill {
+    animation: none;
+    transform: scaleX(0.62);
+  }
+}
+
+/* ---- laccase MSA + docking (.lcd-*) ----
+       Top: an alignment whose three conserved HCH columns light up in turn and
+       get boxed. Bottom: the T1 copper (orange) with the T2/3 cluster behind
+       it, the search box closing in on T1, and substrate poses flying into it.
+       One 6s cycle for the whole thing, so the alignment reads as happening
+       before the docking rather than alongside it. Schematic only. */
+.lcd-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.lcd-cell {
+  fill: #cfe0ee;
+}
+/* The conserved columns: grey like the rest, then orange as the alignment
+   locks on, staggered left to right by the inline animation-delay. */
+.lcd-cell-motif {
+  fill: #cfe0ee;
+  animation: lcd-motif 6s ease-in-out infinite;
+}
+@keyframes lcd-motif {
+  0%,
+  8% {
+    fill: #cfe0ee;
+  }
+  22%,
+  86% {
+    fill: var(--color-orange);
+  }
+  100% {
+    fill: #cfe0ee;
+  }
+}
+.lcd-motif-box {
+  fill: none;
+  stroke: var(--color-orange);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+  opacity: 0;
+  animation: lcd-motif-box 6s ease-in-out infinite;
+}
+@keyframes lcd-motif-box {
+  0%,
+  26% {
+    opacity: 0;
+  }
+  36%,
+  86% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+/* The hand-off arrow, drawn on once the motif is boxed. */
+.lcd-drop,
+.lcd-drop-head {
+  fill: none;
+  stroke: #0e3a57;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  opacity: 0;
+}
+.lcd-drop {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lcd-drop 6s ease-in-out infinite;
+}
+.lcd-drop-head {
+  stroke-linejoin: round;
+  animation: lcd-drop-head 6s ease-in-out infinite;
+}
+@keyframes lcd-drop {
+  0%,
+  36% {
+    stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  48%,
+  86% {
+    stroke-dashoffset: 0;
+    opacity: 0.7;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+@keyframes lcd-drop-head {
+  0%,
+  46% {
+    opacity: 0;
+  }
+  54%,
+  86% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.lcd-blob {
+  fill: rgba(14, 58, 87, 0.1);
+  stroke: rgba(14, 58, 87, 0.35);
+  stroke-width: 2;
+}
+/* T2/3: three coppers, present but not the target. */
+.lcd-cu23 {
+  fill: #b7c2cc;
+  stroke: #6b7c88;
+  stroke-width: 1.5;
+}
+/* T1: the one the box is centred on, so it is the one that pulses. */
+.lcd-cu1 {
+  fill: var(--color-orange);
+  stroke: #b84200;
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lcd-cu1 6s ease-in-out infinite;
+}
+@keyframes lcd-cu1 {
+  0%,
+  40%,
+  100% {
+    transform: scale(1);
+  }
+  52% {
+    transform: scale(1.3);
+  }
+}
+/* The 22 Å search box, closing in on the T1 copper. */
+.lcd-box {
+  fill: rgba(255, 106, 20, 0.08);
+  stroke: var(--color-orange);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lcd-box 6s ease-in-out infinite;
+}
+@keyframes lcd-box {
+  0%,
+  48% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  62%,
+  88% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+/* Substrate poses, flying in from --dx/--dy to the centre of the box. */
+.lcd-pose {
+  fill: #0d9488;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: lcd-pose 6s ease-in-out infinite;
+}
+@keyframes lcd-pose {
+  0%,
+  58% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.7);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translate(0, 0) scale(1);
+  }
+  84% {
+    opacity: 0.35;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), var(--dy)) scale(0.7);
+  }
+}
+/* Reduced motion: the finished state of the whole cycle — motif found, box on
+   the T1 copper, one pose docked — with nothing moving. */
+@media (prefers-reduced-motion: reduce) {
+  .lcd-cell-motif {
+    animation: none;
+    fill: var(--color-orange);
+  }
+  .lcd-motif-box,
+  .lcd-drop,
+  .lcd-drop-head {
+    animation: none;
+    opacity: 0.8;
+  }
+  .lcd-drop {
+    stroke-dashoffset: 0;
+  }
+  .lcd-cu1,
+  .lcd-box {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  /* All three poses sit at the box centre, which overlaps them into the one
+     docked substrate. NOT `:first-of-type` — the T2/3 coppers are <circle>s
+     too, so that selector would pick one of those instead. */
+  .lcd-pose {
+    animation: none;
+    opacity: 0.9;
+    transform: none;
+  }
+}
+
+/* ---- CAVER stage: a probe threading an access tunnel (.cav-*) ---- */
+.cav-stage {
+  display: grid;
+  place-items: center;
+}
+.cav-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.cav-blob {
+  fill: #dff0fb;
+  stroke: #bfe0f4;
+  stroke-width: 2;
+}
+.cav-tunnel {
+  fill: none;
+  stroke: rgba(13, 148, 136, 0.45);
+  stroke-width: 13;
+  stroke-linecap: round;
+}
+.cav-mouth {
+  fill: #eaf6ff;
+  stroke: rgba(13, 148, 136, 0.5);
+  stroke-width: 2;
+}
+.cav-probe {
+  fill: var(--color-orange);
+  filter: drop-shadow(0 0 6px rgba(255, 106, 20, 0.7));
+  animation: cav-travel 3s linear infinite;
+}
+@keyframes cav-travel {
+  0% {
+    transform: translate(46px, 150px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate(110px, 126px);
+  }
+  50% {
+    transform: translate(150px, 150px);
+  }
+  75% {
+    transform: translate(206px, 180px);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(256px, 156px);
+    opacity: 0;
+  }
+}
+
+/* ---- RoseTTAFold stage: contact map fills, a fold assembles (.rff-*) ---- */
+.rff-stage {
+  display: grid;
+  place-items: center;
+}
+.rff-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.rff-cell {
+  fill: #dbeafe;
+}
+.rff-cell.diag {
+  fill: #0d9488;
+}
+.rff-cell.contact {
+  fill: var(--color-orange);
+  opacity: 0.15;
+  animation: rff-contact 2.6s ease-in-out infinite;
+}
+@keyframes rff-contact {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.rff-arrow {
+  fill: none;
+  stroke: #0e3a57;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rff-bond {
+  stroke: #94a3b8;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.rff-atom {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rff-atom 2.2s ease-in-out infinite;
+}
+@keyframes rff-atom {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cav-probe {
+    animation: none;
+    opacity: 0;
+  }
+  .rff-cell.contact {
+    animation: none;
+    opacity: 0.6;
+  }
+  .rff-atom {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ---- rational-design stage: a passage is highlighted in the paper, the
+       insight travels across, and the residue it motivates lights up on the
+       fold (.rdz-*). One 3.6s loop; the three insights are offset by 1.2s each
+       so they are read in turn — the same rhythm as the .smt-* stage below, so
+       the three laccase cards animate as one sequence. ---- */
+.rdz-stage {
+  display: grid;
+  place-items: center;
+}
+.rdz-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* the stack of papers */
+.rdz-sheet {
+  fill: #fffdf5;
+  stroke: #bfe0f4;
+  stroke-width: 1.5;
+}
+.rdz-sheet.back {
+  fill: #e4f1fb;
+}
+.rdz-sheet.mid {
+  fill: #f2f9ff;
+}
+.rdz-line {
+  fill: #cfe0ec;
+}
+
+/* highlighter over the passage being read: wipes in from the left, then dims
+   back once the insight has left it */
+.rdz-mark {
+  fill: var(--color-orange);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: rdz-mark 3.6s ease-in-out infinite;
+}
+@keyframes rdz-mark {
+  0%,
+  4% {
+    opacity: 0;
+    transform: scaleX(0.05);
+  }
+  12% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+  36% {
+    opacity: 0.5;
+    transform: scaleX(1);
+  }
+  50%,
+  100% {
+    opacity: 0.14;
+    transform: scaleX(1);
+  }
+}
+
+/* the insight itself: lifts off the highlighted line and lands on its residue */
+.rdz-insight {
+  fill: var(--color-orange);
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: rdz-insight 3.6s ease-in-out infinite;
+}
+@keyframes rdz-insight {
+  0%,
+  12% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(calc(var(--dx) * 0.12), calc(var(--dy) * 0.12))
+      scale(1);
+    opacity: 1;
+  }
+  44% {
+    transform: translate(var(--dx), var(--dy)) scale(1);
+    opacity: 1;
+  }
+  52%,
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* the fold: plain residues sit still, so the picked ones read as the active
+   part — same colour split as the .smt-* stage */
+.rdz-bead {
+  fill: #0d9488;
+}
+/* halo at the moment the insight lands */
+.rdz-ring {
+  fill: none;
+  stroke: rgba(255, 106, 20, 0.75);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: rdz-ring 3.6s ease-in-out infinite;
+}
+@keyframes rdz-ring {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  48% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  68%,
+  100% {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+/* the picked residue, held until the loop restarts */
+.rdz-pick {
+  fill: var(--color-orange);
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: rdz-pick 3.6s ease-in-out infinite;
+}
+@keyframes rdz-pick {
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  48% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  56%,
+  92% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+.rdz-label {
+  fill: #5d7f92;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-anchor: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Settle on the end state: the passages are highlighted and the positions
+     they point to are picked out. */
+  .rdz-mark {
+    animation: none;
+    opacity: 0.5;
+    transform: none;
+  }
+  .rdz-insight {
+    animation: none;
+    opacity: 0;
+  }
+  .rdz-ring {
+    animation: none;
+    opacity: 0;
+  }
+  .rdz-pick {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- stability-mutagenesis stage: flagged positions swapped one at a time,
+       gauge climbs (.smt-*). One 3.6s loop; the three flagged sites are offset
+       by 1.2s each so they are treated in turn. ---- */
+.smt-stage {
+  display: grid;
+  place-items: center;
+}
+.smt-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* positions left alone — static, so the flagged ones read as the active part */
+.smt-bead {
+  fill: #0d9488;
+}
+/* wild-type residue at a flagged position: wobbles, then is replaced */
+.smt-wt {
+  fill: var(--color-orange);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: smt-wt 3.6s ease-in-out infinite;
+}
+@keyframes smt-wt {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  5% {
+    transform: translate(2.5px, -2px);
+  }
+  10% {
+    transform: translate(-2.5px, 2px);
+  }
+  15% {
+    transform: translate(2px, 2px);
+  }
+  20% {
+    transform: translate(-2px, -1px);
+  }
+  25% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  33%,
+  100% {
+    transform: translate(0, 0) scale(0.35);
+    opacity: 0;
+  }
+}
+/* substituted residue: scales in over the old one and holds */
+.smt-mut {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: smt-mut 3.6s ease-in-out infinite;
+}
+@keyframes smt-mut {
+  0%,
+  30% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  38% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  45%,
+  92% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+/* ring that expands at the moment of the swap */
+.smt-focus {
+  fill: none;
+  stroke: rgba(13, 148, 136, 0.75);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: smt-focus 3.6s ease-out infinite;
+}
+@keyframes smt-focus {
+  0%,
+  26% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  32% {
+    opacity: 0.9;
+  }
+  50%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+/* gauge: moves once per swap — up or down, since not every substitution is
+   stabilising — and returns to where it started so the loop runs continuously */
+.smt-gauge-label {
+  fill: #0e3a57;
+  font-size: 17px;
+  font-weight: 800;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+.smt-meter {
+  fill: #eaf6ff;
+  stroke: #bfe0f4;
+  stroke-width: 2;
+}
+.smt-meter-fill {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: smt-fill 3.6s ease-in-out infinite;
+}
+@keyframes smt-fill {
+  /* baseline */
+  0%,
+  14% {
+    transform: scaleY(0.46);
+  }
+  /* 1st substitution — stabilising */
+  22%,
+  47% {
+    transform: scaleY(0.74);
+  }
+  /* 2nd — the other way */
+  55%,
+  82% {
+    transform: scaleY(0.38);
+  }
+  /* 3rd — up again, easing back to the baseline for a seamless loop */
+  90%,
+  96% {
+    transform: scaleY(0.66);
+  }
+  100% {
+    transform: scaleY(0.46);
+  }
+}
+
+/* ---- miniaturisation stage: the chain is trimmed from one end, then the
+       shortened sequence refolds into a smaller core (.mnf-*).
+
+       Built like .blz-* above: each residue is drawn once, at its full-length
+       folded position, and translated to the other states. One 6s loop, and
+       every element shares the same four beats so the fold and the sequence
+       strip stay in step:
+         0–18%   full-length fold + full sequence
+         18–32%  the tail is cut away, in the sequence and the fold together
+         32–52%  what is left refolds onto the smaller ring
+         52–88%  hold the reduced state, then reset ---- */
+.mnf-stage {
+  display: grid;
+  place-items: center;
+}
+.mnf-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* retained residues: hold, then move into the smaller fold */
+.mnf-bead {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mnf-refold 6s ease-in-out infinite;
+}
+@keyframes mnf-refold {
+  0%,
+  32% {
+    transform: translate(0, 0);
+  }
+  52%,
+  88% {
+    transform: translate(var(--dx), var(--dy));
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+/* removed residues: muted from the start, so it reads which end goes */
+.mnf-bead.trim {
+  fill: #94a3b8;
+  animation: mnf-cutaway 6s ease-in-out infinite;
+}
+@keyframes mnf-cutaway {
+  0%,
+  18% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  32%,
+  88% {
+    transform: translate(var(--ox), var(--oy)) scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+.mnf-active {
+  fill: var(--color-orange);
+  filter: drop-shadow(0 0 6px rgba(255, 106, 20, 0.7));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mnf-active 2s ease-in-out infinite;
+}
+@keyframes mnf-active {
+  0%,
+  100% {
+    transform: scale(0.88);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+/* the sequence strip below the fold */
+.mnf-seq {
+  fill: #0d9488;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.mnf-seq.trim {
+  fill: #94a3b8;
+  animation: mnf-seq-cut 6s ease-in-out infinite;
+}
+@keyframes mnf-seq-cut {
+  0%,
+  18% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  32%,
+  88% {
+    transform: translate(0, 26px) scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+}
+.mnf-seq-line {
+  fill: #0d9488;
+  opacity: 0.45;
+}
+.mnf-seq-line.trim {
+  fill: #94a3b8;
+  transform-box: fill-box;
+  /* retracts towards the cut, not towards its own middle */
+  transform-origin: left center;
+  animation: mnf-seq-line 6s ease-in-out infinite;
+}
+@keyframes mnf-seq-line {
+  0%,
+  18% {
+    transform: scaleX(1);
+    opacity: 0.45;
+  }
+  32%,
+  88% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.45;
+  }
+}
+/* the cut mark, flashing as the tail is removed */
+.mnf-cut {
+  stroke: var(--color-orange);
+  stroke-width: 2.5;
+  stroke-dasharray: 5 4;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: mnf-cut 6s ease-in-out infinite;
+}
+@keyframes mnf-cut {
+  0%,
+  12% {
+    transform: scaleY(0.6);
+    opacity: 0;
+  }
+  18%,
+  30% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  42%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Settle both stages on their end state: mutations made, scaffold trimmed. */
+  .smt-wt {
+    animation: none;
+    opacity: 0;
+  }
+  .smt-mut {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+  .smt-focus {
+    animation: none;
+    opacity: 0;
+  }
+  .smt-meter-fill {
+    animation: none;
+    transform: scaleY(0.66);
+  }
+  .mnf-bead {
+    animation: none;
+    transform: translate(var(--dx), var(--dy));
+  }
+  .mnf-bead.trim {
+    animation: none;
+    opacity: 0;
+  }
+  .mnf-active {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+  .mnf-seq.trim {
+    animation: none;
+    opacity: 0;
+  }
+  .mnf-seq-line.trim {
+    animation: none;
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  .mnf-cut {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ========================================================================== *
+ *  MethodsHero — animated workflow-flow banner (.mxh-*)
+ *  Sits directly on the light-blue page (no dark box); white/orange SVG marks
+ *  and navy text keep everything readable on the light background.
+ * ========================================================================== */
+.mxh {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 1.25rem;
+  /* Centred on the same column as the page content below, instead of running
+   * full-bleed from the left edge under the logo. */
+  max-width: min(1100px, 100% - 2rem);
+  margin: 0 auto 2.5rem;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  /* Clear the fixed cloud header, which is taller than the 68px that body
+   * padding reserves — see --cloud-header-height in App.css. */
+  padding-top: calc(var(--cloud-header-height) - var(--navbar-height) + 1.5rem);
+  background: transparent;
+  /* Same two-column layout as the Discovery hero (.dtree): text left,
+   * illustration right, both vertically centred. */
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 520px);
+  gap: 2rem;
+  align-items: center;
+  /* Fill the first screen: the hero is all you see on load, and the page
+   * content begins below the fold. min-height (not height) so it still grows
+   * if the content is taller than the viewport — which it is on a landscape
+   * phone. svh is the *small* viewport height, i.e. with the mobile browser
+   * toolbars showing, so the hero never overflows behind them; the vh line
+   * above is the fallback for browsers without svh. */
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  align-content: center;
+}
+@media (max-width: 900px) {
+  .mxh {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* The motif is a real grid column now, not an absolutely-positioned background.
+ * It was `position: absolute; inset: 0; height: 100%` with the svg set to
+ * preserveAspectRatio="xMidYMid slice" — "slice" scales to COVER and crops the
+ * overflow, so once the hero became full-screen the 690x260 artwork was cut and
+ * the nodes were sliced through. Sized in-flow with height:auto it scales whole.
+ * The gradient mask that used to hold it clear of the text is gone too — the
+ * grid column does that job now. */
+.mxh-viz {
+  min-width: 0;
+}
+.mxh-canvas {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+/* This used to be `display: none` under 900px, because as an absolute backdrop
+ * the motif would have sat behind the copy once the text went full-width. It is
+ * a grid column now, so on narrow screens it simply stacks under the text —
+ * same as the Discovery hero's tree — and stays visible. */
+.mxh-edge {
+  stroke: rgba(255, 255, 255, 0.65);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+}
+.mxh-flow {
+  stroke: var(--color-orange);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 8 96;
+  animation: mxh-flow 3.4s linear infinite;
+}
+@keyframes mxh-flow {
+  to {
+    stroke-dashoffset: -104;
+  }
+}
+.mxh-node {
+  fill: #ffffff;
+  stroke: var(--color-orange);
+  stroke-width: 2.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mxh-pulse 2.8s ease-in-out infinite;
+}
+.mxh-node.accent {
+  fill: var(--color-orange);
+  stroke: #ffffff;
+}
+@keyframes mxh-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+.mxh-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+}
+.mxh-eyebrow {
+  display: inline-block;
+  margin-bottom: 1.1rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-orange), var(--color-orange));
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(255, 106, 20, 0.28);
+}
+.mxh-title {
+  margin: 0 0 0.9rem;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: #0e3a57;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+}
+.mxh-title span {
+  background: linear-gradient(120deg, var(--color-orange), var(--color-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.mxh-sub {
+  margin: 0 0 1.6rem;
+  max-width: 46ch;
+  color: #12455f;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+}
+/* The hero jump chips (.mxh-chips / .mxh-chip) were removed. */
+
+@media (prefers-reduced-motion: reduce) {
+  .mxh-flow {
+    animation: none;
+  }
+  .mxh-node {
+    animation: none;
+  }
+}
+
+/* ---- channel clustering: many tunnels -> a few representatives (.ccl-*) ----
+   One 9s loop shared by every path (see CCL_PATHS in model_methods.tsx):
+     0-18%   raw ensemble, all tunnels faint and grey
+     32-52%  each takes its cluster colour
+     66-88%  the representative thickens, the rest fade back
+   Each cluster sets --ccl, so one pair of keyframes serves all three. */
+.ccl-stage {
+  display: grid;
+  place-items: center;
+}
+.ccl-svg {
+  width: 100%;
+  height: auto;
+  overflow: hidden; /* the bowed paths can reach past the viewBox mid-loop */
+}
+.ccl-blob {
+  fill: #eaf6ff;
+  stroke: #cfe0ee;
+  stroke-width: 1.5;
+}
+.ccl-site {
+  fill: #0e3a57;
+}
+.ccl-path.c0,
+.ccl-exit.c0 {
+  --ccl: #0d9488;
+}
+.ccl-path.c1,
+.ccl-exit.c1 {
+  --ccl: var(--color-orange);
+}
+.ccl-path.c2,
+.ccl-exit.c2 {
+  --ccl: #4a6fd0;
+}
+.ccl-path {
+  fill: none;
+  stroke-linecap: round;
+  animation: ccl-cycle 9s ease-in-out infinite;
+}
+.ccl-path.rep {
+  animation-name: ccl-cycle-rep;
+}
+@keyframes ccl-cycle {
+  0%,
+  18% {
+    stroke: #b7c2cc;
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+  32%,
+  52% {
+    stroke: var(--ccl);
+    stroke-width: 2.5;
+    opacity: 0.9;
+  }
+  66%,
+  88% {
+    stroke: var(--ccl);
+    stroke-width: 2;
+    opacity: 0.22;
+  }
+  100% {
+    stroke: #b7c2cc;
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+}
+@keyframes ccl-cycle-rep {
+  0%,
+  18% {
+    stroke: #b7c2cc;
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+  32%,
+  52% {
+    stroke: var(--ccl);
+    stroke-width: 3;
+    opacity: 0.95;
+  }
+  66%,
+  88% {
+    stroke: var(--ccl);
+    stroke-width: 5.5;
+    opacity: 1;
+  }
+  100% {
+    stroke: #b7c2cc;
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+}
+.ccl-exit {
+  fill: var(--ccl);
+  animation: ccl-exit 9s ease-in-out infinite;
+}
+@keyframes ccl-exit {
+  0%,
+  22% {
+    opacity: 0;
+    fill: #b7c2cc;
+  }
+  36%,
+  88% {
+    opacity: 0.9;
+    fill: var(--ccl);
+  }
+  100% {
+    opacity: 0;
+    fill: #b7c2cc;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ccl-path,
+  .ccl-exit {
+    animation: none;
+  }
+  .ccl-path {
+    stroke: var(--ccl);
+    stroke-width: 2.5;
+    opacity: 0.85;
+  }
+  .ccl-path.rep {
+    stroke-width: 5;
+    opacity: 1;
+  }
+  .ccl-exit {
+    opacity: 0.9;
+  }
+}

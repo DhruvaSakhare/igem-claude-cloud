@@ -1,0 +1,64 @@
+.parts-table {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px var(--color-brightblue-shadow);
+}
+
+/* Header */
+.parts-table .p-datatable-thead > tr > th {
+    background: var(--color-brightblue);
+    color: white;
+    font-weight: 600;
+    border: none;
+}
+
+/* Odd rows */
+.parts-table .p-datatable-tbody > tr:nth-child(odd) {
+    background: white;
+}
+
+/* Even rows */
+.parts-table .p-datatable-tbody > tr:nth-child(even) {
+    background: var(--color-lightgray);
+}
+
+/* Cells */
+.parts-table .p-datatable-tbody > tr > td {
+    border: none;
+    padding: 0.9rem 1rem;
+}
+
+
+
+/* Row-label column (TableColumn.rowHeader): what the reader scans down, so
+   bold and kept on one line. */
+.parts-table .p-datatable-tbody > tr > td.parts-table-rowhead {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Where one merged group (groupRowsBy) ends and the next begins. */
+.parts-table .p-datatable-tbody > tr.parts-table-groupstart > td {
+    border-top: 2px solid var(--color-brightblue);
+}
+
+/* A wide table scrolls inside its rounded box instead of being clipped by it
+   (the box is overflow: hidden for the corners) or widening the page. */
+.parts-table .p-datatable-wrapper {
+    overflow-x: auto;
+}
+
+/* Captioned / numbered tables (the `caption` and `numberId` props). min-width 0
+   lets the figure shrink inside a flex card, so the wrapper above is what
+   scrolls. */
+.parts-table-figure {
+    margin: 0 0 1.4rem;
+    min-width: 0;
+}
+
+.parts-table-figure > figcaption {
+    padding-top: 0.6rem;
+    font-size: 0.82rem;
+    color: #4a6a80;
+    text-align: left;
+}

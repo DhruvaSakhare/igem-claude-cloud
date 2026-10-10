@@ -1,0 +1,129 @@
+/* The sticky page-switcher bar (.mnav-*) that used to live here was removed —
+ * the four Model pages are now listed in the TOC instead (components/TOC.tsx,
+ * fed by MODEL_PAGES in ModelNav.tsx). Only the bottom pager remains. */
+
+/* ========================================================================== *
+ *  ModelPager — bottom-of-page prev/next navigation (ModelPager in ModelNav.tsx)
+ *  Styled like the translucent prose boxes on the Model pages (TextBox.css):
+ *  white at 60%, 16px corners, no border, the solid bright-blue drop shadow.
+ *  Navy label and an orange arrow that bobs toward its direction; lifts on
+ *  hover. Matches the look/motion of the other Model-page
+ *  widgets. Colours are set on the child spans (not the <a>) so the global
+ *  `#root a { color: orange }` rule in App.css can't override them.
+ * ========================================================================== */
+.mpager {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 3.5rem 0 1.75rem;
+}
+/* Keeps a lone Next pushed right / lone Previous pushed left. */
+.mpager-spacer {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.mpager-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  min-width: 210px;
+  padding: 1rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  box-shadow: 0 12px 0px var(--color-brightblue-shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+.mpager-link.prev {
+  margin-right: auto;
+}
+.mpager-link.next {
+  margin-left: auto;
+  text-align: right;
+  flex-direction: row;
+}
+.mpager-link:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 15px 0px var(--color-brightblue-shadow);
+}
+.mpager-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.mpager-dir {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-orange);
+}
+.mpager-label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0e3a57;
+}
+.mpager-arrow {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-orange);
+  animation: mpager-bob-next 1.6s ease-in-out infinite;
+}
+.mpager-link.prev .mpager-arrow {
+  animation-name: mpager-bob-prev;
+}
+/* A firmer nudge while hovered. */
+.mpager-link.next:hover .mpager-arrow {
+  animation-duration: 0.9s;
+}
+.mpager-link.prev:hover .mpager-arrow {
+  animation-duration: 0.9s;
+}
+
+@keyframes mpager-bob-next {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+@keyframes mpager-bob-prev {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mpager-arrow {
+    animation: none;
+  }
+  .mpager-link:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .mpager {
+    gap: 0.75rem;
+  }
+  .mpager-link {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+  .mpager-spacer {
+    display: none;
+  }
+}

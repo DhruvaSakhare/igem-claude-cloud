@@ -1,0 +1,126 @@
+/* ========================================================================== *
+ *  The docking / molecular-dynamics method boxes (.smx-*)
+ *
+ *  Layout for what is inside those two collapsibles — see
+ *  structural-methods.tsx. The box itself is DetailsBox.css; nothing here
+ *  restyles it.
+ *
+ *  Both write-ups have the same shape: a lead paragraph, a numbered sequence of
+ *  steps, then the parameters the pipeline was run with. The steps are numbered
+ *  in a marker rather than in the heading text, so the numeral is not read out
+ *  as part of the title and the headings align down the left edge.
+ * ========================================================================== */
+
+.smx-heading {
+  margin: 2rem 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0e3a57;
+}
+
+/* ---- one numbered step -------------------------------------------------- */
+.smx-step {
+  margin-top: 1.25rem;
+}
+
+.smx-step-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #0e3a57;
+}
+
+/* The numeral, in the orange the page uses for its own marks. Fixed size so a
+   two-digit step could never make one step's heading indent further than the
+   rest. */
+.smx-step-n {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: var(--track-soft, rgba(255, 106, 20, 0.22));
+  border: 1px solid var(--track, rgba(255, 106, 20, 0.65));
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--track, var(--color-orange));
+}
+
+/* The step's paragraph lines up with its title rather than with the numeral,
+   so the text block reads as belonging to that step. */
+.smx-step > .mm-prose {
+  margin-left: 2.2rem;
+}
+
+/* ---- the parameter list ------------------------------------------------- */
+.smx-params {
+  margin-top: 2rem;
+}
+
+.smx-params-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0e3a57;
+}
+
+.smx-params dl {
+  margin: 0;
+}
+
+/* Each parameter is a row with a rule above it, so the list reads as a table of
+   settings without the boxed look of a real table — and it wraps to one column
+   on a phone, which a table would not. */
+.smx-param {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--track-line, rgba(255, 106, 20, 0.35));
+}
+.smx-param:last-child {
+  border-bottom: 1px solid var(--track-line, rgba(255, 106, 20, 0.35));
+}
+
+.smx-param dt {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0e3a57;
+}
+
+.smx-arrow {
+  margin: 0 0.45rem;
+  color: var(--track, var(--color-orange));
+}
+
+/* The value carries the actual setting, so it is the part that must stand out
+   from the name beside it. */
+.smx-value {
+  font-weight: 800;
+  color: var(--color-orange);
+}
+
+.smx-param dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #123a52;
+}
+
+@media (max-width: 575.98px) {
+  .smx-step > .mm-prose {
+    margin-left: 0;
+  }
+}
+
+/* Inside a method card (the combined docking + dynamics box, laid out like the
+   channel box), the only orange rule should be the one BETWEEN the two methods
+   (.mm-msub + .mm-msub in ChannelMethodsBox.css). The parameter rows' own
+   rules read as further section breaks there, so they give way to space. */
+.cmbox-body .mm-msub .smx-param,
+.cmbox-body .mm-msub .smx-param:last-child {
+  border-top: 0;
+  border-bottom: 0;
+  padding: 0.45rem 0;
+}

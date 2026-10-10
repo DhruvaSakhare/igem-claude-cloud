@@ -1,0 +1,51 @@
+/* ========================================================================== *
+ *  Molecular-dynamics figures (.mdf-*)
+ *  One block per structure: its name, a note, then the three plots.
+ *
+ *  Moved out of model_discovery.css when the Engineering page grew an MD row
+ *  of its own — the markup is shared (see MdFigures.tsx), so the rules are too.
+ *  The tunnel figures (.chf-*, still in model_discovery.css) are deliberately
+ *  styled to match these; keep the two in step.
+ * ========================================================================== */
+.mdf-cand {
+  margin: 2rem 0 2.5rem;
+}
+.mdf-acc {
+  margin: 0 0 0.35rem;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  color: #0e3a57;
+}
+.mdf-note {
+  margin: 0 0 0.9rem;
+  color: #33475b;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+/* `min(260px, 100%)` rather than a bare 260px: on a narrow card the track would
+   otherwise stay 260px wide and overflow instead of collapsing to one column. */
+.mdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1rem;
+}
+.mdf-fig {
+  margin: 0;
+  min-width: 0;
+}
+.mdf-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 60, 90, 0.08);
+}
+.mdf-fig figcaption {
+  margin-top: 0.4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #6b7c88;
+}

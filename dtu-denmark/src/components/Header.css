@@ -1,0 +1,97 @@
+.page-header h1 {
+  color: var(--color-white) !important;
+}
+
+/* =============================================================================
+ * SECTION OVERVIEW PAGES (Project, Wet Lab, Model, Engagement)
+ * Centred orange title, dark-blue lead, then each subpage's image (a link to
+ * the page) with the page title underneath.
+ * ========================================================================== */
+
+.page-header-overview {
+  text-align: center;
+}
+
+/* Extra class + !important to beat the white rule above. */
+.page-header.page-header-overview h1 {
+  color: var(--color-darkestblue) !important;
+}
+
+.page-header-overview .page-header-lead {
+  color: var(--color-darkblue) !important;
+  max-width: 46rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Row of image links — wraps onto more lines on narrow screens. */
+.overview-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 2.5rem;
+  margin-top: 1rem;
+}
+
+.overview-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 190px;
+  text-decoration: none !important;
+}
+
+/* 4:3 frame (same as the page hero icon). Header.tsx sizes and offsets the
+   image inside it so only the drawing shows, at a matching size for all. */
+.overview-link-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.overview-link-image img {
+  position: absolute;
+  max-width: none;
+  transition: transform 0.2s ease;
+}
+
+.overview-link:hover .overview-link-image img,
+.overview-link:focus-visible .overview-link-image img {
+  transform: scale(1.06);
+}
+
+.overview-link-placeholder {
+  width: 80%;
+  height: 80%;
+  border: 2px dashed rgba(0, 80, 117, 0.35);
+  border-radius: 1rem;
+}
+
+.overview-link-title {
+  margin-top: 0.6rem;
+  font-family: "iGEM Wiki Header", var(--font);
+  font-size: 1.5rem;
+  line-height: 1.1;
+  color: var(--color-orange);
+}
+
+.overview-link:hover .overview-link-title,
+.overview-link:focus-visible .overview-link-title {
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .overview-links {
+    gap: 1.5rem 1rem;
+  }
+  .overview-link {
+    width: 140px;
+  }
+  .overview-link-title {
+    font-size: 1.2rem;
+  }
+}

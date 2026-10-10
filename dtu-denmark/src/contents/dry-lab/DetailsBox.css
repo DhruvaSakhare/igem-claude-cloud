@@ -1,0 +1,163 @@
+/* ========================================================================== *
+ *  The "More details on …" collapsible (.cmbox-*)
+ *
+ *  The box the Discovery page folds a method write-up into, so a reader can
+ *  have the method beside the results without leaving the page. Shared by every
+ *  such box — see DetailsBox.tsx, and ChannelMethodsBox.css for the extra rules
+ *  the one holding the channel method cards needs.
+ *
+ *  Styled after the per-card `.mviz-more` disclosure in model_methods.css — the
+ *  same idiom the reader already meets inside every method card — but one size
+ *  up, because this one carries a whole section rather than one card's detail.
+ *  The two are separate rule sets on purpose: .mviz-more sits INSIDE a card and
+ *  inherits its width and border colour, while this one is the outermost thing
+ *  on the page at that point.
+ * ========================================================================== */
+.cmbox {
+  margin: 2.5rem 0 1rem;
+  border: 1px solid var(--track-line, rgba(255, 106, 20, 0.55));
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.6);
+  /* A flex/grid ancestor would otherwise refuse to shrink this below its
+     content's min-content width; the cards inside carry wide SVGs. */
+  min-width: 0;
+  overflow: hidden;
+}
+
+.cmbox-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.95rem 1.2rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0e3a57;
+  /* Hide the native disclosure triangle in both engines — the chevron is the
+     affordance, and it sits on the right where it aligns with the text. */
+  list-style: none;
+  transition: background-color 0.2s ease;
+}
+.cmbox-toggle::-webkit-details-marker {
+  display: none;
+}
+.cmbox-toggle:hover {
+  background: var(--track-soft, rgba(255, 106, 20, 0.12));
+}
+.cmbox-toggle:focus-visible {
+  outline: 2px solid var(--color-brightblue);
+  outline-offset: -2px;
+}
+
+/* The toggle is a single line of text. `min-width: 0` lets it shrink and wrap
+   inside the flex row instead of pushing the chevron off the box on a phone.
+   There used to be a muted second line under it (.cmbox-hint) summarising what
+   was inside; it was dropped when the label was rewritten. */
+.cmbox-label {
+  min-width: 0;
+}
+
+.cmbox-chev {
+  flex: 0 0 auto;
+  font-size: 0.9rem;
+  color: var(--track, var(--color-orange));
+  transition: transform 0.25s ease;
+}
+.cmbox[open] .cmbox-chev {
+  transform: rotate(180deg);
+}
+
+.cmbox-body {
+  padding: 0.25rem 1.2rem 1rem;
+  border-top: 1px solid var(--track-line, rgba(255, 106, 20, 0.4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmbox-toggle,
+  .cmbox-chev {
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Model pages: the Experiments page's collapsible design
+ *
+ *  On the Model pages (body.model-bg) the box takes the look of
+ *  ClickableTextBox (components/ClickableTextBox.css, the protocol boxes on the
+ *  Experiments page): white header with a 26px title and a PrimeIcons chevron,
+ *  16px corners, the solid light-blue drop shadow, and a translucent body that
+ *  slides in. Only the look — it is still the native <details> above, so the
+ *  contents, open/close behaviour and find-in-page are unchanged.
+ *
+ *  Scoped because DetailsBox is also used on the Description page, which keeps
+ *  the design above.
+ * ========================================================================== */
+body.model-bg .cmbox {
+  margin: 2rem 0;
+  border: none;
+  border-radius: 16px;
+  background: none;
+  box-shadow: 0 12px 0 var(--color-brightblue-shadow);
+}
+
+body.model-bg .cmbox-toggle {
+  padding: 1.2rem 1.5rem;
+  background: #ffffff;
+}
+body.model-bg .cmbox-toggle:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* The title, sized and weighted like the Experiments box's <h2>. */
+body.model-bg .cmbox-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #000000;
+}
+
+/* The ▾ glyph is swapped for PrimeIcons' chevron-down (`pi pi-chevron-down`),
+   the icon ClickableTextBox uses, without changing the markup: the glyph's own
+   text is sized away and the icon drawn in its place. */
+body.model-bg .cmbox-chev {
+  font-size: 0;
+  line-height: 1;
+  color: #000000;
+}
+body.model-bg .cmbox-chev::before {
+  content: "\e902";
+  font-family: "primeicons";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.model-bg .cmbox-body {
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+}
+body.model-bg .cmbox[open] .cmbox-body {
+  animation: cmbox-slide-down 0.25s ease;
+}
+
+@keyframes cmbox-slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.model-bg .cmbox[open] .cmbox-body {
+    animation: none;
+  }
+}

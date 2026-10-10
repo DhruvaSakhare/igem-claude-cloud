@@ -1,0 +1,362 @@
+/* Styles for the Model hub page (model.tsx).
+ * Namespaced by class prefix so nothing collides with other pages. */
+
+/* ========================================================================== *
+ *  EnzymeSplitToggle — Overview UPO/laccase split panel (.st-*)
+ * ========================================================================== */
+.st {
+  margin: 0 0 0.5rem;
+}
+.st-wrap {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  height: 440px;
+  /* Same shape as the prose boxes (components/TextBox.css): 16px corners, no
+     border, solid drop shadow. The fill is a neutral near-white for both
+     tracks so the text reads cleanly; only the shadow carries the focused
+     track's colour (bright blue for Laccases, orange for UPOs). */
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: rgba(250, 251, 252, 0.92);
+  box-shadow: 0 12px 0px var(--color-brightblue-shadow);
+  transition: box-shadow 0.5s ease;
+}
+.st-wrap.st-focus-upo {
+  box-shadow: 0 12px 0px #ffc6a1;
+}
+.st-panel {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  overflow: hidden;
+  transition: flex-basis 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* faint enzyme render behind each panel; brightens when that side is focused */
+.st-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.14;
+  transition: opacity 0.5s ease;
+}
+.st-bg-left {
+  -webkit-mask-image: linear-gradient(to right, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to right, #000 35%, transparent 92%);
+  /* The renders are near-square, so `cover` cropped their top and bottom in
+     the wide panel. Fit the whole structure in instead, toward the left. */
+  object-fit: contain;
+  object-position: 20% center;
+}
+.st-bg-right {
+  -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  mask-image: linear-gradient(to left, #000 35%, transparent 92%);
+  /* Same as the left side, mirrored: the whole structure, toward the right. */
+  object-fit: contain;
+  object-position: 80% center;
+}
+/* Both renders are pale grey PyMOL surfaces, so they need more weight than a
+   colourful image would to show through. */
+.st-panel.active .st-bg {
+  opacity: 0.45;
+}
+
+.st-content {
+  position: relative;
+  z-index: 1;
+  min-width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 2.25rem 2.4rem;
+}
+.st-content-right {
+  margin-left: auto;
+  text-align: right;
+  align-items: flex-end;
+}
+/* only the focused side shows its text; the collapsed side hides it */
+.st-content {
+  transition: opacity 0.4s ease;
+}
+.st-panel:not(.active) .st-content {
+  opacity: 0;
+  pointer-events: none;
+}
+.st-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.st-content-right .st-eyebrow {
+  flex-direction: row-reverse;
+}
+.st-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.st-name {
+  margin: 0;
+  font-weight: 800;
+  font-size: 2.2rem;
+  color: #0e3a57;
+}
+.st-intro {
+  margin: 0;
+  color: #143247;
+  font-size: 1.12rem;
+  line-height: 1.6;
+  max-width: 42ch;
+}
+.st-content-right .st-intro {
+  margin-left: auto;
+}
+.st-points {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+  color: #143247;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.4s ease 0.1s,
+    transform 0.4s ease 0.1s;
+}
+.st-content-right .st-points {
+  padding-left: 0;
+  padding-right: 1.1rem;
+  list-style-position: inside;
+}
+.st-points li {
+  margin-bottom: 0.15rem;
+}
+.st-panel.active .st-points {
+  opacity: 1;
+  transform: none;
+}
+
+.st-switch {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.7rem 1.25rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: var(--color-orange);
+  box-shadow: 0 6px 16px rgba(255, 106, 20, 0.38);
+  white-space: nowrap;
+  transition:
+    left 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    box-shadow 0.2s ease;
+}
+/* The button takes the colour of the track it switches TO: orange for
+   "Focus UPOs" (above), blue for "Focus Laccases". */
+.st-switch.st-switch-laccase {
+  background: var(--color-brightblue);
+  box-shadow: 0 6px 16px rgba(87, 202, 255, 0.45);
+}
+.st-switch.st-switch-laccase:hover {
+  box-shadow: 0 10px 22px rgba(87, 202, 255, 0.6);
+}
+.st-switch.st-switch-laccase:focus-visible {
+  outline-color: rgba(87, 202, 255, 0.55);
+}
+.st-switch:hover {
+  box-shadow: 0 10px 22px rgba(255, 106, 20, 0.5);
+}
+.st-switch:active {
+  transform: translate(-50%, -50%) scale(0.96);
+}
+.st-switch:focus-visible {
+  outline: 3px solid rgba(255, 106, 20, 0.45);
+  outline-offset: 2px;
+}
+.st-switch-icon {
+  font-size: 1rem;
+}
+.st-hint {
+  text-align: center;
+  color: #12455f;
+  font-size: 0.95rem;
+  margin: 1.5rem 0 0;
+}
+.st-hint strong {
+  color: #0e3a57;
+}
+
+@media (max-width: 767px) {
+  .st-wrap {
+    flex-direction: column;
+    height: auto;
+  }
+  .st-panel {
+    flex-basis: auto !important;
+    width: 100%;
+  }
+  .st-content,
+  .st-content-right {
+    min-width: 0;
+    text-align: left;
+    align-items: flex-start;
+    margin: 0;
+    opacity: 1 !important;
+  }
+  .st-content-right .st-eyebrow {
+    flex-direction: row;
+  }
+  .st-content-right .st-intro {
+    margin-left: 0;
+  }
+  .st-content-right .st-points {
+    padding-left: 1.1rem;
+    padding-right: 0;
+  }
+  .st-points {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .st-bg {
+    opacity: 0.16 !important;
+  }
+  .st-switch {
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0.9rem auto 0.3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .st-panel,
+  .st-bg,
+  .st-points,
+  .st-switch {
+    transition: none;
+  }
+}
+
+/* ========================================================================== *
+ *  Page background — constant light blue while the Model hub is mounted
+ *  (matches the site's page-header banner; body class toggled from Model()).
+ * ========================================================================== */
+body.model-bg {
+  /* Literal colour on purpose: App.css redefines --color-lightblue to #ffffff
+   * further down (a variable collision), so var(--color-lightblue) resolves to
+   * white. Hard-code the intended light blue instead. */
+  background-color: #b0e6ff;
+}
+
+/* ========================================================================== *
+ *  Breathing room around paragraphs (all four Model pages)
+ *
+ *  A paragraph must never sit tight against the thing next to it — a figure,
+ *  plot, table, flowchart, viewer or box. Scoped to body.model-bg (set by each
+ *  Model page on mount) and written at ID specificity, so it wins over the
+ *  per-widget `#root .xx p { margin: … }` rules without touching any other page.
+ *
+ *  Minimums, not exact values: in normal flow two touching margins collapse to
+ *  the larger one, so these only ever widen a gap. Excluded:
+ *    • text that is part of a widget rather than prose — the viewer and toggle
+ *      hints, the hero subtitles (a column beside the art), the shared page
+ *      header lead, anything inside an SVG, a figure, a table, the viewer, the
+ *      hub and pipeline cards, the UPO/laccase switcher or the pager (cards are
+ *      flex boxes, where margins add up rather than collapse, so these rules
+ *      would loosen their own internal spacing);
+ *    • paragraph-to-paragraph and paragraph-to-list spacing, which is ordinary
+ *      text rhythm and unchanged.
+ * ========================================================================== */
+/* Paragraph followed by an object. (.mm-sintro, the Methods section intro,
+   already keeps a wider 2rem below it.) */
+body.model-bg
+  #root
+  p:not(
+    .sv-hint,
+    .st-hint,
+    .mxh-sub,
+    .ehero-sub,
+    .page-header-lead,
+    .mm-sintro
+  ):not(
+    svg p,
+    figure p,
+    table p,
+    .sv p,
+    .mh-card p,
+    .mp-card p,
+    .st p,
+    .mpager p
+  ):has(+ :not(p, ul, ol, h1, h2, h3, h4, h5, h6, br, script, style)) {
+  margin-bottom: 1.5rem;
+}
+
+/* Object followed by a paragraph. */
+body.model-bg
+  #root
+  :not(p, ul, ol, h1, h2, h3, h4, h5, h6, br, script, style)
+  + p:not(.sv-hint, .st-hint, .mxh-sub, .ehero-sub, .page-header-lead):not(
+    svg p,
+    figure p,
+    table p,
+    .sv p,
+    .mh-card p,
+    .mp-card p,
+    .st p,
+    .mpager p
+  ) {
+  margin-top: 1.5rem;
+}
+
+/* Heading followed by its paragraph: closer than an object, never cramped. */
+body.model-bg
+  #root
+  :is(h1, h2, h3, h4, h5, h6)
+  + p:not(.sv-hint, .st-hint, .mxh-sub, .ehero-sub, .page-header-lead):not(
+    svg p,
+    figure p,
+    table p,
+    .sv p,
+    .mh-card p,
+    .mp-card p,
+    .st p,
+    .mpager p
+  ) {
+  margin-top: 0.75rem;
+}
+
+/* ========================================================================== *
+ *  Prose boxes (.text-box.model-prose)
+ *
+ *  Each run of continuous paragraphs on the Model pages sits in a TextBox — the
+ *  translucent white card the Description page uses (components/TextBox.css).
+ *  The box's own padding is the space around the text, so the paragraphs'
+ *  outer margins are dropped rather than added on top of it.
+ * ========================================================================== */
+#root .text-box.model-prose > :first-child {
+  margin-top: 0;
+}
+#root .text-box.model-prose > :last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,34 @@
+/* ========================================================================== *
+ *  Enzyme-track colours (.track-laccase / .track-upo)
+ *
+ *  The Discovery and Engineering pages are split into Laccase sections and UPO
+ *  sections. Each such <section> carries one of these classes, and the tables,
+ *  boxes and flowcharts inside it take that track's colour — the same pair the
+ *  Overview page's UPO/laccase panel uses: the tables' bright blue for
+ *  Laccases, the site orange for UPOs.
+ *
+ *  Only frame accents follow the track (table headers, card borders and
+ *  dividers, drop shadows, flowchart spines and nodes). Text, headings and the
+ *  colour-coded drawings inside the method illustrations keep their colours.
+ *
+ *  How: components read `--track*` with their original colour as the fallback
+ *  (so outside a track — the Methods page, Discussion, References — nothing
+ *  changes), and the shared `--color-brightblue*` variables are re-pointed
+ *  inside a track for the components that already use those.
+ * ========================================================================== */
+.track-laccase {
+  --track: var(--color-brightblue); /* #57caff */
+  --track-shadow: #57caff4d; /* same as --color-brightblue-shadow */
+  --track-line: rgba(87, 202, 255, 0.5);
+  --track-soft: rgba(87, 202, 255, 0.16);
+  --color-brightblue-shadow: var(--track-shadow);
+}
+.track-upo {
+  --track: var(--color-orange); /* #ff6a14 */
+  /* Opaque light orange: a translucent orange over the blue page reads grey. */
+  --track-shadow: #ffc6a1;
+  --track-line: rgba(255, 106, 20, 0.5);
+  --track-soft: rgba(255, 106, 20, 0.14);
+  --color-brightblue: var(--color-orange);
+  --color-brightblue-shadow: var(--track-shadow);
+}

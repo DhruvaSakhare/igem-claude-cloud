@@ -1,0 +1,370 @@
+/* ── THE LAB BOOK ───────────────────────────────────────────────────────────
+   Paper, ruling and page edges are CSS stand-ins; they are replaced by setting
+   PAGE_IMG / EDGE_STACK_IMG in LabBook.tsx. Colours here are the drawn cover's
+   own (#1D1B26 board, #733D2B spine) so the stand-in paper sits with it. */
+
+.labbook-outer {
+  /* HOW BIG THE BOOK IS. One knob: the book's width as a % of the content
+     column. 100% matches the column, 110% is a touch wider than it, 80% is
+     smaller. The min() stops it forcing a horizontal scrollbar on narrower
+     windows, and the margin keeps it centred whatever you pick. */
+  --book-width: 75%;
+
+  --paper: #fbfaf5;
+  /* The fanned page edges. Kept close to --paper: a warmer tan reads as an
+     orange sliver against the page's light blue whenever the edge is visible
+     with no page beside it. */
+  --paper-edge: #f1eee4;
+  --paper-rule: #dfe6ea;
+  --board: #1d1b26;
+  --board-warm: #733d2b;
+  --book-ink: var(--color-darkblue);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+
+  width: min(var(--book-width), calc(100vw - 2rem));
+  margin-left: calc((100% - min(var(--book-width), 100vw - 2rem)) / 2);
+}
+
+.labbook {
+  position: relative;
+  width: 100%;
+  /* Depth of the 3D scene. Larger = a flatter, less fish-eyed turn; this is
+     tuned so a page arcs convincingly without the far edge ballooning. */
+  perspective: 2600px;
+  perspective-origin: 50% 45%;
+  /* NO `filter` HERE. A filter on the element that establishes the 3D scene
+     forces the browser to rasterise the whole subtree flat on every frame, and
+     flattening a preserve-3d subtree is what makes pages flicker and pop
+     through one another mid-turn. The book's shadow is cast by the pages
+     themselves instead (see .labbook-face). */
+  /* Carries the shut book to the centre and back — see .is-closed-* below. */
+  transition: transform 620ms cubic-bezier(0.36, 0.06, 0.24, 1);
+}
+
+/* Closed, only a cover shows — and which half it sits on depends on which end
+   the book was shut at: unturned sheets rest on the RIGHT of the stage, turned
+   ones on the LEFT. Either way the stage slides over to centre the shut book,
+   and slides back as it opens. The stage keeps its full size throughout, so
+   opening never makes the page jump. */
+.labbook.is-closed-front {
+  transform: translateX(-25%);
+}
+
+.labbook.is-closed-back {
+  transform: translateX(25%);
+}
+
+/* The one frame in which a book shut at the back is put back on its front cover
+   before opening — nothing may animate, or the reset becomes the very sweep it
+   exists to avoid. */
+.labbook.is-resetting,
+.labbook.is-resetting .labbook-edge {
+  transition: none;
+}
+
+.labbook.is-closed .labbook-edge {
+  opacity: 0;
+}
+
+/* ── The way in ──────────────────────────────────────────────────────────── */
+
+.labbook-open {
+  position: absolute;
+  left: 75%; /* centre of the right half, where a front-shut cover sits */
+  bottom: 9%;
+  transform: translateX(-50%);
+  z-index: 999; /* above every sheet in the stack */
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.6rem;
+  background: var(--color-orange);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(29, 27, 38, 0.35);
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    opacity 220ms ease;
+}
+
+/* While the book is still turning shut, the button waits: it fades in once the
+   cover has landed, rather than hanging over a book in mid-flip. */
+.labbook-open.is-waiting {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Shut at the back, the stack — and so the button — is on the other half. */
+.labbook-open-back {
+  left: 25%;
+}
+
+.labbook-open:hover {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* ── Page edges ──────────────────────────────────────────────────────────── */
+
+.labbook-edge {
+  position: absolute;
+  top: 1.5%;
+  height: 97%;
+  z-index: 0;
+  background-color: var(--paper-edge);
+  background-size: 100% 100%;
+  /* Stand-in for the drawn fan of page edges: fine repeating lines. */
+  background-image: repeating-linear-gradient(
+    to right,
+    rgba(29, 27, 38, 0.16) 0 1px,
+    rgba(255, 255, 255, 0.55) 1px 3px
+  );
+  transition:
+    width 620ms ease,
+    opacity 400ms ease;
+}
+
+.labbook-edge-left {
+  left: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+.labbook-edge-right {
+  right: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Sheets ──────────────────────────────────────────────────────────────── */
+
+.labbook-sheet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.36, 0.06, 0.24, 1);
+  /* `will-change` is set per sheet in LabBook.tsx, on the pages actually
+     moving. Promoting all of them permanently is what makes a turn stutter. */
+}
+
+.labbook-sheet.is-flipped {
+  transform: rotateY(-180deg);
+}
+
+.labbook-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 0 5px 5px 0;
+  /* Each page carries its own shadow, which is both cheaper than one filter
+     over the whole scene and more truthful: a turning page casts a shadow that
+     moves with it. */
+  box-shadow: 0 10px 22px rgba(29, 27, 38, 0.22);
+}
+
+/* The back face is the same page mirrored, which puts its margin rule and its
+   rounded corner on the correct side once rotated. */
+.labbook-face-back {
+  transform: rotateY(180deg);
+  border-radius: 5px 0 0 5px;
+}
+
+.labbook-cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Turning a book over puts its spine on the opposite side, so the back is the
+   front drawing mirrored. Replace BACK_COVER_IMG in LabBook.tsx and drop this
+   rule once a back is drawn in its own right. */
+.labbook-cover-back {
+  transform: scaleX(-1);
+}
+
+/* ── Paper ───────────────────────────────────────────────────────────────── */
+
+.labbook-page {
+  width: 100%;
+  height: 100%;
+  background-color: var(--paper);
+  background-size: cover;
+  background-position: center;
+  /* Stand-in ruling. Replaced wholesale once PAGE_IMG is set. */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 27px,
+    var(--paper-rule) 27px 28px
+  );
+  /* Gutter shadow, added live rather than drawn into the art so it stays put
+     while the sheet rotates. */
+  box-shadow: inset 14px 0 22px -14px rgba(29, 27, 38, 0.4);
+}
+
+.labbook-page-left {
+  box-shadow: inset -14px 0 22px -14px rgba(29, 27, 38, 0.4);
+}
+
+/* The safe area from the drawing brief: 10–90% across, 12–92% down. Content
+   scrolls inside it rather than spilling over the paper's edge. */
+.labbook-page-inner {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 12%;
+  bottom: 8%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--book-ink);
+}
+
+.labbook-page-inner::-webkit-scrollbar {
+  width: 6px;
+}
+
+.labbook-page-inner::-webkit-scrollbar-thumb {
+  background: rgba(29, 27, 38, 0.22);
+  border-radius: 3px;
+}
+
+/* Type inside the book runs a step smaller than on the page: a spread is about
+   half the width of the content column, so page-scale text left only two or
+   three entries visible before the paper ran out. */
+.labbook-page-inner h2 {
+  font-size: 1.05rem !important;
+  margin: 0 0 0.35rem;
+}
+
+.labbook-page-inner p {
+  font-size: 0.85rem !important;
+  margin: 0 0 0.45rem;
+  line-height: 1.5;
+}
+
+.labbook-week-title {
+  font-size: 1.6rem !important;
+  margin: 0;
+  color: var(--book-ink);
+}
+
+.labbook-week-dates {
+  margin: 0.15rem 0 1rem;
+  font-style: italic;
+  color: var(--board-warm);
+}
+
+.labbook-summary {
+  margin: 0 0 1rem;
+}
+
+.labbook-count {
+  margin: 0;
+  font-size: 0.85rem !important;
+  color: rgba(29, 27, 38, 0.6);
+}
+
+.labbook-day-divider {
+  border: none;
+  border-top: 1px solid var(--paper-rule);
+  margin: 1.25rem 0;
+}
+
+/* The pen-circled link out to the day's measurement. The ring is a stand-in for
+   the drawn ink loop; swap it for the artwork when it exists. */
+.labbook-result {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  font-weight: 600;
+  color: var(--color-orange);
+  text-decoration: none;
+}
+
+.labbook-result:hover {
+  text-decoration: underline;
+}
+
+.labbook-circle {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2.5px solid var(--color-orange);
+  border-radius: 60% 40% 55% 45%;
+  transform: rotate(-8deg);
+}
+
+/* ── Controls ────────────────────────────────────────────────────────────── */
+
+.labbook-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Beats the display:flex above, which [hidden] alone would lose to. */
+.labbook-controls[hidden] {
+  display: none;
+}
+
+.labbook-controls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
+  background: var(--color-darkblue);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.labbook-controls button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.labbook-position {
+  margin: 0;
+  font-size: 0.95rem !important;
+  color: var(--color-darkblue);
+  text-align: center;
+}
+
+/* ── Narrow screens ──────────────────────────────────────────────────────────
+   A two-page spread cannot hold readable text on a phone, so the book is
+   replaced by the plain list of weeks (see notebook.tsx). Hide it here rather
+   than shrinking it. */
+@media (max-width: 780px) {
+  .labbook-outer {
+    display: none;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────────
+   Nothing turns or slides: the requested spread simply appears. */
+@media (prefers-reduced-motion: reduce) {
+  .labbook,
+  .labbook-open,
+  .labbook-edge {
+    transition: none;
+  }
+
+  .labbook-sheet {
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+}

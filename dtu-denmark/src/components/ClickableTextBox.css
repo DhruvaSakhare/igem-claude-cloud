@@ -1,0 +1,91 @@
+.clickable-textbox {
+  margin: 2rem 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 0px var(--color-brightblue-shadow);
+}
+
+/* Header */
+
+.clickable-textbox-header {
+  width: 100%;
+  background: white;
+  border: none;
+
+  padding: 1.2rem 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  text-align: left;
+
+  transition: background-color 0.2s;
+}
+
+.clickable-textbox-header:hover {
+  background: rgba(255,255,255,0.95);
+}
+
+.clickable-textbox-header h3 {
+  margin: 0;
+}
+
+/* Arrow */
+
+.arrow {
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+/* Content */
+
+.clickable-textbox-content {
+  background-color: rgba(255,255,255,0.6);
+
+  padding: 2rem;
+
+  border-top: 1px solid rgba(255,255,255,0.5);
+
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* OpenAll button */
+
+.clickable-textbox-toggle {
+  background-color: var(--color-brightblue);
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+
+  padding: 0.8rem 1.5rem;
+
+  font-size: 1rem;
+  font-family: var(--font-heading);
+
+  cursor: pointer;
+
+  transition: background-color 0.2s;
+}
+
+.clickable-textbox-toggle:hover {
+  background-color: var(--color-darkblue);
+}

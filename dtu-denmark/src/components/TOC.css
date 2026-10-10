@@ -1,0 +1,213 @@
+/* Width of the floating sidebar, and the gap it keeps from the content column.
+ * App.css reserves 2 × (--toc-w + --toc-gap + 20px edge) of gutter on
+ * `.page-container:has(.toc)` from the floating breakpoint up — keep the three
+ * numbers here in sync with that rule and with FLOAT_MIN_WIDTH in TOC.tsx. */
+:root {
+  --toc-w: 220px;
+  --toc-gap: 24px;
+}
+
+.toc {
+  position: absolute;
+
+  /* Hug the left edge of the content column rather than the viewport edge, so
+   * the TOC does not drift half a screen away from the text on a wide monitor.
+   * 550px is half the 1100px column cap. Clamped at 20px so it never leaves the
+   * viewport on narrower screens, where the column is narrower than its cap and
+   * the computed value would go negative.
+   *
+   * `50vw`, not `50%`: TOC.tsx flips this element between `fixed` (percentages
+   * resolve against the viewport) and `absolute` (against the body, which is
+   * narrower by the scrollbar) as you scroll. A vw unit means the same thing in
+   * both, so the TOC does not jump sideways when it pins. */
+  left: max(20px, calc(50vw - 550px - var(--toc-gap) - var(--toc-w)));
+
+  width: var(--toc-w);
+
+  padding: 1rem;
+
+  z-index: 1000;
+}
+
+/* Below the breakpoint the gutter cannot hold the TOC no matter how the column
+ * is sized, so it falls back to normal document flow — collapsed behind its
+ * "Contents" toggle (see .toc-toggle), because the full list is taller than a
+ * screen on the Model pages and the reader would have to scroll past all of it
+ * to reach the first section.
+ *
+ * `!important` is required: TOC.tsx writes `position`/`top` as inline styles on
+ * scroll, and inline styles beat plain rules. */
+@media (max-width: 1349px) {
+  .toc {
+    position: static !important;
+    top: auto !important;
+    left: auto;
+    width: auto;
+    margin: 0 0 1.5rem;
+    padding-left: 0;
+  }
+}
+
+/* ---- stacked mode: collapsible header ---- */
+.toc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: none;
+  background: none;
+  padding: 0.2rem 0;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  /* !important matches .toc-link's reasoning: App.css sets a global
+     `#root a { color: var(--color-orange) }` at ID specificity, and h3 headings
+     here are dark blue — this is the same heading, so it matches them. */
+  color: var(--color-darkblue) !important;
+}
+.toc-toggle:hover {
+  color: var(--color-orange) !important;
+}
+.toc-caret {
+  font-size: 0.8em;
+  transition: transform 0.25s ease;
+}
+.toc.open .toc-caret {
+  transform: rotate(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .toc-caret {
+    transition: none;
+  }
+}
+
+.toc h3 {
+  margin-top: 0;
+}
+
+.toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.toc li {
+  margin: 0.8rem 0;
+}
+
+/* ---- optional page level (Dry Lab: the four Model pages) ----
+   Every sibling page stays listed; only the current one expands to show its
+   sections, so the list length stays roughly constant as you move around. */
+
+.toc-page > .toc-page-link {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0.1rem 0;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  /* !important matches .toc-link's reasoning: App.css sets a global
+     `#root a { color: var(--color-orange) }` at ID specificity. */
+  color: var(--color-darkblue) !important;
+  transition: color 0.25s ease;
+}
+
+.toc-page > .toc-page-link:hover {
+  color: var(--color-orange) !important;
+}
+
+/* The page you are on: gold marker down the left of it and its sections. */
+.toc-page.current {
+  border-left: 3px solid var(--color-orange);
+  padding-left: 0.6rem;
+  margin-left: -0.6rem;
+}
+
+.toc-page > .toc-page-link.active {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+/* Sections of the current page, indented under it. */
+.toc-page.current > ul {
+  margin: 0.5rem 0 0;
+  padding-left: 0.7rem;
+}
+
+.toc-page.current > ul .toc-link {
+  font-size: 14px;
+}
+
+.toc-page.current > ul li {
+  margin: 0.55rem 0;
+}
+
+.toc-link {
+  width: 100%;
+
+  border: none;
+  background: none;
+
+  padding: 0.1rem 0;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  font: inherit;
+
+  color: var(--color-darkblue);
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+
+  font-size: 15px;
+}
+
+.toc-link:hover {
+  font-weight: 700;
+  transform: scale(1.02);
+}
+
+/* The entry you are on is marked by weight and size alone. There used to be an
+ * orange rule that swiped in underneath it as well; it was dropped because the
+ * orange bars in this list read as vertical "you are here" markers, and a
+ * horizontal one under the label was a third, unrelated use of the same
+ * colour. */
+.toc-link.active {
+  color: var(--color-darkblue);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* The section being read, marked the same way the current page is: an orange
+ * bar down its left. Thinner and paler than the page bar so the two levels stay
+ * distinguishable.
+ *
+ * The nested subsection list this used to wrap (.toc-subs / .toc-sublink, opted
+ * into via `data-toc-title`) was removed along with the second level in
+ * TOC.tsx, so its rules are gone with it. The bar used to be drawn only on
+ * sections that HAD subsections, to avoid a bare stub against a single line;
+ * with every entry now a single line that condition would mark nothing, so it
+ * is simply dropped. */
+.toc-section.current {
+  border-left: 2px solid rgba(255, 106, 20, 0.55);
+  padding-left: 0.55rem;
+  margin-left: -0.55rem;
+}
+
+@media (min-width: 1350px) {
+  /* A laptop screen is ~800px tall and the TOC is pinned 200px down, so a long
+   * list would run off the bottom with its last entries unreachable. Scroll it
+   * within itself instead. */
+  .toc {
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+  }
+}

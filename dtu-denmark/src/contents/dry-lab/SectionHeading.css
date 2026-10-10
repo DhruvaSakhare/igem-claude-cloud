@@ -1,0 +1,117 @@
+/* Shared Dry Lab section headings (SectionHeading.tsx).
+ *
+ * Centred, navy, title only:
+ *   section title      45px
+ *   subsection title   30px   (what a section title used to be)
+ *   ...and `plain`     30px   same size, normal weight — see .dlh-plain below
+ *
+ * The bold subtitle and the grey lead paragraph were removed. A short orange
+ * rule is back, but only above a SECTION title, where it is the delimiter
+ * between sections; a subsection title is still size and spacing alone, which
+ * is also what keeps the two levels apart.
+ *
+ * WHY `#root` ON EVERY SELECTOR: App.css styles typography inside a nested
+ * `html, body, #root { h1 {...} p {...} }` block, giving those rules a
+ * specificity of (1,0,1) — an id plus an element. A bare `.dlh-title` is
+ * (0,1,0) and loses, so headings came out at App.css's 600 weight / #005075.
+ * Prefixing with `#root` makes these (1,1,0), which wins on class count. */
+
+/* A section heading carries the break between sections: a lot of air above it,
+ * then the short orange bar, then the title. The bar plus the gap are what tell
+ * a reader one section has ended and the next has begun, so neither belongs on
+ * a SUBSECTION heading — `.dlh-sub` resets both further down. */
+#root .dlh {
+  text-align: center;
+  margin: 5.5rem 0 1.5rem;
+}
+
+/* First section on a page: it follows the page intro, not another section, so
+ * it keeps the bar but not the full between-sections gap. */
+#root .page-start > .dlh:first-child,
+#root .dlh:first-child {
+  margin-top: 2.5rem;
+}
+
+/* The delimiter itself. Orange: the site's --color-orange, which every orange
+ * on the Model pages now uses. */
+#root .dlh-rule {
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 0 auto 1.25rem;
+  border-radius: 999px;
+  /* Follows the enzyme track of the section it opens (tracks.css): blue in
+     Laccase sections, orange in UPO ones, orange everywhere else. */
+  background: var(--track, var(--color-orange));
+}
+
+/* Section title — the <h1> the TOC indexes. */
+#root .dlh-title {
+  margin: 0;
+  font-size: 45px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0e3a57;
+}
+
+/* The page name under the hero (PageTitle): the same letters as a section
+ * title, centred on its own. */
+#root .dlh-page {
+  margin: 3rem 0 0;
+  text-align: center;
+  font-size: 45px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0e3a57;
+}
+
+/* Subsection: same centred family, one step down, no bar, and less air above it
+ * than a section gets — the spacing is what carries the hierarchy, so it has to
+ * stay clearly smaller than the between-sections gap above. */
+#root .dlh-sub {
+  /* 1.5rem below, like a section heading: the title must not crowd the table,
+     flowchart or viewer that often follows it directly. */
+  margin: 3rem 0 1.5rem;
+}
+#root .dlh-sub-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #0e3a57;
+}
+
+/* `plain` variant (SubsectionHeading's `plain` prop): subsection SIZE, but not
+ * bold, so a label at this size does not read as a subsection heading. Only the
+ * weight is overridden — size and colour keep coming from the rule above, so
+ * the two stay the same size including at the mobile breakpoint below.
+ * Needs the extra class to out-specify that rule (1,2,0 beats 1,1,0). */
+#root .dlh-sub-title.dlh-plain {
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  #root .dlh-title,
+  #root .dlh-page {
+    font-size: 32px;
+  }
+  #root .dlh-sub-title {
+    font-size: 24px;
+  }
+  /* Same hierarchy, less of it: the between-sections gap and the bar both come
+     down on a phone, where 5.5rem of empty screen is a scroll of nothing. */
+  #root .dlh {
+    margin-top: 3.5rem;
+  }
+  #root .dlh:first-child {
+    margin-top: 2rem;
+  }
+  #root .dlh-sub {
+    margin-top: 2.25rem;
+  }
+  #root .dlh-rule {
+    width: 56px;
+    height: 3px;
+    margin-bottom: 1rem;
+  }
+}

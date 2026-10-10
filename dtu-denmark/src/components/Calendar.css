@@ -1,0 +1,187 @@
+.calendar {
+  /* One knob for the whole calendar. Every dimension below is expressed as a
+     multiple of it, so the calendar can be resized without hunting through the
+     file: 1 is the original size, 0.7 is 30% smaller. */
+  --cal-scale: 0.6;
+
+  max-width: calc(900px * var(--cal-scale));
+  margin: 2rem auto;
+  padding: calc(2rem * var(--cal-scale));
+
+  background: white;
+  border-radius: calc(40px * var(--cal-scale));
+
+  font-family: "Outfit", sans-serif;
+  font-size: calc(1rem * var(--cal-scale));
+
+  box-shadow: 0 4px 12px var(--color-brightblue-shadow);
+}
+
+/* Header */
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: calc(2rem * var(--cal-scale));
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-size: calc(1.6rem * var(--cal-scale));
+  font-weight: 700;
+  color: var(--color-darkblue);
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+
+  font-size: calc(1.25rem * var(--cal-scale));
+
+  cursor: pointer;
+
+  padding: calc(0.5rem * var(--cal-scale));
+
+  color: var(--color-darkblue);
+
+  transition: 0.2s;
+}
+
+.calendar-header button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Calendar Grid */
+
+.calendar-table {
+  display: grid;
+  grid-template-columns: calc(120px * var(--cal-scale)) repeat(7, 1fr);
+
+  border: 1px solid var(--color-shadow);
+}
+
+.calendar-header-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(52px * var(--cal-scale));
+
+  background: #f7f7f7;
+
+  font-weight: 700;
+
+  border-right: 1px solid var(--color-shadow);
+  border-bottom: 1px solid var(--color-shadow);
+}
+
+.week-header {
+  background: var(--color-darkblue);
+  color: white;
+}
+
+/* Week Cells */
+
+.calendar-week-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(74px * var(--cal-scale));
+
+  background: var(--color-darkblue);
+  color: white;
+
+  font-weight: 700;
+
+  border-right: 1px solid var(--color-shadow);
+  border-bottom: 1px solid var(--color-shadow);
+
+  cursor: pointer;
+
+  transition: 0.15s;
+}
+
+.calendar-week-number:hover {
+  background: var(--color-darkestblue);
+}
+
+/* Day Cells */
+
+.calendar-day,
+.calendar-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(74px * var(--cal-scale));
+
+  border-right: 1px solid var(--color-shadow);
+  border-bottom: 1px solid var(--color-shadow);
+
+  background: white;
+}
+
+.calendar-empty {
+  background: white;
+}
+
+/* only dates with notebook entries */
+
+.calendar-day-active {
+  background: var(--color-lightblue);
+
+  cursor: pointer;
+
+  transition: 0.15s;
+}
+
+.calendar-day-active:hover {
+  background: var(--color-brightblue);
+  color: white;
+}
+
+/* dates without notebook entries */
+
+.calendar-day:not(.calendar-day-active) {
+  color: #777;
+}
+
+/* remove outside borders */
+
+.calendar-table > *:nth-child(8n) {
+  border-right: none;
+}
+
+.calendar-table > *:nth-last-child(-n + 8) {
+  border-bottom: none;
+}
+
+/* fixing scrolling */
+
+h1,
+h2,
+section[id^="week-"] {
+  scroll-margin-top: 120px;
+}
+
+/* Days that produced a result, circled as they would be in a paper notebook.
+   The ring is a CSS stand-in — swap it for the drawn ink loop (background-image
+   on this rule) once the artwork exists. Deliberately not a perfect circle: the
+   uneven radii and the slight rotation are what read as hand-drawn. */
+.calendar-day-circled {
+  position: relative;
+}
+
+.calendar-day-circled::after {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border: 2.5px solid var(--color-orange);
+  border-radius: 58% 42% 55% 45%;
+  transform: rotate(-7deg);
+  pointer-events: none;
+}
