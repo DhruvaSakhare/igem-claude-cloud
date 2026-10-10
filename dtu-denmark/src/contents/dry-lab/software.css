@@ -226,9 +226,12 @@
 
 /* --- command blocks ------------------------------------------------------- */
 .sw-cmd {
+  position: relative;
   max-width: 52rem;
   margin: 1.25rem auto;
-  padding: 1.05rem 1.2rem;
+  /* Right padding leaves room for the copy button, so a long command runs
+     under it rather than behind it. */
+  padding: 1.05rem 5.5rem 1.05rem 1.2rem;
   border-radius: var(--sw-r);
   background: var(--color-darkestblue);
   color: #e6f1f7;
@@ -626,4 +629,52 @@
 }
 .sw-to-cost {
   color: #a8430a;
+}
+
+/* --- copy button ----------------------------------------------------------- *
+   Always visible rather than appearing on hover: a control that only exists
+   under a pointer is one a touch user never finds, and on a documentation page
+   this is the most-used thing on the screen. Sits inside the dark block, so it
+   is tinted from the block's own palette rather than introducing a colour. */
+.sw-copy {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  padding: 0.3rem 0.7rem;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(230, 241, 247, 0.12);
+  color: #cfe0ea;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  /* Wide enough that "Copy" -> "Copied" does not shift the button's edge. */
+  min-width: 4.6rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+.sw-copy:hover,
+.sw-copy:focus-visible {
+  background: rgba(230, 241, 247, 0.22);
+  color: #fff;
+}
+.sw-copy:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+@media (max-width: 575px) {
+  /* On a phone the button would eat a third of the line, so it goes above the
+     commands instead of beside them. */
+  .sw-cmd {
+    padding-right: 1.2rem;
+    padding-top: 2.9rem;
+  }
+  .sw-copy {
+    top: 0.55rem;
+    left: 0.6rem;
+    right: auto;
+  }
 }

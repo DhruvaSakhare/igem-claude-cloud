@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
@@ -314,10 +314,70 @@ function Step({
   );
 }
 
-/** A shell block: a plain string is a command, `{ c }` is a dimmed comment. */
+/** Copy-to-clipboard button for a command block.
+ *
+ *  `navigator.clipboard` needs a secure context. The published wiki is HTTPS
+ *  so it is there, but a plain-HTTP preview of a build is not, hence the
+ *  execCommand fallback — deprecated, and still the only thing that works
+ *  where the async API is missing. If both fail the button says so rather
+ *  than claiming a copy that did not happen.
+ *
+ *  The label is a live region, so a screen reader hears the result; the button
+ *  itself keeps one accessible name instead of renaming itself mid-press. */
+function CopyButton({ text }: { text: string }) {
+  const [state, setState] = useState<"idle" | "done" | "failed">("idle");
+
+  async function copy() {
+    let ok = false;
+    try {
+      await navigator.clipboard.writeText(text);
+      ok = true;
+    } catch {
+      try {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        // Off-screen rather than hidden: a display:none textarea cannot be
+        // selected, and the page must not scroll when it is focused.
+        ta.style.cssText = "position:fixed;top:-9999px;opacity:0";
+        document.body.appendChild(ta);
+        ta.select();
+        ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+      } catch {
+        ok = false;
+      }
+    }
+    setState(ok ? "done" : "failed");
+    window.setTimeout(() => setState("idle"), 2000);
+  }
+
+  return (
+    <button type="button" className="sw-copy" onClick={copy} aria-label="Copy">
+      <span aria-hidden="true">
+        {state === "idle" ? "Copy" : state === "done" ? "Copied" : "Press ⌘C"}
+      </span>
+      <span className="visually-hidden" aria-live="polite">
+        {state === "done"
+          ? "Copied to clipboard"
+          : state === "failed"
+            ? "Could not copy — select the text and copy it yourself"
+            : ""}
+      </span>
+    </button>
+  );
+}
+
+/** A shell block: a plain string is a command, `{ c }` is a dimmed comment.
+ *
+ *  What the button copies is exactly what is on screen, comments included —
+ *  the block is meant to be pasted into a terminal whole, and a `#` line is
+ *  harmless there. */
 function Cmd({ lines }: { lines: (string | { c: string })[] }) {
+  const text = lines.map((l) => (typeof l === "string" ? l : l.c)).join("\n");
+
   return (
     <div className="sw-cmd">
+      <CopyButton text={text} />
       <code>
         {lines.map((l, i) =>
           typeof l === "string" ? (
